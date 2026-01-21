@@ -1,0 +1,12 @@
+﻿  PHASMA_C_to_Python_convertor.c
+D:\TANSTAAFL\To Do\PHASMA DAQ V2025\PHASMA 2025 DAQ\PHASMA Python Routines\PHASMA_C_to_Python_convertor_Project\PHASMA_C_to_Python_convertor.c(216,1): warning C4715: 't_DAQ_Config': not all control paths return a value
+D:\TANSTAAFL\To Do\PHASMA DAQ V2025\PHASMA 2025 DAQ\PHASMA Python Routines\PHASMA_C_to_Python_convertor_Project\PHASMA_C_to_Python_convertor.c(129,1): warning C4715: 'WritePrimesToFile': not all control paths return a value
+D:\TANSTAAFL\To Do\PHASMA DAQ V2025\PHASMA 2025 DAQ\PHASMA Python Routines\PHASMA_C_to_Python_convertor_Project\PHASMA_C_to_Python_convertor.c(389,1): warning C4715: 't_DAQ_Data_Read': not all control paths return a value
+D:\TANSTAAFL\To Do\PHASMA DAQ V2025\PHASMA 2025 DAQ\PHASMA Python Routines\PHASMA_C_to_Python_convertor_Project\PHASMA_C_to_Python_convertor.c(301,1): warning C4715: 't_DAQ_Arm': not all control paths return a value
+D:\TANSTAAFL\To Do\PHASMA DAQ V2025\PHASMA 2025 DAQ\PHASMA Python Routines\PHASMA_C_to_Python_convertor_Project\PHASMA_C_to_Python_convertor.c(570,1): warning C4715: 'home_probe': not all control paths return a value
+D:\TANSTAAFL\To Do\PHASMA DAQ V2025\PHASMA 2025 DAQ\PHASMA Python Routines\PHASMA_C_to_Python_convertor_Project\PHASMA_C_to_Python_convertor.c(481,1): warning C4715: 'move_probe': not all control paths return a value
+D:\TANSTAAFL\To Do\PHASMA DAQ V2025\PHASMA 2025 DAQ\PHASMA Python Routines\PHASMA_C_to_Python_convertor_Project\PHASMA_C_to_Python_convertor.c(659,1): warning C4715: 'move_207': not all control paths return a value
+D:\TANSTAAFL\To Do\PHASMA DAQ V2025\PHASMA 2025 DAQ\PHASMA Python Routines\PHASMA_C_to_Python_convertor_Project\PHASMA_C_to_Python_convertor.c(747,1): warning C4715: 'overwriteLocation_207': not all control paths return a value
+D:\TANSTAAFL\To Do\PHASMA DAQ V2025\PHASMA 2025 DAQ\PHASMA Python Routines\PHASMA_C_to_Python_convertor_Project\PHASMA_C_to_Python_convertor.c(836,1): warning C4715: 'move_209': not all control paths return a value
+D:\TANSTAAFL\To Do\PHASMA DAQ V2025\PHASMA 2025 DAQ\PHASMA Python Routines\PHASMA_C_to_Python_convertor_Project\PHASMA_C_to_Python_convertor.c(924,1): warning C4715: 'overwriteLocation_209': not all control paths return a value
+LINK : fatal error LNK1104: cannot open file 'python312_d.lib'

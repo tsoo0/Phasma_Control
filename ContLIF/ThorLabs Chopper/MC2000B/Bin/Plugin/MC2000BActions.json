@@ -1,0 +1,244 @@
+[
+  {
+    "IsQuery": true,
+    "Name": "GetFrequency",
+    "Parameters": null,
+    "ReturnType": 1,
+    "Unit": "Hz"
+  },
+  {
+    "EnumDefinition": "MC1F2,0,MC1F10,1,MC1F15,2,MC1F30,3,MC1F60,4,MC1F100,5,MC1F10HP,6,MC1F2P10,7,MC1F6P10,8,MC1F10A,9,MC2F330,10,MC2F47,11,MC2F57B,12,MC2F860,13,MC2F5360,14",
+    "IsQuery": true,
+    "Name": "GetBladeType",
+    "Parameters": null,
+    "ReturnType": 4,
+    "Unit": null
+  },
+  {
+    "IsQuery": true,
+    "Name": "GetHarmonicMultiplier",
+    "Parameters": null,
+    "ReturnType": 1,
+    "Unit": null
+  },
+  {
+    "IsQuery": true,
+    "Name": "GetHarmonicDivider",
+    "Parameters": null,
+    "ReturnType": 1,
+    "Unit": null
+  },
+  {
+    "IsQuery": true,
+    "Name": "GetPhase",
+    "Parameters": null,
+    "ReturnType": 1,
+    "Unit": "Degree"
+  },
+  {
+    "IsQuery": true,
+    "Name": "GetCycleAdjust",
+    "Parameters": null,
+    "ReturnType": 1,
+    "Unit": "%"
+  },
+  {
+    "IsQuery": true,
+    "Name": "GetReferenceOutputFrequency",
+    "Parameters": null,
+    "ReturnType": 1,
+    "Unit": "hz"
+  },
+  {
+    "EnumDefinition": "Enable,1,Disable,0",
+    "IsQuery": true,
+    "Name": "GetEnable",
+    "Parameters": null,
+    "ReturnType": 4,
+    "Unit": null
+  },
+  {
+    "IsQuery": true,
+    "Name": "GetReference",
+    "Parameters": null,
+    "ReturnType": 1,
+    "Unit": null
+  },
+  
+  {
+    "IsQuery": true,
+    "Name": "GetReferenceOutput",
+    "Parameters": null,
+    "ReturnType": 1,
+    "Unit": null
+  },
+  
+  {
+    "IsQuery": true,
+    "Name": "GetDisplayIntensity",
+    "Parameters": null,
+    "ReturnType": 1,
+    "Unit": null
+  },
+  {
+    "IsQuery": true,
+    "Name": "GetReferenceInputFrequency",
+    "Parameters": null,
+    "ReturnType": 1,
+    "Unit": "Hz"
+  },
+  {
+    "IsQuery": false,
+    "Name": "SetFrequency",
+    "Parameters": [
+      {
+        "Max": 10000,
+        "Min": 0,
+        "Name": "Frequency",
+        "ParamType": 1,
+        "Unit": "Hz"
+      }
+    ],
+    "ReturnType": 0,
+    "Unit": null
+  },
+  {
+    "Name": "SetBladeType",
+    "IsQuery": false,
+    "ReturnType": 0,
+    "Unit": null,
+    "Parameters": [
+      {
+        "EnumDefinition": "MC1F2,0,MC1F10,1,MC1F15,2,MC1F30,3,MC1F60,4,MC1F100,5,MC1F10HP,6,MC1F2P10,7,MC1F6P10,8,MC1F10A,9,MC2F330,10,MC2F47,11,MC2F57B,12,MC2F860,13,MC2F5360,14",
+        "Max": 14,
+        "Min": 0,
+        "Name": "Blade type",
+        "ParamType": 4,
+        "Unit": null
+      }
+    ]
+  },
+  {
+    "IsQuery": false,
+    "Name": "SetHarmonicMultiplier",
+    "Parameters": [
+      {
+        "Max": 15,
+        "Min": 1,
+        "Name": "Multiplier",
+        "ParamType": 1,
+        "Unit": null
+      }
+    ],
+    "ReturnType": 0,
+    "Unit": null
+  },
+  {
+    "IsQuery": false,
+    "Name": "SetHarmonicDivider",
+    "Parameters": [
+      {
+        "Max": 15,
+        "Min": 1,
+        "Name": "Divider",
+        "ParamType": 1,
+        "Unit": null
+      }
+    ],
+    "ReturnType": 0,
+    "Unit": null
+  },
+  {
+    "IsQuery": false,
+    "Name": "SetPhase",
+    "Parameters": [
+      {
+        "Max": 360,
+        "Min": 0,
+        "Name": "Phase",
+        "ParamType": 1,
+        "Unit": "Degree"
+      }
+    ],
+    "ReturnType": 0,
+    "Unit": null
+  },
+  {
+    "IsQuery": false,
+    "Name": "SetEnable",
+    "Parameters": [
+      {
+        "EnumDefinition": "Enable,1,Disable,0",
+        "Max": 1,
+        "Min": 0,
+        "Name": "Enable",
+        "ParamType": 4,
+        "Unit": null
+      }
+    ],
+    "ReturnType": 0,
+    "Unit": null
+  },
+  {
+    "IsQuery": false,
+    "Name": "SetReference",
+    "Parameters": [
+      {
+        "Max": 3,
+        "Min": 0,
+        "Name": "type",
+        "ParamType": 1,
+        "Unit": null
+      }
+    ],
+    "ReturnType": 0,
+    "Unit": null
+  },
+  {
+    "IsQuery": false,
+    "Name": "SetReferenceOut",
+    "Parameters": [
+      {
+        "Max": 4,
+        "Min": 0,
+        "Name": "type",
+        "ParamType": 1,
+        "Unit": null
+      }
+    ],
+    "ReturnType": 0,
+    "Unit": null
+  },
+  
+  {
+    "IsQuery": false,
+    "Name": "SetDisplayIntensity",
+    "Parameters": [
+      {
+        "Max": 10,
+        "Min": 1,
+        "Name": "Intensity",
+        "ParamType": 1,
+        "Unit": null
+      }
+    ],
+    "ReturnType": 0,
+    "Unit": null
+  },
+  {
+    "IsQuery": false,
+    "Name": "SetCycleAdjust",
+    "Parameters": [
+      {
+        "Max": 50,
+        "Min": 1,
+        "Name": "cycle",
+        "ParamType": 1,
+        "Unit": "%"
+      }
+    ],
+    "ReturnType": 0,
+    "Unit": null
+  }
+  
+]

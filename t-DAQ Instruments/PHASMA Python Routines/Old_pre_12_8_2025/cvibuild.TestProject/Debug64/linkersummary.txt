@@ -1,0 +1,9 @@
+TestCode.obj
+cvistart.lib
+cvi.lib
+python_bridge.lib
+kernel32.lib
+user32.lib
+EXE Symbol Module
+Exports Module
+Resource Module

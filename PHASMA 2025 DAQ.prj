@@ -1,0 +1,2104 @@
+[Project Header]
+Version = 2000
+Encoding = "ANSI"
+Pathname = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/PHASMA 2025 DAQ.prj"
+CVI Dir = "/c/program files (x86)/national instruments/cvi2020"
+CVI Shared Dir = "/C/Program Files (x86)/National Instruments/Shared/CVI"
+CVI Pub Local Dir = "/C/ProgramData/National Instruments/CVI2020"
+CVI Pub Global Dir = "/C/ProgramData/National Instruments/CVI"
+IVI Standard Root Dir = "/c/Program Files/IVI Foundation/IVI"
+VXIplug&play Framework Dir = "/C/Program Files (x86)/IVI Foundation/VISA/winnt"
+IVI Standard Root 64-bit Dir = "/C/Program Files/IVI Foundation/IVI"
+VXIplug&play Framework 64-bit Dir = "/C/Program Files/IVI Foundation/VISA/win64"
+Number of Files = 124
+Target Type = "Executable"
+Flags = 2064
+Copied From Locked InstrDrv Directory = False
+Copied from VXIPNP Directory = False
+Locked InstrDrv Name = ""
+Don't Display Deploy InstrDrv Dialog = False
+
+[Folders]
+Folder 0 = "User Interface Files"
+FolderEx 0 = "User Interface Files"
+Folder 1 = "Include Files"
+FolderEx 1 = "Include Files"
+Folder 2 = "Source Files"
+FolderEx 2 = "Source Files"
+Folder 3 = "Library Files"
+FolderEx 3 = "Library Files"
+Folder 4 = "Instrument Files"
+FolderEx 4 = "Instrument Files"
+
+[File 0001]
+File Type = "User Interface Resource"
+Res Id = 1
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Bdot/BdotSettings.uir"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Bdot/BdotSettings.uir"
+Exclude = False
+Project Flags = 0
+Folder = "User Interface Files"
+Folder Id = 0
+
+[File 0002]
+File Type = "User Interface Resource"
+Res Id = 2
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "ContLIF/ContLIFSettings.uir"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/ContLIF/ContLIFSettings.uir"
+Exclude = False
+Project Flags = 0
+Folder = "User Interface Files"
+Folder Id = 0
+
+[File 0003]
+File Type = "User Interface Resource"
+Res Id = 3
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "DoubleProbe/DoubleProbeSettings.uir"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/DoubleProbe/DoubleProbeSettings.uir"
+Exclude = False
+Project Flags = 0
+Folder = "User Interface Files"
+Folder Id = 0
+
+[File 0004]
+File Type = "User Interface Resource"
+Res Id = 4
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Helicon/Helicon_Settings.uir"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Helicon/Helicon_Settings.uir"
+Exclude = False
+Project Flags = 0
+Folder = "User Interface Files"
+Folder Id = 0
+
+[File 0005]
+File Type = "User Interface Resource"
+Res Id = 5
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Housekeeping/HousekeepingSystems.uir"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Housekeeping/HousekeepingSystems.uir"
+Exclude = False
+Project Flags = 0
+Folder = "User Interface Files"
+Folder Id = 0
+
+[File 0006]
+File Type = "User Interface Resource"
+Res Id = 6
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Langmuir/LangmuirSettings.uir"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Langmuir/LangmuirSettings.uir"
+Exclude = False
+Project Flags = 0
+Folder = "User Interface Files"
+Folder Id = 0
+
+[File 0007]
+File Type = "User Interface Resource"
+Res Id = 7
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Magnetic Field/MagField_Settings.uir"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Magnetic Field/MagField_Settings.uir"
+Exclude = False
+Project Flags = 0
+Folder = "User Interface Files"
+Folder Id = 0
+
+[File 0008]
+File Type = "User Interface Resource"
+Res Id = 8
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "MasterControlPanel.uir"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/MasterControlPanel.uir"
+Exclude = False
+Project Flags = 0
+Folder = "User Interface Files"
+Folder Id = 0
+
+[File 0009]
+File Type = "User Interface Resource"
+Res Id = 9
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "MasterTrigger/MasterTriggerSettings.uir"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/MasterTrigger/MasterTriggerSettings.uir"
+Exclude = False
+Project Flags = 0
+Folder = "User Interface Files"
+Folder Id = 0
+
+[File 0010]
+File Type = "User Interface Resource"
+Res Id = 10
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "McPherson/McPhersonSettings.uir"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/McPherson/McPhersonSettings.uir"
+Exclude = False
+Project Flags = 0
+Folder = "User Interface Files"
+Folder Id = 0
+
+[File 0011]
+File Type = "User Interface Resource"
+Res Id = 11
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Ocean Optics/OceanOpticsSettings.uir"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Ocean Optics/OceanOpticsSettings.uir"
+Exclude = False
+Project Flags = 0
+Folder = "User Interface Files"
+Folder Id = 0
+
+[File 0012]
+File Type = "User Interface Resource"
+Res Id = 12
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Photodiodes/PhotodiodeSettings.uir"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Photodiodes/PhotodiodeSettings.uir"
+Exclude = False
+Project Flags = 0
+Folder = "User Interface Files"
+Folder Id = 0
+
+[File 0013]
+File Type = "User Interface Resource"
+Res Id = 13
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Photron Camera/PhotronCameraSettings.uir"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Photron Camera/PhotronCameraSettings.uir"
+Exclude = False
+Project Flags = 0
+Folder = "User Interface Files"
+Folder Id = 0
+
+[File 0014]
+File Type = "User Interface Resource"
+Res Id = 14
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "PlasmaGun/PlasmaGunSettings.uir"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/PlasmaGun/PlasmaGunSettings.uir"
+Exclude = False
+Project Flags = 0
+Folder = "User Interface Files"
+Folder Id = 0
+
+[File 0015]
+File Type = "User Interface Resource"
+Res Id = 15
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "PulsedLIF/PulsedLIFSettings.uir"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/PulsedLIF/PulsedLIFSettings.uir"
+Exclude = False
+Project Flags = 0
+Folder = "User Interface Files"
+Folder Id = 0
+
+[File 0016]
+File Type = "User Interface Resource"
+Res Id = 16
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "RFEA/RFEASettings.uir"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/RFEA/RFEASettings.uir"
+Exclude = False
+Project Flags = 0
+Folder = "User Interface Files"
+Folder Id = 0
+
+[File 0017]
+File Type = "User Interface Resource"
+Res Id = 17
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "TempDiag/TempDiagSettings.uir"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/TempDiag/TempDiagSettings.uir"
+Exclude = False
+Project Flags = 0
+Folder = "User Interface Files"
+Folder Id = 0
+
+[File 0018]
+File Type = "User Interface Resource"
+Res Id = 18
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "ThomsonScattering/ThomsonScatteringSettings.uir"
+Path Line0001 = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/ThomsonScattering/ThomsonScatteringSettin"
+Path Line0002 = "gs.uir"
+Exclude = False
+Project Flags = 0
+Folder = "User Interface Files"
+Folder Id = 0
+
+[File 0019]
+File Type = "User Interface Resource"
+Res Id = 19
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "TripleProbe/TripleProbeSettings.uir"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/TripleProbe/TripleProbeSettings.uir"
+Exclude = False
+Project Flags = 0
+Folder = "User Interface Files"
+Folder Id = 0
+
+[File 0020]
+File Type = "Include"
+Res Id = 20
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Andor Camera/Andor SDK/ATMCD32D.H"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Andor Camera/Andor SDK/ATMCD32D.H"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0021]
+File Type = "Include"
+Res Id = 21
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Bdot/BdotSettings.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Bdot/BdotSettings.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0022]
+File Type = "Include"
+Res Id = 22
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Bdot/BdotSystems.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Bdot/BdotSystems.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0023]
+File Type = "Include"
+Res Id = 23
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "ContLIF/Bristol.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/ContLIF/Bristol.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0024]
+File Type = "Include"
+Res Id = 24
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "ContLIF/ContLIFSettings.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/ContLIF/ContLIFSettings.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0025]
+File Type = "Include"
+Res Id = 25
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "ContLIF/ContLIFSystems.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/ContLIF/ContLIFSystems.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0026]
+File Type = "Include"
+Res Id = 26
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "DoubleProbe/DoubleProbeSettings.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/DoubleProbe/DoubleProbeSettings.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0027]
+File Type = "Include"
+Res Id = 27
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "DoubleProbe/DoubleProbeSystems.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/DoubleProbe/DoubleProbeSystems.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0028]
+File Type = "Include"
+Res Id = 28
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "GlobalVariables.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/GlobalVariables.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0029]
+File Type = "Include"
+Res Id = 29
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Helicon/Helicon_Settings.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Helicon/Helicon_Settings.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0030]
+File Type = "Include"
+Res Id = 30
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Helicon/HeliconSourceSettings.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Helicon/HeliconSourceSettings.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0031]
+File Type = "Include"
+Res Id = 31
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Housekeeping/HousekeepingSettings.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Housekeeping/HousekeepingSettings.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0032]
+File Type = "Include"
+Res Id = 32
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Housekeeping/HousekeepingSystems.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Housekeeping/HousekeepingSystems.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0033]
+File Type = "Include"
+Res Id = 33
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "ContLIF/HP33120/hp33120a.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/ContLIF/HP33120/hp33120a.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0034]
+File Type = "Include"
+Res Id = 34
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Bdot/Joerger VTR10012-VISA.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Bdot/Joerger VTR10012-VISA.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0035]
+File Type = "Include"
+Res Id = 35
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Langmuir/LangmuirSettings.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Langmuir/LangmuirSettings.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0036]
+File Type = "Include"
+Res Id = 36
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Langmuir/LangmuirSystems.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Langmuir/LangmuirSystems.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0037]
+File Type = "Include"
+Res Id = 37
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "LeCroy Routines/Lecroy.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/LeCroy Routines/Lecroy.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0038]
+File Type = "Include"
+Res Id = 38
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Magnetic Field/MagField_Functions.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Magnetic Field/MagField_Functions.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0039]
+File Type = "Include"
+Res Id = 39
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Magnetic Field/MagField_Settings.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Magnetic Field/MagField_Settings.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0040]
+File Type = "Include"
+Res Id = 40
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "MasterControlPanel.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/MasterControlPanel.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0041]
+File Type = "Include"
+Res Id = 41
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "MasterControlSettings.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/MasterControlSettings.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0042]
+File Type = "Include"
+Res Id = 42
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "MasterTrigger/MasterTriggerSettings.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/MasterTrigger/MasterTriggerSettings.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0043]
+File Type = "Include"
+Res Id = 43
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "MasterTrigger/MasterTriggerSystem.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/MasterTrigger/MasterTriggerSystem.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0044]
+File Type = "Include"
+Res Id = 44
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "ContLIF/ThorLabs Chopper/MC2000CommandLib.h"
+Path Line0001 = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/ContLIF/ThorLabs Chopper/MC2000CommandLib"
+Path Line0002 = ".h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0045]
+File Type = "Include"
+Res Id = 45
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "McPherson/McPhersonSettings.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/McPherson/McPhersonSettings.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0046]
+File Type = "Include"
+Res Id = 46
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "McPherson/McPhersonSystems.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/McPherson/McPhersonSystems.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0047]
+File Type = "Include"
+Res Id = 47
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "MDS/mdslib.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/MDS/mdslib.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0048]
+File Type = "Include"
+Res Id = 48
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path Line0001 = "../Program Files (x86)/National Instruments/Shared/ExternalCompilerSupport/C/inc"
+Path Rel Path Line0002 = "lude/NIDAQmx.h"
+Path Line0001 = "/c/Users/tjroo/Desktop/Program Files (x86)/National Instruments/Shared/ExternalC"
+Path Line0002 = "ompilerSupport/C/include/NIDAQmx.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0049]
+File Type = "Include"
+Res Id = 49
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Magnetic Field/nrutil.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Magnetic Field/nrutil.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0050]
+File Type = "Include"
+Res Id = 50
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Ocean Optics/OceanOpticsSettings.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Ocean Optics/OceanOpticsSettings.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0051]
+File Type = "Include"
+Res Id = 51
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Ocean Optics/OceanOpticsSystems.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Ocean Optics/OceanOpticsSystems.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0052]
+File Type = "Include"
+Res Id = 52
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Photron Camera/Include/PDCLIB.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Photron Camera/Include/PDCLIB.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0053]
+File Type = "Include"
+Res Id = 53
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "MDS/PHASMA-MDS-Routines.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/MDS/PHASMA-MDS-Routines.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0054]
+File Type = "Include"
+Res Id = 54
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path Line0001 = "PHASMA Python Routines/PHASMA_C_to_Python_convertor_Project/PHASMA_C_to_Python_c"
+Path Rel Path Line0002 = "onvertor.h"
+Path Line0001 = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/PHASMA Python Routines/PHASMA_C_to_Python"
+Path Line0002 = "_convertor_Project/PHASMA_C_to_Python_convertor.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0055]
+File Type = "Include"
+Res Id = 55
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Photodiodes/PhotodiodeSettings.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Photodiodes/PhotodiodeSettings.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0056]
+File Type = "Include"
+Res Id = 56
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Photodiodes/PhotodiodeSystems.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Photodiodes/PhotodiodeSystems.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0057]
+File Type = "Include"
+Res Id = 57
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Photron Camera/PhotronCameraSettings.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Photron Camera/PhotronCameraSettings.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0058]
+File Type = "Include"
+Res Id = 58
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Photron Camera/PhotronCameraSystems.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Photron Camera/PhotronCameraSystems.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0059]
+File Type = "Include"
+Res Id = 59
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "PlasmaGun/PlasmaGunSettings.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/PlasmaGun/PlasmaGunSettings.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0060]
+File Type = "Include"
+Res Id = 60
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "PlasmaGun/PlasmaGunSystem.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/PlasmaGun/PlasmaGunSystem.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0061]
+File Type = "Include"
+Res Id = 61
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "PulsedLIF/PulsedLIFSettings.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/PulsedLIF/PulsedLIFSettings.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0062]
+File Type = "Include"
+Res Id = 62
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "PulsedLIF/PulsedLIFSystems.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/PulsedLIF/PulsedLIFSystems.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0063]
+File Type = "Include"
+Res Id = 63
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "RFEA/RFEASettings.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/RFEA/RFEASettings.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0064]
+File Type = "Include"
+Res Id = 64
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "RFEA/RFEASystems.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/RFEA/RFEASystems.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0065]
+File Type = "Include"
+Res Id = 65
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Rigol Routines/Rigol.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Rigol Routines/Rigol.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0066]
+File Type = "Include"
+Res Id = 66
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "ContLIF/Sirah.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/ContLIF/Sirah.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0067]
+File Type = "Include"
+Res Id = 67
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Instrument Drivers and Source Code/srds345.h"
+Path Line0001 = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Instrument Drivers and Source Code/srds34"
+Path Line0002 = "5.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0068]
+File Type = "Include"
+Res Id = 68
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "TempDiag/TempDiagSettings.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/TempDiag/TempDiagSettings.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0069]
+File Type = "Include"
+Res Id = 69
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "TempDiag/TempDiagSystems.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/TempDiag/TempDiagSystems.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0070]
+File Type = "Include"
+Res Id = 70
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "ThomsonScattering/ThomsonScatteringSettings.h"
+Path Line0001 = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/ThomsonScattering/ThomsonScatteringSettin"
+Path Line0002 = "gs.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0071]
+File Type = "Include"
+Res Id = 71
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "ThomsonScattering/ThomsonScatteringSystems.h"
+Path Line0001 = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/ThomsonScattering/ThomsonScatteringSystem"
+Path Line0002 = "s.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0072]
+File Type = "Include"
+Res Id = 72
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "ContLIF/ThorLabs Chopper/ThorLabsChopperSettings.h"
+Path Line0001 = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/ContLIF/ThorLabs Chopper/ThorLabsChopperS"
+Path Line0002 = "ettings.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0073]
+File Type = "Include"
+Res Id = 73
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Housekeeping/tkvx4244.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Housekeeping/tkvx4244.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0074]
+File Type = "Include"
+Res Id = 74
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "MDSPlus Routines/treeshr.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/MDSPlus Routines/treeshr.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0075]
+File Type = "Include"
+Res Id = 75
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "TripleProbe/TripleProbeSettings.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/TripleProbe/TripleProbeSettings.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0076]
+File Type = "Include"
+Res Id = 76
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "TripleProbe/TripleProbeSystems.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/TripleProbe/TripleProbeSystems.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0077]
+File Type = "Include"
+Res Id = 77
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "PulsedLIF/AngstromWavemeter/wlmData.h"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/PulsedLIF/AngstromWavemeter/wlmData.h"
+Exclude = False
+Project Flags = 0
+Folder = "Include Files"
+Folder Id = 1
+
+[File 0078]
+File Type = "CSource"
+Res Id = 78
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Bdot/Bdot_Settings.c"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Bdot/Bdot_Settings.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Source Files"
+Folder Id = 2
+
+[File 0079]
+File Type = "CSource"
+Res Id = 79
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "ContLIF/Bristol.c"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/ContLIF/Bristol.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Source Files"
+Folder Id = 2
+
+[File 0080]
+File Type = "CSource"
+Res Id = 80
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "ContLIF/ContLIFSettings.c"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/ContLIF/ContLIFSettings.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Source Files"
+Folder Id = 2
+
+[File 0081]
+File Type = "CSource"
+Res Id = 81
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "DoubleProbe/DoubleProbe Settings.c"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/DoubleProbe/DoubleProbe Settings.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Source Files"
+Folder Id = 2
+
+[File 0082]
+File Type = "CSource"
+Res Id = 82
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Helicon/HeliconSourceSettings.c"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Helicon/HeliconSourceSettings.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Source Files"
+Folder Id = 2
+
+[File 0083]
+File Type = "CSource"
+Res Id = 83
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Housekeeping/HousekeepingSettings.c"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Housekeeping/HousekeepingSettings.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Source Files"
+Folder Id = 2
+
+[File 0084]
+File Type = "CSource"
+Res Id = 84
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Langmuir/Langmuir.c"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Langmuir/Langmuir.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Source Files"
+Folder Id = 2
+
+[File 0085]
+File Type = "CSource"
+Res Id = 85
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "LeCroy Routines/Lecroy.c"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/LeCroy Routines/Lecroy.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Source Files"
+Folder Id = 2
+
+[File 0086]
+File Type = "CSource"
+Res Id = 86
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Magnetic Field/MagneticField_Settings.c"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Magnetic Field/MagneticField_Settings.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Source Files"
+Folder Id = 2
+
+[File 0087]
+File Type = "CSource"
+Res Id = 87
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "MasterControlLoop.c"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/MasterControlLoop.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Source Files"
+Folder Id = 2
+
+[File 0088]
+File Type = "CSource"
+Res Id = 88
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "MasterTrigger/MasterTriggerSettings.c"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/MasterTrigger/MasterTriggerSettings.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Source Files"
+Folder Id = 2
+
+[File 0089]
+File Type = "CSource"
+Res Id = 89
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "McPherson/McPhersonSettings.c"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/McPherson/McPhersonSettings.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Source Files"
+Folder Id = 2
+
+[File 0090]
+File Type = "CSource"
+Res Id = 90
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Magnetic Field/NR_elle.c"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Magnetic Field/NR_elle.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Source Files"
+Folder Id = 2
+
+[File 0091]
+File Type = "CSource"
+Res Id = 91
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Magnetic Field/NR_ellf.c"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Magnetic Field/NR_ellf.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Source Files"
+Folder Id = 2
+
+[File 0092]
+File Type = "CSource"
+Res Id = 92
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Magnetic Field/NR_nrutil.c"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Magnetic Field/NR_nrutil.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Source Files"
+Folder Id = 2
+
+[File 0093]
+File Type = "CSource"
+Res Id = 93
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Magnetic Field/NR_rd.c"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Magnetic Field/NR_rd.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Source Files"
+Folder Id = 2
+
+[File 0094]
+File Type = "CSource"
+Res Id = 94
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Magnetic Field/NR_rf.c"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Magnetic Field/NR_rf.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Source Files"
+Folder Id = 2
+
+[File 0095]
+File Type = "CSource"
+Res Id = 95
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Ocean Optics/OceanOptics.c"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Ocean Optics/OceanOptics.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Source Files"
+Folder Id = 2
+
+[File 0096]
+File Type = "CSource"
+Res Id = 96
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "MDS/PHASMA-MDS-Routines.c"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/MDS/PHASMA-MDS-Routines.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Source Files"
+Folder Id = 2
+
+[File 0097]
+File Type = "CSource"
+Res Id = 97
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Photodiodes/PhotodiodeSettings.c"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Photodiodes/PhotodiodeSettings.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Source Files"
+Folder Id = 2
+
+[File 0098]
+File Type = "CSource"
+Res Id = 98
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Photron Camera/PhotronSettings.c"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Photron Camera/PhotronSettings.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Source Files"
+Folder Id = 2
+
+[File 0099]
+File Type = "CSource"
+Res Id = 99
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "PlasmaGun/PlasmaGunSettings.c"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/PlasmaGun/PlasmaGunSettings.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Source Files"
+Folder Id = 2
+
+[File 0100]
+File Type = "CSource"
+Res Id = 100
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "PulsedLIF/PLIFSettings.c"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/PulsedLIF/PLIFSettings.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Source Files"
+Folder Id = 2
+
+[File 0101]
+File Type = "CSource"
+Res Id = 101
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "RFEA/RFEASettings.c"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/RFEA/RFEASettings.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Source Files"
+Folder Id = 2
+
+[File 0102]
+File Type = "CSource"
+Res Id = 102
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Rigol Routines/Rigol.c"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Rigol Routines/Rigol.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Source Files"
+Folder Id = 2
+
+[File 0103]
+File Type = "CSource"
+Res Id = 103
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Housekeeping/setup_4244.c"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Housekeeping/setup_4244.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Source Files"
+Folder Id = 2
+
+[File 0104]
+File Type = "CSource"
+Res Id = 104
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "ContLIF/Sirah.c"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/ContLIF/Sirah.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Source Files"
+Folder Id = 2
+
+[File 0105]
+File Type = "CSource"
+Res Id = 105
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "ContLIF/srds345/srds345.c"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/ContLIF/srds345/srds345.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Source Files"
+Folder Id = 2
+
+[File 0106]
+File Type = "CSource"
+Res Id = 106
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "TempDiag/TempDiag Settings.c"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/TempDiag/TempDiag Settings.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Source Files"
+Folder Id = 2
+
+[File 0107]
+File Type = "CSource"
+Res Id = 107
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "ThomsonScattering/ThomsonScatteringSettings.c"
+Path Line0001 = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/ThomsonScattering/ThomsonScatteringSettin"
+Path Line0002 = "gs.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Source Files"
+Folder Id = 2
+
+[File 0108]
+File Type = "CSource"
+Res Id = 108
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "ContLIF/ThorLabs Chopper/ThorLabs_Chopper.c"
+Path Line0001 = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/ContLIF/ThorLabs Chopper/ThorLabs_Chopper"
+Path Line0002 = ".c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Source Files"
+Folder Id = 2
+
+[File 0109]
+File Type = "CSource"
+Res Id = 109
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Housekeeping/Tkvx4244/tkvx4244.c"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Housekeeping/Tkvx4244/tkvx4244.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Source Files"
+Folder Id = 2
+
+[File 0110]
+File Type = "CSource"
+Res Id = 110
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "TripleProbe/TripleProbeSettings.c"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/TripleProbe/TripleProbeSettings.c"
+Exclude = False
+Compile Into Object File = False
+Project Flags = 0
+Folder = "Source Files"
+Folder Id = 2
+
+[File 0111]
+File Type = "Library"
+Res Id = 111
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Andor Camera/Andor SDK/atmcd64m.lib"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Andor Camera/Andor SDK/atmcd64m.lib"
+Exclude = False
+Project Flags = 0
+Folder = "Library Files"
+Folder Id = 3
+
+[File 0112]
+File Type = "Library"
+Res Id = 112
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "ContLIF/ThorLabs Chopper/MC2000CommandLibWin64.lib"
+Path Line0001 = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/ContLIF/ThorLabs Chopper/MC2000CommandLib"
+Path Line0002 = "Win64.lib"
+Exclude = False
+Project Flags = 0
+Folder = "Library Files"
+Folder Id = 3
+
+[File 0113]
+File Type = "Library"
+Res Id = 113
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "MDS/mdslib.lib"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/MDS/mdslib.lib"
+Exclude = False
+Project Flags = 0
+Folder = "Library Files"
+Folder Id = 3
+
+[File 0114]
+File Type = "Library"
+Res Id = 114
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "MDS/mdsshr.lib"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/MDS/mdsshr.lib"
+Exclude = False
+Project Flags = 0
+Folder = "Library Files"
+Folder Id = 3
+
+[File 0115]
+File Type = "Library"
+Res Id = 115
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path Line0001 = "../Program Files (x86)/National Instruments/Shared/ExternalCompilerSupport/C/lib"
+Path Rel Path Line0002 = "64/msvc/NIDAQmx.lib"
+Path Line0001 = "/c/Users/tjroo/Desktop/Program Files (x86)/National Instruments/Shared/ExternalC"
+Path Line0002 = "ompilerSupport/C/lib64/msvc/NIDAQmx.lib"
+Exclude = False
+Project Flags = 0
+Folder = "Library Files"
+Folder Id = 3
+
+[File 0116]
+File Type = "Library"
+Res Id = 116
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Photron Camera/PDCLIB.lib"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Photron Camera/PDCLIB.lib"
+Exclude = False
+Project Flags = 0
+Folder = "Library Files"
+Folder Id = 3
+
+[File 0117]
+File Type = "Library"
+Res Id = 117
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path Line0001 = "PHASMA Python Routines/PHASMA_C_to_Python_convertor_Project/PHASMA_C_to_Python_c"
+Path Rel Path Line0002 = "onvertor.lib"
+Path Line0001 = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/PHASMA Python Routines/PHASMA_C_to_Python"
+Path Line0002 = "_convertor_Project/PHASMA_C_to_Python_convertor.lib"
+Exclude = False
+Project Flags = 0
+Folder = "Library Files"
+Folder Id = 3
+
+[File 0118]
+File Type = "Library"
+Res Id = 118
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "PulsedLIF/AngstromWavemeter/wlmData.lib"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/PulsedLIF/AngstromWavemeter/wlmData.lib"
+Exclude = False
+Project Flags = 0
+Folder = "Library Files"
+Folder Id = 3
+
+[File 0119]
+File Type = "Function Panel"
+Res Id = 119
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "ContLIF/HP33120/hp33120a.fp"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/ContLIF/HP33120/hp33120a.fp"
+Exclude = False
+Project Flags = 0
+Folder = "Instrument Files"
+Folder Id = 4
+
+[File 0120]
+File Type = "Function Panel"
+Res Id = 120
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Bdot/Joerger.fp"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Bdot/Joerger.fp"
+Exclude = False
+Project Flags = 0
+Folder = "Instrument Files"
+Folder Id = 4
+
+[File 0121]
+File Type = "Function Panel"
+Res Id = 121
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Housekeeping/setup_4244.fp"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Housekeeping/setup_4244.fp"
+Exclude = False
+Project Flags = 0
+Folder = "Instrument Files"
+Folder Id = 4
+
+[File 0122]
+File Type = "Function Panel"
+Res Id = 122
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "ContLIF/srds345/srds345.fp"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/ContLIF/srds345/srds345.fp"
+Exclude = False
+Project Flags = 0
+Folder = "Instrument Files"
+Folder Id = 4
+
+[File 0123]
+File Type = "Function Panel"
+Res Id = 123
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "Housekeeping/tkvx4244.fp"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Housekeeping/tkvx4244.fp"
+Exclude = False
+Project Flags = 0
+Folder = "Instrument Files"
+Folder Id = 4
+
+[File 0124]
+File Type = "DLL"
+Res Id = 124
+Path Is Rel = True
+Path Rel To = "Project"
+Path Rel Path = "ContLIF/BristolSoftware/CLDevIFace.dll"
+Path = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/ContLIF/BristolSoftware/CLDevIFace.dll"
+Exclude = False
+Project Flags = 0
+Folder = "Not In A Folder"
+
+[Custom Build Configs]
+Num Custom Build Configs = 0
+
+[Default Build Config Debug]
+Config Name = "Debug"
+Is 64-Bit = False
+Is Release = False
+Default Calling Convention = "cdecl"
+Optimization Level = "No optimizations"
+Require Prototypes = True
+Show Warning IDs in Build Output = False
+Selected Warning Level = "None"
+Warning List None = "1,4,9,41,84,105,106,107,108,109,110,111"
+Error List None = "41"
+Warning List Common = ""
+Error List Common = ""
+Warning List Extended = ""
+Error List Extended = ""
+Warning List All = ""
+Error List All = ""
+Warning Mode = 0
+Enable Unreferenced Identifiers Warning = False
+Enable Pointer Mismatch Warning = False
+Enable Unreachable Code Warning = True
+Enable Assignment In Conditional Warning = False
+Uninitialized Locals Compile Warning = "Aggressive"
+Require Return Values = True
+Enable C99 Extensions = True
+Enable OpenMP Extensions = False
+Stack Size = 250000
+Stack Reserve = 1048576
+Stack Commit = 4096
+Image Base Address = 4194304
+Image Base Address x64 = 4194304
+Compiler Defines = "/DWIN32_LEAN_AND_MEAN"
+Sign = False
+Sign Store = ""
+Sign Certificate = ""
+Sign Timestamp URL = ""
+Sign URL = ""
+Manifest Embed = False
+Icon File Is Rel = False
+Icon File = ""
+Application Title = ""
+Use IVI Subdirectories for Import Libraries = False
+Use VXIPNP Subdirectories for Import Libraries = False
+Use Dflt Import Lib Base Name = True
+Where to Copy DLL = "Do not copy"
+Custom Directory to Copy DLL Is Rel = False
+Custom Directory to Copy DLL = ""
+Generate Source Documentation = "None"
+Runtime Support = "Full Runtime Support"
+Runtime Binding = "Shared"
+Embed Project .UIRs = False
+Generate Map File = False
+Embed Timestamp = True
+Create Console Application = False
+Using LoadExternalModule = False
+DLL Exports = "Include File Symbols"
+Register ActiveX Server = False
+Numeric File Version = "1,0,0,0"
+Numeric Prod Version = "1,0,0,0"
+Comments = ""
+Comments Ex = ""
+Company Name = ""
+Company Name Ex = "%company"
+File Description = "PHASMA 2025 DAQ (Debug x86)"
+File Description Ex = "%application (%rel_dbg %arch)"
+File Version = "1.0"
+File Version Ex = "%f1.%f2"
+Internal Name = "PHASMA 2025 DAQ"
+Internal Name Ex = "%basename"
+Legal Copyright = "Copyright ©  2026"
+Legal Copyright Ex = "Copyright © %company %Y"
+Legal Trademarks = ""
+Legal Trademarks Ex = ""
+Original Filename = "PHASMA 2025 DAQ.exe"
+Original Filename Ex = "%filename"
+Private Build = ""
+Private Build Ex = ""
+Product Name = " PHASMA 2025 DAQ"
+Product Name Ex = "%company %application"
+Product Version = "1.0"
+Product Version Ex = "%p1.%p2"
+Special Build = ""
+Special Build Ex = ""
+Add Type Lib To DLL = False
+Include Type Lib Help Links = False
+TLB Help Style = "HLP"
+Type Lib FP File Is Rel = False
+Type Lib FP File = ""
+Add NI Type Info To DLL = False
+Use Single Header for NI Type Info = False
+Single Header NI Type Info File Is Rel = False
+Single Header NI Type Info File = ""
+
+[Default Build Config Release]
+Config Name = "Release"
+Is 64-Bit = False
+Is Release = True
+Default Calling Convention = "cdecl"
+Optimization Level = "No optimizations"
+Require Prototypes = True
+Show Warning IDs in Build Output = False
+Selected Warning Level = "None"
+Warning List None = "4,9,41,84,105,106,107,108,109,110,111"
+Error List None = "41"
+Warning List Common = ""
+Error List Common = ""
+Warning List Extended = ""
+Error List Extended = ""
+Warning List All = ""
+Error List All = ""
+Warning Mode = 0
+Enable Unreferenced Identifiers Warning = False
+Enable Pointer Mismatch Warning = False
+Enable Unreachable Code Warning = False
+Enable Assignment In Conditional Warning = False
+Uninitialized Locals Compile Warning = "Aggressive"
+Require Return Values = True
+Enable C99 Extensions = False
+Enable OpenMP Extensions = False
+Stack Size = 250000
+Stack Reserve = 1048576
+Stack Commit = 4096
+Image Base Address = 4194304
+Image Base Address x64 = 4194304
+Compiler Defines = "/DWIN32_LEAN_AND_MEAN"
+Sign = False
+Sign Store = ""
+Sign Certificate = ""
+Sign Timestamp URL = ""
+Sign URL = ""
+Manifest Embed = False
+Icon File Is Rel = False
+Icon File = ""
+Application Title = ""
+Use IVI Subdirectories for Import Libraries = False
+Use VXIPNP Subdirectories for Import Libraries = False
+Use Dflt Import Lib Base Name = True
+Where to Copy DLL = "Do not copy"
+Custom Directory to Copy DLL Is Rel = False
+Custom Directory to Copy DLL = ""
+Generate Source Documentation = "None"
+Runtime Support = "Full Runtime Support"
+Runtime Binding = "Shared"
+Embed Project .UIRs = False
+Generate Map File = False
+Embed Timestamp = True
+Create Console Application = False
+Using LoadExternalModule = False
+DLL Exports = "Include File Symbols"
+Register ActiveX Server = False
+Numeric File Version = "1,0,0,0"
+Numeric Prod Version = "1,0,0,0"
+Comments = ""
+Comments Ex = ""
+Company Name = ""
+Company Name Ex = "%company"
+File Description = "PHASMA 2025 DAQ (Release x86)"
+File Description Ex = "%application (%rel_dbg %arch)"
+File Version = "1.0"
+File Version Ex = "%f1.%f2"
+Internal Name = "PHASMA 2025 DAQ"
+Internal Name Ex = "%basename"
+Legal Copyright = "Copyright ©  2026"
+Legal Copyright Ex = "Copyright © %company %Y"
+Legal Trademarks = ""
+Legal Trademarks Ex = ""
+Original Filename = "PHASMA 2025 DAQ.exe"
+Original Filename Ex = "%filename"
+Private Build = ""
+Private Build Ex = ""
+Product Name = " PHASMA 2025 DAQ"
+Product Name Ex = "%company %application"
+Product Version = "1.0"
+Product Version Ex = "%p1.%p2"
+Special Build = ""
+Special Build Ex = ""
+Add Type Lib To DLL = False
+Include Type Lib Help Links = False
+TLB Help Style = "HLP"
+Type Lib FP File Is Rel = False
+Type Lib FP File = ""
+Add NI Type Info To DLL = False
+Use Single Header for NI Type Info = False
+Single Header NI Type Info File Is Rel = False
+Single Header NI Type Info File = ""
+
+[Default Build Config Debug64]
+Config Name = "Debug64"
+Is 64-Bit = True
+Is Release = False
+Default Calling Convention = "cdecl"
+Optimization Level = "No optimizations"
+Require Prototypes = False
+Show Warning IDs in Build Output = False
+Selected Warning Level = "None"
+Warning List None = "1,4,9,84,105,106,107,108,109,110,111"
+Error List None = ""
+Warning List Common = ""
+Error List Common = "-41"
+Warning List Extended = ""
+Error List Extended = "-41"
+Warning List All = ""
+Error List All = "-41"
+Warning Mode = 0
+Enable Unreferenced Identifiers Warning = False
+Enable Pointer Mismatch Warning = False
+Enable Unreachable Code Warning = True
+Enable Assignment In Conditional Warning = False
+Uninitialized Locals Compile Warning = "Aggressive"
+Require Return Values = True
+Enable C99 Extensions = False
+Enable OpenMP Extensions = False
+Stack Size = 18200000
+Stack Reserve = 1000000000
+Stack Commit = 1000000000
+Image Base Address = 4194304
+Image Base Address x64 = 4194304
+Compiler Defines = "/DWIN32_LEAN_AND_MEAN"
+Sign = False
+Sign Store = ""
+Sign Certificate = ""
+Sign Timestamp URL = ""
+Sign URL = ""
+Manifest Embed = False
+Icon File Is Rel = True
+Icon File Rel To = "Project"
+Icon File Rel Path = "PHASMA_icon.ico"
+Icon File = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/PHASMA_icon.ico"
+Application Title = ""
+Use IVI Subdirectories for Import Libraries = False
+Use VXIPNP Subdirectories for Import Libraries = False
+Use Dflt Import Lib Base Name = True
+Where to Copy DLL = "Do not copy"
+Custom Directory to Copy DLL Is Rel = False
+Custom Directory to Copy DLL = ""
+Generate Source Documentation = "None"
+Runtime Support = "Full Runtime Support"
+Runtime Binding = "Shared"
+Embed Project .UIRs = False
+Generate Map File = False
+Embed Timestamp = True
+Create Console Application = True
+Using LoadExternalModule = False
+DLL Exports = "Include File Symbols"
+Register ActiveX Server = False
+Numeric File Version = "1,0,0,0"
+Numeric Prod Version = "1,0,0,0"
+Comments = ""
+Comments Ex = ""
+Company Name = ""
+Company Name Ex = "%company"
+File Description = "PHASMA 2025 DAQ V1 (Debug x64)"
+File Description Ex = "%application (%rel_dbg %arch)"
+File Version = "1.0"
+File Version Ex = "%f1.%f2"
+Internal Name = "PHASMA 2025 DAQ V1"
+Internal Name Ex = "%basename"
+Legal Copyright = "Copyright ©  2026"
+Legal Copyright Ex = "Copyright © %company %Y"
+Legal Trademarks = ""
+Legal Trademarks Ex = ""
+Original Filename = "PHASMA 2025 DAQ V1.exe"
+Original Filename Ex = "%filename"
+Private Build = ""
+Private Build Ex = ""
+Product Name = " PHASMA 2025 DAQ V1"
+Product Name Ex = "%company %application"
+Product Version = "1.0"
+Product Version Ex = "%p1.%p2"
+Special Build = ""
+Special Build Ex = ""
+Add Type Lib To DLL = False
+Include Type Lib Help Links = False
+TLB Help Style = "HLP"
+Type Lib FP File Is Rel = False
+Type Lib FP File = ""
+Add NI Type Info To DLL = False
+Use Single Header for NI Type Info = False
+Single Header NI Type Info File Is Rel = False
+Single Header NI Type Info File = ""
+
+[Default Build Config Release64]
+Config Name = "Release64"
+Is 64-Bit = True
+Is Release = True
+Default Calling Convention = "cdecl"
+Optimization Level = "No optimizations"
+Require Prototypes = True
+Show Warning IDs in Build Output = False
+Selected Warning Level = "None"
+Warning List None = "4,9,41,84,105,106,107,108,109,110,111"
+Error List None = "41"
+Warning List Common = ""
+Error List Common = ""
+Warning List Extended = ""
+Error List Extended = ""
+Warning List All = ""
+Error List All = ""
+Warning Mode = 0
+Enable Unreferenced Identifiers Warning = False
+Enable Pointer Mismatch Warning = False
+Enable Unreachable Code Warning = False
+Enable Assignment In Conditional Warning = False
+Uninitialized Locals Compile Warning = "Aggressive"
+Require Return Values = True
+Enable C99 Extensions = True
+Enable OpenMP Extensions = False
+Stack Size = 250000
+Stack Reserve = 100000000
+Stack Commit = 1000000
+Image Base Address = 4194304
+Image Base Address x64 = 4194304
+Compiler Defines = "/DWIN32_LEAN_AND_MEAN"
+Sign = False
+Sign Store = ""
+Sign Certificate = ""
+Sign Timestamp URL = ""
+Sign URL = ""
+Manifest Embed = False
+Icon File Is Rel = True
+Icon File Rel To = "Project"
+Icon File Rel Path = "PHASMA_icon.ico"
+Icon File = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/PHASMA_icon.ico"
+Application Title = "PHASMA 2025 DAQ"
+Use IVI Subdirectories for Import Libraries = False
+Use VXIPNP Subdirectories for Import Libraries = False
+Use Dflt Import Lib Base Name = True
+Where to Copy DLL = "Do not copy"
+Custom Directory to Copy DLL Is Rel = False
+Custom Directory to Copy DLL = ""
+Generate Source Documentation = "None"
+Runtime Support = "Full Runtime Support"
+Runtime Binding = "Shared"
+Embed Project .UIRs = True
+Generate Map File = False
+Embed Timestamp = True
+Create Console Application = True
+Using LoadExternalModule = False
+DLL Exports = "Include File Symbols"
+Register ActiveX Server = False
+Numeric File Version = "1,0,0,0"
+Numeric Prod Version = "1,0,0,0"
+Comments = ""
+Comments Ex = ""
+Company Name = "Scime Plasma Lab"
+Company Name Ex = "Scime Plasma Lab"
+File Description = "DAQ program for PHASMA"
+File Description Ex = "DAQ program for PHASMA"
+File Version = "1.0"
+File Version Ex = "%f1.%f2"
+Internal Name = "PHASMA 2025 DAQvV1.0"
+Internal Name Ex = "%basename"
+Legal Copyright = "Copyright ©  2026"
+Legal Copyright Ex = "Copyright © %company %Y"
+Legal Trademarks = ""
+Legal Trademarks Ex = ""
+Original Filename = "PHASMA 2025 DAQvV1.0.exe"
+Original Filename Ex = "%filename"
+Private Build = ""
+Private Build Ex = ""
+Product Name = " PHASMA 2025 DAQ"
+Product Name Ex = "%company %application"
+Product Version = "1.0"
+Product Version Ex = "%p1.%p2"
+Special Build = ""
+Special Build Ex = ""
+Add Type Lib To DLL = False
+Include Type Lib Help Links = False
+TLB Help Style = "HLP"
+Type Lib FP File Is Rel = False
+Type Lib FP File = ""
+Add NI Type Info To DLL = False
+Use Single Header for NI Type Info = False
+Single Header NI Type Info File Is Rel = False
+Single Header NI Type Info File = ""
+
+[Compiler Options]
+Default Calling Convention = "cdecl"
+Require Prototypes = True
+Require Return Values = True
+Enable Pointer Mismatch Warning = False
+Enable Unreachable Code Warning = False
+Enable Unreferenced Identifiers Warning = False
+Enable Assignment In Conditional Warning = False
+Enable C99 Extensions = False
+Uninitialized Locals Compile Warning = "Aggressive"
+Precompile Prefix Header = False
+Prefix Header File = ""
+
+[Run Options]
+Stack Size = 250000
+Stack Commit = 4096
+Image Base Address = 4194304
+Image Base Address x64 = 4194304
+
+[Compiler Defines]
+Compiler Defines = "/DWIN32_LEAN_AND_MEAN"
+
+[Include Paths]
+Include Path 1 Is Rel = True
+Include Path 1 Rel To = "Project"
+Include Path 1 Rel Path = "../Program Files/MDSplus/include"
+Include Path 1 = "/c/Users/tjroo/Desktop/Program Files/MDSplus/include"
+Include Path 2 Is Rel = True
+Include Path 2 Rel To = "Project"
+Include Path 2 Rel Path = ""
+Include Path 2 = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ"
+Include Path 3 Is Rel = True
+Include Path 3 Rel To = "Project"
+Include Path 3 Rel Path = "MasterTrigger"
+Include Path 3 = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/MasterTrigger"
+Include Path 4 Is Rel = True
+Include Path 4 Rel To = "Project"
+Include Path 4 Rel Path = "ContLIF"
+Include Path 4 = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/ContLIF"
+Include Path 5 Is Rel = True
+Include Path 5 Rel To = "Project"
+Include Path 5 Rel Path = "Photron Camera/Include"
+Include Path 5 = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/Photron Camera/Include"
+Include Path 6 Is Rel = True
+Include Path 6 Rel To = "Project"
+Include Path 6 Rel Path = "d-TAC Instruments/PythonHeaders"
+Include Path 6 = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/d-TAC Instruments/PythonHeaders"
+Include Path 7 Is Rel = True
+Include Path 7 Rel To = "Project"
+Include Path 7 Rel Path = "../../../../ProgramData/anaconda3/include"
+Include Path 7 = "/c/ProgramData/anaconda3/include"
+
+[Create Executable]
+Executable File_Debug Is Rel = True
+Executable File_Debug Rel To = "Project"
+Executable File_Debug Rel Path = "PHASMA 2025 DAQ.exe"
+Executable File_Debug = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/PHASMA 2025 DAQ.exe"
+Executable File_Release Is Rel = True
+Executable File_Release Rel To = "Project"
+Executable File_Release Rel Path = "PHASMA 2025 DAQ.exe"
+Executable File_Release = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/PHASMA 2025 DAQ.exe"
+Executable File_Debug64 Is Rel = True
+Executable File_Debug64 Rel To = "Project"
+Executable File_Debug64 Rel Path = "PHASMA 2025 DAQ V1.exe"
+Executable File_Debug64 = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/PHASMA 2025 DAQ V1.exe"
+Executable File_Release64 Is Rel = True
+Executable File_Release64 Rel To = "Project"
+Executable File_Release64 Rel Path = "PHASMA 2025 DAQvV1.0.exe"
+Executable File_Release64 = "/c/Users/tjroo/Desktop/PHASMA 2025 DAQ/PHASMA 2025 DAQvV1.0.exe"
+Icon File Is Rel = False
+Icon File = ""
+Application Title = ""
+Numeric File Version = "1,0,0,0"
+Numeric Prod Version = "1,0,0,0"
+Comments = ""
+Comments Ex = ""
+Company Name = ""
+Company Name Ex = "%company"
+File Description = "PHASMA 2025 DAQ (Release x86)"
+File Description Ex = "%application (%rel_dbg %arch)"
+File Version = "1.0"
+File Version Ex = "%f1.%f2"
+Internal Name = "PHASMA 2025 DAQ"
+Internal Name Ex = "%basename"
+Legal Copyright = "Copyright ©  2026"
+Legal Copyright Ex = "Copyright © %company %Y"
+Legal Trademarks = ""
+Legal Trademarks Ex = ""
+Original Filename = "PHASMA 2025 DAQ.exe"
+Original Filename Ex = "%filename"
+Private Build = ""
+Private Build Ex = ""
+Product Name = " PHASMA 2025 DAQ"
+Product Name Ex = "%company %application"
+Product Version = "1.0"
+Product Version Ex = "%p1.%p2"
+Special Build = ""
+Special Build Ex = ""
+DLL Exports = "Include File Symbols"
+Use IVI Subdirectories for Import Libraries = False
+Use VXIPNP Subdirectories for Import Libraries = False
+Use Dflt Import Lib Base Name = True
+Where to Copy DLL = "Do not copy"
+Custom Directory to Copy DLL Is Rel = False
+Custom Directory to Copy DLL = ""
+Generate Source Documentation = "None"
+Add Type Lib To DLL = False
+Include Type Lib Help Links = False
+TLB Help Style = "HLP"
+Type Lib FP File Is Rel = False
+Type Lib FP File = ""
+Type Lib Guid = ""
+Runtime Support = "Full Runtime Support"
+Instrument Driver Support Only = False
+Embed Project .UIRs = False
+Generate Map File = False
+
+[External Compiler Support]
+UIR Callbacks File Option = 0
+Using LoadExternalModule = False
+Create Project Symbols File = True
+UIR Callbacks Obj File Is Rel = False
+UIR Callbacks Obj File = ""
+Project Symbols H File Is Rel = False
+Project Symbols H File = ""
+Project Symbols Obj File Is Rel = False
+Project Symbols Obj File = ""
+
+[ActiveX Server Options]
+Specification File Is Rel = False
+Specification File = ""
+Source File Is Rel = False
+Source File = ""
+Include File Is Rel = False
+Include File = ""
+IDL File Is Rel = False
+IDL File = ""
+Register ActiveX Server = False
+
+[Signing Info]
+Sign = False
+Sign Debug Build = False
+Store = ""
+Certificate = ""
+Timestamp URL = ""
+URL = ""
+
+[Manifest Info]
+Embed = False
+
+[tpcSection]
+tpcEnabled = 0
+tpcOverrideEnvironment = 0
+tpcEnabled x64 = 0
+tpcOverrideEnvironment x64 = 0
+

@@ -1,0 +1,45 @@
+CCFLAGS = -g ;
+HDRS = 	"d:\\TANSTAAFL\\To Do\\PHASMA DAQ V2025\\PHASMA 2025 DAQ\\Andor Camera\\Andor SDK"
+	"d:\\TANSTAAFL\\To Do\\PHASMA DAQ V2025\\PHASMA 2025 DAQ\\ContLIF\\ThorLabs Chopper"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\toolslib\\activex\\word"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\toolslib\\activex\\excel"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\toolslib\\custctrl"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\toolslib\\custctrl\\custsupp"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\toolslib\\cvirtsup"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\toolslib\\datasock"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\toolslib\\daqUtil"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\toolslib\\printing"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\toolslib\\toolbox"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\toolslib\\reportgen"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\toolslib\\localui"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\instr"
+	"C:\\Program Files (x86)\\National Instruments\\Shared\\CVI\\toolslib\\custctrl"
+	"C:\\Program Files (x86)\\National Instruments\\Shared\\CVI\\toolslib\\custctrl\\custsupp"
+	"C:\\Program Files (x86)\\National Instruments\\Shared\\CVI\\instr"
+	"C:\\ProgramData\\National Instruments\\CVI2020\\instr"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\include"
+	"C:\\Program Files (x86)\\National Instruments\\Shared\\CVI\\include"
+	"C:\\ProgramData\\National Instruments\\CVI2020\\include"
+	"C:\\ProgramData\\National Instruments\\CVI\\include"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\include\\ansi"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\include\\clang\\3.3"
+	"C:\\Program Files\\IVI Foundation\\IVI\\Include"
+	"C:\\Program Files\\IVI Foundation\\VISA\\win64\\include"
+	"C:\\Program Files (x86)\\National Instruments\\Shared\\MSDTRedistributables\\SDKHeaderFiles\\8.1"
+	"c:\\Program Files (x86)\\National Instruments\\CVI2020\\bin"
+	"c:\\Program Files (x86)\\National Instruments\\Shared\\CVI\\Bin"
+	;
+include Jamfile_instr ;
+LOCATE on "python_bridge.h" = "d:\\TANSTAAFL\\To Do\\PHASMA DAQ V2025\\PHASMA 2025 DAQ\\d-TAC Instruments\\PHASMA Python Routines" ;
+LOCATE on "TestCode.C" = "d:\\TANSTAAFL\\To Do\\PHASMA DAQ V2025\\PHASMA 2025 DAQ\\d-TAC Instruments\\PHASMA Python Routines" ;
+Object "d:\\TANSTAAFL\\To Do\\PHASMA DAQ V2025\\PHASMA 2025 DAQ\\d-TAC Instruments\\PHASMA Python Routines\\cvibuild.TestProject\\Debug64\\TestCode.obj" : "d:\\TANSTAAFL\\To Do\\PHASMA DAQ V2025\\PHASMA 2025 DAQ\\d-TAC Instruments\\PHASMA Python Routines\\TestCode.C" ;
+FILENUM on "d:\\TANSTAAFL\\To Do\\PHASMA DAQ V2025\\PHASMA 2025 DAQ\\d-TAC Instruments\\PHASMA Python Routines\\cvibuild.TestProject\\Debug64\\TestCode.obj" = 1 ;
+DEFPROTS on "d:\\TANSTAAFL\\To Do\\PHASMA DAQ V2025\\PHASMA 2025 DAQ\\d-TAC Instruments\\PHASMA Python Routines\\cvibuild.TestProject\\Debug64\\TestCode.obj" = "d:\\TANSTAAFL\\To Do\\PHASMA DAQ V2025\\PHASMA 2025 DAQ\\d-TAC Instruments\\PHASMA Python Routines\\cvibuild.TestProject\\Debug64\\TestCode.obj.cvidefprots" ;
+OUTFILE on "d:\\TANSTAAFL\\To Do\\PHASMA DAQ V2025\\PHASMA 2025 DAQ\\d-TAC Instruments\\PHASMA Python Routines\\cvibuild.TestProject\\Debug64\\TestCode.obj" = "d:\\TANSTAAFL\\To Do\\PHASMA DAQ V2025\\PHASMA 2025 DAQ\\d-TAC Instruments\\PHASMA Python Routines\\cvibuild.TestProject\\Debug64\\TestCode.obj.out" ;
+PrjObjects += "d:\\TANSTAAFL\\To Do\\PHASMA DAQ V2025\\PHASMA 2025 DAQ\\d-TAC Instruments\\PHASMA Python Routines\\cvibuild.TestProject\\Debug64\\TestCode.obj" ;
+Object "d:\\TANSTAAFL\\To Do\\PHASMA DAQ V2025\\PHASMA 2025 DAQ\\d-TAC Instruments\\PHASMA Python Routines\\cvibuild.TestProject\\Debug64\\resources.res" : "d:\\TANSTAAFL\\To Do\\PHASMA DAQ V2025\\PHASMA 2025 DAQ\\d-TAC Instruments\\PHASMA Python Routines\\cvibuild.TestProject\\Debug64\\resources.in.rc" ;
+Depends "d:\\TANSTAAFL\\To Do\\PHASMA DAQ V2025\\PHASMA 2025 DAQ\\d-TAC Instruments\\PHASMA Python Routines\\cvibuild.TestProject\\Debug64\\resources.res" : "d:\\TANSTAAFL\\To Do\\PHASMA DAQ V2025\\PHASMA 2025 DAQ\\d-TAC Instruments\\PHASMA Python Routines\\cvibuild.TestProject\\Debug64\\manifest.xml" ;
+MainFromObjects "d:\\TANSTAAFL\\To Do\\PHASMA DAQ V2025\\PHASMA 2025 DAQ\\d-TAC Instruments\\PHASMA Python Routines\\cvibuild.TestProject\\Debug64\\TestProject.exe" : $(PrjObjects) $(InstrObjects) ;
+Depends "d:\\TANSTAAFL\\To Do\\PHASMA DAQ V2025\\PHASMA 2025 DAQ\\d-TAC Instruments\\PHASMA Python Routines\\cvibuild.TestProject\\Debug64\\TestProject.exe" : "d:\\TANSTAAFL\\To Do\\PHASMA DAQ V2025\\PHASMA 2025 DAQ\\d-TAC Instruments\\PHASMA Python Routines\\cvibuild.TestProject\\Debug64\\link_options.txt" ;
+Depends "d:\\TANSTAAFL\\To Do\\PHASMA DAQ V2025\\PHASMA 2025 DAQ\\d-TAC Instruments\\PHASMA Python Routines\\cvibuild.TestProject\\Debug64\\TestProject.exe" : "d:\\TANSTAAFL\\To Do\\PHASMA DAQ V2025\\PHASMA 2025 DAQ\\d-TAC Instruments\\PHASMA Python Routines\\cvibuild.TestProject\\Debug64\\resources.res" ;
+Depends all : "d:\\TANSTAAFL\\To Do\\PHASMA DAQ V2025\\PHASMA 2025 DAQ\\d-TAC Instruments\\PHASMA Python Routines\\cvibuild.TestProject\\Debug64\\TestProject.exe" ;

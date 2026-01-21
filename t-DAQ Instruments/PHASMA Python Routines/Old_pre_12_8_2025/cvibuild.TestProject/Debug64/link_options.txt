@@ -1,0 +1,41 @@
+-nologo
+-out:d:\TANSTAAFL\To Do\PHASMA DAQ V2025\PHASMA 2025 DAQ\d-TAC Instruments\PHASMA Python Routines\cvibuild.TestProject\Debug64\TestProject.exe
+-arch:x64
+-timestamp
+-debug:2
+-project:d:\TANSTAAFL\To Do\PHASMA DAQ V2025\PHASMA 2025 DAQ\d-TAC Instruments\PHASMA Python Routines\TestProject.prj
+-res:d:\TANSTAAFL\To Do\PHASMA DAQ V2025\PHASMA 2025 DAQ\d-TAC Instruments\PHASMA Python Routines\cvibuild.TestProject\Debug64\resources.res
+-entry:CVIWinMainStartupCodeForDebugging
+-base:0x400000
+-linked:d:\TANSTAAFL\To Do\PHASMA DAQ V2025\PHASMA 2025 DAQ\d-TAC Instruments\PHASMA Python Routines\cvibuild.TestProject\Debug64\linkersummary.txt
+-dlldeps:d:\TANSTAAFL\To Do\PHASMA DAQ V2025\PHASMA 2025 DAQ\d-TAC Instruments\PHASMA Python Routines\cvibuild.TestProject\Debug64\dlldependencies.txt
+-licensing:d:\TANSTAAFL\To Do\PHASMA DAQ V2025\PHASMA 2025 DAQ\d-TAC Instruments\PHASMA Python Routines\cvibuild.TestProject\Debug64\linkerlicensing.txt
+-browsedeps:d:\TANSTAAFL\To Do\PHASMA DAQ V2025\PHASMA 2025 DAQ\d-TAC Instruments\PHASMA Python Routines\cvibuild.TestProject\Debug64\moduledependencies.txt
+-stackreserve:18874368
+-stackcommit:4096
+-in:d:\TANSTAAFL\To Do\PHASMA DAQ V2025\PHASMA 2025 DAQ\d-TAC Instruments\PHASMA Python Routines\cvibuild.TestProject\Debug64\TestCode.obj
+-more:c:\program files (x86)\national instruments\cvi2020\bin\msvc64\cvistart.lib
+-more:c:\program files (x86)\national instruments\cvi2020\bin\msvc64\cvi.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc64\advanlys.lib
+-more:C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x64\advapi32.lib
+-more:C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x64\bufferoverflowu.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc64\cvi_db.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc64\cviauto.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc64\cvidotnet.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc64\cvinetstreams.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc64\cvinetv.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc64\cvintwrk.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc64\cvitdms.lib
+-more:C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x64\gdi32.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc64\gpib.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc64\ivi.lib
+-more:C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x64\kernel32.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc64\NIDAQmx.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc64\nisyscfg.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc64\omp.lib
+-more:d:\TANSTAAFL\To Do\PHASMA DAQ V2025\PHASMA 2025 DAQ\d-TAC Instruments\PHASMA Python Routines\python_bridge.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\toolslib\toolbox\msvc64\toolbox.obj
+-more:C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x64\user32.lib
+-more:C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x64\uuid.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc64\visa.lib
+-more:C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x64\winmm.lib

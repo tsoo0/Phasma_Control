@@ -1,0 +1,10 @@
+void Get_PLIF_Laser_Offsets (float *, float *);
+int PulsedLIFActivate(void);
+int PulsedLIFArm(void);
+void Write_PulsedLIFData(void);
+void OpenPulsedLIF_Settings (void);
+void ReadPulsedLIF_WaveandEnergy (void);
+float Get_PLIF_Wavelength(void);
+void Advance_PLIF_Laser(void);
+void PLIFLaserControl(int simmermode);
+void PLIFScope(void);
