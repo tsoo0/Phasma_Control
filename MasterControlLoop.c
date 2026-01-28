@@ -140,7 +140,9 @@ static int post_storage_seconds;
 *	This function loops through all the diagnostics and writes their data to the raw data txt files and
 *	pushes them to the MDS database.
 *
-*
+*	 TR 1/16/26: 
+		This function will store data locally but the MDS storage logic is not located here; that's done in a seperate Python script 
+        located at C:\PHASMA 2025 DAQ\PHASMA Python Routines\PHASMA_C_to_Python_convertor_Project\PhasmaMDS\mds_push_all.py
 *********************************************************************************************************/
 void	Store_Data (void)
 {
@@ -306,6 +308,29 @@ void ManualMatLab_Plotting(void)
 
 
 
+// test function for pushing data to mds server with Python
+void push_mds(void)
+{
+	const char set_env[] = "conda activate \"C:\PHASMA 2025 DAQ\PHASMA Python Routines\PHASMA_C_to_Python_convertor_Project\PhasmaMDS\Python\"";
+
+	const char script_path[] = "& python \"C:/PHASMA 2025 DAQ/PHASMA Python Routines/PHASMA_C_to_Python_convertor_Project/PhasmaMDS/";
+
+	const char script_fid[] = "mds_push_all.py\"";
+	int returnval;
+
+	const char command[] = "cmd.exe /c conda activate \"C:/PHASMA 2025 DAQ/PHASMA Python Routines/PHASMA_C_to_Python_convertor_Project/PhasmaMDS/Python\" & python \"C:/PHASMA 2025 DAQ/PHASMA Python Routines/PHASMA_C_to_Python_convertor_Project/PhasmaMDS/mds_push_all.py\"";
+	
+	//char command[256];
+	//strcpy(command,"cmd.exe /c ");
+	//strcat(command, set_env);
+	//strcat(command, script_path);
+	//strcat(command, script_fid);
+	
+	
+	LaunchExecutable(command);
+	
+}
+
 
 
 
@@ -358,6 +383,20 @@ void ManualMatLab_Plotting(void)
 
 }
  
+
+//Added this for silly debug purposes - TR 1/19/2026
+int CVICALLBACK manual_write(int panel, int control, int event,
+		void *callbackData, int eventData1, int eventData2)
+{
+	switch(event)
+	{
+		case EVENT_COMMIT:
+			Write_HousekeepingData();
+			//Write_BdotData();
+		
+	}
+	return 0;
+}
  
 /*********************************************************************************************************
 *	Here are all the callback functions from the Main Control Loop Panel that launch the settings windows
@@ -989,6 +1028,19 @@ int CVICALLBACK Temporary_Activate (int panel, int control, int event,
 *   arm and trigger the data system and/or advance the probes to their next position.
 *********************************************************************************************************/
 
+int CVICALLBACK mdstest(int panel, int control, int event,
+		void *callbackData, int eventData1, int eventData2)
+{
+	switch(event)
+	{
+		case EVENT_COMMIT:
+			push_mds();
+			break;
+			
+	}
+	return 0;
+}
+
 int CVICALLBACK ManualArm (int panel, int control, int event,
 		void *callbackData, int eventData1, int eventData2)
 {
@@ -1220,7 +1272,6 @@ int		Advance_Single_Cycle (void)
  
  
 
-
 int		Complete_Single_Cycle (void)
 {
 	int		record_length;
@@ -1255,6 +1306,8 @@ int		Complete_Single_Cycle (void)
 	
 	//Store data
 	Store_Data();
+	Delay(0.5); // wait a moment between disc write and mds push 
+	push_mds();
 
 	//Close the open MDS tree
 	result= CloseMDSTree();
@@ -1266,8 +1319,8 @@ int		Complete_Single_Cycle (void)
 		//Plot Bias currents to housekeeping plot window with a time limit of 2 ms
 		SetAxisRange (Master_Control_Panel, MasterCont_HousekeepingPlot, VAL_MANUAL, 1200, 1400, VAL_NO_CHANGE, 0.0, 1.0);
 		
-		PlotXY (Master_Control_Panel, MasterCont_HousekeepingPlot, time, BiasI_a, record_length, VAL_DOUBLE, VAL_DOUBLE, VAL_FAT_LINE, VAL_SIMPLE_DOT, VAL_SOLID, 1, VAL_CYAN);
-		PlotXY (Master_Control_Panel, MasterCont_HousekeepingPlot, time, BiasI_b, record_length, VAL_DOUBLE, VAL_DOUBLE, VAL_FAT_LINE, VAL_SIMPLE_DOT, VAL_SOLID, 1, VAL_MAGENTA);
+		//PlotXY (Master_Control_Panel, MasterCont_HousekeepingPlot, time, BiasI_a, record_length, VAL_DOUBLE, VAL_DOUBLE, VAL_FAT_LINE, VAL_SIMPLE_DOT, VAL_SOLID, 1, VAL_CYAN);
+		//PlotXY (Master_Control_Panel, MasterCont_HousekeepingPlot, time, BiasI_b, record_length, VAL_DOUBLE, VAL_DOUBLE, VAL_FAT_LINE, VAL_SIMPLE_DOT, VAL_SOLID, 1, VAL_MAGENTA);
 	}
 	
 	//Plot raw data to screen if requested
@@ -1349,7 +1402,6 @@ void	Repeat_Cycle (void)
 }
 
 
-
 /*********************************************************************************************************
 *	Here is the master control loop for the entire data system
 *   Note, make sure the stack size is large enough to handle all the processes when running as an executable
@@ -1369,7 +1421,7 @@ void  main(void)
 	panel_width = width;
 	
 	Master_Control_Panel = LoadPanel (0, "MasterControlPanel.uir", MasterCont);
-	RecallPanelState (Master_Control_Panel, "Master_Control_Storage_File", Master_Control_Panel_setup_state);
+	//RecallPanelState (Master_Control_Panel, "Master_Control_Storage_File", Master_Control_Panel_setup_state);
 	DisplayPanel (Master_Control_Panel);
 																		 
 	SetPanelAttribute (Master_Control_Panel, ATTR_HEIGHT, panel_height);

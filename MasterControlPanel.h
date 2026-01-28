@@ -150,7 +150,8 @@
 #define  MasterCont_SPLITTER_10           135     /* control type: splitter, callback function: (none) */
 #define  MasterCont_SPLITTER_9            136     /* control type: splitter, callback function: (none) */
 #define  MasterCont_TEXTMSG               137     /* control type: textMsg, callback function: (none) */
-#define  MasterCont_TEXTMSG_2             138     /* control type: textMsg, callback function: (none) */
+#define  MasterCont_mdstest               138     /* control type: command, callback function: mdstest */
+#define  MasterCont_TEXTMSG_2             139     /* control type: textMsg, callback function: (none) */
 
 
      /* Control Arrays: */
@@ -201,6 +202,7 @@ int  CVICALLBACK MasterTrigger_Settings(int panel, int control, int event, void 
 int  CVICALLBACK McPherson209_Activate(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK McPherson209_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK McPherson209Plot_Switch(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK mdstest(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK Ocean_Activate(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK OceanOptics_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK PHASMA_ShutDown(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
