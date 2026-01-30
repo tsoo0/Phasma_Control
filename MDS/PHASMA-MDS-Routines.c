@@ -1,7 +1,7 @@
 						 /*********************************************************************************************************
 *	Here are all the functions that connect, open, and interact with the MDSPlus database
 *
-*
+* TR 1/16/26: I'm replacing most of the functionality here with a Python implementation at C:\PHASMA 2025 DAQ\PHASMA Python Routines\PHASMA_C_to_Python_convertor_Project\PhasmaMDS
 *********************************************************************************************************/
 // Helper function to get node type
 // Helper function to check status
@@ -9,14 +9,15 @@
 //Include the MDS libraries
 #include 	<ansi_c.h>
 #include 	<mdslib.h>				
-					 
+#include	<windows.h>					 
+#include <utility.h>
 
 #include	"PHASMA-MDS-Routines.h"
 #include 	"GlobalVariables.h"
 
 extern int TreeSetCurrentShotId(char *tree, int shot);
 char PHASMA_server_address[128] = "157.182.26.6:57800";		//This is the server running on the main lab computer. You must be on the same switch to access it
-char tree_name[128] = "PHASMA2025";							//This is the new tree created in the MDS system on the lab computer
+char tree_name[128] = "phasma2025";							//This is the new tree created in the MDS system on the lab computer
 															//Part of the setup of the new tree is where the MDS data records get stored. This is set up by creating
 															//the folders you want on the main lab computer or one of the data storage systems and then setting the 
 															//the two paths in the lab computer environment variables to point to that location. See the MDS setup instructions
@@ -35,22 +36,7 @@ int OpenPHASMA_MDS() {
 	#define statusOk(status) ((status) & 1)  
 	#define	M_PI 3.14	
 
-
-    // Connection variables
-    int 	null = 0;
-    int 	nodeExists = 0; 
-	int 	dtype_long = DTYPE_LONG;
-    int 	dtype_float = DTYPE_FLOAT;
-    int 	nodeSizeDesc, nodeExistsDesc;
-	int		socket, status;
-
-    // Data to write
-    int num_samples = 100;
-    double* y_data = NULL;
-    double* x_data = NULL;
-    int 	i;
- 	int 	def_current_shot=-1;
-		
+	int socket;
     printf("[DEBUG] Program started\n");
     
     // 1. Connect to server
@@ -173,16 +159,11 @@ int Write_to_PHASMA_MDS(double t[], double x[], char tree_node_name[]) {
 
 	#define statusOk(status) ((status) & 1)  
 
-	int	socket, status;
-	 
     // Connection variables
     int null = 0;
-    int nodeExists = 0; 
-	int dtype_long = DTYPE_LONG;
     int dtype_float = DTYPE_FLOAT;
-    int nodeSizeDesc, nodeExistsDesc;
     int num_samples = 100;
-    //int num_samples;
+    int status;
 
     // Data to write
     int t_desc, x_desc;
@@ -274,12 +255,9 @@ int IncrementMDSCurrentShot(void) {
 	
     int 	status;
     int		next_shot = 0;  		// 0 typically means the latest shot
-   	int 	shotDesc;
     int 	null = 0;
-	int 	dummy;
    	int 	dtype_long = DTYPE_LONG;
     int		current_shot = 0;  		// 0 typically means the latest shot
-    int		def_current_shot = 0;  	// 0 typically means the latest shot
  	char 	tdi_cmd[256];
 	char 	src[128];
 	char 	dst[128];
@@ -295,16 +273,20 @@ int IncrementMDSCurrentShot(void) {
 	sprintf(src, "%s\\%s_model.tree", MDSDATAPATH, tree_name);
     sprintf(dst, "%s\\%s_%d.tree", MDSDATAPATH, tree_name, next_shot);
 
-    if (!CopyFile(src, dst, FALSE)) {
-        fprintf(stderr, "Failed to copy model tree file: %s -> %s\n", src, dst);
-        return 0;
-    }
+ //   if (!CopyFile(src, dst, FALSE)) {
+	if (!CopyFileA(src, dst, FALSE)) {
+	    DWORD err = GetLastError();
+	    fprintf(stderr,
+	        "CopyFileA failed (%lu): %s -> %s\n",
+	        err, src, dst);
+   		 return 0;
+	}
 	
  	//Brute force the creation of the next shot .characteristics file by manually copying the model tree over to the next shot number
 	sprintf(src, "%s\\%s_model.characteristics", MDSDATAPATH, tree_name);
     sprintf(dst, "%s\\%s_%d.characteristics", MDSDATAPATH, tree_name, next_shot);
 
-    if (!CopyFile(src, dst, FALSE)) {
+    if (!CopyFileA(src, dst,FALSE)) {
         fprintf(stderr, "Failed to copy model tree file: %s -> %s\n", src, dst);
         return 0;
     }
@@ -352,16 +334,11 @@ int Write_to_PHASMA_2D_MDS(double image[], double x[], double y[], char tree_nod
 
 	#define statusOk(status) ((status) & 1)  
 
-	int	socket, status;
-	 
- 
     // Connection variables
     int null = 0;
-    int nodeExists = 0; 
-	int dtype_long = DTYPE_LONG;
     int dtype_float = DTYPE_FLOAT;
-    int nodeSizeDesc, nodeExistsDesc;
     int num_samples;
+	int status;
 
     // Data to write
     int x_desc, y_desc, image_desc;
@@ -386,4 +363,13 @@ int Write_to_PHASMA_2D_MDS(double image[], double x[], double y[], char tree_nod
     return 0;
 }
 
+// function for pushing data to mds server with Python
+void push_mds(void)
+{
+
+	const char command[] = "cmd.exe /c conda activate \"C:/PHASMA 2025 DAQ/PHASMA Python Routines/PHASMA_C_to_Python_convertor_Project/PhasmaMDS/PhasmaMDS\" & python \"C:/PHASMA 2025 DAQ/PHASMA Python Routines/PHASMA_C_to_Python_convertor_Project/PhasmaMDS/mds_push_all.py\"";
+	
+	LaunchExecutable(command);
+	
+}
 

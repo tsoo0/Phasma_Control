@@ -46,7 +46,7 @@ ViInt16		LogicalAddress=56;			//	It should be at 56
 char	RIGOL1_Housekeep_IP_Address_string[64];
 
 
-//Set up the VXI 4244 digitizer
+//Initialize the VXI 4244 digitizer and Rigol MSO5104 Oscilloscope used for housekeeping data
 void HousekeepingActivate(void)
 {
 	int 	result=0; 					//	Error-checking variable
@@ -59,6 +59,7 @@ void HousekeepingActivate(void)
 	char 	idn[256];
 	char	RIGOL_Housekeeping_string[32];	
 	void 	displayErr(ViSession InstrHndl,ViStatus err); /* For Displaying Error Messages */
+
 
 		//Open up Housekeepings settings panel and get target digitizer rate and other settings
 		Housekeeping_panel = LoadPanel (0, "HousekeepingSystems.uir", Housekeep);
@@ -88,7 +89,9 @@ void HousekeepingActivate(void)
 	 		
 		//First two groups of digitizer are in use. A Bit Mask of 15 Means the First 4 bits (measurements 1, 2, 3 & 4) are Complete
 		bit_mask=3;  
+
 		
+	// Initialize Rigol MSO5104
 			//Get sample rate, record length, and channel scales
 		GetCtrlVal (Housekeeping_panel, Housekeep_RIGOL_clockspeed, &RIGOL_Housekeeping_clockspeed);
 		GetCtrlVal (Housekeeping_panel, Housekeep_RIGOL_RecordLength, &RIGOL_Housekeeping_recordlength);
@@ -131,7 +134,7 @@ void HousekeepingActivate(void)
 		 	sprintf (RIGOL_Housekeeping_string, ":TRIG:EDGE:SLOP POS\r");   
 			result = viWrite (Housekeeping_RIGOL1_handle, RIGOL_Housekeeping_string, (unsigned int)strlen(RIGOL_Housekeeping_string), &count);
 
-			sprintf (RIGOL_Housekeeping_string, ":TIM:OFFS 0%f\r", (RIGOL_Housekeeping_TimeWindow));   																					//No offset of the trigger position
+			sprintf (RIGOL_Housekeeping_string, ":TIM:OFFS 0%f\r", (RIGOL_Housekeeping_TimeWindow));   													//No offset of the trigger position
 			result = viWrite (Housekeeping_RIGOL1_handle, RIGOL_Housekeeping_string, (unsigned int)strlen(RIGOL_Housekeeping_string), &count);
 
 			Delay(0.1);																																	//Delay long enough for menu screen clearing to work
@@ -147,16 +150,18 @@ void HousekeepingActivate(void)
 }
 
 
-//Arm the VX4244 digitizer and Rigol scope
+//Arm the VX4244 digitizer and Rigol MSO5104 scope
 int HousekeepingArm(void)
 {
 	int		result;
 	int		count;
 	char	RIGOL_Housekeeping_string[32];
 	
+
 	//	Arm Digitizer with provision for error and only arms those groups in use
 	if ((result = tkvx4244_initMeasurementCycle (digitizer_hndl, 0, tkvx4244_GROUP_ONE_ENABLE, tkvx4244_GROUP_TWO_ENABLE, tkvx4244_GROUP_THREE_ENABLE, tkvx4244_GROUP_FOUR_ENABLE, tkvx4244_ALL_GROUPS_ENABLE, tkvx4244_INIT_IMM)))
 			  				displayErr(digitizer_hndl,result);
+
 
 	//Arm the Rigol scope
 	result=viOpen (Global_Visa_Session_Handle, RIGOL1_Housekeep_IP_Address_string, VI_NULL, VI_NULL, &Housekeeping_RIGOL1_handle);
@@ -367,10 +372,10 @@ void displayErr(ViSession gInstrHndl,ViStatus err)
 
 
 
-//Take the acquired data from the instrument and print it to the common data folder and 
-//also push it to the MDS database
+//Take the acquired data from the instrument and print it to the common data folder
 void Write_HousekeepingData(void)
 {
+	int ch;
 	char	ChannelNameString[64];
 	char	outfilename[64];
 	FILE*	outfile;
@@ -378,9 +383,41 @@ void Write_HousekeepingData(void)
 	int  	result;
 	float 	RIGOL_timestep=0.0;
 	
+	char fileheader[256];
+	
+	int housekeeping_channels[] = {
+	Housekeep_Chan0Name,
+	Housekeep_Chan1Name,
+	Housekeep_Chan2Name,
+	Housekeep_Chan3Name,
+	Housekeep_Chan4Name,
+	Housekeep_Chan5Name,
+	Housekeep_Chan6Name,
+	Housekeep_Chan7Name,
+	//Housekeep_Chan8Name,  # we skip 8, don't ask
+	Housekeep_Chan9Name,
+	Housekeep_Chan10Name,
+	Housekeep_Chan11Name,
+	Housekeep_Chan12Name
+	};
+	
 	//Acquire the housekeeping data from the digitizer using temporary arrays that are discarded every shot. 
 	//Ideally this process would run in parallel with other data transfer ones....?
+
+	//Open up Housekeepings settings panel and get filenames for each measurement
+	Housekeeping_panel = LoadPanel (0, "HousekeepingSystems.uir", Housekeep);
+	RecallPanelState (Housekeeping_panel, "Master_Control_Storage_File", Housekeeping_setup_state);
+
 	Plasma_Gun_housekeeping_acquire();
+
+	//build file header with names from HousekeepingSystems.uir
+	strcpy(fileheader, "Time");
+	for (ch = 0; ch<7; ch++) {
+		strcat(fileheader,",");
+		GetCtrlVal (Housekeeping_panel, housekeeping_channels[ch],ChannelNameString);
+		strcat(fileheader,ChannelNameString);
+	}
+	strcat(fileheader,"\n");
 	
 	//Dump results to a file
 	sprintf(outfilename, RawDataPath);
@@ -389,7 +426,8 @@ void Write_HousekeepingData(void)
 	strcat(outfilename, "Housekeeping.txt");
 	
 	outfile=fopen (outfilename, "w");
-	fprintf(outfile,"t, Arc1_I, Arc1_V, Bias1_I, XX, Arc2_I, Arc2_V, Bias2_I, XX\n");
+	//fprintf(outfile,"t, Arc1_I, Arc1_V, Bias1_I, XX, Arc2_I, Arc2_V, Bias2_I, XX\n");
+	fprintf(outfile,fileheader);
 	for (j=0;j<Housekeeping_RecordLength;j++) {
 		timebase[j]=(double)(j/SampleRate);
 		fprintf(outfile,"%f,%f, %f,%f,%f,%f,%f,%f,%f\n",timebase[j],Houskeeping_Signal0[j],Houskeeping_Signal1[j],Houskeeping_Signal2[j],
@@ -398,86 +436,49 @@ void Write_HousekeepingData(void)
 
  	//Close Housekeeping data file
 	fclose (outfile);
-	
+
+
 	//Open up Housekeepings settings panel and get filenames for each measurement
-	Housekeeping_panel = LoadPanel (0, "HousekeepingSystems.uir", Housekeep);
-	RecallPanelState (Housekeeping_panel, "Master_Control_Storage_File", Housekeeping_setup_state);
-		
-	//Get channel name string, store raw data on drive folder, and push data to MDSPlus for Channel 0
-	GetCtrlVal (Housekeeping_panel, Housekeep_Chan0Name,ChannelNameString);
-	Write_to_PHASMA_MDS(timebase,Houskeeping_Signal0,ChannelNameString);
-
-	//Get channel name string, store raw data on drive folder, and push data to MDSPlus for Channel 1
-	GetCtrlVal (Housekeeping_panel, Housekeep_Chan1Name,ChannelNameString);
-	Write_to_PHASMA_MDS(timebase,Houskeeping_Signal1,ChannelNameString);
-
-	//Get channel name string, store raw data on drive folder, and push data to MDSPlus for Channel 2
-	GetCtrlVal (Housekeeping_panel, Housekeep_Chan2Name,ChannelNameString);
-	Write_to_PHASMA_MDS(timebase,Houskeeping_Signal2,ChannelNameString);
-	
-	//Get channel name string, store raw data on drive folder, and push data to MDSPlus for Channel 3
-	GetCtrlVal (Housekeeping_panel, Housekeep_Chan3Name,ChannelNameString);
-	Write_to_PHASMA_MDS(timebase,Houskeeping_Signal3,ChannelNameString);
-		
-	//Get channel name string, store raw data on drive folder, and push data to MDSPlus for Channel 4
-	GetCtrlVal (Housekeeping_panel, Housekeep_Chan4Name,ChannelNameString);
-	Write_to_PHASMA_MDS(timebase,Houskeeping_Signal4,ChannelNameString);
-	
-	//Get channel name string, store raw data on drive folder, and push data to MDSPlus for Channel 5
-	GetCtrlVal (Housekeeping_panel, Housekeep_Chan5Name,ChannelNameString);
-	Write_to_PHASMA_MDS(timebase,Houskeeping_Signal5,ChannelNameString);
-
-	//Get channel name string, store raw data on drive folder, and push data to MDSPlus for Channel 6
-	GetCtrlVal (Housekeeping_panel, Housekeep_Chan6Name,ChannelNameString);
-	Write_to_PHASMA_MDS(timebase,Houskeeping_Signal6,ChannelNameString);
-	
-	//Get channel name string, store raw data on drive folder, and push data to MDSPlus for Channel 7
-	GetCtrlVal (Housekeeping_panel, Housekeep_Chan7Name,ChannelNameString);
-	Write_to_PHASMA_MDS(timebase,Houskeeping_Signal7,ChannelNameString);
+//	Housekeeping_panel = LoadPanel (0, "HousekeepingSystems.uir", Housekeep);
+	//RecallPanelState (Housekeeping_panel, "Master_Control_Storage_File", Housekeeping_setup_state);
 
 	//Retrieve data from the RIGOL oscilloscope and store the data
 	//Get RIGOL Record Length
 	GetCtrlVal (Housekeeping_panel, Housekeep_RIGOL_RecordLength,&RIGOL_RecordLength);
 
-	//Grab data from all four channels of the oscilloscope
+	//Grab data from all four channels of the oscilloscope (housekeeping highRes)
 	result=viOpen (Global_Visa_Session_Handle, RIGOL1_Housekeep_IP_Address_string, VI_NULL, VI_NULL, &Housekeeping_RIGOL1_handle);
 	if (!result) {
 		Rigol(Housekeeping_RIGOL1_handle, RIGOL_RecordLength, &RIGOL_timestep, Houskeeping_Signal9, Houskeeping_Signal10, Houskeeping_Signal11, Houskeeping_Signal12);   
 		viClose(Housekeeping_RIGOL1_handle);
 	}
+
+	//build file header with names from HousekeepingSystems.uir
+	strcpy(fileheader, "Time");
+	for (ch = 8; ch<12; ch++) {
+		strcat(fileheader,",");
+		GetCtrlVal (Housekeeping_panel, housekeeping_channels[ch],ChannelNameString);
+		strcat(fileheader,ChannelNameString);
+	}
+	strcat(fileheader,"\n");
 	
 	//Dump results to a file
 	sprintf(outfilename, RawDataPath);
 	strcat(outfilename, ShotNumberString);
 	strcat(outfilename, "_");
-	strcat(outfilename, "Housekeeping_HighRes.txt");
+	strcat(outfilename, "HousekeepingHighRes.txt");
 	
 	outfile=fopen (outfilename, "w");
-	fprintf(outfile,"t, Bias1_I, Bias2_I, TSperp, TSpara\n");
+	
+	//fprintf(outfile,"Time, Bias1_I, Bias2_I, TSperp, TSpara\n");
+	fprintf(outfile,fileheader);
 	for (j=0;j<RIGOL_RecordLength;j++) {
 		timebase[j]=(double)(j*RIGOL_timestep);
 		fprintf(outfile,"%f,%f,%f,%f,%f\n",timebase[j],Houskeeping_Signal9[j],Houskeeping_Signal10[j],Houskeeping_Signal11[j],Houskeeping_Signal12[j]);
 	}
 
  	//Close high res housekeeping data file
-	fclose (outfile);
-	
-	//Get channel name string, store raw data on drive folder, and push data to MDSPlus for Channel 9
-	GetCtrlVal (Housekeeping_panel, Housekeep_Chan9Name,ChannelNameString);
-	Write_to_PHASMA_MDS(timebase,Houskeeping_Signal9,ChannelNameString);
-		
-	//Get channel name string, store raw data on drive folder, and push data to MDSPlus for Channel 10
-	GetCtrlVal (Housekeeping_panel, Housekeep_Chan10Name,ChannelNameString);
-	Write_to_PHASMA_MDS(timebase,Houskeeping_Signal10,ChannelNameString);
-
-	//Get channel name string, store raw data on drive folder, and push data to MDSPlus for Channel 11
-	GetCtrlVal (Housekeeping_panel, Housekeep_Chan11Name,ChannelNameString);
-	Write_to_PHASMA_MDS(timebase,Houskeeping_Signal11,ChannelNameString);
-	
-	//Get channel name string, store raw data on drive folder, and push data to MDSPlus for Channel 12
-	GetCtrlVal (Housekeeping_panel, Housekeep_Chan12Name,ChannelNameString);
-	Write_to_PHASMA_MDS(timebase,Houskeeping_Signal12,ChannelNameString);
-	
+	fclose (outfile);	
 }
 
 
@@ -493,10 +494,8 @@ void OpenHousekeeping_Settings (void)
 	
 	//Update panel with 
 
-	
 	// Start interacting with user
     RunUserInterface ();
-
 }
 
 int CVICALLBACK Close_Housekeeping_Settings (int panel, int control, int event,

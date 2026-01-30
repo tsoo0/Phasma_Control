@@ -340,6 +340,7 @@ void Write_BdotData(void)
 	char	outfilename[64];
 	FILE*	outfile;
 	int		j;
+	int 	ch;
 	double  Bdot_signal1[max_record_length];
 	double  Bdot_signal2[max_record_length];
 	double  Bdot_signal3[max_record_length];
@@ -350,11 +351,57 @@ void Write_BdotData(void)
 	double  Bdot_signal8[max_record_length];
 	double  time_array[max_record_length];	
 	
+	char fileheader[256];
+	
+	
+	int bdot_channels[] = {
+		 Bdot_Chan1Name 	
+		 , Bdot_Chan2Name                  	
+		 , Bdot_Chan3Name                  	
+		 , Bdot_Chan4Name                   	
+		 , Bdot_Chan5Name                   	
+		 , Bdot_Chan6Name                   	
+		 , Bdot_Chan7Name                   	
+		 , Bdot_Chan8Name                  	
+		 , Bdot_Chan9Name                   	
+		 , Bdot_Chan10Name                 	
+		 , Bdot_Chan11Name                 	
+		 , Bdot_Chan12Name                  	
+		 , Bdot_Chan13Name                  	
+		 , Bdot_Chan14Name                  	
+		 , Bdot_Chan15Name                  	
+		 , Bdot_Chan16Name                  	
+		 , Bdot_Chan17Name                  	
+		 , Bdot_Chan18Name                 	
+		 , Bdot_Chan19Name                  	
+		 , Bdot_Chan20Name                  	
+		 , Bdot_Chan21Name                 	
+		 , Bdot_Chan22Name 	
+		 , Bdot_Chan23Name 	
+		 , Bdot_Chan24Name 	
+		 , Bdot_Chan25Name	
+		 , Bdot_Chan26Name	
+		 , Bdot_Chan27Name	
+		 , Bdot_Chan28Name 	
+		 , Bdot_Chan29Name	
+		 , Bdot_Chan30Name	
+		 , Bdot_Chan31Name	
+		 , Bdot_Chan32Name 	
+		 , Bdot_Chan33Name	
+		 , Bdot_Chan34Name	
+		 , Bdot_Chan35Name 
+		 , Bdot_Chan36Name
+                 
+		};
+
+	//Wait for Joerger completion indication before trying to transfer data
+	JoergerVTR10012_complete (VTR10012_handle, VTR10012_Base_address);
+	
 	//Open settings panel and load saved values
 	Bdot_panel = LoadPanel (0, "BdotSettings.uir", Bdot);
 	RecallPanelState (Bdot_panel, "Master_Control_Storage_File", Bdot_setup_state);
 
-	//Retrieve 8 timeseries from the first VTR10012 instrument and write them to MDS system and raw files 
+	//Retrieve 8 timeseries from the first VTR10012 instrument and write them to raw files 
 	JoergerVTR10012_acquire(VTR10012_memory_handle, VTR10012_A32_address, 1,JoergerVTR10012_recordlength,Bdot_signal1,Bdot_signal5);
 	JoergerVTR10012_acquire(VTR10012_memory_handle, VTR10012_A32_address, 2,JoergerVTR10012_recordlength,Bdot_signal2,Bdot_signal6);
 	JoergerVTR10012_acquire(VTR10012_memory_handle, VTR10012_A32_address, 3,JoergerVTR10012_recordlength,Bdot_signal3,Bdot_signal7);
@@ -364,10 +411,20 @@ void Write_BdotData(void)
 	sprintf(outfilename, RawDataPath);
 	strcat(outfilename, ShotNumberString);
 	strcat(outfilename, "_");
-	strcat(outfilename, "Bdot1-8.txt");
-	
+	strcat(outfilename, "JOERGER01.txt");
 	outfile=fopen (outfilename, "w");
-	fprintf(outfile,"t(us), 1, 2, 3, 4, 5, 6, 7, 8\n");
+	
+	//Write the header for the file
+	strcpy(fileheader, "Time");
+	for (ch = 0; ch<8; ch++) {
+		GetCtrlVal (Bdot_panel, bdot_channels[ch],ChannelNameString);
+		strcat(fileheader,",");
+		strcat(fileheader,ChannelNameString);
+		
+	}
+	strcat(fileheader,"\n");
+
+	fprintf(outfile,fileheader);
 	for (j=0;j<JoergerVTR10012_recordlength;j++) {
 		time_array[j]=(double)(1.0E6*j/JoergerVTR10012_digitation_rate);
 		fprintf(outfile,"%f,%f,%f,%f,%f,%f,%f,%f,%f\n",time_array[j],Bdot_signal1[j],Bdot_signal2[j],Bdot_signal3[j],Bdot_signal4[j],
@@ -379,46 +436,31 @@ void Write_BdotData(void)
 
 	
 	//Get channel name string, store raw data on drive folder, and push data to MDSPlus for 8 channels
-	GetCtrlVal (Bdot_panel, Bdot_Chan1Name,ChannelNameString);
-	Write_to_PHASMA_MDS(time_array,Bdot_signal1,ChannelNameString);
 	
-	GetCtrlVal (Bdot_panel, Bdot_Chan2Name,ChannelNameString);
-	Write_to_PHASMA_MDS(time_array,Bdot_signal2,ChannelNameString);
-
-	GetCtrlVal (Bdot_panel, Bdot_Chan3Name,ChannelNameString);
-	Write_to_PHASMA_MDS(time_array,Bdot_signal3,ChannelNameString);
-
-	GetCtrlVal (Bdot_panel, Bdot_Chan4Name,ChannelNameString);
-	Write_to_PHASMA_MDS(time_array,Bdot_signal4,ChannelNameString);
-	
-	GetCtrlVal (Bdot_panel, Bdot_Chan5Name,ChannelNameString);
-	Write_to_PHASMA_MDS(time_array,Bdot_signal5,ChannelNameString);
-
-	GetCtrlVal (Bdot_panel, Bdot_Chan6Name,ChannelNameString);
-	Write_to_PHASMA_MDS(time_array,Bdot_signal6,ChannelNameString);
-	
-	GetCtrlVal (Bdot_panel, Bdot_Chan7Name,ChannelNameString);
-	Write_to_PHASMA_MDS(time_array,Bdot_signal7,ChannelNameString);
-
-	GetCtrlVal (Bdot_panel, Bdot_Chan8Name,ChannelNameString);
-	Write_to_PHASMA_MDS(time_array,Bdot_signal8,ChannelNameString);
-	
-		
-	//Retrieve data from the first VTR10014 instrumentin pairs and write them to MDS system and raw files  
+	//Retrieve data from the first VTR10014 instrument in pairs and write them to raw files  
  	JoergerVTR10014_acquire(VTR10014_1_memory_handle, VTR10014_1_A32_addressFull, 1,JoergerVTR10014_recordlength,Bdot_signal1,Bdot_signal5);
  	JoergerVTR10014_acquire(VTR10014_1_memory_handle, VTR10014_1_A32_addressFull, 2,JoergerVTR10014_recordlength,Bdot_signal2,Bdot_signal6);
  	JoergerVTR10014_acquire(VTR10014_1_memory_handle, VTR10014_1_A32_addressFull, 3,JoergerVTR10014_recordlength,Bdot_signal3,Bdot_signal7);
  	JoergerVTR10014_acquire(VTR10014_1_memory_handle, VTR10014_1_A32_addressFull, 4,JoergerVTR10014_recordlength,Bdot_signal4,Bdot_signal8);
-
+	
 	
 	//Dump results to a file
 	sprintf(outfilename, RawDataPath);
 	strcat(outfilename, ShotNumberString);
 	strcat(outfilename, "_");
-	strcat(outfilename, "Bdot9-16.txt");
-	
+	strcat(outfilename, "JOERGER02.txt");
 	outfile=fopen (outfilename, "w");
-	fprintf(outfile,"t(us), 1, 2, 3,4, 5, 6, 7, 8\n");
+	
+	strcpy(fileheader, "Time");
+	for (ch = 8; ch<16; ch++) {
+		GetCtrlVal (Bdot_panel, bdot_channels[ch],ChannelNameString);
+		strcat(fileheader,",");
+		strcat(fileheader,ChannelNameString);
+		
+	}
+	strcat(fileheader,"\n");
+	
+	fprintf(outfile,fileheader);
 	for (j=0;j<JoergerVTR10014_recordlength;j++) {
 		time_array[j]=(double)(1.0E6*j/JoergerVTR10014_digitation_rate);
 		fprintf(outfile,"%f,%f,%f,%f,%f,%f,%f,%f,%f\n",time_array[j],Bdot_signal1[j],Bdot_signal2[j],Bdot_signal3[j],Bdot_signal4[j],
@@ -427,38 +469,8 @@ void Write_BdotData(void)
 	
  	//Close Bdot data file
 	fclose (outfile);
-
 	
-	//Get channel name string, store raw data on drive folder, and push data to MDSPlus for 8 channels
-	GetCtrlVal (Bdot_panel, Bdot_Chan9Name,ChannelNameString);
-	Write_to_PHASMA_MDS(time_array,Bdot_signal1,ChannelNameString);
-	
-	GetCtrlVal (Bdot_panel, Bdot_Chan10Name,ChannelNameString);
-	Write_to_PHASMA_MDS(time_array,Bdot_signal2,ChannelNameString);
-
-	GetCtrlVal (Bdot_panel, Bdot_Chan11Name,ChannelNameString);
-	Write_to_PHASMA_MDS(time_array,Bdot_signal3,ChannelNameString);
-
-	GetCtrlVal (Bdot_panel, Bdot_Chan12Name,ChannelNameString);
-	Write_to_PHASMA_MDS(time_array,Bdot_signal4,ChannelNameString);
-	
-	GetCtrlVal (Bdot_panel, Bdot_Chan13Name,ChannelNameString);
-	Write_to_PHASMA_MDS(time_array,Bdot_signal5,ChannelNameString);
-
-	GetCtrlVal (Bdot_panel, Bdot_Chan14Name,ChannelNameString);
-	Write_to_PHASMA_MDS(time_array,Bdot_signal6,ChannelNameString);
-	
-	GetCtrlVal (Bdot_panel, Bdot_Chan15Name,ChannelNameString);
-	Write_to_PHASMA_MDS(time_array,Bdot_signal7,ChannelNameString);
-
-	GetCtrlVal (Bdot_panel, Bdot_Chan16Name,ChannelNameString);
-	Write_to_PHASMA_MDS(time_array,Bdot_signal8,ChannelNameString);
-	
-	
-	
-	
-	
-	//Retrieve data from the second VTR10014 instrument
+	//Retrieve data from the second VTR10014 instrument in pairs and write them to raw files 
  	JoergerVTR10014_acquire(VTR10014_2_memory_handle, VTR10014_2_A32_addressFull, 1,JoergerVTR10014_recordlength,Bdot_signal1,Bdot_signal5);
  	JoergerVTR10014_acquire(VTR10014_2_memory_handle, VTR10014_2_A32_addressFull, 2,JoergerVTR10014_recordlength,Bdot_signal2,Bdot_signal6);
  	JoergerVTR10014_acquire(VTR10014_2_memory_handle, VTR10014_2_A32_addressFull, 3,JoergerVTR10014_recordlength,Bdot_signal3,Bdot_signal7);
@@ -468,10 +480,20 @@ void Write_BdotData(void)
 	sprintf(outfilename, RawDataPath);
 	strcat(outfilename, ShotNumberString);
 	strcat(outfilename, "_");
-	strcat(outfilename, "Bdot17-24.txt");
-	
+	strcat(outfilename, "JOERGER03.txt");
 	outfile=fopen (outfilename, "w");
-	fprintf(outfile,"t(us), 1, 2, 3,4, 5, 6, 7, 8\n");
+	
+	//Write the header for the file
+	strcpy(fileheader, "Time");
+	for (ch = 16; ch<24; ch++) {
+		GetCtrlVal (Bdot_panel, bdot_channels[ch],ChannelNameString);
+		strcat(fileheader,",");
+		strcat(fileheader,ChannelNameString);
+		
+	}
+	strcat(fileheader,"\n");
+	
+	fprintf(outfile,fileheader);
 	for (j=0;j<JoergerVTR10014_recordlength;j++) {
 		time_array[j]=(double)(1.0E6*j/JoergerVTR10014_digitation_rate);
 		fprintf(outfile,"%f,%f,%f,%f,%f,%f,%f,%f,%f\n",time_array[j],Bdot_signal1[j],Bdot_signal2[j],Bdot_signal3[j],Bdot_signal4[j],
@@ -481,36 +503,7 @@ void Write_BdotData(void)
  	//Close Bdot data file
 	fclose (outfile);
 
-	
-	//Get channel name string, store raw data on drive folder, and push data to MDSPlus for 8 channels
-	GetCtrlVal (Bdot_panel, Bdot_Chan17Name,ChannelNameString);
-	Write_to_PHASMA_MDS(time_array,Bdot_signal1,ChannelNameString);
-	
-	GetCtrlVal (Bdot_panel, Bdot_Chan18Name,ChannelNameString);
-	Write_to_PHASMA_MDS(time_array,Bdot_signal2,ChannelNameString);
-
-	GetCtrlVal (Bdot_panel, Bdot_Chan19Name,ChannelNameString);
-	Write_to_PHASMA_MDS(time_array,Bdot_signal3,ChannelNameString);
-
-	GetCtrlVal (Bdot_panel, Bdot_Chan20Name,ChannelNameString);
-	Write_to_PHASMA_MDS(time_array,Bdot_signal4,ChannelNameString);
-	
-	GetCtrlVal (Bdot_panel, Bdot_Chan21Name,ChannelNameString);
-	Write_to_PHASMA_MDS(time_array,Bdot_signal5,ChannelNameString);
-
-	GetCtrlVal (Bdot_panel, Bdot_Chan22Name,ChannelNameString);
-	Write_to_PHASMA_MDS(time_array,Bdot_signal6,ChannelNameString);
-	
-	GetCtrlVal (Bdot_panel, Bdot_Chan23Name,ChannelNameString);
-	Write_to_PHASMA_MDS(time_array,Bdot_signal7,ChannelNameString);
-
-	GetCtrlVal (Bdot_panel, Bdot_Chan24Name,ChannelNameString);
-	Write_to_PHASMA_MDS(time_array,Bdot_signal8,ChannelNameString);
-	
-	
-	
-	
-	//Retrieve data from the third VTR10014 instrument
+	//Retrieve data from the third VTR10014 instrument in pairs and write them to raw files 
  	JoergerVTR10014_acquire(VTR10014_3_memory_handle, VTR10014_3_A32_addressFull, 1,JoergerVTR10014_recordlength,Bdot_signal1,Bdot_signal5);
  	JoergerVTR10014_acquire(VTR10014_3_memory_handle, VTR10014_3_A32_addressFull, 2,JoergerVTR10014_recordlength,Bdot_signal2,Bdot_signal6);
  	JoergerVTR10014_acquire(VTR10014_3_memory_handle, VTR10014_3_A32_addressFull, 3,JoergerVTR10014_recordlength,Bdot_signal3,Bdot_signal7);
@@ -520,10 +513,20 @@ void Write_BdotData(void)
 	sprintf(outfilename, RawDataPath);
 	strcat(outfilename, ShotNumberString);
 	strcat(outfilename, "_");
-	strcat(outfilename, "Bdot25-32.txt");
-	
+	strcat(outfilename, "JOERGER04.txt");
 	outfile=fopen (outfilename, "w");
-	fprintf(outfile,"t(us), 1, 2, 3,4, 5, 6, 7, 8\n");
+	
+	//Write the header for the file
+	strcpy(fileheader, "Time");
+	for (ch = 24; ch<32; ch++) {
+		GetCtrlVal (Bdot_panel, bdot_channels[ch],ChannelNameString);
+		strcat(fileheader,",");
+		strcat(fileheader,ChannelNameString);
+		
+	}
+	strcat(fileheader,"\n");
+	
+	fprintf(outfile,fileheader);
 	for (j=0;j<JoergerVTR10014_recordlength;j++) {
 		time_array[j]=(double)(1.0E6*j/JoergerVTR10014_digitation_rate);
 		fprintf(outfile,"%f,%f,%f,%f,%f,%f,%f,%f,%f\n",time_array[j],Bdot_signal1[j],Bdot_signal2[j],Bdot_signal3[j],Bdot_signal4[j],
@@ -532,81 +535,38 @@ void Write_BdotData(void)
 	
  	//Close Bdot data file
 	fclose (outfile);
-
 	
-	//Get channel name string, store raw data on drive folder, and push data to MDSPlus for 8 channels
-	GetCtrlVal (Bdot_panel, Bdot_Chan25Name,ChannelNameString);
-	Write_to_PHASMA_MDS(time_array,Bdot_signal1,ChannelNameString);
-	
-	GetCtrlVal (Bdot_panel, Bdot_Chan26Name,ChannelNameString);
-	Write_to_PHASMA_MDS(time_array,Bdot_signal2,ChannelNameString);
-
-	GetCtrlVal (Bdot_panel, Bdot_Chan27Name,ChannelNameString);
-	Write_to_PHASMA_MDS(time_array,Bdot_signal3,ChannelNameString);
-
-	GetCtrlVal (Bdot_panel, Bdot_Chan28Name,ChannelNameString);
-	Write_to_PHASMA_MDS(time_array,Bdot_signal4,ChannelNameString);
-	
-	GetCtrlVal (Bdot_panel, Bdot_Chan29Name,ChannelNameString);
-	Write_to_PHASMA_MDS(time_array,Bdot_signal5,ChannelNameString);
-
-	GetCtrlVal (Bdot_panel, Bdot_Chan30Name,ChannelNameString);
-	Write_to_PHASMA_MDS(time_array,Bdot_signal6,ChannelNameString);
-	
-	GetCtrlVal (Bdot_panel, Bdot_Chan31Name,ChannelNameString);
-	Write_to_PHASMA_MDS(time_array,Bdot_signal7,ChannelNameString);
-
-	GetCtrlVal (Bdot_panel, Bdot_Chan32Name,ChannelNameString);
-	Write_to_PHASMA_MDS(time_array,Bdot_signal8,ChannelNameString);
-	
-	//Retrieve data from the fouth VTR10014 instrument
+	//Retrieve data from the fourth VTR10014 instrument in pairs and write them to raw files. Don't need the last few channels as there are no bdot coils past 36 total
  	JoergerVTR10014_acquire(VTR10014_4_memory_handle, VTR10014_4_A32_addressFull, 1,JoergerVTR10014_recordlength,Bdot_signal1,Bdot_signal5);
  	JoergerVTR10014_acquire(VTR10014_4_memory_handle, VTR10014_4_A32_addressFull, 2,JoergerVTR10014_recordlength,Bdot_signal2,Bdot_signal6);
- 	JoergerVTR10014_acquire(VTR10014_4_memory_handle, VTR10014_4_A32_addressFull, 3,JoergerVTR10014_recordlength,Bdot_signal3,Bdot_signal7);
- 	JoergerVTR10014_acquire(VTR10014_4_memory_handle, VTR10014_4_A32_addressFull, 4,JoergerVTR10014_recordlength,Bdot_signal4,Bdot_signal8);
+ 	//JoergerVTR10014_acquire(VTR10014_4_memory_handle, VTR10014_4_A32_addressFull, 3,JoergerVTR10014_recordlength,Bdot_signal3,Bdot_signal7);
+ 	//JoergerVTR10014_acquire(VTR10014_4_memory_handle, VTR10014_4_A32_addressFull, 4,JoergerVTR10014_recordlength,Bdot_signal4,Bdot_signal8);
 	
 	//Dump results to a file
 	sprintf(outfilename, RawDataPath);
 	strcat(outfilename, ShotNumberString);
 	strcat(outfilename, "_");
-	strcat(outfilename, "Bdot33-40.txt");
-	
+	strcat(outfilename, "JOERGER05.txt");
 	outfile=fopen (outfilename, "w");
-	fprintf(outfile,"t(us), 1, 2, 3,4, 5, 6, 7, 8\n");
+	
+	//Write the header for the file
+	strcpy(fileheader, "Time");
+	for (ch = 32; ch<36; ch++) {
+		GetCtrlVal (Bdot_panel, bdot_channels[ch],ChannelNameString);
+		strcat(fileheader,",");
+		strcat(fileheader,ChannelNameString);
+		
+	}
+	strcat(fileheader,"\n");
+	fprintf(outfile,fileheader);
+	
 	for (j=0;j<JoergerVTR10014_recordlength;j++) {
 		time_array[j]=(double)(1.0E6*j/JoergerVTR10014_digitation_rate);
-		fprintf(outfile,"%f,%f,%f,%f,%f,%f,%f,%f,%f\n",time_array[j],Bdot_signal1[j],Bdot_signal2[j],Bdot_signal3[j],Bdot_signal4[j],
-			Bdot_signal5[j],Bdot_signal6[j],Bdot_signal7[j],Bdot_signal8[j]);
+		fprintf(outfile,"%f,%f,%f,%f,%f\n",time_array[j],Bdot_signal1[j],Bdot_signal2[j],Bdot_signal3[j],Bdot_signal4[j]);
 	}
 	
  	//Close Bdot data file
 	fclose (outfile);
-
-	
-	//Get channel name string, store raw data on drive folder, and push data to MDSPlus for 8 channels
-	GetCtrlVal (Bdot_panel, Bdot_Chan25Name,ChannelNameString);
-	Write_to_PHASMA_MDS(time_array,Bdot_signal1,ChannelNameString);
-	
-	GetCtrlVal (Bdot_panel, Bdot_Chan26Name,ChannelNameString);
-	Write_to_PHASMA_MDS(time_array,Bdot_signal2,ChannelNameString);
-
-	GetCtrlVal (Bdot_panel, Bdot_Chan27Name,ChannelNameString);
-	Write_to_PHASMA_MDS(time_array,Bdot_signal3,ChannelNameString);
-
-	GetCtrlVal (Bdot_panel, Bdot_Chan28Name,ChannelNameString);
-	Write_to_PHASMA_MDS(time_array,Bdot_signal4,ChannelNameString);
-	
-	GetCtrlVal (Bdot_panel, Bdot_Chan29Name,ChannelNameString);
-	Write_to_PHASMA_MDS(time_array,Bdot_signal5,ChannelNameString);
-
-	GetCtrlVal (Bdot_panel, Bdot_Chan30Name,ChannelNameString);
-	Write_to_PHASMA_MDS(time_array,Bdot_signal6,ChannelNameString);
-	
-	GetCtrlVal (Bdot_panel, Bdot_Chan31Name,ChannelNameString);
-	Write_to_PHASMA_MDS(time_array,Bdot_signal7,ChannelNameString);
-
-	GetCtrlVal (Bdot_panel, Bdot_Chan32Name,ChannelNameString);
-	Write_to_PHASMA_MDS(time_array,Bdot_signal8,ChannelNameString);
 	
 	//Close interface panel
    	DiscardPanel(Bdot_panel);  

@@ -125,6 +125,8 @@ int 	MasterTriggerFlag=0;
 int 	MasterSimmerFlag=0;
 float 	master_trigger_start;
 
+int 	push_to_mds_flag = 1; // used for debugging, will remove on release - TR
+
 static int trigger_hours;
 static int trigger_minutes;
 static int trigger_seconds;
@@ -134,13 +136,13 @@ static int post_storage_minutes;
 static int post_storage_seconds;
 
 
-
-
 /*********************************************************************************************************
 *	This function loops through all the diagnostics and writes their data to the raw data txt files and
 *	pushes them to the MDS database.
 *
-*
+*	 TR 1/16/26: 
+		This function will store data locally but the MDS storage logic is not located here; that's done in a seperate Python script 
+        located at C:\PHASMA 2025 DAQ\PHASMA Python Routines\PHASMA_C_to_Python_convertor_Project\PhasmaMDS\mds_push_all.py
 *********************************************************************************************************/
 void	Store_Data (void)
 {
@@ -169,6 +171,23 @@ void	Store_Data (void)
 	if (LightwvIntferomDataFlag)Write_LightwvIntferomData() ;
 	*/
 	
+	//if any data flags were turned on, push raw data from the text files to the MDS system
+	if (push_to_mds_flag){
+		if ( (MagFieldDataFlag) || (HeliconDataFlag) || (BdotDataFlag) || (PlasmaGunDataFlag) || (HousekeepingDataFlag) || (TemporaryDiagDataFlag)	|| (RFEADataFlag) 	|| 
+				(DoubleProbeDataFlag) 	|| (PhotronCameraDataFlag) 	||(TSDataFlag) 	|| (PulsedLIFDataFlag) ||(PhotodiodeDataFlag) 	|| (TripleProbeDataFlag) || (McPherson209DataFlag) 	|| 
+				(QuantumBeatDataFlag) || (OceanOpticsDataFlag) 	||(LightwvIntferomDataFlag)) {
+			Delay(0.5); // wait a moment between disc write and mds push 
+			push_mds();
+		}
+		}
+	/*
+	if (QuantumBeatDataFlag) 	Write_QuantumBeatData();
+	if (OceanOpticsDataFlag) 	Write_OceanOpticsData();
+	if (LightwvIntferomDataFlag)Write_LightwvIntferomData() ;
+	*/
+
+
+	
 	return;
 }
 
@@ -180,7 +199,7 @@ void	Store_Data (void)
 *********************************************************************************************************/
  void MasterArm(void)
 {
-	int		result;
+
 	
 	//Trip the individual arming lights
 	if((HousekeepingFlag) && (HousekeepingArm()>0))   	SetCtrlVal (Master_Control_Panel, MasterCont_Housekeeping_Arm, 1);
@@ -203,7 +222,7 @@ void	Store_Data (void)
 *********************************************************************************************************/
  void LaserMasterArm(void)
 {
-	int		result;
+	
 	
 	//The laser control is updates in each of the laser arming functions	
 	
@@ -225,9 +244,6 @@ void	Store_Data (void)
 *********************************************************************************************************/
  void ClearSystemStatus(void)
 {
-	int		result;
-	
-
 	//Reset the individual activation switches
 	SetCtrlVal (Master_Control_Panel, MasterCont_Housekeeping_Status, 0);
 	SetCtrlVal (Master_Control_Panel, MasterCont_Bdot_Status, 0);
@@ -305,10 +321,6 @@ void ManualMatLab_Plotting(void)
 }
 
 
-
-
-
-
 /*********************************************************************************************************
 *	This function advances probes or laser wavelength in all active subsystems that request probe or laser advance
 *
@@ -358,6 +370,20 @@ void ManualMatLab_Plotting(void)
 
 }
  
+
+//Added this for silly debug purposes - TR 1/19/2026
+int CVICALLBACK manual_write(int panel, int control, int event,
+		void *callbackData, int eventData1, int eventData2)
+{
+	switch(event)
+	{
+		case EVENT_COMMIT:
+			Write_HousekeepingData();
+			//Write_BdotData();
+		
+	}
+	return 0;
+}
  
 /*********************************************************************************************************
 *	Here are all the callback functions from the Main Control Loop Panel that launch the settings windows
@@ -989,6 +1015,19 @@ int CVICALLBACK Temporary_Activate (int panel, int control, int event,
 *   arm and trigger the data system and/or advance the probes to their next position.
 *********************************************************************************************************/
 
+int CVICALLBACK mdstest(int panel, int control, int event,
+		void *callbackData, int eventData1, int eventData2)
+{
+	switch(event)
+	{
+		case EVENT_COMMIT:
+			push_mds();
+			break;
+			
+	}
+	return 0;
+}
+
 int CVICALLBACK ManualArm (int panel, int control, int event,
 		void *callbackData, int eventData1, int eventData2)
 {
@@ -1094,10 +1133,18 @@ int CVICALLBACK AutoCycle (int panel, int control, int event,
 int CVICALLBACK PHASMA_ShutDown (int panel, int control, int event,
 		void *callbackData, int eventData1, int eventData2)
 {
+	int 	result;
+	
 	switch (event)
 	{
 		case EVENT_COMMIT:
 
+			//Close Visa session and release all the instruments
+			result = viClose (Global_Visa_Session_Handle);
+			
+			//Close MDS database
+			ClosePHASMA_MDS();  
+			
 			//Save state of master control panel, close it, and then shut down user interace
 			SavePanelState (Master_Control_Panel, "Master_Control_Storage_File", Master_Control_Panel_setup_state);
 			DiscardPanel (Master_Control_Panel);
@@ -1178,8 +1225,8 @@ int		Advance_Single_Cycle (void)
 	//Write an array of all the instrument write-t-mds flags to a spreadsheet to maintain a permanent list
 	//of which data are stored for each shot. Include the shot number, the date, and all the flags.
 	outfile = fopen (PHASMA_LOG_String, "a");
-	fprintf(outfile,"%d,%s,%s,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d\n",ShotNum,date,time,MagFieldDataFlag, HeliconDataFlag,HousekeepingDataFlag,PlasmaGunDataFlag,Write_PlasmaGunDataData,
-		BdotDataFlag,TripleProbeDataFlag,DoubleProbeDataFlag,TSDataFlag,PulsedLIFDataFlag,QuantumBeatDataFlag,PhotodiodeDataFlag,PhotronCameraDataFlag,OceanOpticsDataFlag,McPherson209DataFlag,LightwvIntferomDataFlag,RFEADataFlag,TemporaryDiagDataFlag);
+	fprintf(outfile,"%d,%s,%s,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d\n",ShotNum,date,time,MagFieldDataFlag, HeliconDataFlag,HousekeepingDataFlag,PlasmaGunDataFlag,Write_PlasmaGunDataData,
+		BdotDataFlag,TripleProbeDataFlag,DoubleProbeDataFlag,TSDataFlag,PulsedLIFDataFlag,QuantumBeatDataFlag,PhotodiodeDataFlag,PhotronCameraDataFlag,OceanOpticsDataFlag,McPherson209DataFlag,LightwvIntferomDataFlag,RFEADataFlag,TemporaryDiagDataFlag,0,0);
 
  	//Close PHASMA log file
 	fclose (outfile);
@@ -1219,7 +1266,6 @@ int		Advance_Single_Cycle (void)
 }
  
  
-
 
 int		Complete_Single_Cycle (void)
 {
@@ -1296,7 +1342,6 @@ void	Repeat_Cycle (void)
 {
 
 
-	int		j;
 	int 	Trigger_panel;
 	int		TriggerSettings_setup_state = 4;		//WARNING, if this gets changed in the trigger code it must be changed here
 	
@@ -1349,7 +1394,6 @@ void	Repeat_Cycle (void)
 }
 
 
-
 /*********************************************************************************************************
 *	Here is the master control loop for the entire data system
 *   Note, make sure the stack size is large enough to handle all the processes when running as an executable
@@ -1359,9 +1403,7 @@ void  main(void)
 {
     int 	height,width,panel_height, panel_width; 
 	int		result;
-	int 	j;
-	float 	interval;
-
+	
 	//	Launch all the visuals
 	GetScreenSize(&height, &width);
 	width=(int)(width*2.8/5);			//compensate for new extra wide monitor
@@ -1369,7 +1411,7 @@ void  main(void)
 	panel_width = width;
 	
 	Master_Control_Panel = LoadPanel (0, "MasterControlPanel.uir", MasterCont);
-	RecallPanelState (Master_Control_Panel, "Master_Control_Storage_File", Master_Control_Panel_setup_state);
+	//RecallPanelState (Master_Control_Panel, "Master_Control_Storage_File", Master_Control_Panel_setup_state);
 	DisplayPanel (Master_Control_Panel);
 																		 
 	SetPanelAttribute (Master_Control_Panel, ATTR_HEIGHT, panel_height);
@@ -1418,11 +1460,7 @@ void  main(void)
 	// Start interacting with user
     RunUserInterface ();
 
- 	//Close MDS database
-	ClosePHASMA_MDS();  
-	
-	//Close Global Visa session
-	viClose(Global_Visa_Session_Handle);
+
 	
 }
 
@@ -1492,3 +1530,15 @@ int CVICALLBACK SetMasterClock (int panel, int control, int event,
 }
 
 
+
+int CVICALLBACK toggle_push_to_mds (int panel, int control, int event,
+									void *callbackData, int eventData1, int eventData2)
+{
+	switch (event)
+	{
+		case EVENT_COMMIT:
+			GetCtrlVal(Master_Control_Panel, MasterCont_toggle_mds_flag, &push_to_mds_flag);
+			break;
+	}
+	return 0;
+}
