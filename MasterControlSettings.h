@@ -45,7 +45,7 @@ void	Repeat_Cycle (void);
 
 /*********************************************************************************************************
 *	Here are all the callback functions from the Main Control Loop Panel that determine if a particular 
-*	data record will be sent to MDSPlus for storage
+*	data record will be stored
 *
 *
 *********************************************************************************************************/
@@ -55,7 +55,8 @@ int CVICALLBACK MagField_Data_Switch (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			MagFieldDataFlag=1;
+			GetCtrlVal (panel, control,&MagFieldDataFlag);
+			//MagFieldDataFlag=1;
 			break;
 	}
 	return 0;
@@ -67,7 +68,7 @@ int CVICALLBACK HeliconData_Switch (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			HeliconDataFlag=1; 
+			GetCtrlVal (panel, control,&HeliconDataFlag);
 			break;
 	}
 	return 0;
@@ -79,7 +80,7 @@ int CVICALLBACK HousekeepingData_Switch (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			HousekeepingDataFlag=1; 
+			GetCtrlVal (panel, control,&HousekeepingDataFlag); 
 			break;
 	}
 	return 0;
@@ -91,8 +92,7 @@ int CVICALLBACK MagProbeData_Switch (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
- 			BdotDataFlag=1; 
-
+ 			GetCtrlVal (panel, control,&BdotDataFlag);
 			break;
 	}
 	return 0;
@@ -104,7 +104,7 @@ int CVICALLBACK RFEAData_Switch (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			RFEADataFlag=1;
+			GetCtrlVal (panel, control,&RFEADataFlag);
 			break;
 	}
 	return 0;
@@ -116,7 +116,7 @@ int CVICALLBACK PhotronCameraData_Switch (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			PhotronCameraDataFlag=1;
+			GetCtrlVal (panel, control,&PhotronCameraDataFlag);
 			break;
 	}
 	return 0;
@@ -129,7 +129,7 @@ int CVICALLBACK TempDiagData_Switch (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			TemporaryDiagDataFlag=1; 
+			GetCtrlVal (panel, control,&TemporaryDiagDataFlag);
 			break;
 	}
 	return 0;
@@ -141,7 +141,7 @@ int CVICALLBACK DPData_Switch (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			DoubleProbeDataFlag=1; 
+			GetCtrlVal (panel, control,&DoubleProbeDataFlag); 
 			break;
 	}
 	return 0;
@@ -153,7 +153,7 @@ int CVICALLBACK TSData_Switch (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			TSDataFlag=1; 
+			GetCtrlVal (panel, control,&TSDataFlag);
 			break;
 	}
 	return 0;
@@ -165,7 +165,7 @@ int CVICALLBACK PhotodiodeData_Switch (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			PhotodiodeDataFlag=1; 
+			GetCtrlVal (panel, control,&PhotodiodeDataFlag);
 			break;
 	}
 	return 0;
@@ -177,7 +177,7 @@ int CVICALLBACK TripleProbeData_Switch (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			TripleProbeDataFlag=1; 
+			GetCtrlVal (panel, control,&TripleProbeDataFlag); 
 			break;
 	}
 	return 0;
@@ -189,7 +189,7 @@ int CVICALLBACK McPherson209Data_Switch (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			McPherson209DataFlag=1; 
+			GetCtrlVal (panel, control,&McPherson209DataFlag);
 			break;
 	}
 	return 0;
@@ -201,7 +201,7 @@ int CVICALLBACK PulsedLIFData_Switch (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			PulsedLIFDataFlag=1; 
+			GetCtrlVal (panel, control,&PulsedLIFDataFlag);
 			break;
 	}
 	return 0;
@@ -223,7 +223,7 @@ int CVICALLBACK HousekeepingPlot_Switch (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			HousekeepingPlotFlag=1; 
+			GetCtrlVal (panel, control,&HousekeepingPlotFlag);
 			break;
 	}
 	return 0;
@@ -235,7 +235,7 @@ int CVICALLBACK MagProbePlot_Switch (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
- 			BdotPlotFlag=1; 
+ 			GetCtrlVal (panel, control,&BdotPlotFlag);
 			break;
 	}
 	return 0;
@@ -247,7 +247,7 @@ int CVICALLBACK RFEAPlot_Switch (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			RFEAPlotFlag=1;
+			GetCtrlVal (panel, control,&RFEAPlotFlag);
 			break;
 	}
 	return 0;
@@ -259,7 +259,7 @@ int CVICALLBACK PhotronCameraPlot_Switch (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			PhotronCameraPlotFlag=1;
+			GetCtrlVal (panel, control,&PhotronCameraPlotFlag);
 			break;
 	}
 	return 0;
@@ -272,7 +272,7 @@ int CVICALLBACK TempDiagPlot_Switch (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			TemporaryDiagPlotFlag=1; 
+			GetCtrlVal (panel, control,&TemporaryDiagPlotFlag);
 			break;
 	}
 	return 0;
@@ -284,7 +284,7 @@ int CVICALLBACK DPDPlot_Switch (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			DoubleProbePlotFlag=1; 
+			GetCtrlVal (panel, control,&DoubleProbePlotFlag); 
 			break;
 	}
 	return 0;
@@ -296,7 +296,7 @@ int CVICALLBACK TSPlot_Switch (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			TSPlotFlag=1; 
+			GetCtrlVal (panel, control,&TSPlotFlag);
 			break;
 	}
 	return 0;
@@ -308,7 +308,7 @@ int CVICALLBACK PhotodiodePlot_Switch (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			PhotodiodePlotFlag=1; 
+			GetCtrlVal (panel, control,&PhotodiodePlotFlag); 
 			break;
 	}
 	return 0;
@@ -320,7 +320,7 @@ int CVICALLBACK TripleProbePlot_Switch (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			TripleProbePlotFlag=1; 
+			GetCtrlVal (panel, control,&TripleProbePlotFlag); 
 			break;
 	}
 	return 0;
@@ -332,7 +332,7 @@ int CVICALLBACK McPherson209Plot_Switch (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			McPherson209PlotFlag=1; 
+			GetCtrlVal (panel, control,&McPherson209PlotFlag);
 			break;
 	}
 	return 0;
@@ -344,7 +344,7 @@ int CVICALLBACK PulsedLIFPlot_Switch (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			PulsedLIFPlotFlag=1; 
+			GetCtrlVal (panel, control,&PulsedLIFPlotFlag);
 			break;
 	}
 	return 0;

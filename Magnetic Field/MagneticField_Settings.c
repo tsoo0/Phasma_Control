@@ -255,8 +255,8 @@ void setup_Sorensen(double current, int supply_num, int powerstate)
 		sprintf (sorensen_string, "SOUR:CURR %f\r", current); 
 		result = viWrite (Sorensen_handle, sorensen_string, (unsigned int)strlen(sorensen_string), &count);
 		
-		//Delay .5 sec to give supply time to get set up
-		Delay(.5);
+		//Delay 1 sec to give supply time to get set up
+		Delay(1);
 		
 		//Read current value of power supply current to confirm that it has been set correctly. If it has not worked after 3 more tries, jump out of loop
 		j=0;
@@ -998,7 +998,7 @@ void Write_MagField(void)
 	fclose (outfile);
 	
 	//Write data record to MDSPlus database
-	Write_to_PHASMA_MDS(position, Bz,"RAW_DATA.MAGFIELD:MAGPROFILE");
+	//Write_to_PHASMA_MDS(position, Bz,"RAW_DATA.MAGFIELD:MAGPROFILE");
 
 }
 

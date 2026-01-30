@@ -162,11 +162,6 @@ void ThomsonScatteringLaserControl(int simmermode)
 	int 		result; 					//	Error-checking variable
 	int			num_pulses;
 	float		duty_cycle;
-	char		QSmart1500_Lamp_IP_Address_string[64]; 
-	char		QSmart1500_Qsw_IP_Address_string[64]; 
-	char		QSmart850_Lamp_IP_Address_string[64]; 
-	char		QSmart850_Qsw_IP_Address_string[64]; 
-	char		ThomsonScattering_string[32]="Null";
 
 	ViUInt32 	count;
 
@@ -760,10 +755,7 @@ int Get_TS_Laser_Offsets (float *Perp_offset,float *Para_offset, float *Laser_Wa
 //Activate Thomson Scattering System
 int ThomsonScatteringActivate(void)
 {
-	int		result;
-	int		count;
-	char	SimmerCodePath[256]="Null";
-	
+
 	//Call laser control code and place laser in simmer mode
 	ThomsonScatteringLaserControl(1);
 	
@@ -1007,7 +999,6 @@ void Write_ThomsonScatteringData(void)
 //control system as it loads.
 void OpenThomsonScattering_Settings (void)  
 {
-	int 	result;
 	int 	error;
 	int 	TS_Andor_Temp=1000;
 	
