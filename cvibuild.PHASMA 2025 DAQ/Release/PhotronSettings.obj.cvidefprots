@@ -1,0 +1,30 @@
+[PhotronCameraActivate]
+Class="Function"
+Prototype="void PhotronCameraActivate();"
+SourceLocation="c:\PHASMA 2025 DAQ\Photron Camera\PhotronSettings.c:70:6"
+
+[PhotronCameraArm]
+Class="Function"
+Prototype="int PhotronCameraArm();"
+SourceLocation="c:\PHASMA 2025 DAQ\Photron Camera\PhotronSettings.c:240:5"
+
+[Write_PhotronCameraData]
+Class="Function"
+Prototype="void Write_PhotronCameraData();"
+SourceLocation="c:\PHASMA 2025 DAQ\Photron Camera\PhotronSettings.c:262:6"
+
+[OpenPhotronCamera_Settings]
+Class="Function"
+Prototype="void OpenPhotronCamera_Settings();"
+SourceLocation="c:\PHASMA 2025 DAQ\Photron Camera\PhotronSettings.c:315:6"
+
+[Close_PhotronCamera_Settings]
+Class="Function"
+Prototype="int Close_PhotronCamera_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="c:\PHASMA 2025 DAQ\Photron Camera\PhotronSettings.c:330:17"
+
+[Photron_Close_Camera]
+Class="Function"
+Prototype="void Photron_Close_Camera();"
+SourceLocation="c:\PHASMA 2025 DAQ\Photron Camera\PhotronSettings.c:349:6"
+

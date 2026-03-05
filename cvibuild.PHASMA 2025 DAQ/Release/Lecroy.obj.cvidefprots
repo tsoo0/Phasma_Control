@@ -1,0 +1,5 @@
+[Lecroy]
+Class="Function"
+Prototype="void Lecroy(int Lecroy_visa_handle, int Lecroy_RecordLength, float *timestep, double Chan1[], double Chan2[], double Chan3[], double Chan4[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\LeCroy Routines\Lecroy.c:7:6"
+

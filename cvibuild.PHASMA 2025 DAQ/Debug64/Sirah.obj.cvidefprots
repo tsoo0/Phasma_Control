@@ -1,0 +1,25 @@
+[Sirah_Laser_Scan]
+Class="Function"
+Prototype="void Sirah_Laser_Scan(char Sirah_COM_String[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\Sirah.c:37:6"
+
+[Sirah_Laser_SetScan]
+Class="Function"
+Prototype="void Sirah_Laser_SetScan(char Sirah_COM_String[], double Timespan, double Range, double Conversion);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\Sirah.c:79:6"
+
+[Sirah_Laser_SetScan_Down]
+Class="Function"
+Prototype="void Sirah_Laser_SetScan_Down(char Sirah_COM_String[], double Timespan, double Range, double Conversion);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\Sirah.c:150:6"
+
+[Sirah_Laser_ScanReset]
+Class="Function"
+Prototype="void Sirah_Laser_ScanReset(int Wavemeter_COM, char Sirah_COM_String[], double Range, double Conversion, double Timespan, double Begin_Wavelength, int panel_for_button, int WAVEMETER_STRING);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\Sirah.c:223:6"
+
+[Sirah_Laser_Stop]
+Class="Function"
+Prototype="void Sirah_Laser_Stop(char Sirah_COM_String[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\Sirah.c:428:6"
+

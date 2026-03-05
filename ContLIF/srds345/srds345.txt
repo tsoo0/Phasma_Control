@@ -1,0 +1,83 @@
+IVI Compliance Category:
+-----------------------
+
+IVI-C IviFgen Specific Instrument Driver 
+Class Specification version:	3.00
+Group Capabilities Supported:
+
+Base 		= Supported
+StdFunc 	= Supported
+ModulateAM 	= Supported
+ModulateFM 	= Supported
+ArbWfm 		= Supported
+ArbFrequency 	= Not Supported
+ArbSeq 		= Not Supported
+Trigger 	= Supported
+InternalTrigger = Supported
+SoftwareTrigger = Supported
+Burst 		= Supported
+
+
+
+Optional Features:
+-----------------
+Interchangeability Checking 	= True
+State Caching 			= True
+Coercion Recording 		= True
+
+
+Driver Identification:
+---------------------
+
+Driver Revision:                          2.111.5
+
+Driver Vendor:                            National Instruments
+
+Prefix:                                   srds345
+
+Description:                              Function and Waveform Generator
+
+
+
+Driver Release Information:
+--------------------------
+
+Original Release Date:                    03/31/2000 
+
+Update Release Date:                      09/07/2010
+
+
+
+Hardware Information:
+--------------------
+
+Instrument Manufacturer:                  Stanford Research
+
+Supported Instrument Models:              DS 345
+
+Supported Bus Interfaces:                 GPIB
+
+
+
+S32-bit Software Information:
+--------------------
+Supported Operating Systems: 		  Windows 2000, Windows XP, Windows Vista 32, Windows Vista 64, Windows 7 32, Windows 7 64 
+
+Support Software Required:                IVI Compliance Package 4.1, VISA 4.6
+
+Source Code Availability:                 Available
+
+
+64-bit Software Information:
+--------------------
+Supported Operating Systems: 		  Windows Vista 64, Windows 7 64 
+
+Support Software Required:                IVI Compliance Package 4.1, VISA 4.6
+
+Source Code Availability:                 Available
+
+
+	
+Note:
+National Instruments has evaluated and/or tested this driver to verify that it meets all applicable requirements of the IVI specifications at the time this compliance document was submitted to the IVI Foundation and agrees to abide by the dispute arbitration provisions in Section 7 of IVI-1.2: Operating Procedures, if the IVI Foundation finds this driver to be non-conformant.
+

@@ -1,0 +1,45 @@
+[OpenPlasmaGun_Settings]
+Class="Function"
+Prototype="void OpenPlasmaGun_Settings();"
+SourceLocation="c:\PHASMA 2025 DAQ\PlasmaGun\PlasmaGunSettings.c:27:6"
+
+[Close_PlasmaGun_Settings]
+Class="Function"
+Prototype="int Close_PlasmaGun_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="c:\PHASMA 2025 DAQ\PlasmaGun\PlasmaGunSettings.c:44:17"
+
+[PlasmaGun_ActivateSystem]
+Class="Function"
+Prototype="void PlasmaGun_ActivateSystem(int Guns_Power_State);"
+SourceLocation="c:\PHASMA 2025 DAQ\PlasmaGun\PlasmaGunSettings.c:68:6"
+
+[Write_PlasmaGunData]
+Class="Function"
+Prototype="void Write_PlasmaGunData();"
+SourceLocation="c:\PHASMA 2025 DAQ\PlasmaGun\PlasmaGunSettings.c:347:6"
+
+[ReadGunPressure]
+Class="Function"
+Prototype="float ReadGunPressure();"
+SourceLocation="c:\PHASMA 2025 DAQ\PlasmaGun\PlasmaGunSettings.c:380:7"
+
+[SetGunPressure]
+Class="Function"
+Prototype="void SetGunPressure(float target_pressure);"
+SourceLocation="c:\PHASMA 2025 DAQ\PlasmaGun\PlasmaGunSettings.c:412:6"
+
+[Guns_Move]
+Class="Function"
+Prototype="int Guns_Move(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="c:\PHASMA 2025 DAQ\PlasmaGun\PlasmaGunSettings.c:436:17"
+
+[Gun_Home]
+Class="Function"
+Prototype="int Gun_Home(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="c:\PHASMA 2025 DAQ\PlasmaGun\PlasmaGunSettings.c:470:17"
+
+[GunPosition]
+Class="Function"
+Prototype="void GunPosition(float *Gun1_Position, float *Gun2_Position);"
+SourceLocation="c:\PHASMA 2025 DAQ\PlasmaGun\PlasmaGunSettings.c:493:6"
+

@@ -1,0 +1,430 @@
+[tkvx4244_autoConnectToAll]
+Class="Function"
+Prototype="long tkvx4244_autoConnectToAll(unsigned long instrumentHndlArray[], short arrayLength, short *numberConnected);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:412:19"
+
+[tkvx4244_autoConnectToFirst]
+Class="Function"
+Prototype="long tkvx4244_autoConnectToFirst(unsigned long *instrumentHandle);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:469:19"
+
+[tkvx4244_autoConnectToLA]
+Class="Function"
+Prototype="long tkvx4244_autoConnectToLA(unsigned long *instrumentHandle, short logicalAddress);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:506:19"
+
+[tkvx4244_autoConnectToSlot]
+Class="Function"
+Prototype="long tkvx4244_autoConnectToSlot(unsigned long instrumentArray[], short arrayLength, short *numberConnected, short slot);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:536:19"
+
+[tkvx4244_close]
+Class="Function"
+Prototype="long tkvx4244_close(unsigned long instrumentHandle);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:604:19"
+
+[tkvx4244_init]
+Class="Function"
+Prototype="long tkvx4244_init(char *resourceName, unsigned short IDQuery, unsigned short resetDevice, unsigned long *instrumentHandle);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:654:19"
+
+[tkvx4244_variableInitialize]
+Class="Function"
+Prototype="long tkvx4244_variableInitialize(unsigned long instrumentHandle);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:773:10"
+
+[tkvx4244_error_message]
+Class="Function"
+Prototype="long tkvx4244_error_message(unsigned long instrumentHandle, long errorCode, char errorMessage[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:819:19"
+
+[tkvx4244_error_query]
+Class="Function"
+Prototype="long tkvx4244_error_query(unsigned long instrumentHandle, long *errorCode, char errorMessage[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:897:19"
+
+[tkvx4244_getInstrDesc]
+Class="Function"
+Prototype="long tkvx4244_getInstrDesc(unsigned long instrumentHandle, char instrumentDescriptor[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:934:19"
+
+[tkvx4244_getLogicalAddress]
+Class="Function"
+Prototype="long tkvx4244_getLogicalAddress(unsigned long instrumentHandle, short *logicalAddress);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:974:19"
+
+[tkvx4244_getManufacturerID]
+Class="Function"
+Prototype="long tkvx4244_getManufacturerID(unsigned long instrumentHandle, short *manufacturerIdentification);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:998:19"
+
+[tkvx4244_getModelCode]
+Class="Function"
+Prototype="long tkvx4244_getModelCode(unsigned long instrumentHandle, short *modelCode);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:1024:19"
+
+[tkvx4244_getSlotandLAList]
+Class="Function"
+Prototype="long tkvx4244_getSlotandLAList(short slotArray[], short logicalAddressArray[], short arrayLength, short *numberFound);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:1049:19"
+
+[tkvx4244_getSlotNumber]
+Class="Function"
+Prototype="long tkvx4244_getSlotNumber(unsigned long instrumentHandle, short *slot);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:1115:19"
+
+[tkvx4244_getSlotList]
+Class="Function"
+Prototype="long tkvx4244_getSlotList(short slotArray[], short slotArrayLength, short *numberFound);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:1139:19"
+
+[tkvx4244_getVisaRev]
+Class="Function"
+Prototype="long tkvx4244_getVisaRev(unsigned long instrumentHandle, char revision[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:1165:19"
+
+[tkvx4244_reset]
+Class="Function"
+Prototype="long tkvx4244_reset(unsigned long instrumentHandle);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:1226:19"
+
+[tkvx4244_revision_query]
+Class="Function"
+Prototype="long tkvx4244_revision_query(unsigned long instrumentHandle, char driverRevision[], char instrumentRevision[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:1259:19"
+
+[tkvx4244_self_test]
+Class="Function"
+Prototype="long tkvx4244_self_test(unsigned long instrumentHandle, short *selfTestResult, char selfTestMessage[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:1306:19"
+
+[tkvx4244_perform_self_test]
+Class="Function"
+Prototype="long tkvx4244_perform_self_test(unsigned long instrumentHandle, long *selfTestResult, char selfTestMessage[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:1358:19"
+
+[tkvx4244_sleep]
+Class="Function"
+Prototype="long tkvx4244_sleep(long secondsToDelay);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:1402:19"
+
+[tkvx4244_write]
+Class="Function"
+Prototype="long tkvx4244_write(unsigned long instrumentHandle, char *command);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:1432:19"
+
+[tkvx4244_read]
+Class="Function"
+Prototype="long tkvx4244_read(unsigned long instrumentHandle, char message[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:1460:19"
+
+[tkvx4244_measCaptureReturnData]
+Class="Function"
+Prototype="long tkvx4244_measCaptureReturnData(unsigned long instrumentHandle, short channel, short voltageRange, short intervalFrequency, double samplingRate, long startingAddress, short numberOfSamples, char dataArray[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:1501:1"
+
+[tkvx4244_confTriggerSrcAndLogic]
+Class="Function"
+Prototype="long tkvx4244_confTriggerSrcAndLogic(unsigned long instrumentHandle, short logic, short ext, short imm, short thre, short vxi, short ttl0, short ttl1, short ttl2, short ttl3, short ttl4, short ttl5, short ttl6, short ttl7, short gp1, short gp2, short gp3, short gp4, short gpa);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:1673:19"
+
+[tkvx4244_confGpOneTrigSrcLogic]
+Class="Function"
+Prototype="long tkvx4244_confGpOneTrigSrcLogic(unsigned long instrumentHandle, short logic, short external, short immediate, short threshold, short vxicmd, short ttl0, short ttl1, short ttl2, short ttl3, short ttl4, short ttl5, short ttl6, short ttl7);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:1881:1"
+
+[tkvx4244_confGpTwoTrigSrcLogic]
+Class="Function"
+Prototype="long tkvx4244_confGpTwoTrigSrcLogic(unsigned long instrumentHandle, short logic, short external, short immediate, short threshold, short vxicmd, short ttl0, short ttl1, short ttl2, short ttl3, short ttl4, short ttl5, short ttl6, short ttl7);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:2087:1"
+
+[tkvx4244_confGpThreeTrigSrcLogic]
+Class="Function"
+Prototype="long tkvx4244_confGpThreeTrigSrcLogic(unsigned long instrumentHandle, short logic, short external, short immediate, short threshold, short vxicmd, short ttl0, short ttl1, short ttl2, short ttl3, short ttl4, short ttl5, short ttl6, short ttl7);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:2293:1"
+
+[tkvx4244_confGpFourTrigSrcLogic]
+Class="Function"
+Prototype="long tkvx4244_confGpFourTrigSrcLogic(unsigned long instrumentHandle, short logic, short external, short immediate, short threshold, short vxicmd, short ttl0, short ttl1, short ttl2, short ttl3, short ttl4, short ttl5, short ttl6, short ttl7);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:2499:1"
+
+[tkvx4244_confSynchronousClocks]
+Class="Function"
+Prototype="long tkvx4244_confSynchronousClocks(unsigned long instrumentHandle, short source, short ttlSource);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:2702:19"
+
+[tkvx4244_readASCIIData]
+Class="Function"
+Prototype="long tkvx4244_readASCIIData(unsigned long instrumentHandle, short numberOfSamples, long startingAddress, short channel, char dataArray[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:2748:19"
+
+[tkvx4244_getBinaryData]
+Class="Function"
+Prototype="long tkvx4244_getBinaryData(unsigned long instrumentHandle, short numberOfSamples, long startingAddress, short channel, short response[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:2817:19"
+
+[tkvx4244_getBinaryDataSFP]
+Class="Function"
+Prototype="long tkvx4244_getBinaryDataSFP(unsigned long instrumentHandle, short numberOfSamples, long startingAddress, short channel, short response[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:2872:19"
+
+[tkvx4244_readBinaryData]
+Class="Function"
+Prototype="long tkvx4244_readBinaryData(unsigned long instrumentHandle, short numberOfSamples, long startingAddress, short channel, char response[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:2940:1"
+
+[tkvx4244_readTimetag]
+Class="Function"
+Prototype="long tkvx4244_readTimetag(unsigned long instrumentHandle, short gp1, short gp2, short gp3, short gp4, short all, char timeTag[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:2996:1"
+
+[tkvx4244_confFrontPanelOutTrig]
+Class="Function"
+Prototype="long tkvx4244_confFrontPanelOutTrig(unsigned long instrumentHandle, short groupNumber, char groupOutput[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:3058:19"
+
+[tkvx4244_readSyncClkSource]
+Class="Function"
+Prototype="long tkvx4244_readSyncClkSource(unsigned long instrumentHandle, short synchronize, char activeLevel[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:3108:1"
+
+[tkvx4244_readActiveChannels]
+Class="Function"
+Prototype="long tkvx4244_readActiveChannels(unsigned long instrumentHandle, short queryCondition, char list[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:3151:1"
+
+[tkvx4244_readSampleRates]
+Class="Function"
+Prototype="long tkvx4244_readSampleRates(unsigned long instrumentHandle, short definitions, short gp1, short gp2, short gp3, short gp4, short all, char response[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:3195:1"
+
+[tkvx4244_readCollectionCount]
+Class="Function"
+Prototype="long tkvx4244_readCollectionCount(unsigned long instrumentHandle, short gp1, short gp2, short gp3, short gp4, short all, char count[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:3261:1"
+
+[tkvx4244_readArmSrcZero]
+Class="Function"
+Prototype="long tkvx4244_readArmSrcZero(unsigned long instrumentHandle, short armSourceOrMemoryZero, short gp1, short gp2, short gp3, short gp4, short all, char armOrMemoryZeroResponse[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:3326:1"
+
+[tkvx4244_readInputVoltageSettings]
+Class="Function"
+Prototype="long tkvx4244_readInputVoltageSettings(unsigned long instrumentHandle, short rangeQuery, char inputVoltage[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:3392:1"
+
+[tkvx4244_volt_rang_query]
+Class="Function"
+Prototype="long tkvx4244_volt_rang_query(unsigned long instrumentHandle, short rang, short c1, short c2, short c3, short c4, short c5, short c6, short c7, short c8, short c9, short c10, short c11, short c12, short c13, short c14, short c15, short c16, short ca, char answer[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:3452:19"
+
+[tkvx4244_confExtClkSlopAndTtag]
+Class="Function"
+Prototype="long tkvx4244_confExtClkSlopAndTtag(unsigned long instrumentHandle, short slope, short timeTag, char clockSlope[], char timeTagSource[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:3538:1"
+
+[tkvx4244_eventReqEnable]
+Class="Function"
+Prototype="long tkvx4244_eventReqEnable(unsigned long instrumentHandle, short requestEventEnab, short maskDefinition);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:3609:1"
+
+[tkvx4244_readStatus]
+Class="Function"
+Prototype="long tkvx4244_readStatus(unsigned long instrumentHandle, short select4882Command, char get4882Status[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:3647:1"
+
+[tkvx4244_readPostprocessCalc]
+Class="Function"
+Prototype="long tkvx4244_readPostprocessCalc(unsigned long instrumentHandle, short measurement, long numberOfSamples, long startingAddress, short channel, char response[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:3695:1"
+
+[tkvx4244_initStopMeasurementCycle]
+Class="Function"
+Prototype="long tkvx4244_initStopMeasurementCycle(unsigned long instrumentHandle, short gp1, short gp2, short gp3, short gp4, short all);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:3749:1"
+
+[tkvx4244_confMastertrigOut]
+Class="Function"
+Prototype="long tkvx4244_confMastertrigOut(unsigned long instrumentHandle, short outputSelect, short logic, short slope, short gp1, short gp2, short gp3, short gp4);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:3806:1"
+
+[tkvx4244_confTriggerThreshold]
+Class="Function"
+Prototype="long tkvx4244_confTriggerThreshold(unsigned long instrumentHandle, short thresholdDescriptor, double voltageLevel, short group1, short group2, short group3, short group4);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:3940:1"
+
+[tkvx4244_confArmSrcMemZero]
+Class="Function"
+Prototype="long tkvx4244_confArmSrcMemZero(unsigned long instrumentHandle, short source, short gp1, short gp2, short gp3, short gp4, short allGroups, short memoryZero);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:4002:1"
+
+[tkvx4244_confFrontPanelDisplay]
+Class="Function"
+Prototype="long tkvx4244_confFrontPanelDisplay(unsigned long instrumentHandle, short groupNumber, char groupDisplayed[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:4067:1"
+
+[tkvx4244_confGpOneVoltageRange]
+Class="Function"
+Prototype="long tkvx4244_confGpOneVoltageRange(unsigned long instrumentHandle, short ch1, short ch2, short ch3, short ch4, short voltageRange);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:4116:1"
+
+[tkvx4244_confGpTwoVoltageRange]
+Class="Function"
+Prototype="long tkvx4244_confGpTwoVoltageRange(unsigned long instrumentHandle, short ch5, short ch6, short ch7, short ch8, short voltageRange);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:4169:1"
+
+[tkvx4244_confGpThreeVoltageRange]
+Class="Function"
+Prototype="long tkvx4244_confGpThreeVoltageRange(unsigned long instrumentHandle, short ch9, short ch10, short ch11, short ch12, short voltageRange);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:4221:1"
+
+[tkvx4244_confGpFourVoltageRange]
+Class="Function"
+Prototype="long tkvx4244_confGpFourVoltageRange(unsigned long instrumentHandle, short ch13, short ch14, short ch15, short ch16, short voltageRange);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:4273:1"
+
+[tkvx4244_volt_rang]
+Class="Function"
+Prototype="long tkvx4244_volt_rang(unsigned long instrumentHandle, short vlts, short c1, short c2, short c3, short c4, short c5, short c6, short c7, short c8, short c9, short c10, short c11, short c12, short c13, short c14, short c15, short c16, short ca);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:4331:19"
+
+[tkvx4244_confSamplingInterval]
+Class="Function"
+Prototype="long tkvx4244_confSamplingInterval(unsigned long instrumentHandle, short source, short intervalFrequency, double samplingRate, short gp1, short gp2, short gp3, short gp4, short allGroups);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:4411:1"
+
+[tkvx4244_confFDCTransfer]
+Class="Function"
+Prototype="long tkvx4244_confFDCTransfer(unsigned long instrumentHandle, short fdcMode, short gp1, short gp2, short gp3, short gp4, short allGroups, long fdcBufferSize, long startingAddress);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:4504:19"
+
+[tkvx4244_getFDCData]
+Class="Function"
+Prototype="long tkvx4244_getFDCData(unsigned long instrumentHandle, short fdcGroup, long numberOfSamples, short dataArray[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:4578:1"
+
+[tkvx4244_readFDCData]
+Class="Function"
+Prototype="long tkvx4244_readFDCData(unsigned long instrumentHandle, short fdcGroup, long numberOfSamples, char dataArray[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:4631:1"
+
+[tkvx4244_readFDCState]
+Class="Function"
+Prototype="long tkvx4244_readFDCState(unsigned long instrumentHandle, short stateQuery, short gp1, short gp2, short gp3, short gp4, short all, char fdcQueryResponse[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:4684:1"
+
+[tkvx4244_confGroupOneChannels]
+Class="Function"
+Prototype="long tkvx4244_confGroupOneChannels(unsigned long instrumentHandle, short ch1, short ch2, short ch3, short ch4, short select);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:4747:1"
+
+[tkvx4244_confGroupTwoChannels]
+Class="Function"
+Prototype="long tkvx4244_confGroupTwoChannels(unsigned long instrumentHandle, short ch5, short ch6, short ch7, short ch8, short select);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:4855:1"
+
+[tkvx4244_confGroupThreeChannels]
+Class="Function"
+Prototype="long tkvx4244_confGroupThreeChannels(unsigned long instrumentHandle, short ch9, short ch10, short ch11, short ch12, short select);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:4964:1"
+
+[tkvx4244_confGroupFourChannels]
+Class="Function"
+Prototype="long tkvx4244_confGroupFourChannels(unsigned long instrumentHandle, short ch13, short ch14, short ch15, short ch16, short select);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:5075:1"
+
+[tkvx4244_chanlist]
+Class="Function"
+Prototype="long tkvx4244_chanlist(unsigned long instrumentHandle, short select, short ch1, short ch2, short ch3, short ch4, short ch5, short ch6, short ch7, short ch8, short ch9, short ch10, short ch11, short ch12, short ch13, short ch14, short ch15, short ch16, short all);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:5194:19"
+
+[tkvx4244_initMeasurementCycle]
+Class="Function"
+Prototype="long tkvx4244_initMeasurementCycle(unsigned long instrumentHandle, double delay, short gp1, short gp2, short gp3, short gp4, short all, short initiate);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:5283:1"
+
+[tkvx4244_confDataCollectCount]
+Class="Function"
+Prototype="long tkvx4244_confDataCollectCount(unsigned long instrumentHandle, long numberOfSamples, short gp1, short gp2, short gp3, short gp4, short allGroups);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:5359:1"
+
+[tkvx4244_confExternalArmSlope]
+Class="Function"
+Prototype="long tkvx4244_confExternalArmSlope(unsigned long instrumentHandle, short slope, char slopeVerification[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:5421:1"
+
+[tkvx4244_readMasterOutTrigger]
+Class="Function"
+Prototype="long tkvx4244_readMasterOutTrigger(unsigned long instrumentHandle, short outputTrigger, char masterOutputtrigger[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:5470:1"
+
+[tkvx4244_confMasterClock]
+Class="Function"
+Prototype="long tkvx4244_confMasterClock(unsigned long instrumentHandle, double frequency, short source, char masterClockSource[], char masterClockFrequency[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:5517:1"
+
+[tkvx4244_readTrigThreshold]
+Class="Function"
+Prototype="long tkvx4244_readTrigThreshold(unsigned long instrumentHandle, char threshold[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:5600:1"
+
+[tkvx4244_readTrigSrcAndLogic]
+Class="Function"
+Prototype="long tkvx4244_readTrigSrcAndLogic(unsigned long instrumentHandle, short sourceAndLogic, short gp1, short gp2, short gp3, short gp4, short all, char triggerSettings[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:5641:1"
+
+[tkvx4244_confTriggerSlope]
+Class="Function"
+Prototype="long tkvx4244_confTriggerSlope(unsigned long instrumentHandle, short activeEdge, char slope[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:5709:1"
+
+[tkvx4244_gplist_parse]
+Class="Function"
+Prototype="long tkvx4244_gplist_parse(short gp1, short gp2, short gp3, short gp4, short gpa, char buf[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:5758:1"
+
+[tkvx4244_chlst_parse]
+Class="Function"
+Prototype="long tkvx4244_chlst_parse(short c1, short c2, short c3, short c4, short c5, short c6, short c7, short c8, short c9, short c10, short c11, short c12, short c13, short c14, short c15, short c16, short ca, char buf[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:5800:1"
+
+[tkvx4244_invalidLongRange]
+Class="Function"
+Prototype="long tkvx4244_invalidLongRange(long val, long min, long max, long retError);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:5869:10"
+
+[tkvx4244_invalidRealRange]
+Class="Function"
+Prototype="long tkvx4244_invalidRealRange(double val, double min, double max, long retError);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:5894:10"
+
+[tkvx4244_invalidShortRange]
+Class="Function"
+Prototype="long tkvx4244_invalidShortRange(short val, short min, short max, long retError);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:5919:10"
+
+[tkvx4244_setupArrays]
+Class="Function"
+Prototype="long tkvx4244_setupArrays();"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:5940:10"
+
+[tkvx4244_findInstruments]
+Class="Function"
+Prototype="long tkvx4244_findInstruments(unsigned long resMgr, char searchString[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:6012:10"
+
+[tkvx4244_tryAutoConnect]
+Class="Function"
+Prototype="long tkvx4244_tryAutoConnect(short theSlot, short theLogAdr, unsigned long *instrumentHandle);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:6131:10"
+
+[tkvx4244_returnDescriptor]
+Class="Function"
+Prototype="long tkvx4244_returnDescriptor(short theSlot, short theLogAdr, char **descriptor);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:6183:10"
+
+[tkvx4244_verifyID]
+Class="Function"
+Prototype="long tkvx4244_verifyID(unsigned long instrumentHandle);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\Tkvx4244\tkvx4244.c:6245:10"
+

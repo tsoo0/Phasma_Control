@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><tree>
+<node FLAGS="COMPRESS_ON_PUT" NAME="RAW_DATA" USAGE="SUBTREE">
+<data>*</data>
+</node>
+</tree>

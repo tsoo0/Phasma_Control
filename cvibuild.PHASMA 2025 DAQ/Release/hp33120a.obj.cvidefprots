@@ -1,0 +1,215 @@
+[hp33120a_init]
+Class="Function"
+Prototype="short hp33120a_init(short addr, short id_query, short rest, short *instrID);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\HP33120\hp33120a.c:110:14"
+
+[hp33120a_wf_config]
+Class="Function"
+Prototype="short hp33120a_wf_config(short instrID, short shape, char user_name[], double freq, double ampl, short unit, double offset, short d_cycle);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\HP33120\hp33120a.c:161:14"
+
+[hp33120a_wf_param]
+Class="Function"
+Prototype="short hp33120a_wf_param(short instrID, short wf_parameter, double wf_value, short unit);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\HP33120\hp33120a.c:220:14"
+
+[hp33120a_ampl_modulation]
+Class="Function"
+Prototype="short hp33120a_ampl_modulation(short instrID, short am_mode, short am_shape, char user_name[], double am_freq, short am_depth);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\HP33120\hp33120a.c:262:14"
+
+[hp33120a_freq_modulation]
+Class="Function"
+Prototype="short hp33120a_freq_modulation(short instrID, short fm_mode, short fm_shape, char user_name[], double fm_freq, double fm_deviation);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\HP33120\hp33120a.c:325:14"
+
+[hp33120a_burst_modulation]
+Class="Function"
+Prototype="short hp33120a_burst_modulation(short instrID, short bm_mode, short bm_ext_func, long bm_count, double bm_rate, short bm_phase);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\HP33120\hp33120a.c:387:14"
+
+[hp33120a_sweep_modulation]
+Class="Function"
+Prototype="short hp33120a_sweep_modulation(short instrID, short fs_mode, double fs_start_freq, double fs_stop_freq, double fs_time, short fs_spacing);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\HP33120\hp33120a.c:429:14"
+
+[hp33120a_fsk_modulation]
+Class="Function"
+Prototype="short hp33120a_fsk_modulation(short instrID, short fsk_mode, double hop_freq, double fsk_rate);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\HP33120\hp33120a.c:483:14"
+
+[hp33120a_sys_display]
+Class="Function"
+Prototype="short hp33120a_sys_display(short instrID, short disp_mode, short txt_mode, char text[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\HP33120\hp33120a.c:521:14"
+
+[hp33120a_sys_beeper]
+Class="Function"
+Prototype="short hp33120a_sys_beeper(short instrID);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\HP33120\hp33120a.c:562:14"
+
+[hp33120a_instr_setup]
+Class="Function"
+Prototype="short hp33120a_instr_setup(short instrID, short instr_config, short config_number);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\HP33120\hp33120a.c:580:14"
+
+[hp33120a_out_impedance]
+Class="Function"
+Prototype="short hp33120a_out_impedance(short instrID, short out_z);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\HP33120\hp33120a.c:602:14"
+
+[hp33120a_send_trig]
+Class="Function"
+Prototype="short hp33120a_send_trig(short instrID);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\HP33120\hp33120a.c:622:14"
+
+[hp33120a_arb_float_point_wf]
+Class="Function"
+Prototype="short hp33120a_arb_float_point_wf(short instrID, char file_name[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\HP33120\hp33120a.c:642:14"
+
+[hp33120a_arb_bin_wf]
+Class="Function"
+Prototype="short hp33120a_arb_bin_wf(short instrID, char file_name[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\HP33120\hp33120a.c:681:14"
+
+[hp33120a_arb_bin_block_wf]
+Class="Function"
+Prototype="short hp33120a_arb_bin_block_wf(short instrID, short numb_of_bytes, short bin_block[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\HP33120\hp33120a.c:720:14"
+
+[hp33120a_arb_delete]
+Class="Function"
+Prototype="short hp33120a_arb_delete(short instrID, short del_mode, char arb_name[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\HP33120\hp33120a.c:755:14"
+
+[hp33120a_arb_copy]
+Class="Function"
+Prototype="short hp33120a_arb_copy(short instrID, char dest_name[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\HP33120\hp33120a.c:780:14"
+
+[hp33120a_arb_value]
+Class="Function"
+Prototype="short hp33120a_arb_value(short instrID, short arb_func, char arb_name[], double *value);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\HP33120\hp33120a.c:800:14"
+
+[hp33120a_arb_catalog]
+Class="Function"
+Prototype="short hp33120a_arb_catalog(short instrID, char catalog[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\HP33120\hp33120a.c:829:14"
+
+[hp33120a_arb_nv_catalog]
+Class="Function"
+Prototype="short hp33120a_arb_nv_catalog(short instrID, char catalog[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\HP33120\hp33120a.c:854:14"
+
+[hp33120a_arb_free]
+Class="Function"
+Prototype="short hp33120a_arb_free(short instrID, short *free);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\HP33120\hp33120a.c:879:14"
+
+[hp33120a_reset]
+Class="Function"
+Prototype="short hp33120a_reset(short instrID);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\HP33120\hp33120a.c:905:14"
+
+[hp33120a_self_test]
+Class="Function"
+Prototype="short hp33120a_self_test(short instrID, short *result);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\HP33120\hp33120a.c:924:14"
+
+[hp33120a_error]
+Class="Function"
+Prototype="short hp33120a_error(short instrID, short *err_number, char err_message[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\HP33120\hp33120a.c:951:14"
+
+[hp33120a_revision]
+Class="Function"
+Prototype="short hp33120a_revision(short instrID, char vxipp_rev[], char driver_rev[], char instr_rev[], char minfw_rev[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\HP33120\hp33120a.c:977:14"
+
+[hp33120a_sys_version]
+Class="Function"
+Prototype="short hp33120a_sys_version(short instrID, char version[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\HP33120\hp33120a.c:1007:14"
+
+[hp33120a_write]
+Class="Function"
+Prototype="short hp33120a_write(short instrID, char cmd_string[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\HP33120\hp33120a.c:1027:14"
+
+[hp33120a_read]
+Class="Function"
+Prototype="short hp33120a_read(short instrID, short numbytes, char in_buff[], short *bytes_read);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\HP33120\hp33120a.c:1045:14"
+
+[hp33120a_close]
+Class="Function"
+Prototype="short hp33120a_close(short instrID);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\HP33120\hp33120a.c:1065:14"
+
+[hp33120a_open_instr]
+Class="Function"
+Prototype="short hp33120a_open_instr(short addr, short *ID);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\HP33120\hp33120a.c:1088:7"
+
+[hp33120a_close_instr]
+Class="Function"
+Prototype="short hp33120a_close_instr(short instrID);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\HP33120\hp33120a.c:1152:7"
+
+[hp33120a_invalid_integer_range]
+Class="Function"
+Prototype="short hp33120a_invalid_integer_range(short val, short min, short max, short err_code);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\HP33120\hp33120a.c:1174:7"
+
+[hp33120a_invalid_longint_range]
+Class="Function"
+Prototype="short hp33120a_invalid_longint_range(long val, long min, long max, short err_code);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\HP33120\hp33120a.c:1192:7"
+
+[hp33120a_invalid_real_range]
+Class="Function"
+Prototype="short hp33120a_invalid_real_range(double val, double min, double max, short err_code);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\HP33120\hp33120a.c:1211:7"
+
+[hp33120a_device_closed]
+Class="Function"
+Prototype="short hp33120a_device_closed(short instrID);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\HP33120\hp33120a.c:1228:7"
+
+[hp33120a_read_data]
+Class="Function"
+Prototype="short hp33120a_read_data(short instrID, char *buf, short cnt);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\HP33120\hp33120a.c:1244:7"
+
+[hp33120a_write_data]
+Class="Function"
+Prototype="short hp33120a_write_data(short instrID, char *buf, short cnt);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\HP33120\hp33120a.c:1259:7"
+
+[hp33120a_write_data_file]
+Class="Function"
+Prototype="short hp33120a_write_data_file(short instrID, char *filename);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\HP33120\hp33120a.c:1277:7"
+
+[hp33120a_set_timeout]
+Class="Function"
+Prototype="short hp33120a_set_timeout(short instrID, short tmo_code, short *old_timeout);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\HP33120\hp33120a.c:1294:7"
+
+[hp33120a_sys_status]
+Class="Function"
+Prototype="short hp33120a_sys_status(short instrID);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\HP33120\hp33120a.c:1310:7"
+
+[hp33120a_check_shape]
+Class="Function"
+Prototype="short hp33120a_check_shape(short instrID);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\HP33120\hp33120a.c:1345:7"
+
+[hp33120a_setup_arrays]
+Class="Function"
+Prototype="void hp33120a_setup_arrays();"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\HP33120\hp33120a.c:1369:6"
+

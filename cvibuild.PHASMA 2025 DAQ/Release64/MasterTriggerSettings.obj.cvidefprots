@@ -1,0 +1,45 @@
+[OpenTrigger_Settings]
+Class="Function"
+Prototype="void OpenTrigger_Settings();"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterTrigger\MasterTriggerSettings.c:17:6"
+
+[Close_Trigger_Settings_Activate]
+Class="Function"
+Prototype="int Close_Trigger_Settings_Activate(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterTrigger\MasterTriggerSettings.c:42:17"
+
+[Save_Trigger_to_File]
+Class="Function"
+Prototype="int Save_Trigger_to_File(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterTrigger\MasterTriggerSettings.c:67:17"
+
+[Read_Trigger_from_File]
+Class="Function"
+Prototype="int Read_Trigger_from_File(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterTrigger\MasterTriggerSettings.c:86:17"
+
+[SetUpNI_Card_Trig]
+Class="Function"
+Prototype="void SetUpNI_Card_Trig();"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterTrigger\MasterTriggerSettings.c:106:6"
+
+[MasterTriggerArm]
+Class="Function"
+Prototype="int MasterTriggerArm();"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterTrigger\MasterTriggerSettings.c:123:5"
+
+[Trigger_Settings_Activate]
+Class="Function"
+Prototype="void Trigger_Settings_Activate();"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterTrigger\MasterTriggerSettings.c:211:6"
+
+[Send_Trigger]
+Class="Function"
+Prototype="void Send_Trigger();"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterTrigger\MasterTriggerSettings.c:856:6"
+
+[Write_MasterTrigger]
+Class="Function"
+Prototype="void Write_MasterTrigger();"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterTrigger\MasterTriggerSettings.c:891:6"
+

@@ -1,0 +1,5 @@
+[setup_4244]
+Class="Function"
+Prototype="void setup_4244(int digitizer_hndl, int group1_rlength, double group1_drate, int group2_rlength, double group2_drate, int group3_rlength, double group3_drate, int group4_rlength, double group4_drate, short group1_vltrange, short group2_vltrange, short group3_vltrange, short group4_vltrange, short channel_one_status, short channel_two_status, short channel_three_status, short channel_four_status, short channel_five_status, short channel_six_status, short channel_seven_status, short channel_eight_status, short channel_nine_status, short channel_ten_status, short channel_eleven_status, short channel_twelve_status, short channel_thirteen_status, short channel_fourteen_status, short channel_fifteen_status, short channel_sixteen_status);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\setup_4244.c:5:6"
+

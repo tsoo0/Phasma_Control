@@ -1,0 +1,61 @@
+#pragma code_page(65001)
+#include "C:\Program Files (x86)\National Instruments\Shared\MSDTRedistributables\SDKHeaderFiles\8.1\winver.h"
+
+2 ICON "c:\\PHASMA 2025 DAQ\\PHASMA_icon.ico"
+1 24 "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\manifest.xml"
+
+
+STRINGTABLE DISCARDABLE
+BEGIN
+  65535  "PHASMA 2025 DAQ"
+END
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 1,0,0,0
+ PRODUCTVERSION 1,0,0,0
+ FILEFLAGSMASK VS_FFI_FILEFLAGSMASK
+ FILEFLAGS 0L
+ FILEOS VOS__WINDOWS32
+ FILETYPE VFT_APP
+ FILESUBTYPE VFT_UNKNOWN
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "CompanyName", "Scime Plasma Lab\0"
+            VALUE "FileDescription", "DAQ program for PHASMA\0"
+            VALUE "FileVersion", "1.0\0"
+            VALUE "InternalName", "PHASMA 2025 DAQ V1.0\0"
+            VALUE "LegalCopyright", "Copyright © WVU 2026\0"
+            VALUE "OriginalFilename", "PHASMA 2025 DAQ V1.0.exe\0"
+            VALUE "ProductName", "WVU PHASMA 2025 DAQ\0"
+            VALUE "ProductVersion", "1.0\0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 0x4b0
+    END
+END
+
+BdotSettings.uir UIRFileType "c:\\PHASMA 2025 DAQ\\Bdot\\BdotSettings.uir"
+ContLIFSettings.uir UIRFileType "c:\\PHASMA 2025 DAQ\\ContLIF\\ContLIFSettings.uir"
+DoubleProbeSettings.uir UIRFileType "c:\\PHASMA 2025 DAQ\\DoubleProbe\\DoubleProbeSettings.uir"
+Helicon:Settings.uir UIRFileType "c:\\PHASMA 2025 DAQ\\Helicon\\Helicon_Settings.uir"
+HousekeepingSystems.uir UIRFileType "c:\\PHASMA 2025 DAQ\\Housekeeping\\HousekeepingSystems.uir"
+LangmuirSettings.uir UIRFileType "c:\\PHASMA 2025 DAQ\\Langmuir\\LangmuirSettings.uir"
+MagField:Settings.uir UIRFileType "c:\\PHASMA 2025 DAQ\\Magnetic Field\\MagField_Settings.uir"
+MasterControlPanel.uir UIRFileType "c:\\PHASMA 2025 DAQ\\MasterControlPanel.uir"
+MasterTriggerSettings.uir UIRFileType "c:\\PHASMA 2025 DAQ\\MasterTrigger\\MasterTriggerSettings.uir"
+McPhersonSettings.uir UIRFileType "c:\\PHASMA 2025 DAQ\\McPherson\\McPhersonSettings.uir"
+OceanOpticsSettings.uir UIRFileType "c:\\PHASMA 2025 DAQ\\Ocean Optics\\OceanOpticsSettings.uir"
+PhotodiodeSettings.uir UIRFileType "c:\\PHASMA 2025 DAQ\\Photodiodes\\PhotodiodeSettings.uir"
+PhotronCameraSettings.uir UIRFileType "c:\\PHASMA 2025 DAQ\\Photron Camera\\PhotronCameraSettings.uir"
+PlasmaGunSettings.uir UIRFileType "c:\\PHASMA 2025 DAQ\\PlasmaGun\\PlasmaGunSettings.uir"
+PulsedLIFSettings.uir UIRFileType "c:\\PHASMA 2025 DAQ\\PulsedLIF\\PulsedLIFSettings.uir"
+QuantumBeatSettings.uir UIRFileType "c:\\PHASMA 2025 DAQ\\QuantumBeat\\QuantumBeatSettings.uir"
+RFEASettings.uir UIRFileType "c:\\PHASMA 2025 DAQ\\RFEA\\RFEASettings.uir"
+TempDiagSettings.uir UIRFileType "c:\\PHASMA 2025 DAQ\\TempDiag\\TempDiagSettings.uir"
+ThomsonScatteringSettings.uir UIRFileType "c:\\PHASMA 2025 DAQ\\ThomsonScattering\\ThomsonScatteringSettings.uir"
+TripleProbeSettings.uir UIRFileType "c:\\PHASMA 2025 DAQ\\TripleProbe\\TripleProbeSettings.uir"

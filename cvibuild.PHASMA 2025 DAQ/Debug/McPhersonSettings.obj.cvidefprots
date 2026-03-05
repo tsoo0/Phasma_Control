@@ -1,0 +1,45 @@
+[McPherson209Arm]
+Class="Function"
+Prototype="int McPherson209Arm();"
+SourceLocation="c:\PHASMA 2025 DAQ\McPherson\McPhersonSettings.c:31:5"
+
+[McPherson209Activate]
+Class="Function"
+Prototype="void McPherson209Activate();"
+SourceLocation="c:\PHASMA 2025 DAQ\McPherson\McPhersonSettings.c:48:6"
+
+[Create_McP_Wavelength]
+Class="Function"
+Prototype="void Create_McP_Wavelength(double Wavelength[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\McPherson\McPhersonSettings.c:119:6"
+
+[Write_McPherson209Data]
+Class="Function"
+Prototype="void Write_McPherson209Data();"
+SourceLocation="c:\PHASMA 2025 DAQ\McPherson\McPhersonSettings.c:159:6"
+
+[OpenMcPherson209_Settings]
+Class="Function"
+Prototype="void OpenMcPherson209_Settings();"
+SourceLocation="c:\PHASMA 2025 DAQ\McPherson\McPhersonSettings.c:235:6"
+
+[Close_McPherson209_Settings]
+Class="Function"
+Prototype="int Close_McPherson209_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="c:\PHASMA 2025 DAQ\McPherson\McPhersonSettings.c:289:17"
+
+[Move_McPherson209]
+Class="Function"
+Prototype="int Move_McPherson209(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="c:\PHASMA 2025 DAQ\McPherson\McPhersonSettings.c:319:17"
+
+[Set_McPherson209]
+Class="Function"
+Prototype="int Set_McPherson209(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="c:\PHASMA 2025 DAQ\McPherson\McPhersonSettings.c:394:17"
+
+[McP_Andor_Temp_Control]
+Class="Function"
+Prototype="int McP_Andor_Temp_Control(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="c:\PHASMA 2025 DAQ\McPherson\McPhersonSettings.c:411:17"
+

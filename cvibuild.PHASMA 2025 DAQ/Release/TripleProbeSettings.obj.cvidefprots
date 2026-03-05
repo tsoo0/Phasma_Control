@@ -1,0 +1,45 @@
+[TripleProbeArm]
+Class="Function"
+Prototype="int TripleProbeArm();"
+SourceLocation="c:\PHASMA 2025 DAQ\TripleProbe\TripleProbeSettings.c:21:5"
+
+[TripleProbeActivate]
+Class="Function"
+Prototype="void TripleProbeActivate();"
+SourceLocation="c:\PHASMA 2025 DAQ\TripleProbe\TripleProbeSettings.c:52:6"
+
+[Write_TripleProbeData]
+Class="Function"
+Prototype="void Write_TripleProbeData();"
+SourceLocation="c:\PHASMA 2025 DAQ\TripleProbe\TripleProbeSettings.c:80:6"
+
+[OpenTripleProbe_Settings]
+Class="Function"
+Prototype="void OpenTripleProbe_Settings();"
+SourceLocation="c:\PHASMA 2025 DAQ\TripleProbe\TripleProbeSettings.c:107:6"
+
+[Close_TripleProbe_Settings]
+Class="Function"
+Prototype="int Close_TripleProbe_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="c:\PHASMA 2025 DAQ\TripleProbe\TripleProbeSettings.c:119:17"
+
+[TripleProbe_Move_to_Start]
+Class="Function"
+Prototype="int TripleProbe_Move_to_Start(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="c:\PHASMA 2025 DAQ\TripleProbe\TripleProbeSettings.c:134:17"
+
+[TripleProbe_Move_to_Stop]
+Class="Function"
+Prototype="int TripleProbe_Move_to_Stop(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="c:\PHASMA 2025 DAQ\TripleProbe\TripleProbeSettings.c:168:17"
+
+[TripleProbe_Home]
+Class="Function"
+Prototype="int TripleProbe_Home(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="c:\PHASMA 2025 DAQ\TripleProbe\TripleProbeSettings.c:200:17"
+
+[Advance_TripleProbe_Probe]
+Class="Function"
+Prototype="float Advance_TripleProbe_Probe();"
+SourceLocation="c:\PHASMA 2025 DAQ\TripleProbe\TripleProbeSettings.c:226:7"
+

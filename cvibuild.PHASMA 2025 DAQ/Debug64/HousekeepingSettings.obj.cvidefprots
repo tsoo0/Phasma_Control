@@ -1,0 +1,45 @@
+[HousekeepingActivate]
+Class="Function"
+Prototype="void HousekeepingActivate();"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\HousekeepingSettings.c:50:6"
+
+[HousekeepingArm]
+Class="Function"
+Prototype="int HousekeepingArm();"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\HousekeepingSettings.c:156:5"
+
+[acquire_data]
+Class="Function"
+Prototype="void acquire_data(unsigned long handle, int channel, double voltage_scale, int record_length, double output_array[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\HousekeepingSettings.c:181:6"
+
+[Plasma_Gun_housekeeping_acquire]
+Class="Function"
+Prototype="void Plasma_Gun_housekeeping_acquire();"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\HousekeepingSettings.c:306:6"
+
+[displayErr]
+Class="Function"
+Prototype="void displayErr(unsigned long gInstrHndl, long err);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\HousekeepingSettings.c:367:6"
+
+[Write_HousekeepingData]
+Class="Function"
+Prototype="void Write_HousekeepingData();"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\HousekeepingSettings.c:378:6"
+
+[OpenHousekeeping_Settings]
+Class="Function"
+Prototype="void OpenHousekeeping_Settings();"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\HousekeepingSettings.c:486:6"
+
+[Close_Housekeeping_Settings]
+Class="Function"
+Prototype="int Close_Housekeeping_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\HousekeepingSettings.c:499:17"
+
+[TransferHousekeepingData]
+Class="Function"
+Prototype="int TransferHousekeepingData(double transfer_array1[], double transfer_array2[], double transfer_array3[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\Housekeeping\HousekeepingSettings.c:515:5"
+

@@ -1,0 +1,25 @@
+[TempDiagActivate]
+Class="Function"
+Prototype="void TempDiagActivate();"
+SourceLocation="c:\PHASMA 2025 DAQ\TempDiag\TempDiag Settings.c:30:6"
+
+[TempDiagArm]
+Class="Function"
+Prototype="int TempDiagArm();"
+SourceLocation="c:\PHASMA 2025 DAQ\TempDiag\TempDiag Settings.c:145:5"
+
+[Write_TempDiagData]
+Class="Function"
+Prototype="void Write_TempDiagData();"
+SourceLocation="c:\PHASMA 2025 DAQ\TempDiag\TempDiag Settings.c:175:6"
+
+[OpenTempDiag_Settings]
+Class="Function"
+Prototype="void OpenTempDiag_Settings();"
+SourceLocation="c:\PHASMA 2025 DAQ\TempDiag\TempDiag Settings.c:280:6"
+
+[Close_TempDiag_Settings]
+Class="Function"
+Prototype="int Close_TempDiag_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="c:\PHASMA 2025 DAQ\TempDiag\TempDiag Settings.c:295:17"
+

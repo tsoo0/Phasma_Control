@@ -1,0 +1,10 @@
+[WaitForPython]
+Class="Function"
+Prototype="int WaitForPython();"
+SourceLocation="c:\PHASMA 2025 DAQ\HelperFunctions.c:5:5"
+
+[TryPython]
+Class="Function"
+Prototype="int TryPython();"
+SourceLocation="c:\PHASMA 2025 DAQ\HelperFunctions.c:14:5"
+

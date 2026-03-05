@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Plugin DeviceName="Thorlabs Optical Chopper" 
+        Assembly="Thorlabs.WPF.OpticalChopper.Plugin" 
+        ConfigurationFile="Thorlabs.WPF.OpticalChopper.Shell.exe.config"
+        IconFile="SW_Icon_MC2000.ico" />

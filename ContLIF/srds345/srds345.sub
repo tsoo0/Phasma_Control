@@ -1,0 +1,1023 @@
+FPAttributeValueFile
+
+n SubType="IVI"
+
+n SubVersion="1"
+
+v AttrFunctionRangeTable DataType="i"
+ SRDS345_VAL_FGEN_SINE (0)
+  ""
+
+ SRDS345_VAL_FGEN_SQUARE (0)
+  ""
+
+ SRDS345_VAL_FGEN_TRIANGLE (0)
+  ""
+
+ SRDS345_VAL_FGEN_RAMP_UP (0)
+  ""
+
+ SRDS345_VAL_FGEN_NOISE (0)
+  ""
+
+ SRDS345_VAL_FGEN_ARB (0)
+  ""
+
+
+v attrAmInternalWaveformRangeTable DataType="i"
+ SRDS345_VAL_AM_INTERNAL_SINE (1)
+  "Configures the function generator to modulate the carrier signal's "
+  "amplitude with a sinusoid waveform."
+
+ SRDS345_VAL_AM_INTERNAL_SQUARE (2)
+  "Configures the function generator to modulate the carrier signal's "
+  "amplitude with a square waveform."
+
+ SRDS345_VAL_AM_INTERNAL_TRIANGLE (3)
+  "Configures the function generator to modulate the carrier signal's "
+  "amplitude with a triangle waveform."
+
+ SRDS345_VAL_AM_INTERNAL_RAMP_UP (4)
+  "Configures the function generator to modulate the carrier signal's "
+  "amplitude with a positive ramp waveform."
+
+
+v attrAmSourceRangeTable DataType="i"
+ SRDS345_VAL_AM_INTERNAL (0)
+  "Configures the function generator to modulate the carrier waveform with "
+  "its internal AM Modulating Source."
+
+
+v attrFmInternalWaveformRangeTable DataType="i"
+ SRDS345_VAL_FM_INTERNAL_SINE (1)
+  "Configures the function generator to modulate the carrier signal's "
+  "frequency with a sinusoid waveform."
+
+ SRDS345_VAL_FM_INTERNAL_SQUARE (2)
+  "Configures the function generator to modulate the carrier signal's "
+  "frequency with a square waveform."
+
+ SRDS345_VAL_FM_INTERNAL_TRIANGLE (3)
+  "Configures the function generator to modulate the carrier signal's "
+  "frequency with a triangle waveform."
+
+ SRDS345_VAL_FM_INTERNAL_RAMP_UP (4)
+  "Configures the function generator to modulate the carrier signal's "
+  "frequency with a positive ramp waveform."
+
+
+v attrFmSourceRangeTable DataType="i"
+ SRDS345_VAL_FM_INTERNAL (0)
+  "Configures the function generator to modulate the carrier waveform with "
+  "its internal FM Modulating Source."
+
+
+v attrFuncWaveformRangeTable DataType="i"
+ SRDS345_VAL_WFM_SINE (1)
+  "Configures the function generator to produce a sinusoid waveform."
+
+ SRDS345_VAL_WFM_SQUARE (2)
+  "Configures the function generator to produce a square waveform."
+
+ SRDS345_VAL_WFM_TRIANGLE (3)
+  "Configures the function generator to produce a triangle waveform."
+
+ SRDS345_VAL_WFM_RAMP_UP (4)
+  "Configures the function generator to produce a positive ramp waveform."
+
+ SRDS345_VAL_WFM_NOISE (1001)
+  "Configures the function generator to produce noise."
+
+
+v attrModWaveformRangeTable DataType="i"
+ SRDS345_VAL_MOD_SING (0)
+  ""
+
+ SRDS345_VAL_MOD_RAMP_UP (0)
+  ""
+
+ SRDS345_VAL_MOD_TRIANGLE (0)
+  ""
+
+ SRDS345_VAL_MOD_SINE (0)
+  ""
+
+ SRDS345_VAL_MOD_SQUARE (0)
+  ""
+
+ SRDS345_VAL_MOD_ARB (0)
+  ""
+
+ SRDS345_VAL_MOD_NONE (0)
+  ""
+
+
+v attrOperationModeRangeTable DataType="i"
+ SRDS345_VAL_OPERATE_CONTINUOUS (0)
+  "Configures the function generator to produce waveforms continuously."
+
+ SRDS345_VAL_OPERATE_BURST (1)
+  "Configures the function generator to produce a discrete number of "
+  "waveform cycles when a trigger occurs."
+
+ SRDS345_VAL_OPERATE_SWEEP_LIN (1001)
+  "Configures the function generator to produce a linear frequency sweep."
+
+ SRDS345_VAL_OPERATE_SWEEP_LOG (1002)
+  "Configures the function generator to produce a logarithmic frequency "
+  "sweep."
+
+
+v attrOutputImpedanceRangeTable DataType="d"
+ 50.00 (5.00000000000000E+001)
+  ""
+
+
+v attrOutputModeRangeTable DataType="i"
+ SRDS345_VAL_OUTPUT_FUNC (0)
+  "Configures the function generator to produce standard waveforms."
+
+ SRDS345_VAL_OUTPUT_ARB (1)
+  "Configures the function generator to produce arbitrary waveforms."
+
+
+v attrPmInternalWaveformRangeTable DataType="i"
+ SRDS345_VAL_PM_INTERNAL_SINE (1)
+  "Configures the function generator to modulate the carrier signal's phase "
+  "with a sinusoid waveform."
+
+ SRDS345_VAL_PM_INTERNAL_SQUARE (2)
+  "Configures the function generator to modulate the carrier signal's phase "
+  "with a square waveform."
+
+ SRDS345_VAL_PM_INTERNAL_TRIANGLE (3)
+  "Configures the function generator to modulate the carrier signal's phase "
+  "with a triangle waveform."
+
+ SRDS345_VAL_PM_INTERNAL_RAMP_UP (4)
+  "Configures the function generator to modulate the carrier signal's phase "
+  "with a positive ramp waveform."
+
+
+v attrRefClockSourceRangeTable DataType="i"
+ SRDS345_VAL_REF_CLOCK_INTERNAL (0)
+  "The function generator produces the reference clock internally."
+
+ SRDS345_VAL_REF_CLOCK_EXTERNAL (1)
+  "The function generator receives the reference clock signal from an "
+  "external source."
+
+
+v attrSweDirectionRangeTable DataType="i"
+ SRDS345_VAL_SWEEP_SINGLE (0)
+  "The output frequency will be the sweep start frequency until a trigger is "
+  "received."
+
+ SRDS345_VAL_SWEEP_UP (1)
+  "The output frequency will sweep from the start frequency to the stop "
+  "frequency, jump back to the start frequency and repeat."
+
+ SRDS345_VAL_SWEEP_DOWN (2)
+  "The output frequency will sweep from the start frequency to the stop "
+  "frequency, sweep back to the start frequency and repeat."
+
+
+v attrTriggerSourceRangeTable DataType="i"
+ SRDS345_VAL_SOFTWARE_TRIG (2)
+  "The function generator waits until you call the "
+  "srds345_SendSoftwareTrigger function."
+
+ SRDS345_VAL_INTERNAL_TRIGGER (3)
+  "The function generator wait for a trigger from its internal trigger "
+  "source."
+
+ SRDS345_VAL_EXTERNAL (1)
+  "The function generator waits for a positive slope trigger on the external "
+  "trigger input."
+
+ SRDS345_VAL_EXTERNAL_NEG (1002)
+  "The function generator waits for a negative slope trigger on the external "
+  "trigger input."
+
+ SRDS345_VAL_LINE_TRIGGER (1001)
+  "The power line frequency starts the burst or sweep."
+
+
+v Boolean_values DataType="i"
+ VI_TRUE (1)
+  "True"
+
+ VI_FALSE (0)
+  "False"
+
+
+v attrFgenFunctionRangeTable DataType="i"
+ SRDS345_VAL_WFM_SINE (1)
+  ""
+
+ SRDS345_VAL_WFM_SQUARE (2)
+  ""
+
+ SRDS345_VAL_WFM_TRIANGLE (3)
+  ""
+
+ SRDS345_VAL_WFM_RAMP_UP (4)
+  ""
+
+ SRDS345_VAL_WFM_NOISE (1001)
+  ""
+
+ SRDS345_VAL_WFM_ARB (10000)
+  ""
+
+
+v attrModTypeRangeTable DataType="i"
+ SRDS345_VAL_MOD_LINS (0)
+  "Lin Sweep"
+
+ SRDS345_VAL_MOD_LOGS (1)
+  "Log Sweep"
+
+ SRDS345_VAL_MOD_AM (2)
+  "AM"
+
+ SRDS345_VAL_MOD_FM (3)
+  "FM"
+
+ SRDS345_VAL_MOD_PM (4)
+  "PM"
+
+ SRDS345_VAL_MOD_BURST (5)
+  "Burst"
+
+
+v attrModTriggerSourceRangeTable DataType="i"
+ SRDS345_VAL_MOD_SW_TRIG_FUNC (0)
+  ""
+
+ SRDS345_VAL_MOD_TRIG_INT_RATE (1)
+  ""
+
+ SRDS345_VAL_MOD_TRIG_EXT_POS (2)
+  ""
+
+ SRDS345_VAL_MOD_TRIG_EXT_NEG (3)
+  ""
+
+ SRDS345_VAL_MOD_TRIG_LINE (4)
+  ""
+
+
+0 srds345_SetAttributeViInt32 3 4 false s DataType="ViInt32"
+0 srds345_GetAttributeViInt32 3 4 false g DataType="ViInt32"
+0 srds345_CheckAttributeViInt32 3 4 false s DataType="ViInt32"
+0 srds345_SetAttributeViReal64 3 4 false s DataType="ViReal64"
+0 srds345_GetAttributeViReal64 3 4 false g DataType="ViReal64"
+0 srds345_CheckAttributeViReal64 3 4 false s DataType="ViReal64"
+0 srds345_SetAttributeViSession 3 4 false s DataType="ViSession"
+0 srds345_GetAttributeViSession 3 4 false g DataType="ViSession"
+0 srds345_CheckAttributeViSession 3 4 false s DataType="ViSession"
+0 srds345_SetAttributeViBoolean 3 4 false s DataType="ViBoolean"
+0 srds345_GetAttributeViBoolean 3 4 false g DataType="ViBoolean"
+0 srds345_CheckAttributeViBoolean 3 4 false s DataType="ViBoolean"
+0 srds345_SetAttributeViString 3 4 false s DataType="ViString"
+0 srds345_GetAttributeViString 3 5 false g DataType="ViString"
+0 srds345_CheckAttributeViString 3 4 false s DataType="ViString"
+
+1 all "Inherent IVI Attributes"
+  "Attributes common to all IVI instrument drivers."
+
+2 all "User Options"
+  "Attributes you can set to affect the operation of this instrument driver.\n"
+  "    "
+
+3 all "Range Check" SRDS345_ATTR_RANGE_CHECK ViBoolean gs Boolean_values
+  "Specifies whether to validate attribute values and function parameters.  "
+  "If enabled, the instrument driver validates the parameter values that you "
+  "pass to driver functions.  Range checking parameters is very useful for "
+  "debugging.  After you validate your program, you can set this attribute to "
+  "VI_FALSE to disable range checking and maximize performance.\n"
+  "    The default value is VI_TRUE.   Use the srds345_InitWithOptions "
+  "function to override this value.\n"
+  "\n"
+  "Attribute Value: 1050002"
+
+3 all "Query Instrument Status" SRDS345_ATTR_QUERY_INSTRUMENT_STATUS ViBoolean gs Boolean_values
+  "Specifies whether the instrument driver queries the instrument status "
+  "after each operation.  Querying the instrument status is very useful for "
+  "debugging.  After you validate your program, you can set this attribute to "
+  "VI_FALSE to disable status checking and maximize performance\n"
+  "    The instrument driver can choose to ignore status checking for "
+  "particular attributes regardless of the setting of this attribute.\n"
+  "    The default value is VI_TRUE.   Use the srds345_InitWithOptions "
+  "function to override this value.\n"
+  "\n"
+  "Attribute Value: 1050003"
+
+3 all "Cache" SRDS345_ATTR_CACHE ViBoolean gs Boolean_values
+  "Specifies whether to cache the value of attributes.  When caching is "
+  "enabled, the instrument driver keeps track of the current instrument "
+  "settings and avoids sending redundant commands to the instrument.  Thus, "
+  "you can significantly increase execution speed.\n"
+  "    The instrument driver can choose always to cache or never to cache "
+  "particular attributes regardless of the setting of this attribute.\n"
+  "    The default value is VI_TRUE.   Use the srds345_InitWithOptions "
+  "function to override this value.\n"
+  "\n"
+  "Attribute Value: 1050004"
+
+3 all "Simulate" SRDS345_ATTR_SIMULATE ViBoolean gs Boolean_values
+  "Specifies whether or not to simulate instrument driver I/O operations.  "
+  "If simulation is enabled, instrument driver functions perform range "
+  "checking and call Ivi_GetAttribute and Ivi_SetAttribute functions, but "
+  "they do not perform instrument I/O.  For output parameters that represent "
+  "instrument data, the instrument driver functions return calculated values.\n"
+  "    The default value is VI_FALSE.   Use the srds345_InitWithOptions "
+  "function to override this value.\n"
+  "\n"
+  "Attribute Value: 1050005"
+
+3 all "Record Value Coercions" SRDS345_ATTR_RECORD_COERCIONS ViBoolean gs Boolean_values
+  "Specifies whether the IVI engine keeps a list of the value coercions it "
+  "makes for ViInt32 and ViReal64 attributes.  You call "
+  "srds345_GetNextCoercionRecord to extract and delete the oldest coercion "
+  "record from the list.\n"
+  "    The default value is VI_FALSE.   Use the srds345_InitWithOptions "
+  "function to override this value.\n"
+  "\n"
+  "Attribute Value: 1050006"
+
+3 all "Interchange Check" SRDS345_ATTR_INTERCHANGE_CHECK ViBoolean gs Boolean_values
+  "Specifies whether to perform interchangeability checking and retrieve "
+  "interchangeability warnings when you call srds345_Initiate. \n"
+  "\n"
+  "The default value is VI_FALSE.\n"
+  "\n"
+  "Interchangeability warnings indicate that using your application with a "
+  "different instrument might cause different behavior.  You call "
+  "srds345_GetNextInterchangeWarning to extract interchange warnings.  Call "
+  "the srds345_ClearInterchangeWarnings function to clear the list of "
+  "interchangeability warnings without reading them.\n"
+  "\n"
+  "Interchangeability checking examines the attributes in a capability group "
+  "only if you specify a value for at least one attribute within that group.  "
+  "Interchangeability warnings can occur when an attribute affects the "
+  "behavior of the instrument and you have not set that attribute, or the "
+  "attribute has been invalidated since you set it.\n"
+  "\n"
+  "Attribute Value: 1050021"
+
+2 all "Driver Identification"
+  "Attributes that provide identity and version information about this "
+  "instrument driver.\n"
+  "    "
+
+3 all "Description" SRDS345_ATTR_SPECIFIC_DRIVER_DESCRIPTION ViString g
+  "A string that contains a brief description of the specific driver\n"
+  "\n"
+  "Attribute Value: 1050514"
+
+3 all "Driver Prefix" SRDS345_ATTR_SPECIFIC_DRIVER_PREFIX ViString g
+  "A string that contains the prefix for the instrument driver.  The name of "
+  "each user-callable function in this driver starts with this prefix.\n"
+  "\n"
+  "Attribute Value: 1050302"
+
+3 all "Driver Vendor" SRDS345_ATTR_SPECIFIC_DRIVER_VENDOR ViString g
+  "A string that contains the name of the vendor that supplies this driver.\n"
+  "\n"
+  "Attribute Value: 1050513"
+
+3 all "Revision" SRDS345_ATTR_SPECIFIC_DRIVER_REVISION ViString g
+  "A string that contains additional version information about this "
+  "instrument driver.\n"
+  "\n"
+  "Attribute Value: 1050551"
+
+3 all "Class Specification Major Version" SRDS345_ATTR_SPECIFIC_DRIVER_CLASS_SPEC_MAJOR_VERSION ViInt32 g
+  "The major version number of the class specification with which this "
+  "driver is compliant.\n"
+  "\n"
+  "Attribute Value: 1050515"
+
+3 all "Class Specification Minor Version" SRDS345_ATTR_SPECIFIC_DRIVER_CLASS_SPEC_MINOR_VERSION ViInt32 g
+  "The minor version number of the class specification with which this "
+  "driver is compliant.\n"
+  "\n"
+  "Attribute Value: 1050516"
+
+2 all "Driver Capabilities"
+  "Attributes that provide information about the capabilities of this "
+  "instrument driver.\n"
+  "    "
+
+3 all "Supported Instrument Models" SRDS345_ATTR_SUPPORTED_INSTRUMENT_MODELS ViString g
+  "Contains a model code of the instrument. For drivers that support more "
+  "than one device, this attribute contains a comma-separated list of "
+  "supported instrument models.\n"
+  "\n"
+  "Attribute Value: 1050327"
+
+3 all "Class Group Capabilities" SRDS345_ATTR_GROUP_CAPABILITIES ViString g
+  "A string that contains a comma-separated list of class-extention groups "
+  "that this driver implements.\n"
+  "\n"
+  "Attribute Value: 1050401"
+
+3 all "Number of Channels" SRDS345_ATTR_CHANNEL_COUNT ViInt32 g
+  "Indicates the number of channels that the specific instrument driver "
+  "supports.  \n"
+  "    For each attribute for which the IVI_VAL_MULTI_CHANNEL flag attribute "
+  "is set, the IVI engine maintains a separate cache value for each channel.\n"
+  "\n"
+  "Attribute Value: 1050203"
+
+2 all "Instrument Identification"
+  "Attributes that provide identity information about the instrument that "
+  "you are using.    "
+
+3 all "Manufacturer" SRDS345_ATTR_INSTRUMENT_MANUFACTURER ViString g
+  "A string that contains the name of the instrument manufacturer you are "
+  "currently using.\n"
+  "\n"
+  "Attribute Value: 1050511"
+
+3 all "Model" SRDS345_ATTR_INSTRUMENT_MODEL ViString g
+  "A string that contains the model number or name of the instrument that "
+  "you are currently using.\n"
+  "\n"
+  "Attribute Value: 1050512"
+
+3 all "Firmware Revision" SRDS345_ATTR_INSTRUMENT_FIRMWARE_REVISION ViString g
+  "A string that contains the firmware revision information for the "
+  "instrument you are currently using.\n"
+  "\n"
+  "Attribute Value: 1050510"
+
+2 all "Error Info"
+  "Attributes for error information.\n"
+  "    "
+
+2 all "Advanced Session Information"
+  "Attributes that contain additional information concerning the instrument "
+  "driver session.\n"
+  "    "
+
+3 all "Driver Setup" SRDS345_ATTR_DRIVER_SETUP ViString g
+  "This attribute indicates the Driver Setup string that the user specified "
+  "when initializing the driver.\n"
+  "\n"
+  "Some cases exist where the end-user must specify instrument driver options "
+  "at initialization time.  An example of this is specifying a particular "
+  "instrument model from among a family of instruments that the driver "
+  "supports.  This is useful when using simulation.  The end-user can specify "
+  "driver-specific options through the DriverSetup keyword in the "
+  "optionsString parameter to the srds345_InitWithOptions function, or "
+  "through the IVI Configuration Utility.\n"
+  "\n"
+  "If the user does not specify a Driver Setup string, this attribute returns "
+  "an empty string.\n"
+  "\n"
+  "Attribute Value: 1050007"
+
+3 all "Logical Name" SRDS345_ATTR_LOGICAL_NAME ViString g
+  "A string containing the logical name you specified when opening the "
+  "current IVI session.\n"
+  "     You may pass a logical name to the srds345_init or "
+  "srds345_InitWithOptions functions.  The IVI Configuration utility must "
+  "contain an entry for the logical name.  The logical name entry refers to a "
+  "virtual instrument section in the IVI Configuration file.  The virtual "
+  "instrument section specifies a physical device and initial user options.\n"
+  "\n"
+  "Attribute Value: 1050305"
+
+3 all "Resource Descriptor" SRDS345_ATTR_IO_RESOURCE_DESCRIPTOR ViString g
+  "Indicates the resource descriptor the driver uses to identify the "
+  "physical device.\n"
+  "    If you initialize the driver with a logical name, this attribute "
+  "contains the resource descriptor that corresponds to the entry in the IVI "
+  "Configuration utility.  \n"
+  "    If you initialize the instrument driver with the resource descriptor, "
+  "this attribute contains that value.\n"
+  "\n"
+  "Attribute Value: 1050304"
+
+1 all "Basic Operation"
+  "Attributes that control the basic features of the function generator."
+
+2 all "Operation Mode" SRDS345_ATTR_OPERATION_MODE ViInt32 gs attrOperationModeRangeTable
+  "This channel-based attribute determines how the function generator "
+  "produces waveforms.\n"
+  "    \n"
+  "When you set this attribute to SRDS345_VAL_OPERATE_BURST, you use the "
+  "following attribute and function to configure how the function generator "
+  "produces waveforms:\n"
+  "SRDS345_ATTR_BURST_COUNT\n"
+  "srds345_ConfigureBurstCount\n"
+  "\n"
+  "    When you set this attribute to SRDS345_VAL_OPERATE_SWEEP_LIN or "
+  "SRDS345_VAL_OPERATE_SWEEP_LOG, you use the following attributes and "
+  "functions to configure how the function generator produces waveforms:\n"
+  "SRDS345_ATTR_SWEEP_DIRECTION\n"
+  "SRDS345_ATTR_SWEEP_START_FREQ\n"
+  "SRDS345_ATTR_SWEEP_STOP_FREQ\n"
+  "SRDS345_ATTR_SWEEP_MOD_RATE\n"
+  "srds345_ConfigureSweep\n"
+  "\n"
+  "Attribute Value: 1250005"
+
+2 all "Output Mode" SRDS345_ATTR_OUTPUT_MODE ViInt32 gs attrOutputModeRangeTable
+  "This attribute specifies how the function generator produces waveforms.  "
+  "The value you specify determines which functions and attributes you use to "
+  "configure the waveform the function generator produces.\n"
+  "    When you set this attribute to SRDS345_VAL_OUTPUT_FUNC, you use the "
+  "following attributes and functions to configure standard waveforms:\n"
+  "\n"
+  "SRDS345_ATTR_FUNC_WAVEFORM\n"
+  "SRDS345_ATTR_FUNC_AMPLITUDE\n"
+  "SRDS345_ATTR_FUNC_DC_OFFSET\n"
+  "SRDS345_ATTR_FUNC_FREQUENCY\n"
+  "SRDS345_ATTR_FUNC_START_PHASE\n"
+  "SRDS345_ATTR_FUNC_DUTY_CYCLE_HIGH\n"
+  "\n"
+  "srds345_ConfigureStandardWaveform\n"
+  "\n"
+  "    When you set this attribute to SRDS345_VAL_OUTPUT_ARB, you use the "
+  "following attributes and functions to configure arbitrary waveforms:\n"
+  "\n"
+  "SRDS345_ATTR_ARB_WAVEFORM_HANDLE\n"
+  "SRDS345_ATTR_ARB_GAIN\n"
+  "SRDS345_ATTR_ARB_OFFSET\n"
+  "SRDS345_ATTR_ARB_SAMPLE_RATE\n"
+  "\n"
+  "srds345_CreateArbWaveform\n"
+  "srds345_ClearArbWaveform\n"
+  "srds345_ConfigureArbWaveform\n"
+  "srds345_ConfigureSampleRate\n"
+  "\n"
+  "Attribute Value: 1250001"
+
+2 all "Reference Clock Source" SRDS345_ATTR_REF_CLOCK_SOURCE ViInt32 gs attrRefClockSourceRangeTable
+  "This attribute specifies the reference clock source.  The function "
+  "generator derives frequencies and sample rates that it uses to generate "
+  "waveforms from the source you specify.\n"
+  "For example, when you set this attribute to SRDS345_VAL_EXTERNAL, the "
+  "function generator uses the signal it receives at its external clock "
+  "terminal as its reference clock.\n"
+  "\n"
+  "Note:\n"
+  "(1) When you set this attribute to the value SRDS345_VAL_EXTERNAL and an "
+  "external signal is not connected, the instrument uses its internal "
+  "timebase.\n"
+  "\n"
+  "Attribute Value: 1250002"
+
+2 all "Output Enabled" SRDS345_ATTR_OUTPUT_ENABLED ViBoolean gs Boolean_values
+  "This channel-based attribute specifies whether the signal the function "
+  "generator produces appears at the output connector.\n"
+  "\n"
+  "Attribute Value: 1250003"
+
+2 all "Output Impedance" SRDS345_ATTR_OUTPUT_IMPEDANCE ViReal64 gs attrOutputImpedanceRangeTable
+  "This channel-based attribute specifies the function generator's output "
+  "impedance at the output connector.\n"
+  "\n"
+  "Attribute Value: 1250004"
+
+1 all "Standard Function Output"
+  "Attributes for generating standard function waveform output.  You use "
+  "this group of attributes when you set the SRDS345_ATTR_OUTPUT_MODE "
+  "attribute to SRDS345_VAL_OUTPUT_FUNC.  You can use the "
+  "srds345_ConfigureStandardWaveform function to set all these attributes "
+  "except SRDS345_ATTR_FUNC_DUTY_CYCLE_HIGH.\n"
+
+2 all "Waveform" SRDS345_ATTR_FUNC_WAVEFORM ViInt32 gs attrFuncWaveformRangeTable
+  "This channel-based attribute specifies which standard waveform the "
+  "function generator produces.\n"
+  "    You use this attribute only when the SRDS345_ATTR_OUTPUT_MODE "
+  "attribute is set to SRDS345_VAL_OUTPUT_FUNC.\n"
+  "\n"
+  "Attribute Value: 1250101"
+
+2 all "Amplitude" SRDS345_ATTR_FUNC_AMPLITUDE ViReal64 gs
+  "This channel-based attribute specifies the amplitude of the standard "
+  "waveform the function generator produces.  This value is the amplitude at "
+  "the output terminal.  The units are volts peak-to-peak (Vpp).  For "
+  "example, to produce a waveform ranging from -5.0 to +5.0 volts, you set "
+  "this value to 10.0 volts.\n"
+  "    You use this attribute only when the SRDS345_ATTR_OUTPUT_MODE "
+  "attribute is set to SRDS345_VAL_OUTPUT_FUNC.\n"
+  "\n"
+  "Valid Range:  0.00 - 10.00\n"
+  "\n"
+  "Note:\n"
+  "(1)  Setting this attribute might change the value of the "
+  "SRDS345_ATTR_FUNC_DC_OFFSET attribute.  If (Amplitude/2 + Offset) is "
+  "greater than 5.0 volts, the offset will be set to 0.0.\n"
+  "\n"
+  "Attribute Value: 1250102"
+
+2 all "DC Offset" SRDS345_ATTR_FUNC_DC_OFFSET ViReal64 gs
+  "This channel-based attribute specifies the DC offset of the standard "
+  "waveform the function generator produces.  This value is the offset at the "
+  "output terminal.  The units are volts (V).  The value is the offset from "
+  "ground to the center of the waveform you specify with the "
+  "SRDS345_ATTR_FUNC_WAVEFORM attribute.  For example, a standard waveform "
+  "ranging from +5.0 volts to 0.0 volts has a DC offset of 2.5 volts.\n"
+  "    You use this attribute only when the SRDS345_ATTR_OUTPUT_MODE "
+  "attribute is set to SRDS345_VAL_OUTPUT_FUNC.\n"
+  "\n"
+  "Valid Range:  -5.00 to 5.00\n"
+  "\n"
+  "Attribute Value: 1250103"
+
+2 all "Frequency" SRDS345_ATTR_FUNC_FREQUENCY ViReal64 gs
+  "This channel-based attribute specifies the frequency of the standard "
+  "waveform the function generator produces.  The units are Hertz (Hz).  You "
+  "use this attribute only when the SRDS345_ATTR_OUTPUT_MODE attribute is set "
+  "to SRDS345_VAL_OUTPUT_FUNC.\n"
+  "\n"
+  "Valid Range:  depends on selected function:\n"
+  "- For Sine:     1.0e-6 to 30.2e6\n"
+  "- For Square:   1.0e-6 to 30.2e6\n"
+  "- For Ramp:     1.0e-6 to 100.0e3\n"
+  "- For Triangle: 1.0e-6 to 100.0e3\n"
+  "\n"
+  "Attribute Value: 1250104"
+
+2 all "Start Phase" SRDS345_ATTR_FUNC_START_PHASE ViReal64 gs
+  "This channel-based attribute specifies the horizontal offset of the "
+  "standard waveform the function generator produces.  You specify this "
+  "attribute in degrees of one waveform cycle.  For example, a 180 degree "
+  "phase offset means output generation begins halfway through the waveform.  "
+  "A start phase of 360 degrees offsets the output by an entire waveform "
+  "cycle.  It is therefore identical to a start phase of 0 degrees.\n"
+  "    You use this attribute only when the SRDS345_ATTR_OUTPUT_MODE "
+  "attribute is set to SRDS345_VAL_OUTPUT_FUNC.\n"
+  "\n"
+  "Valid Range:  -7199.999 - 7199.999 degrees\n"
+  "\n"
+  "Attribute Value: 1250105"
+
+2 all "Duty Cycle High" SRDS345_ATTR_FUNC_DUTY_CYCLE_HIGH ViReal64 gs
+  "This channel-based attribute specifies the length of time the output "
+  "voltage level remains high in a square waveform.  You specify this "
+  "attribute as a percentage of one waveform cycle.\n"
+  "    You use this attribute only when the SRDS345_ATTR_OUTPUT_MODE "
+  "attribute is set to SRDS345_VAL_OUTPUT_FUNC and the "
+  "SRDS345_ATTR_FUNC_WAVEFORM attribute to SRDS345_VAL_WFM_SQUARE.\n"
+  "\n"
+  "Valid Value:  50%\n"
+  "\n"
+  "Attribute Value: 1250106"
+
+1 all "Arbitrary Waveform Output"
+  "Attributes for generating arbitrary waveform output.  You use this group "
+  "of attributes when you set the SRDS345_ATTR_OUTPUT_MODE attribute to "
+  "SRDS345_VAL_OUTPUT_ARB.  You can use the srds345_ConfigureArbWaveform, "
+  "srds345_SetSampleRate, and srds345_QueryArbWfmCapabilities functions to "
+  "configure these attributes.\n"
+
+2 all "Arbitrary Waveform Handle" SRDS345_ATTR_ARB_WAVEFORM_HANDLE ViInt32 gs
+  "This channel-based attribute identifies which arbitrary waveform the "
+  "function generator produces.  You can create multiple arbitrary waveforms "
+  "using the srds345_CreateArbWaveform function.  The "
+  "srds345_CreateArbWaveform function returns a handle that you use to "
+  "identify the particular waveform.  To configure the function generator to "
+  "produce a particular waveform, you set this attribute to the waveform's "
+  "handle.\n"
+  "    You use this attribute only when the SRDS345_ATTR_OUTPUT_MODE "
+  "attribute is set to SRDS345_VAL_OUTPUT_ARB.\n"
+  "\n"
+  "Attribute Value: 1250201"
+
+2 all "Arbitrary Waveform Gain" SRDS345_ATTR_ARB_GAIN ViReal64 gs
+  "This channel-based attribute specifies the factor by which the function "
+  "generator scales the arbitrary waveform data.  When you create arbitrary "
+  "waveforms, you must first normalize the data points to the range -1.0 to "
+  "+1.0.  You use this attribute to scale the arbitrary waveform to other "
+  "ranges.  For example, when you set this attribute to 2.0, the output "
+  "signal ranges from -2.0 to +2.0 volts.\n"
+  "    You use this attribute when the SRDS345_ATTR_OUTPUT_MODE attribute is "
+  "set to SRDS345_VAL_OUTPUT_ARB.\n"
+  "\n"
+  "Valid Range:  0.00 - 10.00 V\n"
+  "\n"
+  "Attribute Value: 1250202"
+
+2 all "Arbitrary Waveform Offset" SRDS345_ATTR_ARB_OFFSET ViReal64 gs
+  "This channel-based attribute specifies the value the function generator "
+  "adds to the arbitrary waveform data.  When you create arbitrary waveforms, "
+  "you must first normalize the data points to the range -1.0 to +1.0.  You "
+  "use this attribute to shift the arbitrary waveform's range. The units are "
+  "volts (V).  For example, when you set this attribute to 1.0, the output "
+  "signal ranges from 2.0 volts to 0.0 volts.\n"
+  "    You use this attribute when the SRDS345_ATTR_OUTPUT_MODE attribute is "
+  "set to SRDS345_VAL_OUTPUT_ARB.\n"
+  "\n"
+  "Valid Range:  -5.00 to 5.00 V\n"
+  "\n"
+  "Attribute Value: 1250203"
+
+2 all "Sample Rate" SRDS345_ATTR_ARB_SAMPLE_RATE ViReal64 gs
+  "This attribute specifies the rate at which the function generator outputs "
+  "the points in arbitrary waveforms.  The units are samples per second.\n"
+  "    You use this attribute when the SRDS345_ATTR_OUTPUT_MODE attribute is "
+  "set to SRDS345_VAL_OUTPUT_ARB.\n"
+  "\n"
+  "Valid Range:  0.002329 - 40000000.0\n"
+  "\n"
+  "Attribute Value: 1250204"
+
+2 all "Max Number of Waveforms" SRDS345_ATTR_MAX_NUM_WAVEFORMS ViInt32 g
+  "This attribute returns the maximum number of arbitrary waveforms that the "
+  "function generator allows.  Typically, this value is constant for the "
+  "function generator.\n"
+  "\n"
+  "Attribute Value: 1250205"
+
+2 all "Waveform Quantum" SRDS345_ATTR_WAVEFORM_QUANTUM ViInt32 g
+  "The size of each arbitrary waveform must be a multiple of a quantum "
+  "value.  This attribute returns the quantum value the function generator "
+  "allows.\n"
+  "For example, when this attribute returns a value of 8, all waveform sizes "
+  "must be a multiple of 8.  Typically, this value is constant for the "
+  "function generator.\n"
+  "\n"
+  "Attribute Value: 1250206"
+
+2 all "Min Waveform Size" SRDS345_ATTR_MIN_WAVEFORM_SIZE ViInt32 g
+  "This attribute returns the minimum number of points the function "
+  "generator allows in an arbitrary waveform.  Typically, this value is "
+  "constant for the function generator.\n"
+  "\n"
+  "Attribute Value: 1250207"
+
+2 all "Max Waveform Size" SRDS345_ATTR_MAX_WAVEFORM_SIZE ViInt32 g
+  "This attribute returns the maximum number of points the function "
+  "generator allows in an arbitrary waveform.  Typically, this value is "
+  "constant for the function generator.\n"
+  "\n"
+  "Attribute Value: 1250208"
+
+1 all "Triggering"
+  "Attributes for setting triggering characteristics."
+
+2 all "Trigger Source" SRDS345_ATTR_TRIGGER_SOURCE ViInt32 gs attrTriggerSourceRangeTable
+  "This channel-based attribute specifies the trigger source.  After you "
+  "call the srds345_InitiateGeneration function, the function generator waits "
+  "for the trigger you specify with this attribute.  After it receives the "
+  "trigger, the function generator produces a signal based on the value of "
+  "the SRDS345_ATTR_OPERATION_MODE attribute.\n"
+  "\n"
+  "Attribute Value: 1250302"
+
+2 all "Internal Trigger Rate" SRDS345_ATTR_INTERNAL_TRIGGER_RATE ViReal64 gs
+  "This attribute specifies the rate at which the function generator's "
+  "internal trigger source generates trigger signals.  The units are "
+  "triggers-per-second.\n"
+  "\n"
+  "Attribute Value: 1250310"
+
+1 all "Bursting"
+  "Attributes for configuring the burst operation mode."
+
+2 all "Burst Count" SRDS345_ATTR_BURST_COUNT ViInt32 gs
+  "This attribute specifies the number of complete cycles in a burst.\n"
+  "\n"
+  "Valid Range: 1 to 30000.\n"
+  "\n"
+  "Note:\n"
+  "(1) The maximum value is limited such that the burst time does not exceed "
+  "500s.  (That is, the burst count * waveform period <= 500s)\n"
+  "\n"
+  "Attribute Value: 1250350"
+
+1 all "Arbitrary Modulation Waveform"
+  ""
+
+2 all "Modulation Rate Divider" SRDS345_ATTR_ARB_MOD_RATE ViInt32 gs
+  "This attribute specifies the arbitrary modulation rate divider. This "
+  "controls the rate at which arbitrary modulations are generated.\n"
+  "\n"
+  "Valid Range: 1 to 8388607\n"
+  "\n"
+  "Attribute Value: 1150008"
+
+1 all "Amplitude Modulation Attributes"
+  "Attributes for applying amplitude modulation to output signals.  "
+  "Amplitude modulation produces an output signal by varying the amplitude of "
+  "a carrier signal according to the amplitude of a modulating signal.  You "
+  "specify the carrier signal with the attributes in either the Standard "
+  "Function Output group or the Arbitrary Waveform Output group.  The "
+  "modulating signal can be an internally generated or an externally "
+  "generated signal.\n"
+
+2 all "AM Enabled" SRDS345_ATTR_AM_ENABLED ViBoolean gs Boolean_values
+  "This channel-based attribute specifies whether the function generator "
+  "applies amplitude modulation to the output signal.\n"
+  "\n"
+  "Attribute Value: 1250401"
+
+2 all "AM Source" SRDS345_ATTR_AM_SOURCE ViInt32 gs attrAmSourceRangeTable
+  "This channel-based attribute specifies the source of the signal that the "
+  "function generator uses to modulate the output signal.\n"
+  "\n"
+  "The external source is active at all times.\n"
+  "\n"
+  "Attribute Value: 1250402"
+
+2 all "AM Internal Depth" SRDS345_ATTR_AM_INTERNAL_DEPTH ViReal64 gs
+  "This attribute specifies the extent of modulation the function generator "
+  "applies to the carrier signal.  The units are a percentage of full "
+  "modulation.  At 0% depth, the output amplitude equals the carrier signal's "
+  "amplitude.  At 100% depth, the output amplitude equals twice the carrier "
+  "signal's amplitude.\n"
+  "\n"
+  "Valid Range:  0 - 100%\n"
+  "\n"
+  "Attribute Value: 1250403"
+
+2 all "AM Internal Waveform" SRDS345_ATTR_AM_INTERNAL_WAVEFORM ViInt32 gs attrAmInternalWaveformRangeTable
+  "This attribute specifies the standard waveform type that the function "
+  "generator uses to modulate the output signal.\n"
+  "\n"
+  "Attribute Value: 1250404"
+
+2 all "AM Internal Frequency" SRDS345_ATTR_AM_INTERNAL_FREQUENCY ViReal64 gs
+  "This attribute specifies the frequency of the standard waveform that the "
+  "function generator uses to modulate the output signal.  The units are "
+  "Hertz (Hz).\n"
+  "\n"
+  "Valid Range:  0.001 - 10000.0\n"
+  "\n"
+  "Attribute Value: 1250405"
+
+1 all "Frequency Modulation Attributes"
+  "Attributes for generating frequency modulated signals.  Frequency "
+  "modulation produces an output signal by varying the frequency of a carrier "
+  "signal according to the amplitude of a modulating signal.  You specify the "
+  "carrier signal with the attributes in either the Standard Function Output "
+  "group or the Arbitrary Waveform Output group.\n"
+
+2 all "FM Enabled" SRDS345_ATTR_FM_ENABLED ViBoolean gs Boolean_values
+  "This channel-based attribute specifies whether the function generator "
+  "applies frequency modulation to the output signal.\n"
+  "\n"
+  "Attribute Value: 1250501"
+
+2 all "FM Source" SRDS345_ATTR_FM_SOURCE ViInt32 gs attrFmSourceRangeTable
+  "This channel-based attribute specifies the source of the signal the "
+  "function generator uses to modulate the output signal.\n"
+  "\n"
+  "Attribute Value: 1250502"
+
+2 all "FM Internal Deviation" SRDS345_ATTR_FM_INTERNAL_DEVIATION ViReal64 gs
+  "This attribute specifies the maximum frequency deviation the modulating "
+  "waveform applies to the carrier waveform.  This deviation corresponds to "
+  "the maximum amplitude level of the modulating signal.  The units are Hertz "
+  "(Hz).\n"
+  "\n"
+  "Valid Range:  The maximum value is limited so that the frequency is never "
+  "less than or equal to zero or greater than that allowed for the selected "
+  "function.\n"
+  "\n"
+  "Attribute Value: 1250503"
+
+2 all "FM Internal Waveform" SRDS345_ATTR_FM_INTERNAL_WAVEFORM ViInt32 gs attrFmInternalWaveformRangeTable
+  "This attribute specifies the standard waveform type that the function "
+  "generator uses to modulate the output signal.\n"
+  "\n"
+  "Attribute Value: 1250504"
+
+2 all "FM Internal Frequency" SRDS345_ATTR_FM_INTERNAL_FREQUENCY ViReal64 gs
+  "This attribute specifies the frequency of the standard waveform that the "
+  "function generator uses to modulate the output signal.  The units are "
+  "Hertz (Hz).\n"
+  "\n"
+  "Valid Range:  0.001 - 10000.0\n"
+  "\n"
+  "Attribute Value: 1250505"
+
+1 all "Phase Modulation Attributes"
+  "Attributes for generating phase modulated signals."
+
+2 all "PM Enabled" SRDS345_ATTR_PM_ENABLED ViBoolean gs Boolean_values
+  "This channel-based attribute specifies whether the function generator "
+  "applies phase modulation to the output signal.\n"
+  "\n"
+  "Attribute Value: 1150003"
+
+2 all "PM Internal Span" SRDS345_ATTR_PM_INTERNAL_SPAN ViReal64 gs
+  "This attribute specifies the amount the phase varies relative to zero "
+  "phase.  The units are degrees.  The minimum phase shift will be "
+  "-SRDS345_ATTR_PM_INTERNAL_SPAN/2 and the maximum phase shift will be "
+  "+SRDS345_ATTR_PM_INTERNAL_SPAN/2.\n"
+  "\n"
+  "Valid Range: 0.0 to 7199.99\n"
+  "\n"
+  "Attribute Value: 1150006"
+
+2 all "PM Internal Waveform" SRDS345_ATTR_PM_INTERNAL_WAVEFORM ViInt32 gs attrPmInternalWaveformRangeTable
+  "Specifies the standard waveform type that the function generator uses to "
+  "modulate the output signal.\n"
+  "\n"
+  "Attribute Value: 1150004"
+
+2 all "PM Internal Frequency" SRDS345_ATTR_PM_INTERNAL_FREQUENCY ViReal64 gs
+  "Specifies the frequency of the standard waveform that the function "
+  "generator uses to modulate the output signal.  The units are Hertz (Hz).\n"
+  "\n"
+  "Valid Range:  0.001 - 10000.0\n"
+  "\n"
+  "Attribute Value: 1150005"
+
+1 all "Sweeping"
+  "Attributes for generating frequency sweep operation mode."
+
+2 all "Sweep Direction" SRDS345_ATTR_SWEEP_DIRECTION ViInt32 gs attrSweDirectionRangeTable
+  "This attribute specifies the direction of sweep modulation.\n"
+  "\n"
+  "Attribute Value: 1150011"
+
+2 all "Sweep Start Frequency" SRDS345_ATTR_SWEEP_START_FREQ ViReal64 gs
+  "This attribute specifies the start frequency for a sweep.  The units are "
+  "Hertz.\n"
+  "\n"
+  "Valid Range:  Dependent on the value of the SRDS345_ATTR_FUNC_WAVEFORM "
+  "attribute.\n"
+  "\n"
+  "SRDS345_VAL_WFM_SINE\n"
+  "SRDS345_VAL_WFM_SQUARE  -  1.0e-6 to 30.2e6\n"
+  "\n"
+  "SRDS345_VAL_WFM_TRIANGLE\n"
+  "SRDS345_VAL_WFM_RAMP_UP  -  1.0e-6 to 1.0e5\n"
+  "\n"
+  "Attribute Value: 1150013"
+
+2 all "Sweep Stop Frequency" SRDS345_ATTR_SWEEP_STOP_FREQ ViReal64 gs
+  "This attribute specifies the stop frequency for a sweep.  The units are "
+  "Hertz.\n"
+  "\n"
+  "Valid Range:  Dependent on the value of the SRDS345_ATTR_FUNC_WAVEFORM "
+  "attribute.\n"
+  "\n"
+  "SRDS345_VAL_WFM_SINE\n"
+  "SRDS345_VAL_WFM_SQUARE  -  1.0e-6 to 30.2e6\n"
+  "\n"
+  "SRDS345_VAL_WFM_TRIANGLE\n"
+  "SRDS345_VAL_WFM_RAMP_UP  -  1.0e-6 to 1.0e5\n"
+  "\n"
+  "Attribute Value: 1150014"
+
+2 all "Sweep Modulation Rate" SRDS345_ATTR_SWEEP_MOD_RATE ViReal64 gs
+  "This attribute specifies the sweep modulation rate.  The units are Hertz.\n"
+  "\n"
+  "Valid Range:  0.001 to 1000.0\n"
+  "\n"
+  "Attribute Value: 1150020"
+
+1 all "Miscellaneous Attributes"
+  "Additional Attributes."
+
+2 all "ID Query Response" SRDS345_ATTR_ID_QUERY_RESPONSE ViString g
+  "Returns the ID Query response string.  The instrument driver gets the "
+  "value of this attribute when you pass VI_TRUE for the ID Query parameter "
+  "to the srds345_init or srds345_InitWithOptions function.\n"
+  "\n"
+  "Attribute Value: 1150001"
+
+2 all "Hidden Attributes (not user-viewable)"
+  "    "
+
+3 all "Function Generator Amplitude" SRDS345_ATTR_AMPLITUDE ViReal64 hidden
+  "This attribute specifies the output amplitude. The units are Volts(Vpp).\n"
+  "\n"
+  "Valid Range: AC voltage plus DC offset voltage must be less than 5 Volts."
+
+3 all "Modulation State" SRDS345_ATTR_MOD_STATE ViBoolean hidden Boolean_values
+  "This attribute specifies the modulation state.\n"
+
+3 all "Modulation Type" SRDS345_ATTR_MOD_TYPE ViInt32 hidden
+  "This attribute specifies the modulation type.\n"
+
+3 all "Modulation Waveform" SRDS345_ATTR_MOD_WAVEFORM ViInt32 hidden attrModWaveformRangeTable
+  "This attribute specifies the modulation waveform.\n"
+
+3 all "Modulation Frequency" SRDS345_ATTR_MOD_FREQ ViReal64 hidden
+  "This attribute specifies the modulation frequency.  The units are Hertz.\n"
+  "\n"
+  "Valid Range: 0.001 to 10000.0\n"
+
+3 all "Number of arb points" SRDS345_ATTR_NUM_ARB_POINTS ViInt32 hidden
+  "This attribute is used in the check callback for burst count.\n"
+
+3 all "SRDS345_ATTR_WFM_EXISTS" SRDS345_ATTR_WFM_EXISTS ViBoolean hidden Boolean_values
+  "This attribute is used to determine if an arbitrary waveform exists.\n"
+
+1 all "SRDS345_ATTR_OFFSET" SRDS345_ATTR_OFFSET ViReal64 hidden
+  ""
+
+1 all "SRDS345_ATTR_WAVEFORM" SRDS345_ATTR_WAVEFORM ViInt32 hidden AttrFunctionRangeTable
+  ""
+

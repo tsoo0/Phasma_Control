@@ -1,0 +1,45 @@
+[RFEAActivate]
+Class="Function"
+Prototype="void RFEAActivate();"
+SourceLocation="c:\PHASMA 2025 DAQ\RFEA\RFEASettings.c:27:6"
+
+[RFEAArm]
+Class="Function"
+Prototype="int RFEAArm();"
+SourceLocation="c:\PHASMA 2025 DAQ\RFEA\RFEASettings.c:89:5"
+
+[Write_RFEAData]
+Class="Function"
+Prototype="void Write_RFEAData();"
+SourceLocation="c:\PHASMA 2025 DAQ\RFEA\RFEASettings.c:107:6"
+
+[OpenRFEA_Settings]
+Class="Function"
+Prototype="void OpenRFEA_Settings();"
+SourceLocation="c:\PHASMA 2025 DAQ\RFEA\RFEASettings.c:159:6"
+
+[Close_RFEA_Settings]
+Class="Function"
+Prototype="int Close_RFEA_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="c:\PHASMA 2025 DAQ\RFEA\RFEASettings.c:174:17"
+
+[RFEA_Move_to_Start]
+Class="Function"
+Prototype="int RFEA_Move_to_Start(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="c:\PHASMA 2025 DAQ\RFEA\RFEASettings.c:191:17"
+
+[RFEA_Move_to_Stop]
+Class="Function"
+Prototype="int RFEA_Move_to_Stop(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="c:\PHASMA 2025 DAQ\RFEA\RFEASettings.c:226:17"
+
+[RFEA_Home]
+Class="Function"
+Prototype="int RFEA_Home(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="c:\PHASMA 2025 DAQ\RFEA\RFEASettings.c:259:17"
+
+[Advance_RFEA_Probe]
+Class="Function"
+Prototype="float Advance_RFEA_Probe();"
+SourceLocation="c:\PHASMA 2025 DAQ\RFEA\RFEASettings.c:286:7"
+

@@ -1,0 +1,10 @@
+[setup_Thor_Chopper]
+Class="Function"
+Prototype="void setup_Thor_Chopper(char COM_port_string[], int Chopper_Frequency);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\ThorLabs Chopper\ThorLabs_Chopper.c:16:6"
+
+[disable_Thor_Chopper]
+Class="Function"
+Prototype="void disable_Thor_Chopper(char COM_port_string[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\ThorLabs Chopper\ThorLabs_Chopper.c:39:6"
+

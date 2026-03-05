@@ -1,0 +1,25 @@
+[readSpectra]
+Class="Function"
+Prototype="void readSpectra(long devId, long integrationTimeUs, int spectraCount);"
+SourceLocation="c:\PHASMA 2025 DAQ\Ocean Optics\OceanOptics.c:26:6"
+
+[AcquireSpectrum]
+Class="Function"
+Prototype="void AcquireSpectrum(int argc, char *argv[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\Ocean Optics\OceanOptics.c:55:6"
+
+[OceanOpticsAcquire]
+Class="Function"
+Prototype="int OceanOpticsAcquire(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="c:\PHASMA 2025 DAQ\Ocean Optics\OceanOptics.c:130:17"
+
+[OpenOceanOptics_Settings]
+Class="Function"
+Prototype="void OpenOceanOptics_Settings();"
+SourceLocation="c:\PHASMA 2025 DAQ\Ocean Optics\OceanOptics.c:149:6"
+
+[Close_OceanOptics_Settings]
+Class="Function"
+Prototype="int Close_OceanOptics_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="c:\PHASMA 2025 DAQ\Ocean Optics\OceanOptics.c:169:17"
+

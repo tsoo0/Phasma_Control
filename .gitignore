@@ -1,0 +1,9 @@
+/PHASMA Python Routines/PHASMA_C_to_Python_convertor_Project/McPhersonControl/Python/McPhersonPython/
+/Andor Camera/Andor SDK/
+__pycache__/
+Python/
+PlasmaGun/MagnaPower/
+*.ipch
+.vs/
+*.msi
+env/

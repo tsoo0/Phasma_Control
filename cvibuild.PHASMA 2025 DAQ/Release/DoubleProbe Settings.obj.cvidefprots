@@ -1,0 +1,45 @@
+[DoubleProbeActivate]
+Class="Function"
+Prototype="void DoubleProbeActivate();"
+SourceLocation="c:\PHASMA 2025 DAQ\DoubleProbe\DoubleProbe Settings.c:24:6"
+
+[DoubleProbeArm]
+Class="Function"
+Prototype="int DoubleProbeArm();"
+SourceLocation="c:\PHASMA 2025 DAQ\DoubleProbe\DoubleProbe Settings.c:127:5"
+
+[Write_DoubleProbeData]
+Class="Function"
+Prototype="void Write_DoubleProbeData();"
+SourceLocation="c:\PHASMA 2025 DAQ\DoubleProbe\DoubleProbe Settings.c:146:6"
+
+[OpenDoubleProbe_Settings]
+Class="Function"
+Prototype="void OpenDoubleProbe_Settings();"
+SourceLocation="c:\PHASMA 2025 DAQ\DoubleProbe\DoubleProbe Settings.c:199:6"
+
+[Close_DoubleProbe_Settings]
+Class="Function"
+Prototype="int Close_DoubleProbe_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="c:\PHASMA 2025 DAQ\DoubleProbe\DoubleProbe Settings.c:214:17"
+
+[DoubleProbe_Move_to_Start]
+Class="Function"
+Prototype="int DoubleProbe_Move_to_Start(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="c:\PHASMA 2025 DAQ\DoubleProbe\DoubleProbe Settings.c:228:17"
+
+[DoubleProbe_Move_to_Stop]
+Class="Function"
+Prototype="int DoubleProbe_Move_to_Stop(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="c:\PHASMA 2025 DAQ\DoubleProbe\DoubleProbe Settings.c:262:17"
+
+[DoubleProbe_Home]
+Class="Function"
+Prototype="int DoubleProbe_Home(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="c:\PHASMA 2025 DAQ\DoubleProbe\DoubleProbe Settings.c:294:17"
+
+[Advance_DoubleProbe_Probe]
+Class="Function"
+Prototype="float Advance_DoubleProbe_Probe();"
+SourceLocation="c:\PHASMA 2025 DAQ\DoubleProbe\DoubleProbe Settings.c:320:7"
+

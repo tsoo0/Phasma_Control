@@ -1,0 +1,10 @@
+[TitanMotorMove]
+Class="Function"
+Prototype="int TitanMotorMove(char ip_address[64], float current_position, float target_position, int stepspermm);"
+SourceLocation="c:\PHASMA 2025 DAQ\TitanProbeMotors\TitanMotor.c:22:5"
+
+[TitanMotorHome]
+Class="Function"
+Prototype="int TitanMotorHome(char ip_address[64]);"
+SourceLocation="c:\PHASMA 2025 DAQ\TitanProbeMotors\TitanMotor.c:131:5"
+

@@ -1,0 +1,25 @@
+[QBSActivate]
+Class="Function"
+Prototype="void QBSActivate();"
+SourceLocation="c:\PHASMA 2025 DAQ\QuantumBeat\QBSSettings.c:16:6"
+
+[QBSArm]
+Class="Function"
+Prototype="int QBSArm();"
+SourceLocation="c:\PHASMA 2025 DAQ\QuantumBeat\QBSSettings.c:34:5"
+
+[Write_QBSData]
+Class="Function"
+Prototype="void Write_QBSData();"
+SourceLocation="c:\PHASMA 2025 DAQ\QuantumBeat\QBSSettings.c:50:6"
+
+[OpenQBS_Settings]
+Class="Function"
+Prototype="void OpenQBS_Settings();"
+SourceLocation="c:\PHASMA 2025 DAQ\QuantumBeat\QBSSettings.c:58:6"
+
+[Close_QBS_Settings]
+Class="Function"
+Prototype="int Close_QBS_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="c:\PHASMA 2025 DAQ\QuantumBeat\QBSSettings.c:73:17"
+

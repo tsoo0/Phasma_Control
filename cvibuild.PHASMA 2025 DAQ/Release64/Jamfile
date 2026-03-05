@@ -1,0 +1,348 @@
+HDRS = 	"c:\\Program Files\\MDSplus\\include"
+	"c:\\PHASMA 2025 DAQ"
+	"c:\\PHASMA 2025 DAQ\\MasterTrigger"
+	"c:\\PHASMA 2025 DAQ\\ContLIF"
+	"c:\\PHASMA 2025 DAQ\\Photron Camera\\Include"
+	"c:\\PHASMA 2025 DAQ\\D_TACQ Instruments"
+	"c:\\ProgramData\\anaconda3\\include"
+	"c:\\PHASMA 2025 DAQ\\Photodiodes"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\toolslib\\activex\\word"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\toolslib\\activex\\excel"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\toolslib\\custctrl"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\toolslib\\custctrl\\custsupp"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\toolslib\\cvirtsup"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\toolslib\\datasock"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\toolslib\\daqUtil"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\toolslib\\printing"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\toolslib\\toolbox"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\toolslib\\reportgen"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\toolslib\\localui"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\instr"
+	"C:\\Program Files (x86)\\National Instruments\\Shared\\CVI\\toolslib\\custctrl"
+	"C:\\Program Files (x86)\\National Instruments\\Shared\\CVI\\toolslib\\custctrl\\custsupp"
+	"C:\\Program Files (x86)\\National Instruments\\Shared\\CVI\\instr"
+	"C:\\ProgramData\\National Instruments\\CVI2020\\instr"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\include"
+	"C:\\Program Files (x86)\\National Instruments\\Shared\\CVI\\include"
+	"C:\\ProgramData\\National Instruments\\CVI2020\\include"
+	"C:\\ProgramData\\National Instruments\\CVI\\include"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\include\\ansi"
+	"c:\\program files (x86)\\national instruments\\cvi2020\\include\\clang\\3.3"
+	"C:\\Program Files\\IVI Foundation\\IVI\\Include"
+	"C:\\Program Files\\IVI Foundation\\VISA\\win64\\include"
+	"C:\\Program Files (x86)\\National Instruments\\Shared\\MSDTRedistributables\\SDKHeaderFiles\\8.1"
+	"c:\\PHASMA 2025 DAQ\\ContLIF\\HP33120"
+	"c:\\PHASMA 2025 DAQ\\Bdot"
+	"c:\\PHASMA 2025 DAQ\\Housekeeping"
+	"c:\\PHASMA 2025 DAQ\\ContLIF\\srds345"
+	"c:\\Program Files (x86)\\National Instruments\\CVI2020\\bin"
+	"c:\\Program Files (x86)\\National Instruments\\Shared\\CVI\\Bin"
+	;
+include Jamfile_instr ;
+LOCATE on "ACQ2106.h" = "c:\\PHASMA 2025 DAQ\\D_TACQ Instruments" ;
+LOCATE on "ATMCD32D.H" = "c:\\PHASMA 2025 DAQ\\Andor Camera\\Andor SDK" ;
+LOCATE on "Bdot_Settings.c" = "c:\\PHASMA 2025 DAQ\\Bdot" ;
+LOCATE on "BdotSettings.h" = "c:\\PHASMA 2025 DAQ\\Bdot" ;
+LOCATE on "BdotSystems.h" = "c:\\PHASMA 2025 DAQ\\Bdot" ;
+LOCATE on "Bristol.c" = "c:\\PHASMA 2025 DAQ\\ContLIF" ;
+LOCATE on "Bristol.h" = "c:\\PHASMA 2025 DAQ\\ContLIF" ;
+LOCATE on "ContLIFSettings.c" = "c:\\PHASMA 2025 DAQ\\ContLIF" ;
+LOCATE on "ContLIFSettings.h" = "c:\\PHASMA 2025 DAQ\\ContLIF" ;
+LOCATE on "ContLIFSystems.h" = "c:\\PHASMA 2025 DAQ\\ContLIF" ;
+LOCATE on "DoubleProbe Settings.c" = "c:\\PHASMA 2025 DAQ\\DoubleProbe" ;
+LOCATE on "DoubleProbeSettings.h" = "c:\\PHASMA 2025 DAQ\\DoubleProbe" ;
+LOCATE on "DoubleProbeSystems.h" = "c:\\PHASMA 2025 DAQ\\DoubleProbe" ;
+LOCATE on "GlobalVariables.h" = "c:\\PHASMA 2025 DAQ" ;
+LOCATE on "Helicon_Settings.h" = "c:\\PHASMA 2025 DAQ\\Helicon" ;
+LOCATE on "HeliconSourceSettings.c" = "c:\\PHASMA 2025 DAQ\\Helicon" ;
+LOCATE on "HeliconSourceSettings.h" = "c:\\PHASMA 2025 DAQ\\Helicon" ;
+LOCATE on "HelperFunctions.c" = "c:\\PHASMA 2025 DAQ" ;
+LOCATE on "HelperFunctions.h" = "c:\\PHASMA 2025 DAQ" ;
+LOCATE on "HelperFunctions.h.h" = "c:\\PHASMA 2025 DAQ" ;
+LOCATE on "HousekeepingSettings.c" = "c:\\PHASMA 2025 DAQ\\Housekeeping" ;
+LOCATE on "HousekeepingSettings.h" = "c:\\PHASMA 2025 DAQ\\Housekeeping" ;
+LOCATE on "HousekeepingSystems.h" = "c:\\PHASMA 2025 DAQ\\Housekeeping" ;
+LOCATE on "hp33120a.h" = "c:\\PHASMA 2025 DAQ\\ContLIF\\HP33120" ;
+LOCATE on "Joerger VTR10012-VISA.h" = "c:\\PHASMA 2025 DAQ\\Bdot" ;
+LOCATE on "Langmuir.c" = "c:\\PHASMA 2025 DAQ\\Langmuir" ;
+LOCATE on "LangmuirSettings.h" = "c:\\PHASMA 2025 DAQ\\Langmuir" ;
+LOCATE on "LangmuirSystems.h" = "c:\\PHASMA 2025 DAQ\\Langmuir" ;
+LOCATE on "Lecroy.c" = "c:\\PHASMA 2025 DAQ\\LeCroy Routines" ;
+LOCATE on "Lecroy.h" = "c:\\PHASMA 2025 DAQ\\LeCroy Routines" ;
+LOCATE on "MagField_Functions.h" = "c:\\PHASMA 2025 DAQ\\Magnetic Field" ;
+LOCATE on "MagField_Settings.h" = "c:\\PHASMA 2025 DAQ\\Magnetic Field" ;
+LOCATE on "MagneticField_Settings.c" = "c:\\PHASMA 2025 DAQ\\Magnetic Field" ;
+LOCATE on "MasterControlLoop.c" = "c:\\PHASMA 2025 DAQ" ;
+LOCATE on "MasterControlPanel.h" = "c:\\PHASMA 2025 DAQ" ;
+LOCATE on "MasterControlSettings.h" = "c:\\PHASMA 2025 DAQ" ;
+LOCATE on "MasterTriggerSettings.c" = "c:\\PHASMA 2025 DAQ\\MasterTrigger" ;
+LOCATE on "MasterTriggerSettings.h" = "c:\\PHASMA 2025 DAQ\\MasterTrigger" ;
+LOCATE on "MasterTriggerSystem.h" = "c:\\PHASMA 2025 DAQ\\MasterTrigger" ;
+LOCATE on "MC2000CommandLib.h" = "c:\\PHASMA 2025 DAQ\\ContLIF\\ThorLabs Chopper" ;
+LOCATE on "McPhersonSettings.c" = "c:\\PHASMA 2025 DAQ\\McPherson" ;
+LOCATE on "McPhersonSettings.h" = "c:\\PHASMA 2025 DAQ\\McPherson" ;
+LOCATE on "McPhersonSystems.h" = "c:\\PHASMA 2025 DAQ\\McPherson" ;
+LOCATE on "mdslib.h" = "c:\\PHASMA 2025 DAQ\\MDS" ;
+LOCATE on "NIDAQmx.h" = "c:\\Program Files (x86)\\National Instruments\\Shared\\ExternalCompilerSupport\\C\\include" ;
+LOCATE on "NR_elle.c" = "c:\\PHASMA 2025 DAQ\\Magnetic Field" ;
+LOCATE on "NR_ellf.c" = "c:\\PHASMA 2025 DAQ\\Magnetic Field" ;
+LOCATE on "NR_nrutil.c" = "c:\\PHASMA 2025 DAQ\\Magnetic Field" ;
+LOCATE on "NR_rd.c" = "c:\\PHASMA 2025 DAQ\\Magnetic Field" ;
+LOCATE on "NR_rf.c" = "c:\\PHASMA 2025 DAQ\\Magnetic Field" ;
+LOCATE on "nrutil.h" = "c:\\PHASMA 2025 DAQ\\Magnetic Field" ;
+LOCATE on "OceanOptics.c" = "c:\\PHASMA 2025 DAQ\\Ocean Optics" ;
+LOCATE on "OceanOpticsSettings.h" = "c:\\PHASMA 2025 DAQ\\Ocean Optics" ;
+LOCATE on "OceanOpticsSystems.h" = "c:\\PHASMA 2025 DAQ\\Ocean Optics" ;
+LOCATE on "PDCLIB.h" = "c:\\PHASMA 2025 DAQ\\Photron Camera\\Include" ;
+LOCATE on "PHASMA-MDS-Routines.c" = "c:\\PHASMA 2025 DAQ\\MDS" ;
+LOCATE on "PHASMA-MDS-Routines.h" = "c:\\PHASMA 2025 DAQ\\MDS" ;
+LOCATE on "PHASMA_C_to_Python_convertor.h" = "c:\\PHASMA 2025 DAQ" ;
+LOCATE on "PhotodiodeSettings.c" = "c:\\PHASMA 2025 DAQ\\Photodiodes" ;
+LOCATE on "PhotodiodeSettings.h" = "c:\\PHASMA 2025 DAQ\\Photodiodes" ;
+LOCATE on "PhotodiodeSystems.h" = "c:\\PHASMA 2025 DAQ\\Photodiodes" ;
+LOCATE on "PhotronCameraSettings.h" = "c:\\PHASMA 2025 DAQ\\Photron Camera" ;
+LOCATE on "PhotronCameraSystems.h" = "c:\\PHASMA 2025 DAQ\\Photron Camera" ;
+LOCATE on "PhotronSettings.c" = "c:\\PHASMA 2025 DAQ\\Photron Camera" ;
+LOCATE on "PlasmaGunSettings.c" = "c:\\PHASMA 2025 DAQ\\PlasmaGun" ;
+LOCATE on "PlasmaGunSettings.h" = "c:\\PHASMA 2025 DAQ\\PlasmaGun" ;
+LOCATE on "PlasmaGunSystem.h" = "c:\\PHASMA 2025 DAQ\\PlasmaGun" ;
+LOCATE on "PLIFSettings.c" = "c:\\PHASMA 2025 DAQ\\PulsedLIF" ;
+LOCATE on "PulsedLIFSettings.h" = "c:\\PHASMA 2025 DAQ\\PulsedLIF" ;
+LOCATE on "PulsedLIFSystems.h" = "c:\\PHASMA 2025 DAQ\\PulsedLIF" ;
+LOCATE on "QBSSettings.c" = "c:\\PHASMA 2025 DAQ\\QuantumBeat" ;
+LOCATE on "QBSSystems.h" = "c:\\PHASMA 2025 DAQ\\QuantumBeat" ;
+LOCATE on "QuantumBeatSettings.h" = "c:\\PHASMA 2025 DAQ\\QuantumBeat" ;
+LOCATE on "RFEASettings.c" = "c:\\PHASMA 2025 DAQ\\RFEA" ;
+LOCATE on "RFEASettings.h" = "c:\\PHASMA 2025 DAQ\\RFEA" ;
+LOCATE on "RFEASystems.h" = "c:\\PHASMA 2025 DAQ\\RFEA" ;
+LOCATE on "Rigol.c" = "c:\\PHASMA 2025 DAQ\\Rigol Routines" ;
+LOCATE on "Rigol.h" = "c:\\PHASMA 2025 DAQ\\Rigol Routines" ;
+LOCATE on "setup_4244.c" = "c:\\PHASMA 2025 DAQ\\Housekeeping" ;
+LOCATE on "Sirah.c" = "c:\\PHASMA 2025 DAQ\\ContLIF" ;
+LOCATE on "Sirah.h" = "c:\\PHASMA 2025 DAQ\\ContLIF" ;
+LOCATE on "srds345.c" = "c:\\PHASMA 2025 DAQ\\ContLIF\\srds345" ;
+LOCATE on "srds345.h" = "c:\\PHASMA 2025 DAQ\\Instrument Drivers and Source Code" ;
+LOCATE on "TempDiag Settings.c" = "c:\\PHASMA 2025 DAQ\\TempDiag" ;
+LOCATE on "TempDiagSettings.h" = "c:\\PHASMA 2025 DAQ\\TempDiag" ;
+LOCATE on "TempDiagSystems.h" = "c:\\PHASMA 2025 DAQ\\TempDiag" ;
+LOCATE on "ThomsonScatteringSettings.c" = "c:\\PHASMA 2025 DAQ\\ThomsonScattering" ;
+LOCATE on "ThomsonScatteringSettings.h" = "c:\\PHASMA 2025 DAQ\\ThomsonScattering" ;
+LOCATE on "ThomsonScatteringSystems.h" = "c:\\PHASMA 2025 DAQ\\ThomsonScattering" ;
+LOCATE on "ThorLabs_Chopper.c" = "c:\\PHASMA 2025 DAQ\\ContLIF\\ThorLabs Chopper" ;
+LOCATE on "ThorLabsChopperSettings.h" = "c:\\PHASMA 2025 DAQ\\ContLIF\\ThorLabs Chopper" ;
+LOCATE on "TitanMotor.c" = "c:\\PHASMA 2025 DAQ\\TitanProbeMotors" ;
+LOCATE on "TitanMotor.h" = "c:\\PHASMA 2025 DAQ\\TitanProbeMotors" ;
+LOCATE on "tkvx4244.c" = "c:\\PHASMA 2025 DAQ\\Housekeeping\\Tkvx4244" ;
+LOCATE on "tkvx4244.h" = "c:\\PHASMA 2025 DAQ\\Housekeeping" ;
+LOCATE on "treeshr.h" = "c:\\PHASMA 2025 DAQ\\MDSPlus Routines" ;
+LOCATE on "TripleProbeSettings.c" = "c:\\PHASMA 2025 DAQ\\TripleProbe" ;
+LOCATE on "TripleProbeSettings.h" = "c:\\PHASMA 2025 DAQ\\TripleProbe" ;
+LOCATE on "TripleProbeSystems.h" = "c:\\PHASMA 2025 DAQ\\TripleProbe" ;
+LOCATE on "VXI_Crate.h" = "c:\\PHASMA 2025 DAQ\\VXICrate" ;
+LOCATE on "wlmData.h" = "c:\\PHASMA 2025 DAQ\\PulsedLIF\\AngstromWavemeter" ;
+Object "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\Bdot_Settings.obj" : "c:\\PHASMA 2025 DAQ\\Bdot\\Bdot_Settings.c" ;
+FILENUM on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\Bdot_Settings.obj" = 1 ;
+DEFPROTS on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\Bdot_Settings.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\Bdot_Settings.obj.cvidefprots" ;
+OUTFILE on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\Bdot_Settings.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\Bdot_Settings.obj.out" ;
+PrjObjects += "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\Bdot_Settings.obj" ;
+Object "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\Bristol.obj" : "c:\\PHASMA 2025 DAQ\\ContLIF\\Bristol.c" ;
+FILENUM on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\Bristol.obj" = 2 ;
+DEFPROTS on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\Bristol.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\Bristol.obj.cvidefprots" ;
+OUTFILE on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\Bristol.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\Bristol.obj.out" ;
+PrjObjects += "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\Bristol.obj" ;
+Object "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\ContLIFSettings.obj" : "c:\\PHASMA 2025 DAQ\\ContLIF\\ContLIFSettings.c" ;
+FILENUM on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\ContLIFSettings.obj" = 3 ;
+DEFPROTS on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\ContLIFSettings.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\ContLIFSettings.obj.cvidefprots" ;
+OUTFILE on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\ContLIFSettings.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\ContLIFSettings.obj.out" ;
+PrjObjects += "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\ContLIFSettings.obj" ;
+Object "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\DoubleProbe Settings.obj" : "c:\\PHASMA 2025 DAQ\\DoubleProbe\\DoubleProbe Settings.c" ;
+FILENUM on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\DoubleProbe Settings.obj" = 4 ;
+DEFPROTS on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\DoubleProbe Settings.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\DoubleProbe Settings.obj.cvidefprots" ;
+OUTFILE on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\DoubleProbe Settings.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\DoubleProbe Settings.obj.out" ;
+PrjObjects += "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\DoubleProbe Settings.obj" ;
+Object "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\HeliconSourceSettings.obj" : "c:\\PHASMA 2025 DAQ\\Helicon\\HeliconSourceSettings.c" ;
+FILENUM on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\HeliconSourceSettings.obj" = 5 ;
+DEFPROTS on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\HeliconSourceSettings.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\HeliconSourceSettings.obj.cvidefprots" ;
+OUTFILE on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\HeliconSourceSettings.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\HeliconSourceSettings.obj.out" ;
+PrjObjects += "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\HeliconSourceSettings.obj" ;
+Object "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\HelperFunctions.obj" : "c:\\PHASMA 2025 DAQ\\HelperFunctions.c" ;
+FILENUM on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\HelperFunctions.obj" = 6 ;
+DEFPROTS on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\HelperFunctions.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\HelperFunctions.obj.cvidefprots" ;
+OUTFILE on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\HelperFunctions.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\HelperFunctions.obj.out" ;
+PrjObjects += "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\HelperFunctions.obj" ;
+Object "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\HousekeepingSettings.obj" : "c:\\PHASMA 2025 DAQ\\Housekeeping\\HousekeepingSettings.c" ;
+FILENUM on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\HousekeepingSettings.obj" = 7 ;
+DEFPROTS on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\HousekeepingSettings.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\HousekeepingSettings.obj.cvidefprots" ;
+OUTFILE on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\HousekeepingSettings.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\HousekeepingSettings.obj.out" ;
+PrjObjects += "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\HousekeepingSettings.obj" ;
+Object "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\Langmuir.obj" : "c:\\PHASMA 2025 DAQ\\Langmuir\\Langmuir.c" ;
+FILENUM on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\Langmuir.obj" = 8 ;
+DEFPROTS on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\Langmuir.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\Langmuir.obj.cvidefprots" ;
+OUTFILE on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\Langmuir.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\Langmuir.obj.out" ;
+PrjObjects += "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\Langmuir.obj" ;
+Object "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\Lecroy.obj" : "c:\\PHASMA 2025 DAQ\\LeCroy Routines\\Lecroy.c" ;
+FILENUM on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\Lecroy.obj" = 9 ;
+DEFPROTS on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\Lecroy.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\Lecroy.obj.cvidefprots" ;
+OUTFILE on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\Lecroy.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\Lecroy.obj.out" ;
+PrjObjects += "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\Lecroy.obj" ;
+Object "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\MagneticField_Settings.obj" : "c:\\PHASMA 2025 DAQ\\Magnetic Field\\MagneticField_Settings.c" ;
+FILENUM on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\MagneticField_Settings.obj" = 10 ;
+DEFPROTS on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\MagneticField_Settings.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\MagneticField_Settings.obj.cvidefprots" ;
+OUTFILE on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\MagneticField_Settings.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\MagneticField_Settings.obj.out" ;
+PrjObjects += "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\MagneticField_Settings.obj" ;
+Object "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\MasterControlLoop.obj" : "c:\\PHASMA 2025 DAQ\\MasterControlLoop.c" ;
+FILENUM on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\MasterControlLoop.obj" = 11 ;
+DEFPROTS on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\MasterControlLoop.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\MasterControlLoop.obj.cvidefprots" ;
+OUTFILE on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\MasterControlLoop.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\MasterControlLoop.obj.out" ;
+PrjObjects += "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\MasterControlLoop.obj" ;
+Object "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\MasterTriggerSettings.obj" : "c:\\PHASMA 2025 DAQ\\MasterTrigger\\MasterTriggerSettings.c" ;
+FILENUM on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\MasterTriggerSettings.obj" = 12 ;
+DEFPROTS on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\MasterTriggerSettings.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\MasterTriggerSettings.obj.cvidefprots" ;
+OUTFILE on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\MasterTriggerSettings.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\MasterTriggerSettings.obj.out" ;
+PrjObjects += "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\MasterTriggerSettings.obj" ;
+Object "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\McPhersonSettings.obj" : "c:\\PHASMA 2025 DAQ\\McPherson\\McPhersonSettings.c" ;
+FILENUM on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\McPhersonSettings.obj" = 13 ;
+DEFPROTS on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\McPhersonSettings.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\McPhersonSettings.obj.cvidefprots" ;
+OUTFILE on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\McPhersonSettings.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\McPhersonSettings.obj.out" ;
+PrjObjects += "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\McPhersonSettings.obj" ;
+Object "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\NR_elle.obj" : "c:\\PHASMA 2025 DAQ\\Magnetic Field\\NR_elle.c" ;
+FILENUM on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\NR_elle.obj" = 14 ;
+DEFPROTS on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\NR_elle.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\NR_elle.obj.cvidefprots" ;
+OUTFILE on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\NR_elle.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\NR_elle.obj.out" ;
+PrjObjects += "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\NR_elle.obj" ;
+Object "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\NR_ellf.obj" : "c:\\PHASMA 2025 DAQ\\Magnetic Field\\NR_ellf.c" ;
+FILENUM on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\NR_ellf.obj" = 15 ;
+DEFPROTS on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\NR_ellf.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\NR_ellf.obj.cvidefprots" ;
+OUTFILE on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\NR_ellf.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\NR_ellf.obj.out" ;
+PrjObjects += "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\NR_ellf.obj" ;
+Object "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\NR_nrutil.obj" : "c:\\PHASMA 2025 DAQ\\Magnetic Field\\NR_nrutil.c" ;
+FILENUM on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\NR_nrutil.obj" = 16 ;
+DEFPROTS on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\NR_nrutil.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\NR_nrutil.obj.cvidefprots" ;
+OUTFILE on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\NR_nrutil.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\NR_nrutil.obj.out" ;
+PrjObjects += "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\NR_nrutil.obj" ;
+Object "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\NR_rd.obj" : "c:\\PHASMA 2025 DAQ\\Magnetic Field\\NR_rd.c" ;
+FILENUM on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\NR_rd.obj" = 17 ;
+DEFPROTS on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\NR_rd.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\NR_rd.obj.cvidefprots" ;
+OUTFILE on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\NR_rd.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\NR_rd.obj.out" ;
+PrjObjects += "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\NR_rd.obj" ;
+Object "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\NR_rf.obj" : "c:\\PHASMA 2025 DAQ\\Magnetic Field\\NR_rf.c" ;
+FILENUM on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\NR_rf.obj" = 18 ;
+DEFPROTS on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\NR_rf.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\NR_rf.obj.cvidefprots" ;
+OUTFILE on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\NR_rf.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\NR_rf.obj.out" ;
+PrjObjects += "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\NR_rf.obj" ;
+Object "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\OceanOptics.obj" : "c:\\PHASMA 2025 DAQ\\Ocean Optics\\OceanOptics.c" ;
+FILENUM on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\OceanOptics.obj" = 19 ;
+DEFPROTS on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\OceanOptics.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\OceanOptics.obj.cvidefprots" ;
+OUTFILE on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\OceanOptics.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\OceanOptics.obj.out" ;
+PrjObjects += "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\OceanOptics.obj" ;
+Object "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PHASMA-MDS-Routines.obj" : "c:\\PHASMA 2025 DAQ\\MDS\\PHASMA-MDS-Routines.c" ;
+FILENUM on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PHASMA-MDS-Routines.obj" = 20 ;
+DEFPROTS on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PHASMA-MDS-Routines.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PHASMA-MDS-Routines.obj.cvidefprots" ;
+OUTFILE on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PHASMA-MDS-Routines.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PHASMA-MDS-Routines.obj.out" ;
+PrjObjects += "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PHASMA-MDS-Routines.obj" ;
+Object "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PhotodiodeSettings.obj" : "c:\\PHASMA 2025 DAQ\\Photodiodes\\PhotodiodeSettings.c" ;
+FILENUM on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PhotodiodeSettings.obj" = 21 ;
+DEFPROTS on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PhotodiodeSettings.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PhotodiodeSettings.obj.cvidefprots" ;
+OUTFILE on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PhotodiodeSettings.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PhotodiodeSettings.obj.out" ;
+PrjObjects += "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PhotodiodeSettings.obj" ;
+Object "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PhotronSettings.obj" : "c:\\PHASMA 2025 DAQ\\Photron Camera\\PhotronSettings.c" ;
+FILENUM on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PhotronSettings.obj" = 22 ;
+DEFPROTS on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PhotronSettings.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PhotronSettings.obj.cvidefprots" ;
+OUTFILE on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PhotronSettings.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PhotronSettings.obj.out" ;
+PrjObjects += "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PhotronSettings.obj" ;
+Object "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PlasmaGunSettings.obj" : "c:\\PHASMA 2025 DAQ\\PlasmaGun\\PlasmaGunSettings.c" ;
+FILENUM on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PlasmaGunSettings.obj" = 23 ;
+DEFPROTS on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PlasmaGunSettings.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PlasmaGunSettings.obj.cvidefprots" ;
+OUTFILE on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PlasmaGunSettings.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PlasmaGunSettings.obj.out" ;
+PrjObjects += "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PlasmaGunSettings.obj" ;
+Object "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PLIFSettings.obj" : "c:\\PHASMA 2025 DAQ\\PulsedLIF\\PLIFSettings.c" ;
+FILENUM on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PLIFSettings.obj" = 24 ;
+DEFPROTS on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PLIFSettings.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PLIFSettings.obj.cvidefprots" ;
+OUTFILE on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PLIFSettings.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PLIFSettings.obj.out" ;
+PrjObjects += "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PLIFSettings.obj" ;
+Object "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\QBSSettings.obj" : "c:\\PHASMA 2025 DAQ\\QuantumBeat\\QBSSettings.c" ;
+FILENUM on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\QBSSettings.obj" = 25 ;
+DEFPROTS on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\QBSSettings.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\QBSSettings.obj.cvidefprots" ;
+OUTFILE on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\QBSSettings.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\QBSSettings.obj.out" ;
+PrjObjects += "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\QBSSettings.obj" ;
+Object "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\RFEASettings.obj" : "c:\\PHASMA 2025 DAQ\\RFEA\\RFEASettings.c" ;
+FILENUM on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\RFEASettings.obj" = 26 ;
+DEFPROTS on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\RFEASettings.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\RFEASettings.obj.cvidefprots" ;
+OUTFILE on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\RFEASettings.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\RFEASettings.obj.out" ;
+PrjObjects += "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\RFEASettings.obj" ;
+Object "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\Rigol.obj" : "c:\\PHASMA 2025 DAQ\\Rigol Routines\\Rigol.c" ;
+FILENUM on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\Rigol.obj" = 27 ;
+DEFPROTS on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\Rigol.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\Rigol.obj.cvidefprots" ;
+OUTFILE on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\Rigol.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\Rigol.obj.out" ;
+PrjObjects += "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\Rigol.obj" ;
+Object "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\setup_4244.obj" : "c:\\PHASMA 2025 DAQ\\Housekeeping\\setup_4244.c" ;
+FILENUM on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\setup_4244.obj" = 28 ;
+DEFPROTS on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\setup_4244.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\setup_4244.obj.cvidefprots" ;
+OUTFILE on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\setup_4244.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\setup_4244.obj.out" ;
+PrjObjects += "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\setup_4244.obj" ;
+Object "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\Sirah.obj" : "c:\\PHASMA 2025 DAQ\\ContLIF\\Sirah.c" ;
+FILENUM on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\Sirah.obj" = 29 ;
+DEFPROTS on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\Sirah.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\Sirah.obj.cvidefprots" ;
+OUTFILE on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\Sirah.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\Sirah.obj.out" ;
+PrjObjects += "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\Sirah.obj" ;
+Object "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\srds345.obj" : "c:\\PHASMA 2025 DAQ\\ContLIF\\srds345\\srds345.c" ;
+FILENUM on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\srds345.obj" = 30 ;
+DEFPROTS on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\srds345.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\srds345.obj.cvidefprots" ;
+OUTFILE on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\srds345.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\srds345.obj.out" ;
+PrjObjects += "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\srds345.obj" ;
+Object "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\TempDiag Settings.obj" : "c:\\PHASMA 2025 DAQ\\TempDiag\\TempDiag Settings.c" ;
+FILENUM on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\TempDiag Settings.obj" = 31 ;
+DEFPROTS on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\TempDiag Settings.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\TempDiag Settings.obj.cvidefprots" ;
+OUTFILE on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\TempDiag Settings.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\TempDiag Settings.obj.out" ;
+PrjObjects += "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\TempDiag Settings.obj" ;
+Object "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\ThomsonScatteringSettings.obj" : "c:\\PHASMA 2025 DAQ\\ThomsonScattering\\ThomsonScatteringSettings.c" ;
+FILENUM on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\ThomsonScatteringSettings.obj" = 32 ;
+DEFPROTS on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\ThomsonScatteringSettings.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\ThomsonScatteringSettings.obj.cvidefprots" ;
+OUTFILE on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\ThomsonScatteringSettings.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\ThomsonScatteringSettings.obj.out" ;
+PrjObjects += "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\ThomsonScatteringSettings.obj" ;
+Object "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\ThorLabs_Chopper.obj" : "c:\\PHASMA 2025 DAQ\\ContLIF\\ThorLabs Chopper\\ThorLabs_Chopper.c" ;
+FILENUM on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\ThorLabs_Chopper.obj" = 33 ;
+DEFPROTS on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\ThorLabs_Chopper.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\ThorLabs_Chopper.obj.cvidefprots" ;
+OUTFILE on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\ThorLabs_Chopper.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\ThorLabs_Chopper.obj.out" ;
+PrjObjects += "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\ThorLabs_Chopper.obj" ;
+Object "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\TitanMotor.obj" : "c:\\PHASMA 2025 DAQ\\TitanProbeMotors\\TitanMotor.c" ;
+FILENUM on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\TitanMotor.obj" = 34 ;
+DEFPROTS on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\TitanMotor.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\TitanMotor.obj.cvidefprots" ;
+OUTFILE on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\TitanMotor.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\TitanMotor.obj.out" ;
+PrjObjects += "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\TitanMotor.obj" ;
+Object "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\tkvx4244.obj" : "c:\\PHASMA 2025 DAQ\\Housekeeping\\Tkvx4244\\tkvx4244.c" ;
+FILENUM on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\tkvx4244.obj" = 35 ;
+DEFPROTS on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\tkvx4244.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\tkvx4244.obj.cvidefprots" ;
+OUTFILE on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\tkvx4244.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\tkvx4244.obj.out" ;
+PrjObjects += "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\tkvx4244.obj" ;
+Object "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\TripleProbeSettings.obj" : "c:\\PHASMA 2025 DAQ\\TripleProbe\\TripleProbeSettings.c" ;
+FILENUM on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\TripleProbeSettings.obj" = 36 ;
+DEFPROTS on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\TripleProbeSettings.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\TripleProbeSettings.obj.cvidefprots" ;
+OUTFILE on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\TripleProbeSettings.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\TripleProbeSettings.obj.out" ;
+PrjObjects += "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\TripleProbeSettings.obj" ;
+Object "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\resources.res" : "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\resources.in.rc" ;
+Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\resources.res" : "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\manifest.xml" ;
+MainFromObjects "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PHASMA 2025 DAQ V1.0.exe" : $(PrjObjects) $(InstrObjects) ;
+Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PHASMA 2025 DAQ V1.0.exe" : "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\link_options.txt" ;
+Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PHASMA 2025 DAQ V1.0.exe" : "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\resources.res" ;
+Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\resources.res" :  "c:\\PHASMA 2025 DAQ\\Bdot\\BdotSettings.uir" ;
+Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\resources.res" :  "c:\\PHASMA 2025 DAQ\\ContLIF\\ContLIFSettings.uir" ;
+Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\resources.res" :  "c:\\PHASMA 2025 DAQ\\DoubleProbe\\DoubleProbeSettings.uir" ;
+Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\resources.res" :  "c:\\PHASMA 2025 DAQ\\Helicon\\Helicon_Settings.uir" ;
+Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\resources.res" :  "c:\\PHASMA 2025 DAQ\\Housekeeping\\HousekeepingSystems.uir" ;
+Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\resources.res" :  "c:\\PHASMA 2025 DAQ\\Langmuir\\LangmuirSettings.uir" ;
+Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\resources.res" :  "c:\\PHASMA 2025 DAQ\\Magnetic Field\\MagField_Settings.uir" ;
+Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\resources.res" :  "c:\\PHASMA 2025 DAQ\\MasterControlPanel.uir" ;
+Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\resources.res" :  "c:\\PHASMA 2025 DAQ\\MasterTrigger\\MasterTriggerSettings.uir" ;
+Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\resources.res" :  "c:\\PHASMA 2025 DAQ\\McPherson\\McPhersonSettings.uir" ;
+Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\resources.res" :  "c:\\PHASMA 2025 DAQ\\Ocean Optics\\OceanOpticsSettings.uir" ;
+Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\resources.res" :  "c:\\PHASMA 2025 DAQ\\Photodiodes\\PhotodiodeSettings.uir" ;
+Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\resources.res" :  "c:\\PHASMA 2025 DAQ\\Photron Camera\\PhotronCameraSettings.uir" ;
+Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\resources.res" :  "c:\\PHASMA 2025 DAQ\\PlasmaGun\\PlasmaGunSettings.uir" ;
+Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\resources.res" :  "c:\\PHASMA 2025 DAQ\\PulsedLIF\\PulsedLIFSettings.uir" ;
+Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\resources.res" :  "c:\\PHASMA 2025 DAQ\\QuantumBeat\\QuantumBeatSettings.uir" ;
+Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\resources.res" :  "c:\\PHASMA 2025 DAQ\\RFEA\\RFEASettings.uir" ;
+Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\resources.res" :  "c:\\PHASMA 2025 DAQ\\TempDiag\\TempDiagSettings.uir" ;
+Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\resources.res" :  "c:\\PHASMA 2025 DAQ\\ThomsonScattering\\ThomsonScatteringSettings.uir" ;
+Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\resources.res" :  "c:\\PHASMA 2025 DAQ\\TripleProbe\\TripleProbeSettings.uir" ;
+Depends all : "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PHASMA 2025 DAQ V1.0.exe" ;

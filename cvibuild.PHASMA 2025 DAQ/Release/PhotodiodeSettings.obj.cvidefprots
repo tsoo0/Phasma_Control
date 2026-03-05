@@ -1,0 +1,25 @@
+[PhotodiodeArm]
+Class="Function"
+Prototype="int PhotodiodeArm();"
+SourceLocation="c:\PHASMA 2025 DAQ\Photodiodes\PhotodiodeSettings.c:54:5"
+
+[PhotodiodeActivate]
+Class="Function"
+Prototype="void PhotodiodeActivate();"
+SourceLocation="c:\PHASMA 2025 DAQ\Photodiodes\PhotodiodeSettings.c:87:6"
+
+[Write_PhotodiodeData]
+Class="Function"
+Prototype="void Write_PhotodiodeData();"
+SourceLocation="c:\PHASMA 2025 DAQ\Photodiodes\PhotodiodeSettings.c:117:6"
+
+[OpenPhotodiode_Settings]
+Class="Function"
+Prototype="void OpenPhotodiode_Settings();"
+SourceLocation="c:\PHASMA 2025 DAQ\Photodiodes\PhotodiodeSettings.c:145:6"
+
+[Close_Photodiode_Settings]
+Class="Function"
+Prototype="int Close_Photodiode_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="c:\PHASMA 2025 DAQ\Photodiodes\PhotodiodeSettings.c:157:17"
+

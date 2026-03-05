@@ -1,0 +1,15 @@
+[HandleMeasurementData]
+Class="Function"
+Prototype="void HandleMeasurementData(struct tsMeasurementDataType *data);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\Bristol.c:140:6"
+
+[Bristol_shutdown]
+Class="Function"
+Prototype="void Bristol_shutdown(int poolHandle, int functionID, unsigned int event, int value, void *callbackData);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\Bristol.c:157:18"
+
+[Bristol_Wavelength]
+Class="Function"
+Prototype="void Bristol_Wavelength(int CommPort, int averages, double *Wavelen, float *Power);"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\Bristol.c:171:6"
+

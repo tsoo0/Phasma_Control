@@ -1,0 +1,84 @@
+-nologo
+-out:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Release\PHASMA 2025 DAQ V1.exe
+-arch:x86
+-timestamp
+-res:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Release\resources.res
+-entry:_CVIWinMainStartupCode@0
+-base:0x400000
+-linked:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Release\linkersummary.txt
+-dlldeps:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Release\dlldependencies.txt
+-licensing:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Release\linkerlicensing.txt
+-browsedeps:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Release\moduledependencies.txt
+-stackreserve:1000000000
+-stackcommit:1000000000
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Release\Bdot_Settings.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Release\Bristol.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Release\ContLIFSettings.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Release\DoubleProbe Settings.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Release\HeliconSourceSettings.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Release\HousekeepingSettings.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Release\Langmuir.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Release\Lecroy.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Release\MagneticField_Settings.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Release\MasterControlLoop.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Release\MasterTriggerSettings.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Release\McPhersonSettings.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Release\NR_elle.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Release\NR_ellf.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Release\NR_nrutil.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Release\NR_rd.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Release\NR_rf.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Release\OceanOptics.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Release\PHASMA-MDS-Routines.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Release\PhotodiodeSettings.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Release\PhotronSettings.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Release\PlasmaGunSettings.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Release\PLIFSettings.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Release\RFEASettings.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Release\Rigol.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Release\setup_4244.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Release\Sirah.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Release\srds345.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Release\TempDiag Settings.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Release\ThomsonScatteringSettings.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Release\ThorLabs_Chopper.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Release\tkvx4244.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Release\TripleProbeSettings.obj
+-more:c:\program files (x86)\national instruments\cvi2020\bin\msvc\cvistart.lib
+-more:c:\program files (x86)\national instruments\cvi2020\bin\msvc\cvi.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc\advanlys.lib
+-more:C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x86\advapi32.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\toolslib\toolbox\msvc\asynctmr.obj
+-more:C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x86\bufferoverflowu.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc\cvi_db.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc\cviauto.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc\cvidotnet.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc\cvinetstreams.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc\cvinetv.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc\cvintwrk.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc\cvitdms.lib
+-more:C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x86\gdi32.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc\gpib.lib
+-more:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Release\hp33120a.obj
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\toolslib\custctrl\msvc\ImageControl.obj
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc\ivi.lib
+-more:C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x86\kernel32.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc\nican.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc\NIDAQmx.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\ExternalCompilerSupport\C\lib64\msvc\NIDAQmx.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc\niimaq.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc\niimaqdx.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc\nise.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc\niseCfg.obj
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc\nisyscfg.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc\nivision.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc\nivxi.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc\nixnet.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc\omp.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc\pid.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc\SPT.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\toolslib\toolbox\msvc\toolbox.obj
+-more:C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x86\user32.lib
+-more:C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x86\uuid.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc\visa.lib
+-more:C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x86\winmm.lib

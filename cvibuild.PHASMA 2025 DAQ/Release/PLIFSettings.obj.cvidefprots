@@ -1,0 +1,75 @@
+[PLIFLaserControl]
+Class="Function"
+Prototype="void PLIFLaserControl(int simmermode);"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:136:6"
+
+[PLIFScope]
+Class="Function"
+Prototype="void PLIFScope();"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:342:6"
+
+[Get_PLIF_Laser_Offsets]
+Class="Function"
+Prototype="void Get_PLIF_Laser_Offsets(float *PLIF_offset, float *PLIF_Laser_Warmup);"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:445:6"
+
+[PulsedLIFActivate]
+Class="Function"
+Prototype="int PulsedLIFActivate();"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:475:5"
+
+[PulsedLIFArm]
+Class="Function"
+Prototype="int PulsedLIFArm();"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:493:5"
+
+[Write_PulsedLIFData]
+Class="Function"
+Prototype="void Write_PulsedLIFData();"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:519:6"
+
+[OpenPulsedLIF_Settings]
+Class="Function"
+Prototype="void OpenPulsedLIF_Settings();"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:568:6"
+
+[Close_PulsedLIF_Settings]
+Class="Function"
+Prototype="int Close_PulsedLIF_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:586:17"
+
+[AngstromReadFunction]
+Class="Function"
+Prototype="int AngstromReadFunction(void *functionData);"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:603:17"
+
+[ReadPulsedLIF_WaveandEnergy]
+Class="Function"
+Prototype="void ReadPulsedLIF_WaveandEnergy();"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:647:6"
+
+[Wavelength_Current]
+Class="Function"
+Prototype="int Wavelength_Current(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:703:17"
+
+[Wavelength_Move_to_Start]
+Class="Function"
+Prototype="int Wavelength_Move_to_Start(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:747:17"
+
+[Wavelength_Move_to_Stop]
+Class="Function"
+Prototype="int Wavelength_Move_to_Stop(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:780:17"
+
+[Get_PLIF_Wavelength]
+Class="Function"
+Prototype="float Get_PLIF_Wavelength();"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:812:7"
+
+[Advance_PLIF_Laser]
+Class="Function"
+Prototype="void Advance_PLIF_Laser();"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:856:6"
+

@@ -1,0 +1,1 @@
+This folder contains class definitions for data acquisition systems used on PHASMA; base.py defines a generic parent class with most of the properties needed to define a digitizer.  These classes are instantiated by specific diagnositc definitions in the above directory. 

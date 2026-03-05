@@ -1,0 +1,115 @@
+[nrerror]
+Class="Function"
+Prototype="void nrerror(char error_text[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\NR_nrutil.c:6:6"
+
+[vector]
+Class="Function"
+Prototype="double *vector(long nl, long nh);"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\NR_nrutil.c:14:9"
+
+[ivector]
+Class="Function"
+Prototype="int *ivector(long nl, long nh);"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\NR_nrutil.c:24:6"
+
+[cvector]
+Class="Function"
+Prototype="unsigned char *cvector(long nl, long nh);"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\NR_nrutil.c:34:16"
+
+[lvector]
+Class="Function"
+Prototype="unsigned long *lvector(long nl, long nh);"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\NR_nrutil.c:44:16"
+
+[dvector]
+Class="Function"
+Prototype="double *dvector(long nl, long nh);"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\NR_nrutil.c:53:9"
+
+[matrix]
+Class="Function"
+Prototype="double **matrix(long nrl, long nrh, long ncl, long nch);"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\NR_nrutil.c:63:10"
+
+[dmatrix]
+Class="Function"
+Prototype="double **dmatrix(long nrl, long nrh, long ncl, long nch);"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\NR_nrutil.c:89:10"
+
+[imatrix]
+Class="Function"
+Prototype="int **imatrix(long nrl, long nrh, long ncl, long nch);"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\NR_nrutil.c:112:7"
+
+[submatrix]
+Class="Function"
+Prototype="double **submatrix(double **a, long oldrl, long oldrh, long oldcl, long oldch, long newrl, long newcl);"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\NR_nrutil.c:135:10"
+
+[convert_matrix]
+Class="Function"
+Prototype="double **convert_matrix(double *a, long nrl, long nrh, long ncl, long nch);"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\NR_nrutil.c:155:10"
+
+[f3tensor]
+Class="Function"
+Prototype="double ***f3tensor(long nrl, long nrh, long ncl, long nch, long ndl, long ndh);"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\NR_nrutil.c:176:11"
+
+[free_vector]
+Class="Function"
+Prototype="void free_vector(double *v, long nl, long nh);"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\NR_nrutil.c:215:6"
+
+[free_ivector]
+Class="Function"
+Prototype="void free_ivector(int *v, long nl, long nh);"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\NR_nrutil.c:221:6"
+
+[free_cvector]
+Class="Function"
+Prototype="void free_cvector(unsigned char *v, long nl, long nh);"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\NR_nrutil.c:227:6"
+
+[free_lvector]
+Class="Function"
+Prototype="void free_lvector(unsigned long *v, long nl, long nh);"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\NR_nrutil.c:233:6"
+
+[free_dvector]
+Class="Function"
+Prototype="void free_dvector(double *v, long nl, long nh);"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\NR_nrutil.c:239:6"
+
+[free_matrix]
+Class="Function"
+Prototype="void free_matrix(double **m, long nrl, long nrh, long ncl, long nch);"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\NR_nrutil.c:245:6"
+
+[free_dmatrix]
+Class="Function"
+Prototype="void free_dmatrix(double **m, long nrl, long nrh, long ncl, long nch);"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\NR_nrutil.c:252:6"
+
+[free_imatrix]
+Class="Function"
+Prototype="void free_imatrix(int **m, long nrl, long nrh, long ncl, long nch);"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\NR_nrutil.c:259:6"
+
+[free_submatrix]
+Class="Function"
+Prototype="void free_submatrix(double **b, long nrl, long nrh, long ncl, long nch);"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\NR_nrutil.c:266:6"
+
+[free_convert_matrix]
+Class="Function"
+Prototype="void free_convert_matrix(double **b, long nrl, long nrh, long ncl, long nch);"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\NR_nrutil.c:272:6"
+
+[free_f3tensor]
+Class="Function"
+Prototype="void free_f3tensor(double ***t, long nrl, long nrh, long ncl, long nch, long ndl, long ndh);"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\NR_nrutil.c:278:6"
+

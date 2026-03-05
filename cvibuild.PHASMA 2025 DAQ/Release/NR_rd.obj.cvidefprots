@@ -1,0 +1,5 @@
+[rd]
+Class="Function"
+Prototype="double rd(double x, double y, double z);"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\NR_rd.c:26:8"
+

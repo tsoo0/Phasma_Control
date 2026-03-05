@@ -1,0 +1,5 @@
+[Rigol]
+Class="Function"
+Prototype="void Rigol(int Rigol_visa_handle, int Rigol_RecordLength, float *timestep, double Chan1[], double Chan2[], double Chan3[], double Chan4[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\Rigol Routines\Rigol.c:7:6"
+

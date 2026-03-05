@@ -1,0 +1,3220 @@
+
+                    HP33120A 15 MHz Func/Arb Wvfm Generator
+________________________________________________________________________________
+
+  Introduction:
+
+  This instrument driver provides programming support for HP33120A 15 MHz Func/Arb Wvfm Generator.
+  It contains functions for opening, configuring, taking measurements from, and
+  closing the instrument.
+
+________________________________________________________________________________
+
+  Assumptions:
+
+  To successfully use this module, the following conditions must be met:
+
+         -  the instrument is connected to the GPIB.
+         -  the GPIB address supplied to the initialize function must match the
+            GPIB address of the instrument.
+
+________________________________________________________________________________
+
+  Error and Status Information:
+
+  Error codes and warnings are returned as the return value of each instrument
+  driver function. A program should examine this value after each call to an
+  instrument driver function to determine if any error occurred.  The general
+  meaning of the return value is as follows:
+
+       Value                   Meaning
+       -------------------------------
+       0                      Success
+
+  Possible error codes and their meanings are listed with the corresponding
+  instrument driver function.
+
+________________________________________________________________________________
+
+  How To Use This Document:
+
+  This document is intended to be used as a programming reference manual.
+  It describes each function in the HP33120A 15 MHz Func/Arb Wvfm Generator
+  instrument. The functions are listed in alphabetical order with a
+  description of the function, C syntax of the function, a description of each
+  parameter, and possible error codes.
+
+________________________________________________________________________________
+
+Function Tree Layout:
+
+   HP33120A 15 MHz Func/Arb Wvfm GeneratorFunction Name:
+
+      Initialize Function                         hp33120a_init
+      Configuration Functions
+         Configure Waveform                       hp33120a_wf_config
+         Waveform Parameters                      hp33120a_wf_param
+         Configure Modulation
+            Amplitude Modulation                  hp33120a_ampl_modulation
+            Frequency Modulation                  hp33120a_freq_modulation
+            Burst Modulation                      hp33120a_burst_modulation
+            Frequency Sweep                       hp33120a_sweep_modulation
+            FSK Modulation                        hp33120a_fsk_modulation
+         Configure System
+            Display                               hp33120a_sys_display
+            Beeper                                hp33120a_sys_beeper
+            Instrument Setup                      hp33120a_instr_setup
+            Output Impedance                      hp33120a_out_impedance
+      Action Functions
+         Send Trigger                             hp33120a_send_trig
+      Data Functions
+         Arb Waveform Operations
+            Load Float-Pt Waveform                hp33120a_arb_float_point_wf
+            Load Binary Waveform                  hp33120a_arb_bin_wf
+            Load Binary Block                     hp33120a_arb_bin_block_wf
+            Delete Waveform                       hp33120a_arb_delete
+            Copy Waveform                         hp33120a_arb_copy
+            Arbitrary Waveform Value              hp33120a_arb_value
+         Miscellaneous
+            Catalog                               hp33120a_arb_catalog
+            Non-Volatile Catalog                  hp33120a_arb_nv_catalog
+            Free Memory Slots                     hp33120a_arb_free
+      Utility Functions
+         Reset                                    hp33120a_reset
+         Self-Test                                hp33120a_self_test
+         Error Query                              hp33120a_error
+         Revision                                 hp33120a_revision
+         SCPI Version                             hp33120a_sys_version
+         Write To Instrument                      hp33120a_write
+         Read Instrument Data                     hp33120a_read
+      Close Function                              hp33120a_close
+________________________________________________________________________________
+
+  HP33120A 15 MHz Func/Arb Wvfm Generator
+
+       Instrument Name: HP33120A 15 MHz Function /
+                        Arbitrary Waveform Generator
+      
+       Description:     This instrument module provides
+                        programming support for the
+                        HP33120A Function/Arbitrary Wvfm
+                        Generator.  The module is
+                        divided into the following
+                        functions:
+      
+       Functions/Classes:
+      
+       (1)  Initialize Function:
+            Initialize the instrument and set to default
+            configuration.
+      
+       (2)  Configuration Functions: (Class)
+            Configure the instrument by setting the
+            basic waveform parameters, modulation
+            parameters and system configuration
+            parameters.
+      
+       (3)  Action Functions: (Class)
+            Trigger the instrument via GPIB bus.
+      
+       (4)  Data Functions: (Class)
+            Perform arbitraty waveform operations such
+            as waveform downloading, copying, deleting.
+            Get waveform parameters.
+      
+       (5)  Utility Functions: (Class)
+            Provide lower level functions to communicate
+            with the instrument, and change instrument
+            parameters.
+      
+       (6)  Close Function:
+            Take the instrument offline.
+________________________________________________________________________________
+
+              The following functions are in alphabetical order.
+
+________________________________________________________________________________
+
+  hp33120a_ampl_modulation
+
+      short hp33120a_ampl_modulation (short instrumentID, short AMMode,
+                                      short modulatingWfShape, char userDefWFName[],
+                                      double modulatingFreqHz, short AMDepth);
+
+  Purpose
+
+       Panel Name:    Amplitude Modulation
+      
+       Description:   Allows and configures amplitude
+                      modulation.
+                      The amplitude of the carrier is
+                      varied by the amplitude of the
+                      modulating waveform.
+
+  Parameter List
+
+      instrumentID
+
+          Variable Type       short
+
+           Description:   Accepts the Instrument ID returned
+                          by the Initialize function to
+                          select the desired instrument.
+          
+           Valid Range:   1 to  Maximum Instances of
+                                this Instrument
+          
+                          The Maximum Instances of this
+                          Instrument is the maximum number
+                          of instruments that can be
+                          controlled by this driver in a
+                          single system. The value is set
+                          internally in the driver. The
+                          typical value is 10.
+
+      AMMode
+
+          Variable Type       short
+
+           Description:   Selects the modulation source.
+                          Off disables amplitude modulation.
+                          When Ext/Int mode is enabled, the
+                          function generator adds the
+                          internal and external modulating
+                          signals.
+          
+           Valid Range:   0 - Off       (Default)
+                          1 - Ext
+                          2 - Ext/Int
+
+      modulatingWfShape
+
+          Variable Type       short
+
+           Description:   Sets the shape of the modulating
+                          waveform.
+          
+           Valid Range:   1 - Sine       (Default)
+                          2 - Square
+                          3 - Triangle
+                          4 - Ramp
+                          5 - Noise
+                          6 - Volatile
+                          7 - Sinc
+                          8 - Neg_Ramp
+                          9 - Exp_Rise
+                         10 - Exp_Fall
+                         11 - Cardiac
+                         12 - User-Def Wf
+          
+           Note:          0 to 5 are standard waveforms.
+          
+                          6 outputs waveform currently
+                            downloaded to volatile memory.
+          
+                          7 to 11 are predefined arbitrary
+                            waveforms.
+          
+                         12 allows to output one of four
+                            user-defined waveforms stored
+                            in non-volatile memory.
+                            The Waveform Name is required.
+
+      userDefWFName
+
+          Variable Type       char []
+
+           Description:   Inputs the name of one of four
+                          user-defined waveforms stored in
+                          the non-volatile memory.
+                          This control is active only when
+                          "User-Def Wf" is selected by the
+                          Modulating Wf Shape control.
+          
+           Default Value: ""
+
+      modulatingFreqHz
+
+          Variable Type       double
+
+           Description:   Sets the frequency of the
+                          modulating waveform.
+          
+           Valid Range:   10 mHz to 20 kHz
+          
+           Default Value: 100 Hz
+
+      AMDepth
+
+          Variable Type       short
+
+           Description:    Specifies the modulation depth in
+                           percent.
+          
+           Valid Range:    0 to 120 %
+          
+           Default Value:  100 %
+
+  Return Value
+
+           Description:   Displays the results of the
+                          function call.
+          
+           Error Codes:
+          
+                  0   Success
+          
+                 -1   Instrument ID out of range
+                 -2   AM Mode out of range
+                 -3   Modulating Wf Shape out of range
+                 -4   Modulating Frequency out of range
+                 -5   Modulating Depth out of range
+          
+                100   Not allowed carrier waveform shape
+                      (DC or Noise)
+          
+                230   Error writing to instrument
+                231   Error reading from instrument
+                232   Instrument not initialized
+          
+                300  Instrument specific error
+________________________________________________________________________________
+
+  hp33120a_arb_bin_block_wf
+
+      short hp33120a_arb_bin_block_wf (short instrumentID, short numberOfBytes,
+                                       short binaryBlock[]);
+
+  Purpose
+
+       Panel Name:    Load Binary Block
+      
+       Description:   Loads binary data block into the
+                      volatile memory. The previous
+                      waveform stored in the volatile
+                      memory will be overwritten. Up to
+                      four user-defined waveforms can be
+                      stored in the non-volatile memory.
+                      Use the Copy Waveform function to
+                      copy the downloaded waveform into
+                      the non-volatile memory.
+
+  Parameter List
+
+      instrumentID
+
+          Variable Type       short
+
+           Description:   Accepts the Instrument ID returned
+                          by the Initialize function to
+                          select the desired instrument.
+          
+           Valid Range:   1 to  Maximum Instances of
+                                this Instrument
+          
+                          The Maximum Instances of this
+                          Instrument is the maximum number
+                          of instruments that can be
+                          controlled by this driver in a
+                          single system. The value is set
+                          internally in the driver. The
+                          typical value is 10.
+
+      numberOfBytes
+
+          Variable Type       short
+
+           Description:   Specifies the number of bytes to
+                          be transfered.
+          
+           Valid Range:   8 to 32000 Bytes
+          
+           Default Value: 32000 Bytes
+
+      binaryBlock
+
+          Variable Type       short []
+
+           Description:   Specifies an integer array which
+                          contains the data points for the
+                          binary block which will be
+                          transfered to the instrument's
+                          volatile memory.
+          
+           Default Value: None (Array Name)
+          
+           Note:          Up to 16000 integer values between
+                          -2047 and +2047 can be transferred
+                          (32 kBytes).
+                          Values -2047 and +2047 correspond
+                          to the peak values of the
+                          waveform.
+
+  Return Value
+
+           Description:   Displays the results of the
+                          function call.
+          
+           Error Codes:
+          
+                  0   Success
+          
+                 -1   Instrument ID out of range
+                 -2   Number Of Bytes out of range
+          
+                230   Error writing to instrument
+                231   Error reading from instrument
+                232   Instrument not initialized
+          
+                300   Instrument specified error
+________________________________________________________________________________
+
+  hp33120a_arb_bin_wf
+
+      short hp33120a_arb_bin_wf (short instrumentID, char fileName[]);
+
+  Purpose
+
+       Panel Name:    Load Binary Waveform
+      
+       Description:   Loads binary integer values into
+                      the volatile memory. The previous
+                      waveform stored in the volatile
+                      memory will be overwritten. Up to
+                      four user-defined waveforms can be
+                      stored in the non-volatile memory.
+                      Use the Copy Waveform function to
+                      copy the downloaded waveform into
+                      the non-volatile memory.
+
+  Parameter List
+
+      instrumentID
+
+          Variable Type       short
+
+           Description:   Accepts the Instrument ID returned
+                          by the Initialize function to
+                          select the desired instrument.
+          
+           Valid Range:   1 to  Maximum Instances of
+                                this Instrument
+          
+                          The Maximum Instances of this
+                          Instrument is the maximum number
+                          of instruments that can be
+                          controlled by this driver in a
+                          single system. The value is set
+                          internally in the driver. The
+                          typical value is 10.
+
+      fileName
+
+          Variable Type       char []
+
+           Description:   Specifies the name of a file
+                          from which data will be loaded.
+          
+           Default Value: ""
+          
+           Note:          (When specifying the full path
+                          name use "\\" instead of "\" i.e.,
+                          "\\lw\\instr\\hp\\file.ext" )
+                          Up to 16000 integer values between
+                          -2047 and +2047 can be downloaded.
+                          Values -2047 and +2047 correspond
+                          to the peak values of the
+                          waveform.
+          
+                          Example of the data file
+                          containing 10 points:
+          
+             2047, 1536, 1536, 1024, 512, 0, -512, -1536,
+             -1536, -2047
+
+  Return Value
+
+           Description:   Displays the results of the
+                          function call.
+          
+           Error Codes:
+          
+                  0   Success
+          
+                 -1   Instrument ID out of range
+          
+                228   Error writing to instrument from file
+                230   Error writing to instrument
+                231   Error reading from instrument
+                232   Instrument not initialized
+          
+                300   Instrument specific error
+                301   Error Enable/Disable END message on
+                      write operations
+________________________________________________________________________________
+
+  hp33120a_arb_catalog
+
+      short hp33120a_arb_catalog (short instrumentID, char catalog[]);
+
+  Purpose
+
+       Panel Name:    Catalog
+      
+       Description:   Lists the names of all waveforms
+                      currently uploaded to the
+                      instrument's memory.
+
+  Parameter List
+
+      instrumentID
+
+          Variable Type       short
+
+           Description:   Accepts the Instrument ID returned
+                          by the Initialize function to
+                          select the desired instrument.
+          
+           Valid Range:   1 to  Maximum Instances of
+                                this Instrument
+          
+                          The Maximum Instances of this
+                          Instrument is the maximum number
+                          of instruments that can be
+                          controlled by this driver in a
+                          single system. The value is set
+                          internally in the driver. The
+                          typical value is 10.
+
+      catalog
+
+          Variable Type       char []
+
+           Description:   Outputs the list of the names of
+                          all arbitrary waveforms currently
+                          loaded in the instrument's memory.
+          
+  Return Value
+
+           Description:   Displays the results of the
+                          function call.
+          
+           Error Codes:
+          
+                  0   Success
+          
+                 -1   Instrument ID out of range
+          
+                230   Error writing to instrument
+                231   Error reading from instrument
+                232   Instrument not initialized
+________________________________________________________________________________
+
+  hp33120a_arb_copy
+
+      short hp33120a_arb_copy (short instrumentID, char destinationArbName[]);
+
+  Purpose
+
+       Panel Name:    Copy Waveform
+      
+       Description:   Copies the waveform from the
+                      volatile memory to the specified
+                      name in the non-volatile memory.
+
+  Parameter List
+
+      instrumentID
+
+          Variable Type       short
+
+           Description:   Accepts the Instrument ID returned
+                          by the Initialize function to
+                          select the desired instrument.
+          
+           Valid Range:   1 to  Maximum Instances of
+                                this Instrument
+          
+                          The Maximum Instances of this
+                          Instrument is the maximum number
+                          of instruments that can be
+                          controlled by this driver in a
+                          single system. The value is set
+                          internally in the driver. The
+                          typical value is 10.
+
+      destinationArbName
+
+          Variable Type       char []
+
+           Description:   Specifies the name in the
+                          non-volatile memory to which the
+                          waveform from the volatile memory
+                          will be copied.
+          
+           Default Value: ""
+          
+           Note:          No waveform can be copied to
+                          Volatile.
+                          The arb name may contain up to
+                          8 characters. The first character
+                          must be a letter.
+                          Built-in waveform names are
+                          reserved and cannot be used with
+                          this command.
+
+  Return Value
+
+           Description:   Displays the results of the
+                          function call.
+          
+           Error Codes:
+          
+                  0   Success
+          
+                 -1   Instrument ID out of range
+          
+                228   Error writing to instrument from file
+                230   Error writing to instrument
+                231   Error reading from instrument
+                232   Instrument not initialized
+          
+                300   Instrument specified error
+________________________________________________________________________________
+
+  hp33120a_arb_delete
+
+      short hp33120a_arb_delete (short instrumentID, short delete, char arbName[]);
+
+  Purpose
+
+       Panel Name:    Delete Waveform
+      
+       Description:   Deletes the specified arbitrary
+                      waveform from the memory. The
+                      waveform currently downloaded into
+                      the volatile memory or any of the
+                      four user-defined waveforms in
+                      the non-volatile memory can be
+                      deleted.
+
+  Parameter List
+
+      instrumentID
+
+          Variable Type       short
+
+           Description:   Accepts the Instrument ID returned
+                          by the Initialize function to
+                          select the desired instrument.
+          
+           Valid Range:   1 to  Maximum Instances of
+                                this Instrument
+          
+                          The Maximum Instances of this
+                          Instrument is the maximum number
+                          of instruments that can be
+                          controlled by this driver in a
+                          single system. The value is set
+                          internally in the driver. The
+                          typical value is 10.
+
+      delete
+
+          Variable Type       short
+          
+           Description:   Specifies if all or only one
+                          user-defined arbitrary waveform
+                          should be deleted from the memory.
+                          If One is selected then the
+                          waveform specified by the Arb Name
+                          control will be deleted.
+          
+           Valid Range:   0 - All
+                          1 - One      (Default)
+
+      arbName
+
+          Variable Type       char []
+
+           Description:   Specifies the name of the
+                          arbitrary waveform which will be
+                          deleted. If Delete All is
+                          selected, all user-defined
+                          arbitrary waveforms will be
+                          deleted from the memory.
+          
+           Default Value: ""
+          
+           Note:          The arbitrary waveform that is
+                          currently being output cannot
+                          be deleted.
+
+  Return Value
+
+           Description:   Displays the results of the
+                          function call.
+          
+           Error Codes:
+          
+                  0   Success
+          
+                 -1   Instrument ID out of range
+                 -2   Delete out of range
+          
+                230   Error writing to instrument
+                231   Error reading from instrument
+                232   Instrument not initialized
+          
+                300   Instrument specified error
+________________________________________________________________________________
+
+  hp33120a_arb_float_point_wf
+
+      short hp33120a_arb_float_point_wf (short instrumentID, char fileName[]);
+
+  Purpose
+
+       Panel Name:    Load Floating-Point Waveform
+      
+       Description:   Loads floating-point values into
+                      the volatile memory.
+                      The previous waveform stored in
+                      the volatile memory will be
+                      overwritten.
+                      Up to four user-defined waveforms
+                      can be stored in the non-volatile
+                      memory. Use the Copy Waveform
+                      function to copy the waveform
+                      from the volatile into the
+                      non-volatile memory.
+
+  Parameter List
+
+      instrumentID
+
+          Variable Type       short
+
+           Description:   Accepts the Instrument ID returned
+                          by the Initialize function to
+                          select the desired instrument.
+          
+           Valid Range:   1 to  Maximum Instances of
+                                this Instrument
+          
+                          The Maximum Instances of this
+                          Instrument is the maximum number
+                          of instruments that can be
+                          controlled by this driver in a
+                          single system. The value is set
+                          internally in the driver. The
+                          typical value is 10.
+
+      fileName
+
+          Variable Type       char []
+
+           Description:   Specifies the name of a file
+                          from which data will be loaded.
+          
+           Default Value: ""
+          
+           Note:          (When specifying the full path
+                          name use "\\" instead of "\" i.e.,
+                          "\\lw\\instr\\hp\\file.dat" )
+                          Up to 16000 real values between
+                          -1 and +1 can be downloaded.
+          
+                          Example of the data file
+                          containing 10 points:
+          
+                    1,.75,.5,.25,0,-.25,-.5,.-75,-.8,-.85
+
+  Return Value
+
+           Description:   Displays the results of the
+                          function call.
+          
+           Error Codes:
+          
+                  0   Success
+          
+                 -1   Instrument ID out of range
+          
+                228   Error writing to instrument from file
+                230   Error writing to instrument
+                231   Error reading from instrument
+                232   Instrument not initialized
+          
+                300   Instrument specific error
+                301   Error Enable/Disable END message on
+                      write operations
+________________________________________________________________________________
+
+  hp33120a_arb_free
+
+      short hp33120a_arb_free (short instrumentID, short *numberofFreeSlots);
+
+  Purpose
+
+       Panel Name:    Free Memory Slots
+      
+       Description:   Queries the number of the
+                      non-volatile memory slots
+                      available to store user-defined
+                      waveforms.
+
+  Parameter List
+
+      instrumentID
+
+          Variable Type       short
+
+           Description:   Accepts the Instrument ID returned
+                          by the Initialize function to
+                          select the desired instrument.
+          
+           Valid Range:   1 to  Maximum Instances of
+                                this Instrument
+          
+                          The Maximum Instances of this
+                          Instrument is the maximum number
+                          of instruments that can be
+                          controlled by this driver in a
+                          single system. The value is set
+                          internally in the driver. The
+                          typical value is 10.
+
+      numberofFreeSlots
+
+          Variable Type       short (passed by reference)
+
+           Description:   Outputs the number of the
+                          non-volatile memory slots
+                          available to store user-defined
+                          waveforms.
+          
+           Note:          This command returns following
+                          values:
+                          0 - memory full
+                          1,2,3 or 4 slots free
+
+  Return Value
+
+           Description:   Displays the results of the
+                          function call.
+          
+           Error Codes:
+          
+                  0   Success
+          
+                 -1   Instrument ID out of range
+          
+                230   Error writing to instrument
+                231   Error reading from instrument
+                232   Instrument not initialized
+                236   Error interpreting instrument response
+________________________________________________________________________________
+
+  hp33120a_arb_nv_catalog
+
+      short hp33120a_arb_nv_catalog (short instrumentID, char catalog[]);
+
+  Purpose
+
+       Panel Name:    Non-Volatile Catalog
+      
+       Description:   Lists the names of all
+                      user-defined waveforms currently
+                      loaded in the instrument's
+                      non-volatile memory.
+
+  Parameter List
+
+      instrumentID
+
+          Variable Type       short
+
+           Description:   Accepts the Instrument ID returned
+                          by the Initialize function to
+                          select the desired instrument.
+          
+           Valid Range:   1 to  Maximum Instances of
+                                this Instrument
+          
+                          The Maximum Instances of this
+                          Instrument is the maximum number
+                          of instruments that can be
+                          controlled by this driver in a
+                          single system. The value is set
+                          internally in the driver. The
+                          typical value is 10.
+
+      catalog
+
+          Variable Type       char []
+
+           Description:   Outputs the list of the names of
+                          all user-defined arbitrary
+                          waveforms currently loaded in the
+                          instrument's non-volatile memory.
+          
+  Return Value
+
+           Description:   Displays the results of the
+                          function call.
+          
+           Error Codes:
+          
+                  0   Success
+          
+                 -1   Instrument ID out of range
+          
+                230   Error writing to instrument
+                231   Error reading from instrument
+                232   Instrument not initialized
+________________________________________________________________________________
+
+  hp33120a_arb_value
+
+      short hp33120a_arb_value (short instrumentID, short waveformParameter,
+                                char arbName[], double *value);
+
+  Purpose
+
+       Panel Name:    Arbitrary Waveform Value
+      
+       Description:   Queries the specified arbitrary
+                      waveform in the instrument's
+                      memory for the specified value and
+                      returns the result. The following
+                      values may be queried:
+      
+                      - Arithmetic average of all data
+                      points for the specified arbitrary
+                      waveform.
+      
+                      - Crest factor of all data points
+                      for the specified arbitrary
+                      waveform.
+      
+                      - Peak-to-peak value of all data
+                      points for the specified arbitrary
+                      waveform.
+      
+                      - Number of points in the
+                      specified arbitrary waveform.
+
+  Parameter List
+
+      instrumentID
+
+          Variable Type       short
+
+           Description:   Accepts the Instrument ID returned
+                          by the Initialize function to
+                          select the desired instrument.
+          
+           Valid Range:   1 to  Maximum Instances of
+                                this Instrument
+          
+                          The Maximum Instances of this
+                          Instrument is the maximum number
+                          of instruments that can be
+                          controlled by this driver in a
+                          single system. The value is set
+                          internally in the driver. The
+                          typical value is 10.
+
+      waveformParameter
+
+          Variable Type       short
+
+           Description:   Specifies the waveform parameter.
+          
+                          Average mode outputs the
+                          arithmetic average of all data
+                          points for the specified arbitrary
+                          waveform.
+          
+                          Crest Factor mode outputs
+                          the crest factor of all data
+                          points for the specified arbitrary
+                          waveform.
+                          Crest factor is the ratio of the
+                          peak value to the RMS value.
+          
+                          Peak-To-Peak mode outputs the
+                          peak-to-peak value of all data
+                          points for the specified arbitrary
+                          waveform.
+          
+                          Points mode outputs the number of
+                          points in the specified arbitrary
+                          waveform.
+          
+           Note:          The Peak-To-Peak mode returns a
+                          value between 0 and +1.0, with
+                          +1.0 indicating full amplitude
+                          available (100 %).
+          
+                          The Points mode returns a value
+                          between 8 and 16000 points.
+
+      arbName
+
+          Variable Type       char []
+
+           Description:   Specifies the name of the
+                          arbitrary waveform which pertains
+                          to the waveform parameter.
+          
+           Default Value: ""
+
+      value
+
+          Variable Type       double (passed by reference)
+
+           Description:   Outputs the value of the specified
+                          parameter.
+          
+  Return Value
+
+           Description:   Displays the results of the
+                          function call.
+          
+           Error Codes:
+          
+                  0   Success
+          
+                 -1   Instrument ID out of range
+                 -2   Waveform Parameter out of range
+          
+                230   Error writing to instrument
+                231   Error reading from instrument
+                232   Instrument not initialized
+                236   Error interpreting instrument response
+          
+                300   Instrument specified error
+________________________________________________________________________________
+
+  hp33120a_burst_modulation
+
+      short hp33120a_burst_modulation (short instrumentID, short burstMode,
+                                       short trigger, long burstCount,
+                                       double burstRateHz, short burstPhasedeg);
+
+  Purpose
+
+       Panel Name:    Burst Modulation
+      
+       Description:   Allows and configures burst
+                      modulation.
+                      Configures the function generator
+                      to output a waveform with
+                      specified number of cycles, called
+                      burst.
+
+  Parameter List
+
+      instrumentID
+
+          Variable Type       short
+
+           Description:   Accepts the Instrument ID returned
+                          by the Initialize function to
+                          select the desired instrument.
+          
+           Valid Range:   1 to  Maximum Instances of
+                                this Instrument
+          
+                          The Maximum Instances of this
+                          Instrument is the maximum number
+                          of instruments that can be
+                          controlled by this driver in a
+                          single system. The value is set
+                          internally in the driver. The
+                          typical value is 10.
+
+      burstMode
+
+          Variable Type       short
+
+           Description:   Off disables burst modulation.
+                          Triggered mode allows generation
+                          of a single burst with the
+                          specified number of cycles each
+                          time triggered.
+                          The instrument can be triggered in
+                          the following ways:
+          
+                          1)  Internal trigger
+                          2)  External trigger from the rear
+                              panel terminal
+                          3)  External triger via GPIB bus.
+          
+                          If Ext Gated mode is selected,
+                          the generator generates continuous
+                          waveform when gate signal applied
+                          to the Ext Trig terminal is TTL
+                          high.
+          
+           Valid Range:   0 - Off   (Default)
+                          1 - Triggered
+                          2 - Ext Gated
+
+      trigger
+
+          Variable Type       short
+
+           Description:   Selects the trigger source.
+          
+                          The instrument can be triggered in
+                          following ways:
+          
+                          1)  Internal trigger   (Int)
+                          2)  External trigger from the rear
+                              panel terminal     (Ext)
+                          3)  External triger via GPIB bus
+                                                 (Bus)
+          
+           Valid Range:   0 - Int     (Default)
+                          1 - Ext
+                          2 - Bus
+
+      burstCount
+
+          Variable Type       long
+
+           Description:   Defines the number of cycles to be
+                          output per burst.
+                          Used only in the triggered burst
+                          mode.
+          
+           Valid Range:   1 to 50000 cycles
+          
+           Default Value: 1
+          
+           Note:          Minimum burst count limitation:
+          
+            Carrier Frequency        Minimum Burst Count
+            --------------------------------------------
+             10 mHz to 1 MHz              1
+             >1 MHz to 2 MHz              2
+             >2 MHz to 3 MHz              3
+             >3 MHz to 4 MHz              4
+             >4 MHz to 5 MHz              5
+          
+          
+                          If the carrier frequency is set
+                          less than or equal to 100 Hz,
+                          the following relationship
+                          applies:
+          
+             burst count / carrier frequency =< 500 second
+
+      burstRateHz
+
+          Variable Type       double
+
+           Description:   Defines the frequency at which
+                          internally triggered bursts are
+                          generated.
+                          Applied only for internal trigger.
+          
+           Valid Range:   10 mHz to 50 kHz
+          
+           Default Value: 100.0 Hz
+
+      burstPhasedeg
+
+          Variable Type       short
+
+           Description:   Defines the starting phase of
+                          the burst.
+          
+           Valid Range:   -360 degrees to +360 degrees
+          
+           Default Value: 0 deg
+
+  Return Value
+
+           Description:   Displays the results of the
+                          function call.
+          
+           Error Codes:
+          
+                  0   Success
+          
+                 -1   Instrument ID out of range
+                 -2   Burst Mode out of range
+                 -3   Trigger out of range
+                 -4   Burst Count out of range
+                 -5   Burst Rate out of range
+                 -6   Burst Phase out of range
+          
+                230   Error writing to instrument
+                231   Error reading from instrument
+                232   Instrument not initialized
+          
+                100   Not allowed carrier waveform shape
+                      (DC or Noise)
+          
+                300   Instrument specific error. The
+                      instrument may return burst out of
+                      range error for conditions which
+                      cannot be range checked by the driver.
+                      If this error is generated use the
+                      Error function to query the instrument
+                      for the exact case of the error.
+________________________________________________________________________________
+
+  hp33120a_close
+
+      short hp33120a_close (short instrumentID);
+
+  Purpose
+
+       Panel Name:    Close
+      
+       Description:   Closes the instrument and takes it
+                      off line.
+      
+       Note: The instrument must be reinitialized to use
+             it again.
+
+  Parameter List
+
+      instrumentID
+
+          Variable Type       short
+
+           Description:   Accepts the Instrument ID returned
+                          by the Initialize function to
+                          select the desired instrument.
+          
+           Valid Range:   1 to  Maximum Instances of
+                                this Instrument
+          
+                          The Maximum Instances of this
+                          Instrument is the maximum number
+                          of instruments that can be
+                          controlled by this driver in a
+                          single system. The value is set
+                          internally in the driver. The
+                          typical value is 10.
+
+  Return Value
+
+           Description:   Displays the results of the
+                          function call.
+          
+           Error Codes:
+          
+                  0   Success
+          
+                 -1   Instrument ID out of range
+          
+                221   Unable to close instrument
+                232   Instrument not initialized
+________________________________________________________________________________
+
+  hp33120a_error
+
+      short hp33120a_error (short instrumentID, short *errorNumber,
+                            char errorMessage[]);
+
+  Purpose
+
+       Panel Name:    Error Query
+      
+       Description:   Queries the instrument and returns
+                      instrument-specific error
+                      information.
+
+  Parameter List
+
+      instrumentID
+
+          Variable Type       short
+
+           Description:   Accepts the Instrument ID returned
+                          by the Initialize function to
+                          select the desired instrument.
+          
+           Valid Range:   1 to  Maximum Instances of
+                                this Instrument
+          
+                          The Maximum Instances of this
+                          Instrument is the maximum number
+                          of instruments that can be
+                          controlled by this driver in a
+                          single system. The value is set
+                          internally in the driver. The
+                          typical value is 10.
+
+      errorNumber
+
+          Variable Type       short (passed by reference)
+
+           Description:   Outputs the error number which
+                          specifies the error read from
+                          the instrument's error queue.
+          
+      errorMessage
+
+          Variable Type       char []
+
+           Description:   Outputs one error read from the
+                          instrument's error queue.
+          
+           Note:          Errors are retrieved in
+                          first-in-first-out order (FIFO).
+                          A record of up to 20 errors can be
+                          stored in the instrument's error
+                          queue.
+                          If more than 20 errors have
+                          occured, the last error stored in
+                          the queue is replaced with "-350,
+                          Too many errors".
+                          The error queue is cleared when
+                          power has been off or after a *CLS
+                          command has been executed.
+
+  Return Value
+
+           Description:   Displays the results of the
+                          function call.
+          
+           Error Codes:
+          
+                  0   Success
+          
+                 -1   Instrument ID out of range
+          
+                230   Error writing to instrument
+                231   Error reading from instrument
+                232   Instrument not initialized
+                236   Error interpreting instrument response
+________________________________________________________________________________
+
+  hp33120a_freq_modulation
+
+      short hp33120a_freq_modulation (short instrumentID, short FMMode,
+                                      short modulatingWfShape, char userDefWFName[],
+                                      double modulatingFreqHz, double deviationHz);
+
+  Purpose
+
+       Panel Name:    Frequency Modulation
+      
+       Description:   Allows and configures frequency
+                      modulation.
+                      The frequency of the carrier is
+                      varied by the amplitude of the
+                      modulating waveform.
+
+  Parameter List
+
+      instrumentID
+
+          Variable Type       short
+
+           Description:   Accepts the Instrument ID returned
+                          by the Initialize function to
+                          select the desired instrument.
+          
+           Valid Range:   1 to  Maximum Instances of
+                                this Instrument
+          
+                          The Maximum Instances of this
+                          Instrument is the maximum number
+                          of instruments that can be
+                          controlled by this driver in a
+                          single system. The value is set
+                          internally in the driver. The
+                          typical value is 10.
+
+      FMMode
+
+          Variable Type       short
+
+           Description:   Enables or disables frequency
+                          modulation.
+          
+           Valid Range:   0 - Off       (Default)
+                          1 - On
+
+      modulatingWfShape
+
+          Variable Type       short
+
+           Description:   Sets the shape of the modulating
+                          waveform.
+          
+           Valid Range:   1 - Sine       (Default)
+                          2 - Square
+                          3 - Triangle
+                          4 - Ramp
+                          5 - Noise
+                          6 - Volatile
+                          7 - Sinc
+                          8 - Neg_Ramp
+                          9 - Exp_Rise
+                         10 - Exp_Fall
+                         11 - Cardiac
+                         12 - User-Def Wf
+          
+           Note:          0 to 5 are standard waveforms.
+          
+                          6 outputs waveform currently
+                            downloaded to volatile memory.
+          
+                          7 to 11 are predefined arbitrary
+                            waveforms.
+          
+                         12 allows to output one of four
+                            user-defined waveforms stored
+                            in non-volatile memory.
+                            The Waveform Name is required.
+
+      userDefWFName
+
+          Variable Type       char []
+
+           Description:   Inputs the name of one of four
+                          user-defined waveforms stored in
+                          the non-volatile memory.
+                          This control is active only when
+                          "User-Def Wf" is selected by the
+                          Modulating Wf Shape control.
+          
+          
+           Default Value: ""
+
+      modulatingFreqHz
+
+          Variable Type       double
+
+           Description:   Sets the frequency of the
+                          modulating signal.
+          
+           Valid Range:   10 mHz to 10 kHz
+          
+           Default Value: 10.0 Hz
+
+      deviationHz
+
+          Variable Type       double
+
+           Description:   Sets the variation in frequency of
+                          the modulating waveform from the
+                          carrier frequency.
+          
+           Valid Range:   10 mHz to 7.5 MHz
+          
+           Default Value: 100.0 Hz
+          
+           Note:          The carrier frequency must be
+                          greater than or equal to the peak
+                          frequency deviation.
+          
+                          The sum of the carrier frequency
+                          and peak frequency must be less
+                          than or equal to the maximum
+                          frequency for the selected
+                          function plus 100 kHz.
+
+  Return Value
+          
+           Description:   Displays the results of the
+                          function call.
+          
+           Error Codes:
+          
+                  0   Success
+          
+                 -1   Instrument ID out of range
+                 -2   FM Mode out of range
+                 -3   Modulating Wf Shape out of range
+                 -4   Modulating Frequency out of range
+                 -5   Deviation out of range
+          
+                100   Not allowed carrier waveform shape
+                      (DC or Noise)
+          
+                230   Error writing to instrument
+                231   Error reading from instrument
+                232   Instrument not initialized
+          
+                300   Instrument specific error
+________________________________________________________________________________
+
+  hp33120a_fsk_modulation
+
+      short hp33120a_fsk_modulation (short instrumentID, short FSKMode,
+                                     double hopFreqHz, double FSKRateHz);
+
+  Purpose
+
+       Panel Name:    FSK Modulation
+      
+       Description:   Allows and configures
+                      Frequency-Shift Keying (FSK)
+                      modulation.
+                      The function generator shifts its
+                      output frequency between two
+                      preset values.
+
+  Parameter List
+
+      instrumentID
+
+          Variable Type       short
+
+           Description:   Accepts the Instrument ID returned
+                          by the Initialize function to
+                          select the desired instrument.
+          
+           Valid Range:   1 to  Maximum Instances of
+                                this Instrument
+          
+                          The Maximum Instances of this
+                          Instrument is the maximum number
+                          of instruments that can be
+                          controlled by this driver in a
+                          single system. The value is set
+                          internally in the driver. The
+                          typical value is 10.
+
+      FSKMode
+
+          Variable Type       short
+
+           Description:   Selects the modulation source.
+                          Off disables FSK modulation.
+                          When Int source is selected,
+                          the frequency shifts between the
+                          carrier and hop frequencies
+                          according to the FSK Rate.
+                          When Ext source is selected,
+                          the output frequency is determined
+                          by the signal level on the
+                          rear-panel FSK terminal.
+          
+           Valid Range:   0 - Off       (Default)
+                          1 - Int
+                          2 - Ext
+
+      hopFreqHz
+
+          Variable Type       double
+
+           Description:   Specifies the upper frequency.
+          
+           Valid Range:   10 mHz to 15 MHz (100 kHz for
+                          ramp and triangle, 5 MHz for
+                          built-in arbs)
+          
+            User-defined arbitrary waveforms downloaded to
+            the memory:
+          
+            Numb Of Arb Points  Min Frequency  Max Frequency
+            ------------------------------------------------
+              8 to 8192 (8k)         10 mHz       5 MHz
+              8192 to 12287 (12k)    10 mHz     2.5 MHz
+              12288 to 16000         10 mHz     200 kHz
+          
+           Default Value: 100.0 Hz
+          
+           Note:          For Ext mode the hop frequency is
+                          output when a "high" TTL level is
+                          applied. Carrier frequency is
+                          output when a "low" TTL level is
+                          applied.
+
+      FSKRateHz
+
+          Variable Type       double
+
+           Description:   Sets the rate at which the output
+                          frequency shifts between the
+                          carrier frequency and the hop
+                          frequency. Applied only in Int
+                          Mode.
+          
+           Valid Range:   10 mHz to 50 kHz
+          
+           Default Value: 10.0 Hz
+
+  Return Value
+
+           Description:   Displays the results of the
+                          function call.
+          
+           Error Codes:
+          
+                  0   Success
+          
+                 -1   Instrument ID out of range
+                 -2   FSK Mode out of range
+                 -3   Hop Freq out of range
+                 -4   FSK Rate out of range
+          
+                100   Not allowed carrier waveform shape
+                      (DC or Noise)
+          
+                230   Error writing to instrument
+                231   Error reading from instrument
+                232   Instrument not initialized
+          
+                300   Instrument specified error. The
+                      instrument may return hop frequency
+                      out of range error for conditions
+                      which cannot be range checked by the
+                      driver. If this error is generated
+                      use the Error function to query the
+                      instrument for the exact cause of
+                      the error.
+________________________________________________________________________________
+
+  hp33120a_init
+
+      short hp33120a_init (short GPIBAddress, short IDQuery, short resetDevice,
+                           short *instrumentID);
+
+  Purpose
+
+       Panel Name:    Initialize Function
+      
+       Description:   Initializes the instrument in the
+                      following ways:
+      
+                      - opens the instrument and sets
+                        its GPIB address to the speci-
+                        fied value
+      
+                      - performs an identification query
+                        on the instrument
+      
+                      - sets the instrument to a default
+                        configuration
+      
+                      - returns an instrument ID which
+                        is used to identify the
+                        instrument in subsequent calls.
+
+  Parameter List
+
+      GPIBAddress
+
+          Variable Type       short
+
+           Description:   Specifies the address on the GPIB
+                          to be used to communicate
+                          with the instrument.  This value
+                          must correspond to the current
+                          internal setting of the
+                          instrument.
+          
+           Valid Range:   0 to 30
+          
+           Default Value: 1
+          
+           Note:          The Default Value of this control
+                          should be set to the factory
+                          default of the instrument, however
+                          if your instrument's actual
+                          setting is different this
+                          control's default should be
+                          changed.
+
+      IDQuery
+
+          Variable Type       short
+
+           Description:   Specifies if an ID Query is sent
+                          to the instrument during the
+                          initialization procedure.
+          
+           Valid Range:   0 - Skip Query
+                          1 - Do Query       (Default)
+          
+           Note:          Under normal circumstances the ID
+                          Query insures that the instrument
+                          initialized over the GPIB is
+                          the type supported by this driver.
+                          However circumstances may arise
+                          where it is undesirable to send
+                          an ID Query to the instrument.
+                          In those cases; set this control
+                          to "Skip Query" and this function
+                          will initialize the GPIB and the
+                          Command arrays in the driver,
+                          without doing an ID Query.
+
+      resetDevice
+
+          Variable Type       short
+
+           Description:   Specifies if the instrument is to
+                          be reset to its power-on settings
+                          during the initialization
+                          procedure.
+          
+           Valid Range:   0 - Don't Reset
+                          1 - Reset Device    (Default)
+          
+           Note:          If you do not want the instrument
+                          reset. Set this control to "Don't
+                          Reset" while initializing
+                          the instrument.
+
+      instrumentID
+
+          Variable Type       short (passed by reference)
+
+           Description:   Returns an Instrument ID that is
+                          used in all subsequent function
+                          calls to select the instrument at
+                          the Address specified.
+          
+                          If more than one instrument of the
+                          same type is used, this value will
+                          be used to differentiate between
+                          them. The first instrument
+                          initialized will be assigned an
+                          Instrument ID of 1.
+
+  Return Value
+
+           Description:   Displays the results of the
+                          function call.
+          
+           Error Codes:
+          
+                  0   Success
+          
+                 -1   Instrument ID out of range
+                 -2   ID Query out of range
+                 -3   Reset Device out of range
+          
+                220   Unable to open instrument
+                221   Unable to close instrument
+                223   Instrument identification query failed
+                230   Error writing to instrument
+                231   Error reading from instrument
+                233   Error configuring GPIB address
+                239   Error configuring time out
+________________________________________________________________________________
+
+  hp33120a_instr_setup
+
+      short hp33120a_instr_setup (short instrumentID, short instrConfiguration,
+                                  short configurationNumber);
+
+  Purpose
+
+       Panel Name:    Instrument Setup
+      
+       Description:   Allows to store, recall and delete
+                      specified instrument
+                      configuration.
+
+  Parameter List
+
+      instrumentID
+
+          Variable Type       short
+
+           Description:   Accepts the Instrument ID returned
+                          by the Initialize function to
+                          select the desired instrument.
+          
+           Valid Range:   1 to  Maximum Instances of
+                                this Instrument
+          
+                          The Maximum Instances of this
+                          Instrument is the maximum number
+                          of instruments that can be
+                          controlled by this driver in a
+                          single system. The value is set
+                          internally in the driver. The
+                          typical value is 10.
+
+      instrConfiguration
+
+          Variable Type       short
+
+           Description:   Allows to store, recall and delete
+                          the specified instrument
+                          configuration.
+                          If Store is selected, the current
+                          instrument configuration is stored
+                          into the specified memory
+                          location. If Recall is selected,
+                          the instrument state is set to
+                          those stored in the specified
+                          memory location.
+                          If Delete is selected, the
+                          specified memory location is
+                          cleared.
+          
+           Valid Range:   0 - Store       (Default)
+                          1 - Recall
+                          2 - Delete
+
+      configurationNumber
+
+          Variable Type       short
+
+           Description:   Specifies the instrument state
+                          stored in the memory or being
+                          stored.
+          
+           Valid Range:   0 to 3
+          
+           Default Value: 1
+          
+           Note:          Memory location "0" is
+                          automatically overwritten when the
+                          power is turned off.
+
+  Return Value
+
+           Description:   Displays the results of the
+                          function call.
+          
+           Error Codes:
+          
+                  0   Success
+          
+                 -1   Instrument ID out of range
+                 -2   Instr Configuration out of range
+                 -3   Configuration Number out of range
+          
+                230   Error writing to instrument
+                232   Instrument not initialized
+________________________________________________________________________________
+
+  hp33120a_out_impedance
+
+      short hp33120a_out_impedance (short instrumentID, short outputImpedance);
+
+  Purpose
+
+       Panel Name:    Output Impedance
+      
+       Description:   Selects the output termination for
+                      output amplitude and offset
+                      voltage.
+
+  Parameter List
+
+      instrumentID
+
+          Variable Type       short
+
+           Description:   Accepts the Instrument ID returned
+                          by the Initialize function to
+                          select the desired instrument.
+          
+           Valid Range:   1 to  Maximum Instances of
+                                this Instrument
+          
+                          The Maximum Instances of this
+                          Instrument is the maximum number
+                          of instruments that can be
+                          controlled by this driver in a
+                          single system. The value is set
+                          internally in the driver. The
+                          typical value is 10.
+
+      outputImpedance
+
+          Variable Type       short
+
+           Description:   Selects the output impedance.
+          
+           Valid Range:   0 - 50 Ohms     (Default)
+                          1 - High Z
+
+  Return Value
+
+           Description:   Displays the results of the
+                          function call.
+          
+           Error Codes:
+          
+                  0   Success
+          
+                 -1   Instrument ID out of range
+                 -2   Output Impedance out of range
+          
+                230   Error writing to instrument
+                232   Instrument not initialized
+________________________________________________________________________________
+
+  hp33120a_read
+
+      short hp33120a_read (short instrumentID, short numberBytesToRead,
+                           char readBuffer[], short *numBytesRead);
+
+  Purpose
+
+       Panel Name:    Read Instrument Data
+      
+       Description:   Reads data from instrument buffer
+                      and returns it to the specified
+                      variable in memory.
+      
+       NOTES: (1) Because the instrument may return both
+                  numeric and text data in response to
+                  queries this function returns the data
+                  in string format.
+      
+              (2) If valid data is NOT available at the
+                  instrument's output buffer when this
+                  function is called the instrument will
+                  hang up and the function will not
+                  return until it times out.  If the
+                  time-out is disabled this function
+                  will hang indefinitely and it may be
+                  neccessary to reboot the computer to
+                  break out.
+
+  Parameter List
+
+      instrumentID
+
+          Variable Type       short
+
+           Description:   Accepts the Instrument ID returned
+                          by the Initialize function to
+                          select the desired instrument.
+          
+           Valid Range:   1 to  Maximum Instances of
+                                this Instrument
+          
+                          The Maximum Instances of this
+                          Instrument is the maximum number
+                          of instruments that can be
+                          controlled by this driver in a
+                          single system. The value is set
+                          internally in the driver. The
+                          typical value is 10.
+
+      numberBytesToRead
+
+          Variable Type       short
+
+           Description:   The number of bytes specified by
+                          this control should be greater
+                          than or equal to the number of
+                          bytes which are to be read from
+                          the instrument. If the actual
+                          number of bytes to be read is
+                          greater than the number this
+                          control specifies then multiple
+                          reads will be necessary to empty
+                          the instrument's output buffer.
+          
+                          If the instrument's output buffer
+                          is not emptied the instrument may
+                          return invalid data when future
+                          reads are performed.
+          
+           Default Value: 50 (See NOTE 2)
+          
+           NOTES: (1) If NO DATA is available at the
+                      instrument's output buffer when this
+                      function is called the instrument will
+                      hang up and the function will not
+                      return until it times out.  If the
+                      time-out is disabled, this function
+                      will hang indefinitely and it may be
+                      neccessary to reboot the computer.
+          
+                  (2) If the number of bytes expected is
+                      greater than 50 the value of this
+                      control may be increased. If the
+                      actual number of bytes read is larger
+                      than the declared size of the read
+                      buffer a run-time error will be
+                      generated.
+
+      readBuffer
+
+          Variable Type       char []
+
+           Description:   The incoming data from the
+                          instrument is placed into this
+                          variable.
+          
+           NOTES: (1) Because the Instrument may return both
+                      numeric and text data in response to
+                      queries this function returns the data
+                      in string form.
+          
+                  (2) This function does not overwrite any
+                      old data left in the string variable
+                      from the last time the function was
+                      called. String data in LabWindows is
+                      terminated with an ASCII null(Hex 0)
+                      and string manipulation functions will
+                      only recognize data before the ASCII
+                      null.
+          
+                  (3) The declared size of the string
+                      variable must be greater than the
+                      actual number of bytes read from the
+                      instrument if it is not a run-time
+                      error will be generated.
+
+      numBytesRead
+
+          Variable Type       short (passed by reference)
+
+           Description:   This variable contains the actual
+                          number of bytes read from the
+                          instrument. This is the value
+                          which is returned by ibrd in the
+                          global variable ibcnt.
+          
+           NOTE: If the actual number of bytes read is less
+                 than the number of bytes specified in
+                 number of bytes to read then the output
+                 buffer is probably empty. If the number of
+                 bytes read is 0 and the instrument returns
+                 a 231 error code the read function failed.
+                 The most probable cause for the read to
+                 fail is because there was no data available
+                 at the instrument's output buffer.
+
+  Return Value
+
+           Description:   Displays the results of the
+                          function call.
+          
+           Error Codes:
+          
+                  0   Success
+          
+                 -1   Instrument ID out of range
+          
+                231   Error reading from instrument
+                232   Instrument not initialized
+________________________________________________________________________________
+
+  hp33120a_reset
+
+      short hp33120a_reset (short instrumentID);
+
+  Purpose
+
+       Panel Name:    Reset
+      
+       Description:   Resets the instrument and places
+                      it into its default state.
+      
+          Default State:
+      
+          Output Configuration:
+          =============================================
+          Function                Sine wave
+          Frequency               1 kHz
+          Amplitude
+          (into 50 Ohms)          100 mV peak-to-peak
+          Offset                  0.00 Vdc
+          Output Units            Volts peak-to-peak
+          Output Termination      50 Ohms
+      
+          Modulation:
+          =============================================
+          AM Carrier Waveform     1 kHz Sine wave
+          AM Modulating Waveform  100 Hz Sine wave
+          AM Depth                100 %
+          FM Carrier Waveform     1 kHz Sine wave
+          FM Modulating Waveform  10 Hz Sine wave
+          FM Peak Frequency
+          Deviation               100 Hz
+          Burst Carrier Frequency 1 kHz Sine Wave
+          Burst Count             1 cycle
+          Burst Rate              100 Hz
+          Burst Starting Phase    0 degrees
+          FSK Carrier Waveform    1 kHz Sine Wave
+          FSK Hop Frequency       100 Hz Sine Wave
+          FSK Rate                10 Hz
+          Modulation State        Off
+          Sweep Start/Stop
+          Frequency               100 Hz/ 1 kHz
+          Sweep Time              1 second
+          Sweep Mode              Linear
+      
+          System-Related Operations:
+          =============================================
+       *  Power-Down Recal        Disabled
+          Display Mode            On
+       *  Comma Separator         On
+      
+          Triggering Operations:
+          =============================================
+          Trigger Source          Internal
+      
+          Input/Output Configuration:
+          =============================================
+       *  GPIB Adrress            10
+       *  Interface               GPIB (IEEE-488)
+      
+          Calibration:
+          =============================================
+          Calibration State       Secured
+      
+       Note: The parameters marked with a star (*) may
+             be changed by the user and are stored in
+             the instrument's non-volatile memory. They
+             may therefore be different from the values
+             which are listed here.
+
+  Parameter List
+
+      instrumentID
+
+          Variable Type       short
+
+           Description:   Accepts the Instrument ID returned
+                          by the Initialize function to
+                          select the desired instrument.
+          
+           Valid Range:   1 to  Maximum Instances of
+                                this Instrument
+          
+                          The Maximum Instances of this
+                          Instrument is the maximum number
+                          of instruments that can be
+                          controlled by this driver in a
+                          single system. The value is set
+                          internally in the driver. The
+                          typical value is 10.
+
+  Return Value
+
+           Description:   Displays the results of the
+                          function call.
+          
+           Error Codes:
+          
+                  0   Success
+          
+                 -1   Instrument ID out of range
+          
+                230   Error writing to instrument
+                232   Instrument not initialized
+________________________________________________________________________________
+
+  hp33120a_revision
+
+      short hp33120a_revision (short instrumentID, char VPPRev[],
+                               char instrDriverRev[], char firmwareRev[],
+                               char minFirmwareRev[]);
+
+  Purpose
+
+       Panel Name:    Revision
+      
+       Description:   Outputs the latest VPP framework
+                      revision with which this
+                      instrument driver is compatible,
+                      the revision of the instrument
+                      driver, the firmware revision of
+                      the instrument being used, and the
+                      minimum instrument firmware
+                      revision which this driver is
+                      compatible with.
+      
+       Note: This driver was written using VPP Rev "1.0"
+       Instr Driver Rev "Rev 1.3, 12/96, CVI 4.0.1"
+       and the Min Firmware Rev was "1.0-2.0-1.0"
+      
+
+  Parameter List
+
+      instrumentID
+
+          Variable Type       short
+
+           Description:   Accepts the Instrument ID returned
+                          by the Initialize function to
+                          select the desired instrument.
+          
+           Valid Range:   1 to  Maximum Instances of
+                                this Instrument
+          
+                          The Maximum Instances of this
+                          Instrument is the maximum number
+                          of instruments that can be
+                          controlled by this driver in a
+                          single system. The value is set
+                          internally in the driver. The
+                          typical value is 10.
+
+      VPPRev
+
+          Variable Type       char []
+
+           Description:   Returns the VPP System Framework
+                          revision number.
+
+      instrDriverRev
+
+          Variable Type       char []
+
+           Description:   Returns the Revision Number of
+                          this instrument driver.
+
+      firmwareRev
+
+          Variable Type       char []
+
+           Description:   Returns the revision number of the
+                          instrument specified by Instrument
+                          ID.
+
+      minFirmwareRev
+
+          Variable Type       char []
+
+           Description:   Returns the minimum revision
+                          number of the instrument firmware
+                          which is supported by this driver.
+          
+
+  Return Value
+
+           Description:   Displays the results of the
+                          function call.
+          
+           Error Codes:
+          
+                  0   Success
+          
+                 -1   Instrument ID out of range
+          
+                230   Error writing to instrument
+                231   Error reading from instrument
+                232   Instrument not initialized
+                236   Error interpreting instrument response
+________________________________________________________________________________
+
+  hp33120a_self_test
+
+      short hp33120a_self_test (short instrumentID, short *result);
+
+  Purpose
+
+       Panel Name:    Self-Test
+      
+       Description:   Performs a complete self-test of
+                      the instrument. Returns "0" if the
+                      self-test passes or "1" if it
+                      fails. If the self-test fails,
+                      an error is also generated with
+                      additional information on why the
+                      test failed.
+
+  Parameter List
+
+      instrumentID
+
+          Variable Type       short
+
+           Description:   Accepts the Instrument ID returned
+                          by the Initialize function to
+                          select the desired instrument.
+          
+           Valid Range:   1 to  Maximum Instances of
+                                this Instrument
+          
+                          The Maximum Instances of this
+                          Instrument is the maximum number
+                          of instruments that can be
+                          controlled by this driver in a
+                          single system. The value is set
+                          internally in the driver. The
+                          typical value is 10.
+
+      result
+
+          Variable Type       short (passed by reference)
+
+           Description:   Returns "0" if the self-test
+                          passes or "1" if it fails.
+                          If the self-test fails, an error
+                          message is also generated with an
+                          additional information on why the
+                          test failed.
+                          Use the Error function to query
+                          the instrument for the exact cause
+                          of the error.
+
+  Return Value
+
+           Description:   Displays the results of the
+                          function call.
+          
+           Error Codes:
+          
+                  0   Success
+          
+                 -1   Instrument ID out of range
+          
+                230   Error writing to instrument
+                231   Error reading from instrument
+                232   Instrument not initialized
+                236   Error interpreting instrument response
+          
+                300   Instrument specific error
+________________________________________________________________________________
+
+  hp33120a_send_trig
+
+      short hp33120a_send_trig (short instrumentID);
+
+  Purpose
+
+       Panel Name:    Send Trigger
+      
+       Description:   Triggers the instrument from the
+                      remote interface.
+
+  Parameter List
+
+      instrumentID
+
+          Variable Type       short
+
+           Description:   Accepts the Instrument ID returned
+                          by the Initialize function to
+                          select the desired instrument.
+          
+           Valid Range:   1 to  Maximum Instances of
+                                this Instrument
+          
+                          The Maximum Instances of this
+                          Instrument is the maximum number
+                          of instruments that can be
+                          controlled by this driver in a
+                          single system. The value is set
+                          internally in the driver. The
+                          typical value is 10.
+
+  Return Value
+
+           Description:   Displays the results of the
+                          function call.
+          
+           Error Codes:
+          
+                  0   Success
+          
+                 -1   Instrument ID out of range
+          
+                230   Error writing to instrument
+                232   Instrument not initialized
+          
+                300   Instrument specific error
+________________________________________________________________________________
+
+  hp33120a_sweep_modulation
+
+      short hp33120a_sweep_modulation (short instrumentID, short sweepMode,
+                                       double startFreqHz, double stopFreqHz,
+                                       double sweepTimes, short sweepSpacing);
+
+  Purpose
+
+       Panel Name:    Frequency Sweep
+      
+       Description:   Allows and configures frequency
+                      sweep.
+                      In frequency sweep mode, the
+                      function generator steps from the
+                      start frequency to the stop
+                      frequency at a sweep rate.
+
+  Parameter List
+
+      instrumentID
+
+          Variable Type       short
+
+           Description:   Accepts the Instrument ID returned
+                          by the Initialize function to
+                          select the desired instrument.
+          
+           Valid Range:   1 to  Maximum Instances of
+                                this Instrument
+          
+                          The Maximum Instances of this
+                          Instrument is the maximum number
+                          of instruments that can be
+                          controlled by this driver in a
+                          single system. The value is set
+                          internally in the driver. The
+                          typical value is 10.
+
+      sweepMode
+
+          Variable Type       short
+
+           Description:   Selects the trigger source.
+                          Off disables frequency sweep.
+                          When Int mode is selected,
+                          the generator outputs sweeps at
+                          a sweep rate.
+                          Ext or Bus modes allow external
+                          or bus triggering. The generator
+                          outputs a single sweep each time
+                          triggered from the Ext Trig
+                          terminator or via GPIB bus
+                          (*TRG command).
+          
+           Valid Range:   0 - Off       (Default)
+                          1 - Int
+                          2 - Ext
+                          3 - Bus
+
+      startFreqHz
+
+          Variable Type       double
+
+           Description:   Defines the lower frequency bound
+                          for the sweep.
+          
+           Valid Range:   10 mHz to 15 MHz (100 kHz for
+                          ramp and triangle, 5 MHz for
+                          built-in arbs)
+          
+            User-defined arbitrary waveforms downloaded to
+            the memory:
+          
+            Numb Of Arb Points  Min Frequency  Max Frequency
+            ------------------------------------------------
+              8 to 8192 (8k)         10 mHz       5 MHz
+              8192 to 12287 (12k)    10 mHz     2.5 MHz
+              12288 to 16000         10 mHz     200 kHz
+          
+           Default Value: 100.0 Hz
+
+      stopFreqHz
+
+          Variable Type       double
+
+           Description:   Defines the upper frequency bound
+                          for the sweep.
+          
+           Valid Range:   10 mHz to 15 MHz (100 kHz for
+                          ramp and triangle, 5 MHz for
+                          built-in arbs)
+          
+            User-defined arbitrary waveforms downloaded to
+            the memory:
+          
+            Numb Of Arb Points  Min Frequency  Max Frequency
+            ------------------------------------------------
+              8 to 8192 (8k)         10 mHz       5 MHz
+              8192 to 12287 (12k)    10 mHz     2.5 MHz
+              12288 to 16000         10 mHz     200 kHz
+          
+           Default Value: 1000.0 Hz
+
+      sweepTimes
+
+          Variable Type       double
+
+           Description:   Specifies the time required to
+                          sweep from the start frequency to
+                          the stop frequency.
+          
+           Valid Range:   1 ms to 500 s
+          
+           Default Value: 1.0 s
+
+      sweepSpacing
+
+          Variable Type       short
+
+           Description:   Allows the output frequency to be
+                          changed either linearly or
+                          exponentially during the duration
+                          of the sweep.
+                          The sweep can be generated up
+                          (from the start frequency to the
+                          stop frequency) or down (from the
+                          stop frequency to the start
+                          frequency).
+          
+          
+           Valid Range:   0 - Linear Up       (Default)
+                          1 - Log Up
+                          2 - Linear Down
+                          3 - Log Down
+
+  Return Value
+
+           Description:   Displays the results of the
+                          function call.
+          
+           Error Codes:
+          
+                  0   Success
+          
+                 -1   Instr ID out of range
+                 -2   Sweep Mode out of range
+                 -3   Start Freq out of range
+                 -4   Stop Freq out of range
+                 -5   Sweep Time out of range
+                 -6   Sweep Spacing out of range
+                 -7   Start frequency more than or equal
+                      to stop frequency
+          
+                230   Error writing to instrument
+                231   Error reading from instrument
+                232   Instrument not initialized
+          
+                100   Not allowed carrier waveform shape
+                      (DC or Noise)
+          
+                300   Instrument specific error. The
+                      instrument may return frequency out
+                      of range error for conditions which
+                      cannot be range checked by the driver.
+                      If this error is generated use the
+                      Error function to query the instrument
+                      for the exact case of the error.
+________________________________________________________________________________
+
+  hp33120a_sys_beeper
+
+      short hp33120a_sys_beeper (short instrumentID);
+
+  Purpose
+
+       Panel Name:    Beeper
+      
+       Description:   Issues a single beep immediately.
+
+  Parameter List
+
+      instrumentID
+
+          Variable Type       short
+
+           Description:   Accepts the Instrument ID returned
+                          by the Initialize function to
+                          select the desired instrument.
+          
+           Valid Range:   1 to  Maximum Instances of
+                                this Instrument
+          
+                          The Maximum Instances of this
+                          Instrument is the maximum number
+                          of instruments that can be
+                          controlled by this driver in a
+                          single system. The value is set
+                          internally in the driver. The
+                          typical value is 10.
+
+  Return Value
+
+           Description:   Displays the results of the
+                          function call.
+          
+           Error Codes:
+          
+                  0   Success
+          
+                 -1   Instrument ID out of range
+          
+                230   Error writing to instrument
+                232   Instrument not initialized
+________________________________________________________________________________
+
+  hp33120a_sys_display
+
+      short hp33120a_sys_display (short instrumentID, short displayMode,
+                                  short textMode, char text[]);
+
+  Purpose
+
+       Panel Name:    Display
+      
+       Description:   Turns the front-panel display on
+                      or off. Allows the user to write
+                      a message on the front-panel
+                      display.
+
+  Parameter List
+
+      instrumentID
+
+          Variable Type       short
+
+           Description:   Accepts the Instrument ID returned
+                          by the Initialize function to
+                          select the desired instrument.
+          
+           Valid Range:   1 to  Maximum Instances of
+                                this Instrument
+          
+                          The Maximum Instances of this
+                          Instrument is the maximum number
+                          of instruments that can be
+                          controlled by this driver in a
+                          single system. The value is set
+                          internally in the driver. The
+                          typical value is 10.
+
+      displayMode
+
+          Variable Type       short
+
+           Description:   Turns the front-panel display on
+                          or off.
+          
+           Valid Range:   0 - On      (Default)
+                          1 - Off
+
+      textMode
+
+          Variable Type       short
+
+           Desription:    Displays or clears the message on
+                          the front-panel display.
+          
+           Valid Range:   0 - Off     (Default)
+                          1 - On
+
+      text
+
+          Variable Type       char []
+
+           Description:   Inputs a text message containing
+                          up to 11 characters.
+          
+           Default Value: ""
+
+  Return Value
+
+           Description:   Displays the results of the
+                          function call.
+          
+           Error Codes:
+          
+                  0   Success
+          
+                 -1   Instrument ID out of range
+                 -2   Display Mode out of range
+                 -3   Text Mode out of range
+                 -4   Text too long
+          
+                230   Error writing to instrument
+                231   Error reading from instrument
+                232   Instrument not initialized
+________________________________________________________________________________
+
+  hp33120a_sys_version
+
+      short hp33120a_sys_version (short instrumentID, char version[]);
+
+  Purpose
+
+       Panel Name:    SCPI Version
+      
+       Description:   Queries the instrument to
+                      determine the SCPI version used in
+                      the instrument's firmware.
+
+  Parameter List
+
+      instrumentID
+
+          Variable Type       short
+
+           Description:   Accepts the Instrument ID returned
+                          by the Initialize function to
+                          select the desired instrument.
+          
+           Valid Range:   1 to  Maximum Instances of
+                                this Instrument
+          
+                          The Maximum Instances of this
+                          Instrument is the maximum number
+                          of instruments that can be
+                          controlled by this driver in a
+                          single system. The value is set
+                          internally in the driver. The
+                          typical value is 10.
+
+      version
+
+          Variable Type       char []
+
+           Description:   Outputs the present SCPI version.
+          
+           Note:          Returns a string in form "YYYY.V"
+                          where the "Y's" represent the year
+                          of the version, and the "V"
+                          represents a version number for
+                          that year.
+
+  Return Value
+
+           Description:   Displays the results of the
+                          function call.
+          
+           Error Codes:
+          
+                  0   Success
+          
+                 -1   GPIB Address out of range
+          
+                230   Error writing to instrument
+                231   Error reading from instrument
+                232   Instrument not initialized
+________________________________________________________________________________
+
+  hp33120a_wf_config
+
+      short hp33120a_wf_config (short instrumentID, short waveformShape,
+                                char userDefWFName[], double frequencyHz,
+                                double amplitude, short amplUnit, double DCOffsetV,
+                                short dutyCycle);
+
+  Purpose
+
+       Panel Name:    Configure Waveform
+      
+       Description:   Sets the parameters of the basic
+                      waveform (amplitude, frequency,
+                      offset etc.).
+                      Selects the basic waveform shape.
+                      The function generator can output
+                      one of: five standard waveforms
+                      (plus DC), five pre-defined
+                      arbitrary waveforms, four
+                      user-defined arbitrary waveforms,
+                      or the waveform currently
+                      downloaded into volatile memory.
+                      While in modulation mode the basic
+                      waveform becomes a carrier.
+                      If DC or Noise waveform shapes
+                      are selected as the basic
+                      waveform, an error occures when
+                      attempting to use any modulation
+                      mode.
+
+  Parameter List
+
+      instrumentID
+
+          Variable Type       short
+
+           Description:   Accepts the Instrument ID returned
+                          by the Initialize function to
+                          select the desired instrument.
+          
+           Valid Range:   1 to  Maximum Instances of
+                                this Instrument
+          
+                          The Maximum Instances of this
+                          Instrument is the maximum number
+                          of instruments that can be
+                          controlled by this driver in a
+                          single system. The value is set
+                          internally in the driver. The
+                          typical value is 10.
+
+      waveformShape
+
+          Variable Type       short
+
+           Description:   Sets the shape of the basic
+                          waveform generated. When in a
+                          modulated mode this waveform
+                          becomes the carrier.
+          
+           Valid Range:   0 - DC
+                          1 - Sine       (Default)
+                          2 - Square
+                          3 - Triangle
+                          4 - Ramp
+                          5 - Noise
+                          6 - Volatile
+                          7 - Sinc
+                          8 - Neg_Ramp
+                          9 - Exp_Rise
+                         10 - Exp_Fall
+                         11 - Cardiac
+                         12 - User-Def Wf
+          
+           Note:          0 to 5 are standard waveforms. For
+                            all modulating modes the use of
+                            either DC or Noise as a carrier
+                            waveform is not allowed.
+          
+                          6 outputs the waveform currently
+                            loaded in volatile memory.
+          
+                          7 to 11 are predefined arbitrary
+                            waveforms.
+          
+                         12 allows the output of one of four
+                            user-defined waveforms stored
+                            in the non-volatile memory, the
+                            Waveform Name is required.
+
+      userDefWFName
+
+          Variable Type       char []
+
+           Description:   Inputs the name of one of four
+                          user-defined waveforms stored in
+                          the non-volatile memory. This
+                          control is active only when
+                          "User-Def Wf" is selected by the
+                          Waveform Shape control.
+          
+           Default Value: ""
+
+      frequencyHz
+
+          Variable Type       double
+
+           Description:   Sets the frequency of the basic
+                          waveform. When in modulation mode,
+                          this function sets the frequency
+                          of the carrier waveform.
+          
+           Valid Range:   Dependent upon the waveform shape
+                          and the number of points in Arb
+                          Waveform. See chart below.
+          
+           Default Value: 1000.0 Hz
+          
+            Function   Minimum Frequency   Maximum Frequency
+            ------------------------------------------------
+            Sine             0.1 mHz           15 MHz
+            Square           0.1 mHz           15 MHz
+            Triangle         0.1 mHz          100 kHz
+            Ramp             0.1 mHz          100 kHz
+            Built-In Arbs    0.1 mHz            5 MHz
+          
+           Note:          There are five built-in arbitrary
+                          waveforms stored in the
+                          non-volatile memory: sinc,
+                          negative ramp, exponential rise,
+                          exponential fall, and cardiac.
+          
+            User-defined arbitrary waveform:
+          
+            Numb Of Arb Points  Min Frequency  Max Frequency
+            ------------------------------------------------
+              8 to 8192 (8k)         0.1 mHz       5 MHz
+              8192 to 12287 (12k)    0.1 mHz     2.5 MHz
+              12288 to 16000         0.1 mHz     200 kHz
+
+      amplitude
+
+          Variable Type       double
+
+           Description:   Determines the amplitude of the
+                          basic waveform generated.
+          
+           Valid Range:
+          
+            Output Termination  Min Amplitude  Max Amplitude
+            ------------------------------------------------
+                 50 Ohms          50 mVpp         10 Vpp
+               Open Circuit      100 mVpp         20 Vpp
+          
+           Default Value: 5.0 VPP
+          
+           Note:          For arbitrary waveforms the
+                          maximum amplitude will be limited
+                          if the data points do not span
+                          the full range of the output DAC.
+          
+                          The output amplitude is automati-
+                          cally adjusted if a function was
+                          selected whose max. amplitude is
+                          less than that of the currently
+                          active function.
+          
+                          The output amplitude is
+                          automatically adjusted if the
+                          output termination was changed.
+          
+                          The output amplitude (in Vpp) and
+                          dc offset must obey the following
+                          restriction:
+          
+                          ABS(Voffs) + 1/2 Vpp =< Vmax
+                          and
+                          ABS(Voffs) =< 2 * Vpp
+          
+                          Vmax is max. peak-to-peak
+                          amplitude for selected output
+                          termination
+                          Vpp is output amplitude in volts
+                          peak-to-peak
+
+      amplUnit
+
+          Variable Type       short
+
+           Description:   Sets the amplitude unit.
+          
+           Valid Range:   0 - Vpp    (Default)
+                          1 - Vrms
+                          2 - dBm
+
+      DCOffsetV
+
+          Variable Type       double
+
+           Description:   Determines the DC offset of
+                          the generated waveform.
+          
+           Valid Range:   -5 Vdc to +5 Vdc into 50 Ohms
+          
+                          -10 Vdc to +10 Vdc into open
+                              circuit
+          
+           Default Value: 0.0 V
+          
+           Note:          The output amplitude (in Vpp) and
+                          dc offset must obey the following
+                          restriction:
+          
+                          ABS(Voffs) + 1/2 Vpp =< Vmax
+                          and
+                          ABS(Voffs) =< 2 * Vpp
+          
+                          Vmax is max. peak-to-peak
+                          amplitude for selected output
+                          termination
+                          Vpp is output amplitude in volts
+                          peak-to-peak
+          
+                          Offset is automatically adjusted
+                          if the output termination was
+                          changed.
+
+      dutyCycle
+
+          Variable Type       short
+
+           Description:   Determines the duty cycle for
+                          the generated waveform.
+                          Applies only to square waves.
+          
+           Valid Range:   20 % to 80 %, in 1 % increments
+                              for frequency =< 5 MHz
+          
+                          40 % to 60 %, in 1 % increments
+                              for frequency > 5 MHz
+          
+           Default Value: 50 %
+
+  Return Value
+
+           Description:   Displays the results of the
+                          function call.
+          
+           Error Codes:
+          
+                  0   Success
+          
+                 -1   Instrument ID out of range
+                 -2   Waveform Shape out of range
+                 -3   Frequency out of range
+                 -4   Amplitude out of range
+                 -5   Ampl Unit out of range
+                 -6   Offset out of range
+                 -7   Duty Cycle out of range
+          
+                230   Error writing to instrument
+                232   Instrument not initialized
+          
+                300   Instrument specific error.  The
+                      instrument may return amplitude,
+                      frequency, and offset out of range
+                      errors for conditions which cannot be
+                      range checked by the driver. If this
+                      error is generated use the Error
+                      function to query the instrument for
+                      the exact cause of the error.
+________________________________________________________________________________
+
+  hp33120a_wf_param
+
+      short hp33120a_wf_param (short instrumentID, short parameter, double value,
+                               short amplUnit);
+
+  Purpose
+
+       Panel Name:    Waveform Parameters
+      
+       Description:   This function allows the user to
+                      individually change the following
+                      waveform parameters: frequency,
+                      amplitude, or offset for the
+                      waveform which is currently being
+                      output.
+
+  Parameter List
+
+      instrumentID
+
+          Variable Type       short
+
+           Description:   Accepts the Instrument ID returned
+                          by the Initialize function to
+                          select the desired instrument.
+          
+           Valid Range:   1 to  Maximum Instances of
+                                this Instrument
+          
+                          The Maximum Instances of this
+                          Instrument is the maximum number
+                          of instruments that can be
+                          controlled by this driver in a
+                          single system. The value is set
+                          internally in the driver. The
+                          typical value is 10.
+
+      parameter
+
+          Variable Type       short
+
+           Description:   Selects the parameter to be
+                          changed.
+          
+           Valid Range:   0 - Frequency   (Default)
+                          1 - Amplitude
+                          2 - Offset
+
+      value
+
+          Variable Type       double
+
+           Description:   Inputs the new value of the
+                          specified parameter.
+          
+           Default Value: 1.0
+          
+           Valid Range:
+          
+            Frequency (Hz):
+          
+            Function   Minimum Frequency   Maximum Frequency
+            ------------------------------------------------
+            Sine             0.1 mHz           15 MHz
+            Square           0.1 mHz           15 MHz
+            Triangle         0.1 mHz          100 kHz
+            Ramp             0.1 mHz          100 kHz
+            Built-In Arbs    0.1 mHz            5 MHz
+          
+          
+           Note:          There are five built-in arbitrary
+                          waveforms stored in the
+                          non-volatile memory:
+                          sinc, negative ramp, exponential
+                          rise, exponential fall, and
+                          cardiac.
+          
+          
+            User-defined arbitrary waveform downloaded to
+            memory:
+          
+            Numb Of Arb Points  Min Frequency  Max Frequency
+            ------------------------------------------------
+              8 to 8192 (8k)         0.1 mHz       5 MHz
+              8192 to 12287 (12k)    0.1 mHz     2.5 MHz
+              12288 to 16000         0.1 mHz     200 kHz
+          
+          
+            Amplitude:
+          
+            Output Termination  Min Amplitude  Max Amplitude
+            ------------------------------------------------
+                 50 Ohms          50 mVpp         10 Vpp
+               Open Circuit      100 mVpp         20 Vpp
+          
+          
+           Note:          For arbitrary waveforms the
+                          maximum amplitude will be limited
+                          if the data points do not span
+                          the full range of the output DAC.
+          
+                          The output amplitude is
+                          automatically adjusted if
+                          a function was selected whose
+                          max. amplitude is less than that
+                          of the currently active function.
+          
+                          The output amplitude is
+                          automatically adjusted if the
+                          output termination was changed.
+          
+                          The output amplitude (in Vpp) and
+                          dc offset must obey the following
+                          restriction:
+          
+                          ABS(Voffs) + 1/2 Vpp =< Vmax
+                          and
+                          ABS(Voffs) =< 2 * Vpp
+          
+                          Vmax is max. peak-to-peak
+                          amplitude for selected output
+                          termination
+                          Vpp is output amplitude in volts
+                          peak-to-peak
+          
+           Offset (V):
+          
+           Valid Range:   -5 Vdc to +5 Vdc into 50 Ohms
+          
+                          -10 Vdc to +10 Vdc into open
+                              circuit
+          
+           Note:          The output amplitude (in Vpp) and
+                          dc offset must obey the following
+                          restriction:
+          
+                          ABS(Voffs) + 1/2 Vpp =< Vmax
+                          and
+                          ABS(Voffs) =< 2 * Vpp
+          
+                          Vmax is max. peak-to-peak
+                          amplitude for selected output
+                          termination
+                          Vpp is output amplitude in volts
+                          peak-to-peak
+          
+                          Offset is automatically adjusted
+                          if the output termination was
+                          changed.
+
+      amplUnit
+
+          Variable Type       short
+
+           Description:   Sets the amplitude unit.
+          
+           Valid Range:   0 - Vpp    (Default)
+                          1 - Vrms
+                          2 - dBm
+
+  Return Value
+
+           Description:   Displays the results of the
+                          function call.
+          
+           Error Codes:
+          
+                  0   Success
+          
+                 -1   Instrument ID out of range
+                 -2   Parameter out of range
+                 -3   Frequency out of range
+                 -4   Amplitude out of range
+                 -5   Ampl Unit out of range
+                 -6   Offset out of range
+          
+                230   Error writing to instrument
+                232   Instrument not initialized
+          
+                300   Instrument specific error.  The
+                      instrument may return amplitude,
+                      frequency, and offset out of range
+                      errors for conditions which cannot be
+                      range checked by the driver. If this
+                      error is generated use the Error
+                      function to query the instrument for
+                      the exact cause of the error.
+________________________________________________________________________________
+
+  hp33120a_write
+
+      short hp33120a_write (short instrumentID, char writeBuffer[]);
+
+  Purpose
+
+       Panel Name:    Write To Instrument
+      
+       Description:   Writes commands and queries to the
+                      instrument to modify parameters
+                      and query device settings.
+
+  Parameter List
+
+      instrumentID
+
+          Variable Type       short
+
+           Description:   Accepts the Instrument ID returned
+                          by the Initialize function to
+                          select the desired instrument.
+          
+           Valid Range:   1 to  Maximum Instances of
+                                this Instrument
+          
+                          The Maximum Instances of this
+                          Instrument is the maximum number
+                          of instruments that can be
+                          controlled by this driver in a
+                          single system. The value is set
+                          internally in the driver. The
+                          typical value is 10.
+
+      writeBuffer
+
+          Variable Type       char []
+
+           Description:   The user can use this control to
+                          send common commands and queries
+                          to the instrument. This control
+                          can also be used to write any
+                          valid command to the instrument.
+          
+           Default Value: "*RST"
+          
+           NOTES: (1) The command or query to be sent to the
+                      instrument may be a literal enclosed
+                      in double quotes i.e. "*RST" or may be
+                      contained in a variable of type
+                      string.
+          
+                  (2) If the number of bytes to be written
+                      is greater than the size of "cmd" in
+                      the source code then the size of cmd
+                      must be increased. The original size
+                      of cmd is 50 bytes (cmd[50]) the
+                      largest cmd may be declared as is
+                      32,767 bytes.
+
+  Return Value
+          
+           Description:   Displays the results of the
+                          function call.
+          
+           Error Codes:
+          
+                  0   Success
+          
+                 -1   Instrument ID out of range
+          
+                230   Error writing to instrument
+                232   Instrument not initialized

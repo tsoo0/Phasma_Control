@@ -1,0 +1,100 @@
+[setup_xantrex]
+Class="Function"
+Prototype="void setup_xantrex(double current, int powerstate);"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\MagneticField_Settings.c:115:6"
+
+[setup_Sorensen]
+Class="Function"
+Prototype="void setup_Sorensen(double current, int supply_num, int powerstate);"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\MagneticField_Settings.c:177:6"
+
+[ELF]
+Class="Function"
+Prototype="double ELF(double XK);"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\MagneticField_Settings.c:297:8"
+
+[ELFPK]
+Class="Function"
+Prototype="double ELFPK(double XK);"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\MagneticField_Settings.c:312:8"
+
+[CalcOneLoop]
+Class="Function"
+Prototype="void CalcOneLoop(double I, double zprime, double a, double *Bgen1, double *Bgen2);"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\MagneticField_Settings.c:334:6"
+
+[CalcOnePHASMASet]
+Class="Function"
+Prototype="void CalcOnePHASMASet(double zprime, double current);"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\MagneticField_Settings.c:380:6"
+
+[CalcBPHASMA]
+Class="Function"
+Prototype="void CalcBPHASMA();"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\MagneticField_Settings.c:404:6"
+
+[CalcOneSourceSet]
+Class="Function"
+Prototype="void CalcOneSourceSet(double zprime, double current);"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\MagneticField_Settings.c:461:6"
+
+[CalcBSource]
+Class="Function"
+Prototype="void CalcBSource();"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\MagneticField_Settings.c:485:6"
+
+[AddB]
+Class="Function"
+Prototype="double AddB(double h, double c);"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\MagneticField_Settings.c:538:8"
+
+[End]
+Class="Function"
+Prototype="int End(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\MagneticField_Settings.c:551:17"
+
+[make_graph]
+Class="Function"
+Prototype="void make_graph();"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\MagneticField_Settings.c:566:6"
+
+[run_simulation]
+Class="Function"
+Prototype="int run_simulation(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\MagneticField_Settings.c:730:17"
+
+[clear_graph]
+Class="Function"
+Prototype="int clear_graph(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\MagneticField_Settings.c:744:17"
+
+[MagField_Activate]
+Class="Function"
+Prototype="void MagField_Activate(int MagField_Status, int Master_Mag_Arm_State);"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\MagneticField_Settings.c:759:6"
+
+[MagField_Total]
+Class="Function"
+Prototype="void MagField_Total(float *Source_bfield, float *PHASMA_bfield);"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\MagneticField_Settings.c:880:6"
+
+[OpenMagField_Settings]
+Class="Function"
+Prototype="void OpenMagField_Settings(int Master_Mag_Arm_State);"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\MagneticField_Settings.c:958:6"
+
+[Write_MagField]
+Class="Function"
+Prototype="void Write_MagField();"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\MagneticField_Settings.c:971:6"
+
+[Close_MagField_Settings]
+Class="Function"
+Prototype="int Close_MagField_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\MagneticField_Settings.c:1002:17"
+
+[Close_MagField_Settings_Activate]
+Class="Function"
+Prototype="int Close_MagField_Settings_Activate(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\MagneticField_Settings.c:1017:17"
+

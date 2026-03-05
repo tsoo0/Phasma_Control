@@ -1,0 +1,7 @@
+﻿  PHASMA_C_to_Python_convertor.c
+C:\PHASMA 2025 DAQ\PHASMA Python Routines\PHASMA_C_to_Python_convertor_Project\PHASMA_C_to_Python_convertor.c(80,10): warning C4101: 'arg': unreferenced local variable
+C:\PHASMA 2025 DAQ\PHASMA Python Routines\PHASMA_C_to_Python_convertor_Project\PHASMA_C_to_Python_convertor.c(100,1): warning C4716: 'send_command': must return a value
+C:\PHASMA 2025 DAQ\PHASMA Python Routines\PHASMA_C_to_Python_convertor_Project\PHASMA_C_to_Python_convertor.c(87,1): warning C4716: 'SendToMcPhersonPy': must return a value
+C:\PHASMA 2025 DAQ\PHASMA Python Routines\PHASMA_C_to_Python_convertor_Project\PHASMA_C_to_Python_convertor.c(113,1): warning C4716: 'overwriteLocation_207': must return a value
+     Creating library C:\PHASMA 2025 DAQ\PHASMA Python Routines\PHASMA_C_to_Python_convertor_Project\x64\Debug\PHASMA_C_to_Python_convertor_Project.lib and object C:\PHASMA 2025 DAQ\PHASMA Python Routines\PHASMA_C_to_Python_convertor_Project\x64\Debug\PHASMA_C_to_Python_convertor_Project.exp
+  PHASMA_C_to_Python_convertor_Project.vcxproj -> C:\PHASMA 2025 DAQ\PHASMA Python Routines\PHASMA_C_to_Python_convertor_Project\x64\Debug\PHASMA_C_to_Python_convertor_Project.exe

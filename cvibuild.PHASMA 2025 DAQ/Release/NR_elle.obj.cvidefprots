@@ -1,0 +1,5 @@
+[elle]
+Class="Function"
+Prototype="double elle(double phi, double ak);"
+SourceLocation="c:\PHASMA 2025 DAQ\Magnetic Field\NR_elle.c:4:8"
+

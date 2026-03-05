@@ -1,0 +1,88 @@
+-nologo
+-out:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug\PHASMA 2025 DAQ.exe
+-arch:x86
+-timestamp
+-debug:2
+-project:c:\PHASMA 2025 DAQ\PHASMA 2025 DAQ.prj
+-res:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug\resources.res
+-entry:_CVIWinMainStartupCodeForDebugging@0
+-base:0x400000
+-linked:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug\linkersummary.txt
+-dlldeps:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug\dlldependencies.txt
+-licensing:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug\linkerlicensing.txt
+-browsedeps:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug\moduledependencies.txt
+-stackreserve:1048576
+-stackcommit:4096
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug\Bdot_Settings.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug\Bristol.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug\ContLIFSettings.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug\DoubleProbe Settings.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug\HeliconSourceSettings.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug\HelperFunctions.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug\HousekeepingSettings.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug\Langmuir.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug\Lecroy.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug\MagneticField_Settings.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug\MasterControlLoop.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug\MasterTriggerSettings.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug\McPhersonSettings.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug\NR_elle.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug\NR_ellf.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug\NR_nrutil.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug\NR_rd.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug\NR_rf.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug\OceanOptics.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug\PHASMA-MDS-Routines.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug\PhotodiodeSettings.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug\PhotronSettings.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug\PlasmaGunSettings.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug\PLIFSettings.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug\RFEASettings.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug\Rigol.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug\setup_4244.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug\Sirah.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug\srds345.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug\TempDiag Settings.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug\ThomsonScatteringSettings.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug\ThorLabs_Chopper.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug\TitanMotor.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug\tkvx4244.obj
+-in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug\TripleProbeSettings.obj
+-more:c:\program files (x86)\national instruments\cvi2020\bin\msvc\cvistart.lib
+-more:c:\program files (x86)\national instruments\cvi2020\bin\msvc\cvi.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc\advanlys.lib
+-more:C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x86\advapi32.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\toolslib\toolbox\msvc\asynctmr.obj
+-more:C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x86\bufferoverflowu.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc\cvi_db.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc\cviauto.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc\cvidotnet.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc\cvinetstreams.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc\cvinetv.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc\cvintwrk.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc\cvitdms.lib
+-more:C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x86\gdi32.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc\gpib.lib
+-more:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug\hp33120a.obj
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\toolslib\custctrl\msvc\ImageControl.obj
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc\ivi.lib
+-more:C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x86\kernel32.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc\nican.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc\NIDAQmx.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\ExternalCompilerSupport\C\lib64\msvc\NIDAQmx.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc\niimaq.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc\niimaqdx.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc\nise.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc\niseCfg.obj
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc\nisyscfg.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc\nivision.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc\nivxi.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc\nixnet.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc\omp.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc\pid.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc\SPT.lib
+-more:c:\Program Files (x86)\National Instruments\CVI2020\toolslib\toolbox\msvc\toolbox.obj
+-more:C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x86\user32.lib
+-more:C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x86\uuid.lib
+-more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc\visa.lib
+-more:C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x86\winmm.lib
