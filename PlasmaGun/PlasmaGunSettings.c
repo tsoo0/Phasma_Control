@@ -38,7 +38,6 @@ void OpenPlasmaGun_Settings (void)
 
 	// Start interacting with user
     RunUserInterface ();
-
 }
 
 int CVICALLBACK Close_PlasmaGun_Settings (int panel, int control, int event,
@@ -336,26 +335,24 @@ void PlasmaGun_ActivateSystem (int Guns_Power_State)
 		result = viClose(Gun2_Arc_handle);
 	}
 	
-	
-	
 	//Discard panel
 	DiscardPanel(PlasmaGun_panel); 
 }
 
 
-//Upload to the MDS database and a text file, all the parameters of the plasma guns
+// Save to local file system
 void Write_PlasmaGunData(void)
 {
 	double	GunSystem_Parameters[10];
-
-
-	//Read all the current values from the control system and write into an array that is then
-	//written to the MDS database
+	char outfilename[256];
+	FILE*	outfile;
 	
 	//Open settings panel and load saved values
 	PlasmaGun_panel = LoadPanel (0, "PlasmaGunSettings.uir", PlasmaGun);
 	RecallPanelState (PlasmaGun_panel, "Master_Control_Storage_File", PlasmaGun_setup_state);
 
+// Write  Plasma Gun parameters
+	
 	//Get all the delays from the front panel
 	GetCtrlVal (PlasmaGun_panel, PlasmaGun_Gun1_Bias_Volts,&GunSystem_Parameters[0]);
 	GetCtrlVal (PlasmaGun_panel, PlasmaGun_Gun2_Bias_Volts,&GunSystem_Parameters[1]);
@@ -366,9 +363,17 @@ void Write_PlasmaGunData(void)
 	GetCtrlVal (PlasmaGun_panel, PlasmaGun_Gun1_Arc_Amps,&GunSystem_Parameters[6]);
 	GetCtrlVal (PlasmaGun_panel, PlasmaGun_Gun2_Arc_Amps,&GunSystem_Parameters[7]);
 	
-	//Write to the MDS database a dummy array for timebase and the system parameters to reuse the standard
-	//timeseries writting format for the MDS routine
-	//Write_to_PHASMA_MDS(Dummy_array,GunSystem_Parameters,"RAW_DATA.PLASMAGUN:GUNPARAMS");
+	sprintf(outfilename, RawDataPath);
+	strcat(outfilename, ShotNumberString);
+	strcat(outfilename, "_");
+	strcat(outfilename, "Plasma_Gun_Settings.txt");
+	outfile=fopen (outfilename, "w");
+	
+	fprintf(outfile, "Gun1_Bias_Volts, Gun2_Bias_Volts,Gun1_Arc_Volts,Gun2_Arc_Volts,Gun1_Bias_Amps,Gun2_Bias_Amps,Gun1_Arc_Amps,Gun2_Arc_Amps \n");
+	
+	fprintf(outfile, "%f, %f, %f, %f,%f,%f,%f,%f", GunSystem_Parameters[0],GunSystem_Parameters[1],GunSystem_Parameters[2],GunSystem_Parameters[3],GunSystem_Parameters[4],GunSystem_Parameters[5],GunSystem_Parameters[6],GunSystem_Parameters[7]);
+	
+	fclose(outfile);
    	
 	//Close Panel
 	DiscardPanel(PlasmaGun_panel);
@@ -510,3 +515,30 @@ void GunPosition(float *Gun1_Position, float *Gun2_Position)
 	
 }
 
+
+int CVICALLBACK Close_PlasmaGun_Settings_nosave (int panel, int control, int event,
+		void *callbackData, int eventData1, int eventData2)
+{
+	switch (event)
+	{
+		case EVENT_COMMIT:
+				DiscardPanel(panel);
+			break;
+	}
+	return 0;
+}
+
+int CVICALLBACK Pressure_Refresh_Timer (int panel, int control, int event,
+										void *callbackData, int eventData1, int eventData2)
+{
+	float pressure;
+	switch (event)
+	{
+		case EVENT_TIMER_TICK:
+			pressure=ReadGunPressure();
+			SetCtrlVal (PlasmaGun_panel, PlasmaGun_GunPressure,pressure);
+			
+			break;
+	}
+	return 0;
+}

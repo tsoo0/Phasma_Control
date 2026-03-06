@@ -154,7 +154,7 @@ void	Store_Data (void)
 {
 	//Always store timing parameters
 	//Write_Timing();
-	//ile(ExecutableHasTerminated(PyHandle) != PyScriptFinished){
+	//while(ExecutableHasTerminated(PyHandle) != PyScriptFinished){
 	//Go through diagnostics and store data
 	if (PhotodiodeDataFlag) 	Write_PhotodiodeData(); // ACQ devices should begin first because they can work in the background but probably take the longest
 	if (MasterTriggerDataFlag) 	Write_MasterTrigger();

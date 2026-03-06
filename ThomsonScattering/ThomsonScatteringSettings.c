@@ -1011,7 +1011,7 @@ void Write_ThomsonScatteringData(void)
 void OpenThomsonScattering_Settings (void)  
 {
 	int 	error;
-	int 	TS_Andor_Temp=1000;
+	int 	TS_Andor_Temp=1000; // set this to a ridiculous initial value to make it obvious if the config data isn't being pulled correctly
 	int 	TStotalCameras;
 	
 	//Open settings panel and load saved values
@@ -1066,6 +1066,18 @@ void OpenThomsonScattering_Settings (void)
 }
 
 
+int CVICALLBACK Close_ThomsonScattering_Settings_No_Save (int panel, int control, int event,
+		void *callbackData, int eventData1, int eventData2)
+{
+	switch (event)
+	{
+		case EVENT_COMMIT:
+			DiscardPanel(panel);
+			break;
+	}
+	return 0;
+}
+
 
 int CVICALLBACK Close_ThomsonScattering_Settings (int panel, int control, int event,
 		void *callbackData, int eventData1, int eventData2)
@@ -1076,7 +1088,6 @@ int CVICALLBACK Close_ThomsonScattering_Settings (int panel, int control, int ev
 			//Save current state of panel and close interface
 			SavePanelState (panel, "Master_Control_Storage_File", ThomsonScattering_setup_state);
 			DiscardPanel(panel);
-			
 			break;
 	}
 	return 0;
@@ -1091,7 +1102,6 @@ int CVICALLBACK CloseSimmer_ThomsonScattering_Settings (int panel, int control, 
 			//Save current state of panel and close interface
 			SavePanelState (panel, "Master_Control_Storage_File", ThomsonScattering_setup_state);
 			DiscardPanel(panel);
-			
 			//Update the values to the instruments but with the lasers in simmer mode
 			ThomsonScatteringLaserControl(1);
 			
@@ -1228,3 +1238,22 @@ int CVICALLBACK TS_Andor_Temp_Control (int panel, int control, int event,
 	}
 	return 0;
 }	
+
+
+
+// Periodically refresh the ICCD temperature display
+int CVICALLBACK TIMER_UPDATE_ICCD_STATUS (int panel, int control, int event,
+		void *callbackData, int eventData1, int eventData2)
+{
+	int		error;
+	int		Actual_Temp;
+	
+	switch (event)
+	{
+		case EVENT_TIMER_TICK:
+					error = GetTemperature(&Actual_Temp);
+					SetCtrlVal (panel, ThomsonSct_Andor_Temp_Actual,Actual_Temp);
+			break;
+	}
+	return 0;
+}
