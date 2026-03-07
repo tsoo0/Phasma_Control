@@ -14,21 +14,21 @@
      /* Panels and Controls: */
 
 #define  PhotronCam                       1
-#define  PhotronCam_Width                 2       /* control type: slide, callback function: (none) */
-#define  PhotronCam_Height                3       /* control type: slide, callback function: (none) */
-#define  PhotronCam_Frames                4       /* control type: slide, callback function: (none) */
-#define  PhotronCam_Shutter               5       /* control type: slide, callback function: (none) */
-#define  PhotronCam_FramesPerSec          6       /* control type: slide, callback function: (none) */
-#define  PhotronCam_Brightness            7       /* control type: scale, callback function: (none) */
-#define  PhotronCam_Contrast              8       /* control type: scale, callback function: (none) */
-#define  PhotronCam_Gamma                 9       /* control type: scale, callback function: (none) */
-#define  PhotronCam_Gain                  10      /* control type: scale, callback function: (none) */
-#define  PhotronCam_PhotronIPAddress      11      /* control type: ring, callback function: (none) */
-#define  PhotronCam_TEXTMSG_19            12      /* control type: textMsg, callback function: (none) */
-#define  PhotronCam_TEXTMSG_18            13      /* control type: textMsg, callback function: (none) */
-#define  PhotronCam_SAVE                  14      /* control type: command, callback function: Close_PhotronCamera_Settings */
-#define  PhotronCam_Chan1Name             15      /* control type: string, callback function: (none) */
-#define  PhotronCam_PhotronDataPath       16      /* control type: string, callback function: (none) */
+#define  PhotronCam_Frames                2       /* control type: slide, callback function: (none) */
+#define  PhotronCam_Shutter               3       /* control type: slide, callback function: (none) */
+#define  PhotronCam_Brightness            4       /* control type: scale, callback function: (none) */
+#define  PhotronCam_Contrast              5       /* control type: scale, callback function: (none) */
+#define  PhotronCam_Gamma                 6       /* control type: scale, callback function: (none) */
+#define  PhotronCam_Gain                  7       /* control type: scale, callback function: (none) */
+#define  PhotronCam_PhotronFrameCase      8       /* control type: ring, callback function: (none) */
+#define  PhotronCam_PhotronIPAddress      9       /* control type: ring, callback function: (none) */
+#define  PhotronCam_TEXTMSG_19            10      /* control type: textMsg, callback function: (none) */
+#define  PhotronCam_TEXTMSG_18            11      /* control type: textMsg, callback function: (none) */
+#define  PhotronCam_SAVE                  12      /* control type: command, callback function: Close_PhotronCamera_Settings */
+#define  PhotronCam_Chan1Name             13      /* control type: string, callback function: (none) */
+#define  PhotronCam_PhotronDataPath       14      /* control type: string, callback function: (none) */
+#define  PhotronCam_micro_per_pixel       15      /* control type: numeric, callback function: (none) */
+#define  PhotronCam_Trigger_Delay         16      /* control type: numeric, callback function: (none) */
 
 
      /* Control Arrays: */

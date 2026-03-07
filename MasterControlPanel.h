@@ -156,9 +156,8 @@
 #define  MasterCont_MANUAL_DISARM_VAL     141     /* control type: command, callback function: manual_disarm_all */
 #define  MasterCont_TEXTMSG_2             142     /* control type: textMsg, callback function: (none) */
 #define  MasterCont_PyRunningLED          143     /* control type: LED, callback function: (none) */
-#define  MasterCont_SPLITTER_7            144     /* control type: splitter, callback function: (none) */
-#define  MasterCont_CURRENTDIAGNOSTICPO_3 145     /* control type: textMsg, callback function: (none) */
-#define  MasterCont_PyTimer               146     /* control type: timer, callback function: PyUpdateHandleStatus */
+#define  MasterCont_CURRENTDIAGNOSTICPO_3 144     /* control type: textMsg, callback function: (none) */
+#define  MasterCont_PyTimer               145     /* control type: timer, callback function: PyUpdateHandleStatus */
 
 
      /* Control Arrays: */

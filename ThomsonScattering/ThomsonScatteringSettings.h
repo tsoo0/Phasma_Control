@@ -102,40 +102,39 @@
 #define  ThomsonSct_TEXTMSG_62            87      /* control type: textMsg, callback function: (none) */
 #define  ThomsonSct_TEXTMSG_28            88      /* control type: textMsg, callback function: (none) */
 #define  ThomsonSct_TEXTMSG_20            89      /* control type: textMsg, callback function: (none) */
-#define  ThomsonSct_SAVE_3                90      /* control type: command, callback function: Close_ThomsonScattering_Settings_No_Save */
-#define  ThomsonSct_SAVE_2                91      /* control type: command, callback function: CloseSimmer_ThomsonScattering_Settings */
-#define  ThomsonSct_SAVE                  92      /* control type: command, callback function: Close_ThomsonScattering_Settings */
-#define  ThomsonSct_Q1500_Circuit_Delay   93      /* control type: numeric, callback function: (none) */
-#define  ThomsonSct_Q1500_InstrinsicDelay 94      /* control type: numeric, callback function: (none) */
-#define  ThomsonSct_Q850_Simmer_Delay     95      /* control type: numeric, callback function: (none) */
-#define  ThomsonSct_Q1500_Simmer_Delay    96      /* control type: numeric, callback function: (none) */
-#define  ThomsonSct_Q1500_Q_delay         97      /* control type: numeric, callback function: (none) */
-#define  ThomsonSct_Q850_Warmup           98      /* control type: numeric, callback function: (none) */
-#define  ThomsonSct_Q1500_Warmup          99      /* control type: numeric, callback function: (none) */
-#define  ThomsonSct_Q1500_Frequency       100     /* control type: numeric, callback function: (none) */
-#define  ThomsonSct_Chan2Name             101     /* control type: string, callback function: (none) */
-#define  ThomsonSct_Chan1Name             102     /* control type: string, callback function: (none) */
-#define  ThomsonSct_TS_TriggerSource      103     /* control type: ring, callback function: (none) */
-#define  ThomsonSct_SPLITTER_19           104     /* control type: splitter, callback function: (none) */
-#define  ThomsonSct_SPLITTER_18           105     /* control type: splitter, callback function: (none) */
-#define  ThomsonSct_SPLITTER_20           106     /* control type: splitter, callback function: (none) */
-#define  ThomsonSct_SPLITTER_22           107     /* control type: splitter, callback function: (none) */
-#define  ThomsonSct_SPLITTER_25           108     /* control type: splitter, callback function: (none) */
-#define  ThomsonSct_SPLITTER_17           109     /* control type: splitter, callback function: (none) */
-#define  ThomsonSct_DECORATION_5          110     /* control type: deco, callback function: (none) */
-#define  ThomsonSct_SPLITTER_27           111     /* control type: splitter, callback function: (none) */
-#define  ThomsonSct_SPLITTER_16           112     /* control type: splitter, callback function: (none) */
-#define  ThomsonSct_DECORATION_2          113     /* control type: deco, callback function: (none) */
-#define  ThomsonSct_SPLITTER              114     /* control type: splitter, callback function: (none) */
-#define  ThomsonSct_DECORATION_4          115     /* control type: deco, callback function: (none) */
-#define  ThomsonSct_DECORATION_3          116     /* control type: deco, callback function: (none) */
-#define  ThomsonSct_DECORATION            117     /* control type: deco, callback function: (none) */
-#define  ThomsonSct_SPLITTER_26           118     /* control type: splitter, callback function: (none) */
-#define  ThomsonSct_SPLITTER_3            119     /* control type: splitter, callback function: (none) */
-#define  ThomsonSct_SPLITTER_21           120     /* control type: splitter, callback function: (none) */
-#define  ThomsonSct_SPLITTER_23           121     /* control type: splitter, callback function: (none) */
-#define  ThomsonSct_SPLITTER_24           122     /* control type: splitter, callback function: (none) */
-#define  ThomsonSct_TIMER_ICCD_STATUS     123     /* control type: timer, callback function: TIMER_UPDATE_ICCD_STATUS */
+#define  ThomsonSct_SAVE_2                90      /* control type: command, callback function: CloseSimmer_ThomsonScattering_Settings */
+#define  ThomsonSct_SAVE                  91      /* control type: command, callback function: Close_ThomsonScattering_Settings */
+#define  ThomsonSct_Q1500_Circuit_Delay   92      /* control type: numeric, callback function: (none) */
+#define  ThomsonSct_Q1500_InstrinsicDelay 93      /* control type: numeric, callback function: (none) */
+#define  ThomsonSct_Q850_Simmer_Delay     94      /* control type: numeric, callback function: (none) */
+#define  ThomsonSct_Q1500_Simmer_Delay    95      /* control type: numeric, callback function: (none) */
+#define  ThomsonSct_Q1500_Q_delay         96      /* control type: numeric, callback function: (none) */
+#define  ThomsonSct_Q850_Warmup           97      /* control type: numeric, callback function: (none) */
+#define  ThomsonSct_Q1500_Warmup          98      /* control type: numeric, callback function: (none) */
+#define  ThomsonSct_Q1500_Frequency       99      /* control type: numeric, callback function: (none) */
+#define  ThomsonSct_Chan2Name             100     /* control type: string, callback function: (none) */
+#define  ThomsonSct_Chan1Name             101     /* control type: string, callback function: (none) */
+#define  ThomsonSct_TS_TriggerSource      102     /* control type: ring, callback function: (none) */
+#define  ThomsonSct_SPLITTER_19           103     /* control type: splitter, callback function: (none) */
+#define  ThomsonSct_SPLITTER_18           104     /* control type: splitter, callback function: (none) */
+#define  ThomsonSct_SPLITTER_20           105     /* control type: splitter, callback function: (none) */
+#define  ThomsonSct_SPLITTER_22           106     /* control type: splitter, callback function: (none) */
+#define  ThomsonSct_SPLITTER_25           107     /* control type: splitter, callback function: (none) */
+#define  ThomsonSct_SPLITTER_17           108     /* control type: splitter, callback function: (none) */
+#define  ThomsonSct_DECORATION_5          109     /* control type: deco, callback function: (none) */
+#define  ThomsonSct_SPLITTER_27           110     /* control type: splitter, callback function: (none) */
+#define  ThomsonSct_SPLITTER_16           111     /* control type: splitter, callback function: (none) */
+#define  ThomsonSct_DECORATION_2          112     /* control type: deco, callback function: (none) */
+#define  ThomsonSct_SPLITTER              113     /* control type: splitter, callback function: (none) */
+#define  ThomsonSct_DECORATION_4          114     /* control type: deco, callback function: (none) */
+#define  ThomsonSct_DECORATION_3          115     /* control type: deco, callback function: (none) */
+#define  ThomsonSct_DECORATION            116     /* control type: deco, callback function: (none) */
+#define  ThomsonSct_SPLITTER_26           117     /* control type: splitter, callback function: (none) */
+#define  ThomsonSct_SPLITTER_3            118     /* control type: splitter, callback function: (none) */
+#define  ThomsonSct_SPLITTER_21           119     /* control type: splitter, callback function: (none) */
+#define  ThomsonSct_SPLITTER_23           120     /* control type: splitter, callback function: (none) */
+#define  ThomsonSct_SPLITTER_24           121     /* control type: splitter, callback function: (none) */
+#define  ThomsonSct_TIMER_ICCD_STATUS     122     /* control type: timer, callback function: TIMER_UPDATE_ICCD_STATUS */
 
 
      /* Control Arrays: */
@@ -151,7 +150,6 @@
      /* Callback Prototypes: */
 
 int  CVICALLBACK Close_ThomsonScattering_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
-int  CVICALLBACK Close_ThomsonScattering_Settings_No_Save(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK CloseSimmer_ThomsonScattering_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK Move_McPherson207(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK Set_McPherson207(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);

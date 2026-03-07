@@ -31,45 +31,40 @@ SourceLocation="c:\PHASMA 2025 DAQ\ThomsonScattering\ThomsonScatteringSettings.c
 [Write_ThomsonScatteringData]
 Class="Function"
 Prototype="void Write_ThomsonScatteringData();"
-SourceLocation="c:\PHASMA 2025 DAQ\ThomsonScattering\ThomsonScatteringSettings.c:841:6"
+SourceLocation="c:\PHASMA 2025 DAQ\ThomsonScattering\ThomsonScatteringSettings.c:839:6"
 
 [OpenThomsonScattering_Settings]
 Class="Function"
 Prototype="void OpenThomsonScattering_Settings();"
-SourceLocation="c:\PHASMA 2025 DAQ\ThomsonScattering\ThomsonScatteringSettings.c:1011:6"
-
-[Close_ThomsonScattering_Settings_No_Save]
-Class="Function"
-Prototype="int Close_ThomsonScattering_Settings_No_Save(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\ThomsonScattering\ThomsonScatteringSettings.c:1069:17"
+SourceLocation="c:\PHASMA 2025 DAQ\ThomsonScattering\ThomsonScatteringSettings.c:995:6"
 
 [Close_ThomsonScattering_Settings]
 Class="Function"
 Prototype="int Close_ThomsonScattering_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\ThomsonScattering\ThomsonScatteringSettings.c:1082:17"
+SourceLocation="c:\PHASMA 2025 DAQ\ThomsonScattering\ThomsonScatteringSettings.c:1053:17"
 
 [CloseSimmer_ThomsonScattering_Settings]
 Class="Function"
 Prototype="int CloseSimmer_ThomsonScattering_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\ThomsonScattering\ThomsonScatteringSettings.c:1096:17"
+SourceLocation="c:\PHASMA 2025 DAQ\ThomsonScattering\ThomsonScatteringSettings.c:1067:17"
 
 [Move_McPherson207]
 Class="Function"
 Prototype="int Move_McPherson207(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\ThomsonScattering\ThomsonScatteringSettings.c:1128:17"
+SourceLocation="c:\PHASMA 2025 DAQ\ThomsonScattering\ThomsonScatteringSettings.c:1099:17"
 
 [Set_McPherson207]
 Class="Function"
 Prototype="int Set_McPherson207(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\ThomsonScattering\ThomsonScatteringSettings.c:1184:17"
+SourceLocation="c:\PHASMA 2025 DAQ\ThomsonScattering\ThomsonScatteringSettings.c:1155:17"
 
 [TS_Andor_Temp_Control]
 Class="Function"
 Prototype="int TS_Andor_Temp_Control(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\ThomsonScattering\ThomsonScatteringSettings.c:1205:17"
+SourceLocation="c:\PHASMA 2025 DAQ\ThomsonScattering\ThomsonScatteringSettings.c:1176:17"
 
 [TIMER_UPDATE_ICCD_STATUS]
 Class="Function"
 Prototype="int TIMER_UPDATE_ICCD_STATUS(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\ThomsonScattering\ThomsonScatteringSettings.c:1245:17"
+SourceLocation="c:\PHASMA 2025 DAQ\ThomsonScattering\ThomsonScatteringSettings.c:1216:17"
 

@@ -103,7 +103,7 @@
 
 
 int			ThomsonScattering_panel;
-int			ThomsonScattering_setup_state = 551;
+int			ThomsonScattering_setup_state = 552;
 int			TS_Para_Perp_flag=0; 
 int			TS_RecordLength; 
 int			Andor_H_bin;
@@ -810,7 +810,7 @@ void Create_McPherson_Wavelength (double Wavelength[])
 	
 	//Open settings panel and load saved values
 	ThomsonScattering_panel = LoadPanel (0, "ThomsonScatteringSettings.uir", ThomsonSct);
-	SavePanelState (ThomsonScattering_panel, "Master_Control_Storage_File", ThomsonScattering_setup_state);
+	RecallPanelState (ThomsonScattering_panel, "Master_Control_Storage_File", ThomsonScattering_setup_state);
 
 	//Get McPherson Spectrometer Parameters
  	GetCtrlVal (ThomsonScattering_panel, ThomsonSct_TS_McP_Current_Wlengt,&McP_Current_Wlength);	   //Wavelength in nm
@@ -818,6 +818,9 @@ void Create_McPherson_Wavelength (double Wavelength[])
 	GetCtrlVal (ThomsonScattering_panel, ThomsonSct_TS_McP_AngleDiff,&McP_AngleDiff);
 	GetCtrlVal (ThomsonScattering_panel, ThomsonSct_TS_McP_FocalLength,&McP_FocalLength);
 	GetCtrlVal (ThomsonScattering_panel, ThomsonSct_Andor_H_bin,&Andor_H_bin);
+
+	//Close panel in background
+	DiscardPanel(ThomsonScattering_panel); 
 
 	alpha = (180.0/pi)*( asin( (Order*McP_GrooveDen*1.0E-6/2.0)/(cos(McP_AngleDiff*pi/2.0/180.0) ) ) - (McP_AngleDiff*pi/2.0/180.0) );
 	beta = McP_AngleDiff+alpha;
@@ -829,19 +832,12 @@ void Create_McPherson_Wavelength (double Wavelength[])
 	for (j=0;j<(int)(Andor_Horiz_pixels/Andor_H_bin);j++) {
 		Wavelength[j]= ((j-(Andor_Horiz_pixels/Andor_H_bin)/2.0)*Wavelength_step+McP_Current_Wlength);		//This assumes no stretching of axis or offsets from calibration
 	}
-	
-	//Close panel in background
-	DiscardPanel(ThomsonScattering_panel); 
-
-
 }
 
 
 //Take the acquired data from the instrument and print it to the common data folder
 void Write_ThomsonScatteringData(void)
 {
-	char	Channel1NameString[64];
-	char	Channel2NameString[64];
 	char	outfilename[64];
 	FILE*	outfile;
 	int		i,j;
@@ -892,6 +888,9 @@ void Write_ThomsonScatteringData(void)
 	
 	//Store all the parameters of the lasers and the collection optics choices
 	GetCtrlVal (ThomsonScattering_panel, ThomsonSct_CollectionOptics,&CollectionOptics_Flag);
+
+	//Close panel in background
+	DiscardPanel(ThomsonScattering_panel); 
 
 	fprintf(outfile, "Laser Orientation (Perp=1) %d\r", TS_Para_Perp_flag);
 	fprintf(outfile, "Type of Collection Optics %d\r",CollectionOptics_Flag);
@@ -974,22 +973,11 @@ void Write_ThomsonScatteringData(void)
 		VerticalIndex[j]=(double)j;		
 	}
 	
+	//Create temporary array for wavelength data
 	TSWavelength = malloc ((int)(8*Andor_Horiz_pixels/Andor_H_bin));
+	
 	//Run McPherson Function to generate wavelength array
 	Create_McPherson_Wavelength(TSWavelength);
-
-	//Reopen settings panel and load saved values since wavelength generating function closed the panel
-	ThomsonScattering_panel = LoadPanel (0, "ThomsonScatteringSettings.uir", ThomsonSct);
-	RecallPanelState (ThomsonScattering_panel, "Master_Control_Storage_File", ThomsonScattering_setup_state);
-
-	//Get channel name strings for Andor image and photodiode data and push data to MDSPlus
-	if (TS_Para_Perp_flag) {
-		GetCtrlVal (ThomsonScattering_panel, ThomsonSct_Chan1Name,Channel1NameString);
-		GetCtrlVal (ThomsonScattering_panel, ThomsonSct_Chan2Name,Channel2NameString);
-	} else {
-		GetCtrlVal (ThomsonScattering_panel, ThomsonSct_Chan1Name_para,Channel1NameString);
-		GetCtrlVal (ThomsonScattering_panel, ThomsonSct_Chan2Name_para,Channel2NameString);
-	}	
 	
 	//Write TS spectrum
 	for (j=0;j<(int)((Andor_Horiz_pixels/Andor_H_bin)*(Andor_Vert_pixels/Andor_V_bin)/2.0);j++) {
@@ -998,10 +986,6 @@ void Write_ThomsonScatteringData(void)
 
  	//Close TS data data file
 	fclose (outfile);
-
-	//Close panel in background
-	DiscardPanel(ThomsonScattering_panel); 
-
 }
 
 
@@ -1063,19 +1047,6 @@ void OpenThomsonScattering_Settings (void)
 		
 	// Start interacting with user
     RunUserInterface ();
-}
-
-
-int CVICALLBACK Close_ThomsonScattering_Settings_No_Save (int panel, int control, int event,
-		void *callbackData, int eventData1, int eventData2)
-{
-	switch (event)
-	{
-		case EVENT_COMMIT:
-			DiscardPanel(panel);
-			break;
-	}
-	return 0;
 }
 
 

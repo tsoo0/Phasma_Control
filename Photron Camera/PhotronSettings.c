@@ -20,6 +20,7 @@
 	
 *********************************************************************/
 #include 	<windows.h> 
+#include <ansi_c.h>
 #include	<PDCLIB.h> 
 #include 	<ansi_c.h>
 #include	<visa.h>
@@ -43,6 +44,7 @@
 
 
 int			Camera_frame_rate;  
+int			FrameCase;  
 int			Camera_height;  
 int			Camera_width;  
 int			Camera_shutter_rate;  
@@ -54,6 +56,8 @@ double   	nBrightness=0.00;         	//Brightness
 double  	nContrast=0.00;           	//Contrast
 double 		nGamma=0.6;              	//Gamma
 double 		nGain=16.0;              	//Gamma
+float 		micro_per_pixel;			//User defined mapping of length scale to pixels
+float		Trigger_Delay;  
 
 unsigned long 	nDeviceNo;             	//Device number
 unsigned long 	nChildNo = 1;			//Number of the camera head
@@ -71,29 +75,19 @@ void PhotronCameraActivate(void)
 {
 	char 			*endpointer;
 	unsigned long 	IPList[PDC_MAX_DEVICE];   // IP address to be searched
-	unsigned long 	pDeviceCode[PDC_MAX_DEVICE];
-	unsigned long 	pTmpDeviceNo[PDC_MAX_DEVICE];
-	unsigned long 	pInterfaceCode[PDC_MAX_DEVICE];
-	unsigned long 	pList[PDC_MAX_DEVICE]; 
+
 	unsigned long 	nRet;
 	unsigned long 	nErrorCode;
-	unsigned long 	nDetectParam;
-	unsigned long 	pDeviceNum;
 	unsigned long 	nAFrames;				//Frames per trigger 
 	unsigned long 	nRFrames;				//Frames per trigger  
 	unsigned long 	nRCount = 1;			//Record count limit 
-	unsigned long 	nFrameNo = 1;			//Frame number at which to start save
-	char			nDepth;
+	unsigned long 	delayCounts=0;			//Frames to skip after trigger
 
 	unsigned long 	nWidth; 				//Image Width
 	unsigned long 	nHeight; 				//Image height
 	unsigned long 	frame_rate;				//Image frame rate
 	unsigned long 	nPreLUTMode;  			//Pre-LUT mode 
-	unsigned long 	pSize;  				//Pre-LUT mode 
-	unsigned long 	nList;  				//Pre-LUT mode 
-	unsigned long 	pFps;
-	unsigned long 	pMode;
-	unsigned long 	pDepth;
+
 	char			PhotronIPAddress_String[16];
 	
 	PDC_DETECT_NUM_INFO DetectNumInfo;      // Search result
@@ -103,19 +97,117 @@ void PhotronCameraActivate(void)
 	PhotronCamera_panel = LoadPanel (0, "PhotronCameraSettings.uir", PhotronCam);
 	RecallPanelState (PhotronCamera_panel, "Master_Control_Storage_File", PhotronCamera_setup_state);
 
-	GetCtrlVal(PhotronCamera_panel, PhotronCam_FramesPerSec, &Camera_frame_rate);  
-	GetCtrlVal(PhotronCamera_panel, PhotronCam_Height, &Camera_height);  
-	GetCtrlVal(PhotronCamera_panel, PhotronCam_Width, &Camera_width);  
+	GetCtrlVal(PhotronCamera_panel, PhotronCam_PhotronFrameCase, &FrameCase);  
 	GetCtrlVal(PhotronCamera_panel, PhotronCam_Shutter, &Camera_shutter_rate);  
 	GetCtrlVal(PhotronCamera_panel, PhotronCam_Frames, &Camera_frames);  
 	GetCtrlVal(PhotronCamera_panel, PhotronCam_Brightness, &nBrightness);  
 	GetCtrlVal(PhotronCamera_panel, PhotronCam_Contrast, &nContrast);  
 	GetCtrlVal(PhotronCamera_panel, PhotronCam_Gamma, &nGamma);  
 	GetCtrlVal(PhotronCamera_panel, PhotronCam_Gain, &nGain);  
+	GetCtrlVal(PhotronCamera_panel, PhotronCam_Trigger_Delay, &Trigger_Delay);  
 	GetCtrlVal(PhotronCamera_panel, PhotronCam_PhotronIPAddress, PhotronIPAddress_String);  
+	GetCtrlVal(PhotronCamera_panel, PhotronCam_micro_per_pixel, &micro_per_pixel);  
+	
+	
  	
 	//Close panel
 	DiscardPanel(PhotronCamera_panel);
+	
+	//Set up frame rate and resolutions based on selection
+	switch(FrameCase)
+		{
+		case 0:
+			Camera_frame_rate= 9000;  
+			Camera_height = 1024;  
+			Camera_width = 1024;
+			break;
+		case 1:
+			Camera_frame_rate= 12000;  
+			Camera_height = 1024;  
+			Camera_width = 768;
+			break;
+		case 2:
+			Camera_frame_rate= 18000;  
+			Camera_height = 1024;  
+			Camera_width = 512;
+			break;
+		case 3:
+			Camera_frame_rate= 10000;  
+			Camera_height = 896;  
+			Camera_width = 896;
+			break;
+		case 4:
+			Camera_frame_rate= 15000;  
+			Camera_height = 768;  
+			Camera_width = 768;
+			break;
+		case 5:
+			Camera_frame_rate= 25000;  
+			Camera_height = 640;  
+			Camera_width = 480;
+			break;
+		case 6:
+			Camera_frame_rate= 30000;  
+			Camera_height = 512;  
+			Camera_width = 512;
+			break;
+		case 7:
+			Camera_frame_rate= 38400;  
+			Camera_height = 512;  
+			Camera_width = 384;
+			break;
+		case 8:
+			Camera_frame_rate= 45000;  
+			Camera_height = 384;  
+			Camera_width = 384;
+			break;
+		case 9:
+			Camera_frame_rate= 57600;  
+			Camera_height = 384;  
+			Camera_width = 256;
+			break;
+		case 10:
+			Camera_frame_rate= 80000;  
+			Camera_height = 256;  
+			Camera_width = 256;
+			break;
+		case 11:
+			Camera_frame_rate= 160000;  
+			Camera_height = 256;  
+			Camera_width = 128;
+			break;
+		case 12:
+			Camera_frame_rate= 200000;  
+			Camera_height = 128;  
+			Camera_width = 128;
+			break;
+		case 13:
+			Camera_frame_rate= 250000;  
+			Camera_height = 128;  
+			Camera_width = 96;
+			break;
+		case 14:
+			Camera_frame_rate= 400000;  
+			Camera_height = 128;  
+			Camera_width = 64;
+			break;
+		case 15:
+			Camera_frame_rate= 480000;  
+			Camera_height = 128;  
+			Camera_width = 48;
+			break;
+		case 16:
+			Camera_frame_rate= 576000;  
+			Camera_height = 128;  
+			Camera_width = 32;
+			break;
+		case 17:
+			Camera_frame_rate= 900000;  
+			Camera_height = 128;  
+			Camera_width = 16;
+			break;
+	}
+ 
 	
 	//Set up parameters based on the defines
 	nAFrames = Camera_frames;
@@ -218,21 +310,26 @@ void PhotronCameraActivate(void)
 	//Set the camera to partition #1. This is really critical
 	nRet = PDC_SetCurrentPartition(nDeviceNo, nChildNo, 1,&nErrorCode);
 
-	//Turn on shading correction
-	nRet = PDC_SetShadingMode(nDeviceNo,nChildNo,PDC_SHADING_ON,&nErrorCode);
-	
 	//Set the shutter speed to 1/frame rate
 	//nRet = PDC_SetAutoExposure(nDeviceNo,nChildNo, PDC_FUNCTION_ON,&nErrorCode);
-	nRet = PDC_SetShutterSpeedFps(nDeviceNo,nChildNo, Camera_shutter_rate,&nErrorCode);   //sets the shutter speed to 1/frame_rate 
+	nRet = PDC_SetShutterSpeedFps(nDeviceNo,nChildNo, Camera_shutter_rate,&nErrorCode);   
  	
 	//Set the trigger mode to random
 	nRet = PDC_SetTriggerMode(nDeviceNo,PDC_TRIGGER_RANDOM_MANUAL,nAFrames,nRFrames,nRCount,&nErrorCode);   //Set the trigger to give nRCount frames from before the trigger time
+	
+	//Set the trigger delay
+	delayCounts = (int)(Trigger_Delay*1.0E-6/100e-9);
+	nRet = PDC_SetDelay(nDeviceNo, PDC_DELAY_TRIGGER_IN, delayCounts, &nErrorCode);
 	
 	//Set the frame rate to frame_rate in fps - if you do not do this close to last, it does not take
 	nRet = PDC_SetRecordRate(nDeviceNo,nChildNo,frame_rate,&nErrorCode);
 
 	//Set the resolution to the specified height and width
 	nRet = PDC_SetResolution(nDeviceNo,nChildNo, nWidth, nHeight,&nErrorCode);	
+	
+	//Turn on shading correction, this does the calibration
+	nRet = PDC_SetShadingMode(nDeviceNo,nChildNo,PDC_SHADING_ON,&nErrorCode);
+	
 }
 
 
@@ -266,9 +363,9 @@ void Write_PhotronCameraData(void)
     char			PhotronData_String[64];
 	unsigned long 	nRet;
 	unsigned long 	nErrorCode;
-	unsigned long 	pSize;
 	char			PhotronFileName[64];
-	
+	char			outfilename[64];
+	FILE*			outfile;	
 	
 	shotnum= getMDSCurrentShot();
 	//Create output filename to send to Photron camera based on current MDS shot number and set path to external hard
@@ -315,6 +412,21 @@ void Write_PhotronCameraData(void)
 	
 	//Set the camera status to live so future commands to change settings work
 	nRet = PDC_SetStatus(nDeviceNo,PDC_STATUS_LIVE,&nErrorCode);
+	
+	//Dump settings to a file
+	sprintf(outfilename, RawDataPath);
+	strcat(outfilename, ShotNumberString);
+	strcat(outfilename, "_");
+	strcat(outfilename, "PhotronSettings.txt");
+	outfile=fopen (outfilename, "w");
+	
+	fprintf(outfile, "Spatial Calibration = %f\r", micro_per_pixel);
+	fprintf(outfile, "Camera frame rate = %d\r",Camera_frame_rate);
+	fprintf(outfile, "Camera shutter rate = %d\r",Camera_shutter_rate);
+	fprintf(outfile, "Trigger Delay (micro_s) = %f\r",Trigger_Delay);
+	
+	fclose(outfile);
+	
 }
 
 

@@ -1,7 +1,7 @@
 from . import devices
-from . import config
+from . import channel_map
 
 __all__ = [
     'devices',
-    'config',
+    'channel_map',
 ]

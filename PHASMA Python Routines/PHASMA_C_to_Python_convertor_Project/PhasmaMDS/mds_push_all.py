@@ -32,11 +32,11 @@ def push_all_mds(treename, exp_ip, raw_data_dir, shotnum):
 
     shotfids = [shotfid for shotfid in os.listdir(raw_data_dir) if trycast(shotfid.split('_')[0]) == shotnum]
     
-    #get tree structure from model shot by parsing the return from tcl dir; there's probably a better way to do this 
+    #get tree structure from model shot by parsing the return from tcl; probably an easier way to do this 
     c.openTree(treename,-1)
-    c.tcl('set def \TOP:SETUP')
+    c.tcl('set def \TOP:DEVICES')
     devstr = c.tcl('directory')    
-    devstr=devstr.replace("\PHASMA::TOP.SETUP","")
+    devstr=devstr.replace("\PHASMA::TOP.DEVICES","")
     devs = devstr.split('\n')
     devs = devstr.split('  ')
     devs = [dev for dev in [dev.strip() for dev in devs] if len(dev)>0 and dev.isupper()]
@@ -51,12 +51,13 @@ def push_all_mds(treename, exp_ip, raw_data_dir, shotnum):
             
             if newprefix.upper() in shotfid.upper():
                 shotdat = read_format_mds(shotfid)
+            
                 rawdata[dev] = shotdat
     
-        
+
     # Reorganize data from rawdata into clusters defined by the mapping in their config file
     
-    doof = {} 
+    doof = {}
     for diag in devdict:
         
         diagdevs = [HWdev.name_local.upper() for HWdev in devdict[diag].devices.HWdevices]
@@ -94,7 +95,7 @@ def push_all_mds(treename, exp_ip, raw_data_dir, shotnum):
             except:
                 continue
         
-        
+        # c.tcl("set def TOP")
 
 def push_all_mds_latest(treename, exp_ip, raw_data_dir):
     c = mds.Connection(exp_ip)
@@ -108,5 +109,5 @@ if __name__ == '__main__':
     exp_ip = '127.0.0.1:57800'
     raw_data_dir = "D:\\PHASMA_RawData"    
 
-    push_all_mds(treename, exp_ip, raw_data_dir, shotnum = 413)
-    # push_all_mds_latest(treename, exp_ip, raw_data_dir)
+    # push_all_mds(treename, exp_ip, raw_data_dir, shotnum = 1)
+    push_all_mds_latest(treename, exp_ip, raw_data_dir)

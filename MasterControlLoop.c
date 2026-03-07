@@ -1454,7 +1454,7 @@ void  main(void)
 	panel_width = width;
 	
 	Master_Control_Panel = LoadPanel (0, "MasterControlPanel.uir", MasterCont);
-	RecallPanelState (Master_Control_Panel, "Master_Control_Storage_File", Master_Control_Panel_setup_state);
+	result= RecallPanelState (Master_Control_Panel, "Master_Control_Storage_File", Master_Control_Panel_setup_state);
 	DisplayPanel (Master_Control_Panel);
 																		 
 	SetPanelAttribute (Master_Control_Panel, ATTR_HEIGHT, panel_height);
