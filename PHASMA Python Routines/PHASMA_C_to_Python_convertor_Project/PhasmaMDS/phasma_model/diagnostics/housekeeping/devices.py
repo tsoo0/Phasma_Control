@@ -47,7 +47,7 @@ MSO5104_PD4 = MSO5104('MSO5104_PD4','MSO5104_PD4',
 
 
 MSO5104_01 = MSO5104(name_mds = 'HouseHighRes',
-                     name_local = 'housekeepingHighRes',
+                     name_local = 'HighRes',
                      nchannels = 4, 
                      grouping = 'DATA',
                      MToffset = 0,
@@ -58,7 +58,7 @@ MSO5104_01 = MSO5104(name_mds = 'HouseHighRes',
                      )
 
 VX4244 = VX4244(name_mds = 'Housekeeping',
-                name_local='Housekeeping',
+                name_local='HousekeepingVXI',
                      nchannels = 7, 
                      grouping = 'DATA',
                      MToffset = 0,

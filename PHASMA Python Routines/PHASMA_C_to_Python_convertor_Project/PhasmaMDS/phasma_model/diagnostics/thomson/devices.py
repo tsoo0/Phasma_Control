@@ -4,8 +4,9 @@ from ...device_classes.Andor import Andor
 
 devtag = "TS"
          
-MSO5104_02 = MSO5104('TS_Scope','TS_Scope',
-                     nchannels = 4, 
+MSO5104_02 = MSO5104('TS_PHOTO',
+                     'Thomson_Photodiode',
+                     nchannels = 2, 
                      grouping = 'DATA',
                      MToffset = 0,
                      channel_prefix = 'TS_',
@@ -15,8 +16,8 @@ MSO5104_02 = MSO5104('TS_Scope','TS_Scope',
                      )   
 
 Andor = Andor(
-        name_mds='Andor',
-        name_local='Andor',
+        name_mds='TS_ANDOR',
+        name_local='TS_Andor',
         diagnostic='Thomson',
         channel_prefix = "ANDOR_",
         description = "Thomson Spectra data from Andor",
@@ -25,7 +26,7 @@ Andor = Andor(
         tag = devtag
     )
 
-TS_setup = TSConfig(name_mds='TS_settings',
+TS_setup = TSConfig(name_mds='TS_CONFIG',
                     name_local='ThomsonScattering',
                     diagnostic='Thomson',
                     grouping = "SETUP",

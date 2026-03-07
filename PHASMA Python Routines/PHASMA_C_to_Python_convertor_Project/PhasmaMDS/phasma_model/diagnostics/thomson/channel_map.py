@@ -4,10 +4,8 @@ tag = "TS"
 
 
 scopechmap = {
-    1:"PD 1",
+    1:"PD1",
     2:"PD2",
-    3:'3',
-    4:'4',
     }
 
 andorchmap = {

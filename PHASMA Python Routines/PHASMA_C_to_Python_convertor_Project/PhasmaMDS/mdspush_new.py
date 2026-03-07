@@ -36,7 +36,7 @@ def push_all_mds(treename, exp_ip, raw_data_dir, shotnum):
     
     #get tree structure from model shot by parsing the return from tcl; probably an easier way to do this 
     c.openTree(treename,-1)
-    c.tcl('set def \TOP:DEVICES')
+    c.tcl('set def \TOP:DIAGNOSTICS')
     devstr = c.tcl('directory')    
     devstr=devstr.replace("\PHASMA::TOP.DEVICES","")
     devs = devstr.split('\n')

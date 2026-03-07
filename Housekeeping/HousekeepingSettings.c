@@ -425,7 +425,7 @@ void Write_HousekeepingData(void)
 	sprintf(outfilename, RawDataPath);
 	strcat(outfilename, ShotNumberString);
 	strcat(outfilename, "_");
-	strcat(outfilename, "Housekeeping.txt");
+	strcat(outfilename, "HousekeepingVXI.txt");
 	
 	outfile=fopen (outfilename, "w");
 

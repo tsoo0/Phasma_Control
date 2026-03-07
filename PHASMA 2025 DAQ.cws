@@ -32,7 +32,7 @@ Save Changes Before Compiling = "Always"
 Hide Windows = False
 Break At First Statement = False
 Sort Type = "File Name"
-Number of Opened Files = 13
+Number of Opened Files = 14
 Window Confinement Region Enabled = True
 MainColumnWidth = 494
 FileDateColumnWidth = 70
@@ -88,7 +88,7 @@ Disk Date = 3855654140
 In Projects = "1,"
 Source Window State = "1,1048,1048,1048,4,4,4,0,0,0,0,0,0,0,0,0,1015,0,1048,4,401,770,1,0,"
 Window Top = 31
-Window Z-Order = 4
+Window Z-Order = 6
 
 [File 0007]
 Path = "/c/PHASMA 2025 DAQ/MasterControlLoop.c"
@@ -98,7 +98,7 @@ In Projects = "1,"
 Source Window State = "1,1506,1506,1506,4,4,4,0,0,0,0,0,0,0,0,0,1504,0,1506,4,401,861,1,0,"
 Window Top = 33
 Window Left = 10
-Window Z-Order = 2
+Window Z-Order = 4
 
 [File 0008]
 Path = "/c/PHASMA 2025 DAQ/Photron Camera/PhotronSettings.c"
@@ -112,7 +112,7 @@ Breakpoint 0002 = "290,0,enabled,"
 Tracepoint 0002 = "0,0,301,1,"
 Window Top = 281
 Window Left = 138
-Window Z-Order = 1
+Window Z-Order = 3
 
 [File 0009]
 Path = "/c/PHASMA 2025 DAQ/DoubleProbe/DoubleProbe Settings.c"
@@ -149,7 +149,7 @@ Window Top = 405
 Window Left = 202
 Window Height = 349
 Window Width = 987
-Window Z-Order = 13
+Window Z-Order = 14
 
 [File 0012]
 Path = "/c/PHASMA 2025 DAQ/PlasmaGun/PlasmaGunSettings.c"
@@ -159,7 +159,7 @@ In Projects = "1,"
 Source Window State = "1,539,539,539,12,12,12,0,0,0,0,2,0,2,0,0,478,0,539,12,349,1011,1,0,"
 Window Top = 498
 Window Left = 250
-Window Z-Order = 12
+Window Z-Order = 13
 
 [File 0013]
 Path = "/c/PHASMA 2025 DAQ/ThomsonScattering/ThomsonScatteringSettings.uir"
@@ -170,7 +170,7 @@ Window Top = 33
 Window Left = 10
 Window Height = 349
 Window Width = 1003
-Window Z-Order = 6
+Window Z-Order = 8
 
 [File 0014]
 Path = "/c/PHASMA 2025 DAQ/MasterControlSettings.h"
@@ -180,17 +180,17 @@ In Projects = "1,"
 Source Window State = "1,171,171,171,0,0,0,0,0,0,0,0,0,0,0,0,128,0,171,0,349,971,1,0,"
 Window Top = 374
 Window Left = 186
-Window Z-Order = 10
+Window Z-Order = 12
 
 [File 0015]
 Path = "/c/PHASMA 2025 DAQ/Housekeeping/HousekeepingSettings.c"
 File Type = "CSource"
-Disk Date = 3854458843
+Disk Date = 3855690444
 In Projects = "1,"
-Source Window State = "1,163,163,163,9,9,9,0,0,0,0,128,0,128,0,0,122,0,163,9,349,923,1,0,"
+Source Window State = "1,467,467,467,44,44,44,0,0,0,0,128,0,128,0,0,409,0,467,44,349,923,1,0,"
 Window Top = 188
 Window Left = 90
-Window Z-Order = 11
+Window Z-Order = 1
 
 [File 0016]
 Path = "/c/PHASMA 2025 DAQ/MasterTrigger/MasterTriggerSettings.c"
@@ -200,7 +200,7 @@ In Projects = "1,"
 Source Window State = "1,553,553,553,11,11,11,0,0,0,0,0,0,0,0,0,520,0,553,11,401,875,1,0,"
 Window Top = 95
 Window Left = 42
-Window Z-Order = 7
+Window Z-Order = 9
 
 [File 0017]
 Path = "/c/PHASMA 2025 DAQ/MDS/PHASMA-MDS-Routines.c"
@@ -210,7 +210,7 @@ In Projects = "1,"
 Source Window State = "1,224,224,224,0,0,0,0,0,0,0,0,0,0,0,0,191,0,224,0,401,630,1,0,"
 Window Top = 33
 Window Left = 10
-Window Z-Order = 8
+Window Z-Order = 10
 
 [File 0018]
 Path = "/c/PHASMA 2025 DAQ/Rigol Routines/Rigol.c"
@@ -220,7 +220,7 @@ In Projects = "1,"
 Source Window State = "1,9,9,9,4,4,4,0,0,0,0,0,0,0,0,0,1,0,9,4,401,840,1,0,"
 Window Top = 126
 Window Left = 58
-Window Z-Order = 9
+Window Z-Order = 11
 
 [File 0019]
 Path = "/c/PHASMA 2025 DAQ/MasterControlPanel.uir"
@@ -231,7 +231,7 @@ Window Top = 45
 Window Left = 10
 Window Height = 349
 Window Width = 787
-Window Z-Order = 5
+Window Z-Order = 7
 
 [File 0020]
 Path = "/c/PHASMA 2025 DAQ/Photron Camera/PhotronCameraSettings.uir"
@@ -242,7 +242,7 @@ Window Top = 405
 Window Left = 202
 Window Height = 349
 Window Width = 971
-Window Z-Order = 3
+Window Z-Order = 5
 
 [File 0021]
 Path = "/c/PHASMA 2025 DAQ/Bdot/BdotSettings.uir"
@@ -546,6 +546,7 @@ In Projects = "1,"
 Source Window State = "1,18,18,18,12,12,12,0,0,0,0,1,0,1,0,0,0,0,18,12,349,923,1,0,"
 Window Top = 64
 Window Left = 26
+Window Z-Order = 2
 
 [File 0053]
 Path = "/c/PHASMA 2025 DAQ/Housekeeping/HousekeepingSystems.h"
@@ -1278,6 +1279,7 @@ Tab 0010 = "/c/PHASMA 2025 DAQ/ThomsonScattering/ThomsonScatteringSettings.uir"
 Tab 0011 = "/c/PHASMA 2025 DAQ/MasterControlPanel.uir"
 Tab 0012 = "/c/PHASMA 2025 DAQ/Photron Camera/PhotronSettings.c"
 Tab 0013 = "/c/PHASMA 2025 DAQ/Photron Camera/PhotronCameraSettings.uir"
+Tab 0014 = "/c/PHASMA 2025 DAQ/Housekeeping/HousekeepingSettings.h"
 
 [Default Build Config 0001 Debug]
 Generate Browse Info = True

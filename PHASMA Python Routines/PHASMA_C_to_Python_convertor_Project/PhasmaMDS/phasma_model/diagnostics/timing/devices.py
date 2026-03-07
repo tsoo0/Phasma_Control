@@ -2,7 +2,7 @@ from ...device_classes.TimingSettings import TimeConfig
 
 
 times = TimeConfig(
-    name_mds = "MasterTrigger",
+    name_mds = "MSTR_TRIG",
     name_local = "MasterTrigger",
     diagnostic = 'TIMING',
     description='Timing information for guns, lasers, etc',
