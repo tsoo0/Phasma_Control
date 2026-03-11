@@ -34,6 +34,7 @@
 #define	 Wavemeter_Averages 5				//Number of measurement averages to use for wavemeter measurement calls
 #define	 speed_o_light 2.99792458E8  
 
+#define Sirah_delay .2						//Communication going too fast with Sirah controller
 void Sirah_Laser_Scan(char Sirah_COM_String[])
 {
 	
@@ -63,7 +64,8 @@ void Sirah_Laser_Scan(char Sirah_COM_String[])
 		//Clear any errors
 		sprintf (send_string,"ERR:CL\r\n");
 		result = viWrite (SIRAH_handle, send_string, (ViUInt32)strlen(send_string), &count);
-
+		Delay(Sirah_delay);			//slow down so commands get processed
+		
 		//Print scan command into transmission string and send string to laser
 		sprintf (send_string,"SCAN:STA RUN\r\n");
 		result = viWrite (SIRAH_handle, send_string, (ViUInt32)strlen(send_string), &count);
@@ -119,6 +121,7 @@ void Sirah_Laser_SetScan(char Sirah_COM_String[],double Timespan,double Range, d
 		//Set the lower limit for the scan to the current scan value
 		sprintf (send_string,"SCAN:LLM %f\r\n",current_value);
 		result = viWrite (SIRAH_handle, send_string, (ViUInt32)strlen(send_string), &count);
+		Delay(Sirah_delay);			//slow down so commands get processed
 
 		//Calculate the new upper limit for the scan
 		upper_limit = current_value+(Range/Conversion);    //Range in GHz and Conversion in GHz from interface window
@@ -127,6 +130,7 @@ void Sirah_Laser_SetScan(char Sirah_COM_String[],double Timespan,double Range, d
 		}
 		sprintf (send_string,"SCAN:ULM %f\r\n",upper_limit);
 		result = viWrite (SIRAH_handle, send_string, (ViUInt32)strlen(send_string), &count);
+		Delay(Sirah_delay);			//slow down so commands get processed
 
 		//Set the scanning mirror mode to scan from up current value to upper limit and then stop at upper limit 
 		//Information is coded into the bits of the value. 
@@ -135,6 +139,7 @@ void Sirah_Laser_SetScan(char Sirah_COM_String[],double Timespan,double Range, d
 		//  Third bit is scan stops at upper limit (0 = no, 1 = yes)
 		sprintf (send_string,"SCAN:MODE 4\r\n");			//scan with increasing voltage and stop at upper value
 		result = viWrite (SIRAH_handle, send_string, (ViUInt32)strlen(send_string), &count);
+		Delay(Sirah_delay);			//slow down so commands get processed
 
 		//Set the scanning mirror scan rate to increase frequency so total scan equals data acquisition time
 		scan_speed=(upper_limit - current_value)/Timespan;
@@ -190,6 +195,7 @@ void Sirah_Laser_SetScan_Down(char Sirah_COM_String[],double Timespan, double Ra
 		//Set the upper limit for the scan to the current scan value
 		sprintf (send_string,"SCAN:ULM %f\r\n",current_value);
 		result = viWrite (SIRAH_handle, send_string, (ViUInt32)strlen(send_string), &count);
+		Delay(Sirah_delay);			//slow down so commands get processed
 
 		//Calculate the new lower limit for the scan
 		lower_limit = current_value-(Range/Conversion);    //Range in GHz and Conversion in GHz from interface window
@@ -198,6 +204,7 @@ void Sirah_Laser_SetScan_Down(char Sirah_COM_String[],double Timespan, double Ra
 		}
 		sprintf (send_string,"SCAN:LLM %f\r\n",lower_limit);
 		result = viWrite (SIRAH_handle, send_string, (ViUInt32)strlen(send_string), &count);
+		Delay(Sirah_delay);			//slow down so commands get processed
 
 		//Set the scanning mirror mode to scan from down current value to lower limit and then stop at lower limit 
 		//Information is coded into the bits of the value. 
@@ -206,6 +213,7 @@ void Sirah_Laser_SetScan_Down(char Sirah_COM_String[],double Timespan, double Ra
 		//  Third bit is scan stops at upper limit (0 = no, 1 = yes)
 		sprintf (send_string,"SCAN:MODE 3\r\n");			//scan with decreasing voltage and stop at lower value
 		result = viWrite (SIRAH_handle, send_string, (ViUInt32)strlen(send_string), &count);
+		Delay(Sirah_delay);			//slow down so commands get processed
 
 		//Set the scanning mirror scan rate to increase frequency so total scan equals data acquisition time
 		scan_speed=(current_value - lower_limit)/Timespan;
@@ -302,10 +310,12 @@ void Sirah_Laser_ScanReset(int	Wavemeter_COM, char Sirah_COM_String[], double Ra
 		if (lower_limit < 0.05) lower_limit=0.05;			//Make sure negative control value is not sent to Sirah laser
 		sprintf (send_string,"SCAN:LLM %f\r\n",lower_limit);
 		result = viWrite (SIRAH_handle, send_string, (ViUInt32)strlen(send_string), &count);
+		Delay(Sirah_delay);			//slow down so commands get processed
 
 		//Set the upper limit for the scan to the current scan value
 		sprintf (send_string,"SCAN:ULM %f\r\n",current_value);
 		result = viWrite (SIRAH_handle, send_string, (ViUInt32)strlen(send_string), &count);
+		Delay(Sirah_delay);			//slow down so commands get processed
 
 		//Set the scanning mirror mode to scan from up current value to upper limit and then stop at lower limit 
 		//Information is coded into the bits of the value. 
@@ -314,11 +324,13 @@ void Sirah_Laser_ScanReset(int	Wavemeter_COM, char Sirah_COM_String[], double Ra
 		//  Third bit is scan stops at upper limit (0 = no, 1 = yes)
 		sprintf (send_string,"SCAN:MODE 3\r\n");			//scan with decreasing voltage and stop at lower value
 		result = viWrite (SIRAH_handle, send_string, (ViUInt32)strlen(send_string), &count);
+		Delay(Sirah_delay);			//slow down so commands get processed
 
 		//Set the scanning mirror scan rate to increase frequency at so total scan equals data acquisition time
 		scan_speed=(current_value - lower_limit)/(Range/0.5);		 	//have return sweep happen in 5 s for every 10 GHz, changed from 2 to 0.5, M.G.  
 		sprintf (send_string,"SCAN:FSPD %f\r\n",scan_speed);
 		result = viWrite (SIRAH_handle, send_string, (ViUInt32)strlen(send_string), &count);
+		Delay(Sirah_delay);			//slow down so commands get processed
 
 		//Now Sirah to execute reset command
 		//Print scan command into transmission string and send string to laser
@@ -344,6 +356,7 @@ void Sirah_Laser_ScanReset(int	Wavemeter_COM, char Sirah_COM_String[], double Ra
 				//Print scan command into transmission string and send string to laser
 				sprintf (send_string,"SCAN:STA STOP\r\n");
 				result = viWrite (SIRAH_handle, send_string, (ViUInt32)strlen(send_string), &count);
+				Delay(Sirah_delay);			//slow down so commands get processed
 			}
 		}while(poll_value != 0);   //	end waiting when laser has stopped scanning
 
@@ -392,6 +405,7 @@ void Sirah_Laser_ScanReset(int	Wavemeter_COM, char Sirah_COM_String[], double Ra
 				//Print scan command into transmission string and send string to laser
 				sprintf (send_string,"SCAN:STA STOP\r\n");
 				result = viWrite (SIRAH_handle, send_string, (ViUInt32)strlen(send_string), &count);
+				Delay(Sirah_delay);			//slow down so commands get processed
 			}
 
 			// if caught in this loop, set the current value to the target to escape
@@ -411,6 +425,7 @@ void Sirah_Laser_ScanReset(int	Wavemeter_COM, char Sirah_COM_String[], double Ra
 		//  Third bit is scan stops at upper limit (0 = no, 1 = yes)
 		sprintf (send_string,"SCAN:MODE 4\r\n");			//scan with increasing voltage and stop at upper value
 		result = viWrite (SIRAH_handle, send_string, (ViUInt32)strlen(send_string), &count);
+		Delay(Sirah_delay);			//slow down so commands get processed
 	
 		//Set the scanning mirror scan rate to increase frequency so total scan equals data acquisition time for the next scan
 		scan_speed=(current_value - lower_limit)/Timespan;
@@ -454,6 +469,7 @@ void Sirah_Laser_Stop(char Sirah_COM_String[])
 		//Clear any errors
 		sprintf (send_string,"ERR:CL\r\n");
 		result = viWrite (SIRAH_handle, send_string, (ViUInt32)strlen(send_string), &count);
+		Delay(Sirah_delay);			//slow down so commands get processed
 
 		//Print scan stop command into transmission string and send string to laser
 		sprintf (send_string,"SCAN:STA STOP\r\n");

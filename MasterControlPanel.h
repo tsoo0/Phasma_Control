@@ -148,16 +148,18 @@
 #define  MasterCont_Firing_LED            133     /* control type: LED, callback function: (none) */
 #define  MasterCont_Trigger               134     /* control type: textMsg, callback function: (none) */
 #define  MasterCont_COUNTDOWN_TIMER       135     /* control type: timer, callback function: countdown_timer */
-#define  MasterCont_SPLITTER_10           136     /* control type: splitter, callback function: (none) */
-#define  MasterCont_SPLITTER_9            137     /* control type: splitter, callback function: (none) */
-#define  MasterCont_TEXTMSG               138     /* control type: textMsg, callback function: (none) */
-#define  MasterCont_mdstest               139     /* control type: command, callback function: mdstest */
-#define  MasterCont_toggle_mds_flag       140     /* control type: binary, callback function: toggle_push_to_mds */
-#define  MasterCont_MANUAL_DISARM_VAL     141     /* control type: command, callback function: manual_disarm_all */
-#define  MasterCont_TEXTMSG_2             142     /* control type: textMsg, callback function: (none) */
-#define  MasterCont_PyRunningLED          143     /* control type: LED, callback function: (none) */
-#define  MasterCont_CURRENTDIAGNOSTICPO_3 144     /* control type: textMsg, callback function: (none) */
-#define  MasterCont_PyTimer               145     /* control type: timer, callback function: PyUpdateHandleStatus */
+#define  MasterCont_SPLITTER_11           136     /* control type: splitter, callback function: (none) */
+#define  MasterCont_SPLITTER_10           137     /* control type: splitter, callback function: (none) */
+#define  MasterCont_SPLITTER_9            138     /* control type: splitter, callback function: (none) */
+#define  MasterCont_TEXTMSG               139     /* control type: textMsg, callback function: (none) */
+#define  MasterCont_mdstest               140     /* control type: command, callback function: mdstest */
+#define  MasterCont_toggle_mds_flag       141     /* control type: binary, callback function: toggle_push_to_mds */
+#define  MasterCont_MANUAL_DISARM_VAL     142     /* control type: command, callback function: manual_disarm_all */
+#define  MasterCont_TEXTMSG_2             143     /* control type: textMsg, callback function: (none) */
+#define  MasterCont_PyRunningLED          144     /* control type: LED, callback function: (none) */
+#define  MasterCont_CURRENTDIAGNOSTICPO_3 145     /* control type: textMsg, callback function: (none) */
+#define  MasterCont_PyTimer               146     /* control type: timer, callback function: PyUpdateHandleStatus */
+#define  MasterCont_TEXTMSG_3             147     /* control type: textMsg, callback function: (none) */
 
 
      /* Control Arrays: */

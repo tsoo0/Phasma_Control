@@ -876,7 +876,7 @@ void Write_ThomsonScatteringData(void)
 	sprintf(outfilename, RawDataPath);
 	strcat(outfilename, ShotNumberString);
 	strcat(outfilename, "_");
-	strcat(outfilename, "ThomsonScattering.txt");
+	strcat(outfilename, "Thomson_Settings.txt");
 	outfile=fopen (outfilename, "w");
 	
 	//Open settings panel and load saved values
@@ -891,35 +891,47 @@ void Write_ThomsonScatteringData(void)
 
 	//Close panel in background
 	DiscardPanel(ThomsonScattering_panel); 
-
-	fprintf(outfile, "Laser Orientation (Perp=1) %d\r", TS_Para_Perp_flag);
-	fprintf(outfile, "Type of Collection Optics %d\r",CollectionOptics_Flag);
-	fprintf(outfile, "Q1500 Frequency %f\r",Q1500_Frequency);
-	fprintf(outfile, "Q1500_InstrinsicDelay %f\r",Q1500_InstrinsicDelay);
-	fprintf(outfile, "Q1500_Q_delay %f\r",Q1500_Q_delay);
-	fprintf(outfile, "Q1500_Circuit_Delay %f\r", Q1500_Circuit_Delay);
-	fprintf(outfile, "Q1500_QSW_Source %d\r", Q1500_QSW_Source);
-	fprintf(outfile, "Q1500_DDG_Delay %f\r", Q1500_DDG_Delay);
-	fprintf(outfile, "Laser Firing Time %f\r",(Q1500_Trigger_Time- Q1500_InstrinsicDelay- Q1500_Q_delay -Q1500_Circuit_Delay)/1.0E6);
-	fprintf(outfile, "Q850 Frequency %f\r",Q850_Frequency);
-	fprintf(outfile, "Q850_InstrinsicDelay %f\r",Q850_InstrinsicDelay);
-	fprintf(outfile, "Q850_Q_delay %f\r",Q850_Q_delay);
-	fprintf(outfile, "Q850_Circuit_Delay %f\r", Q850_Circuit_Delay);
-	fprintf(outfile, "Q850_QSW_Source %d\r", Q850_QSW_Source);
-	fprintf(outfile, "Q850_DDG_Delay %f\r", Q850_DDG_Delay);
-	fprintf(outfile, "Laser Firing Time %f\r",(Q850_Trigger_Time- Q850_InstrinsicDelay- Q850_Q_delay -Q850_Circuit_Delay)/1.0E6);
-	fprintf(outfile, "Andor_Gain %d\r", Andor_Gain);
-	fprintf(outfile, "Andor_Pre_Amp %d\r", Andor_Pre_Amp);
-	fprintf(outfile, "Andor_Exp_Time %f\r", Andor_Exp_Time);
-	fprintf(outfile, "Andor_DDGDelay %f\r", Andor_DDGDelay);
-	fprintf(outfile, "Andor_GateWidth %f\r", Andor_GateWidth);
-	fprintf(outfile, "Andor_H_bin %d\r", Andor_H_bin);
-	fprintf(outfile, "Andor_V_bin %d\r", Andor_V_bin);
-	fprintf(outfile, "McP_Current_Wlength %f\r", McP_Current_Wlength);
-	fprintf(outfile, "McP_GrooveDen %f\r", McP_GrooveDen);
-	fprintf(outfile, "McP_AngleDiff %f\r", McP_AngleDiff);
-	fprintf(outfile, "McP_FocalLength %f\r", McP_FocalLength);
 	
+	fprintf(outfile, "Laser_Orientation","Type_of_Collection_Optics",
+			"Q1500_Frequency","Q1500_InstrinsicDelay","Q1500_Q_delay",
+			"Q1500_Circuit_Delay","Q1500_QSW_Source","Q1500_DDG_Delay",
+			"Q1500_Firing_Time","Q850_Frequency","Q850_InstrinsicDelay",
+			"Q850_Q_delay","Q850_Circuit_Delay","Q850_QSW_Source","Q850_DDG_Delay",
+			"Q850_Firing_Time","Andor_Gain","Andor_Pre_Amp",
+			"Andor_Exp_Time","Andor_DDGDelay","Andor_GateWidth",
+			"Andor_H_bin","Andor_V_bin","McP_Current_Wlength",
+			"McP_GrooveDen","McP_AngleDiff","McP_FocalLength \n");
+	
+	fprintf(outfile, "%d,%d,%f,%f,%f,%f,%d,%f,%f,%f,%f,%f,%f,%d,%f,%f,%d,%d,%f,%f,%f,%d,%d,%f,%f,%f,%f", 
+			TS_Para_Perp_flag,
+			CollectionOptics_Flag,
+			Q1500_Frequency,
+			Q1500_InstrinsicDelay,
+			Q1500_Q_delay,
+			Q1500_Circuit_Delay,
+			Q1500_QSW_Source,
+			Q1500_DDG_Delay,
+			(Q1500_Trigger_Time- Q1500_InstrinsicDelay- Q1500_Q_delay -Q1500_Circuit_Delay)/1.0E6,
+			Q850_Frequency,
+			Q850_InstrinsicDelay,
+			Q850_Q_delay,
+			Q850_Circuit_Delay,
+			Q850_QSW_Source,
+			Q850_DDG_Delay,
+			(Q850_Trigger_Time- Q850_InstrinsicDelay- Q850_Q_delay -Q850_Circuit_Delay)/1.0E6,
+			Andor_Gain,
+			Andor_Pre_Amp,
+			Andor_Exp_Time,
+			Andor_DDGDelay,
+			Andor_GateWidth,
+			Andor_H_bin,
+			Andor_V_bin,
+			McP_Current_Wlength,
+			McP_GrooveDen,
+			McP_AngleDiff,
+			McP_FocalLength
+		   );
+
 	fclose (outfile);
 	
 	//Write Photodiode time series
@@ -928,7 +940,7 @@ void Write_ThomsonScatteringData(void)
 	strcat(outfilename, "_");
 	strcat(outfilename, "Thomson_Photodiode.txt");
 	outfile=fopen (outfilename, "w");
-	fprintf(outfile,"t, Photodiode 1, Photodiode 2\n");
+	fprintf(outfile,"TIME_PHOTO, TS_PHOTO1, TS_PHOTO2\n");
 	
 	for (j=0;j<TS_RecordLength;j++) {
 		timebase[j]=(double)(j*TS_timestep);
@@ -936,16 +948,15 @@ void Write_ThomsonScatteringData(void)
 	}
 	fclose (outfile);
 	
-	//Write Image data
-	//Move Andor Camera Data to MDS
+	//Write Image data from Andor
 	//Get data from the TS Andor Camera but first make sure the code is talking to the TS camera
 	
 	sprintf(outfilename, RawDataPath);
 	strcat(outfilename, ShotNumberString);
 	strcat(outfilename, "_");
-	strcat(outfilename, "TS_Andor.txt");
+	strcat(outfilename, "Thomson_Andor.txt");
 	outfile=fopen (outfilename, "w");
-	fprintf(outfile,"Wavelength, Andor Vertical, Andor Horizontal \n");
+	fprintf(outfile,"ANDOR_WAVELEN, ANDOR_IMG1, ANDOR_IMG2 \n");
 	
 	if (TS_Andor_cameraHandle > 0) {
 		result = SetCurrentCamera(TS_Andor_cameraHandle);												//Choose to make the TS camera the default camera if more than one camera

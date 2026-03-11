@@ -138,16 +138,11 @@ void PLIFLaserControl(int simmermode)
 	int 		result; 					//	Error-checking variable
 	int			num_pulses;
 	int			PLIF_QSW_Source;
-	float		PLIF_DDG_Delay;
 
 	float		duty_cycle;
 	char		PLIF_Agilent_Add[64]; 
 	char		PLIF_Rigol_Add[64]; 
-	char		PLIF_QSmart850_Lamp_IP_Address_string[64]; 
-	char		PLIF_QSmart850_Qsw_IP_Address_string[64]; 
-	char		PLIF_IP_Address_string[64];
-	char		PulsedLIF_string[32]="Null";
-	ViUInt32 	count;
+
 
 	//Open up PLIF settings panel and get settings
 	PulsedLIF_panel = LoadPanel (0, "PulsedLIFSettings.uir", PLIF);
@@ -474,10 +469,6 @@ void Get_PLIF_Laser_Offsets (float *PLIF_offset, float *PLIF_Laser_Warmup)
 //Activate The LIF System
 int PulsedLIFActivate(void)
 {
-	int		result;
-	int		count;
-	char	PulsedLIF_string[16]="Null";
-	
 	//Call laser control code and place laser in simmer mode
 	PLIFLaserControl(1);
 	
@@ -518,7 +509,6 @@ int PulsedLIFArm(void)
 //also push it to the MDS database
 void Write_PulsedLIFData(void)
 {
-	char	ChannelNameString[36];
 	char	outfilename[36];
 	FILE*	outfile;
 	int		j;
@@ -623,8 +613,8 @@ int CVICALLBACK AngstromReadFunction (void *functionData)
 		
 		//Read 75 pulses at the 10 Hz laser frequency, store them in a global variable, then end the thread.
 		sprintf (GenTec_string, "*CVU?\r");
-		result = viWrite (GenTec_handle, GenTec_string, (unsigned int)strlen(GenTec_string), &count);
-		result = viRead (GenTec_handle, GenTec_string, 16, &count);
+		result = viWrite (GenTec_handle, (ViConstBuf)GenTec_string, (unsigned int)strlen(GenTec_string), &count);
+		result = viRead (GenTec_handle, (ViConstBuf)GenTec_string, 16, &count);
 		Laser_Power[pulse_count] = strtod (GenTec_string, NULL);
 		
 		result = GetWavelength(PLIF_Wavelength[pulse_count]);
@@ -653,9 +643,7 @@ void ReadPulsedLIF_WaveandEnergy (void)
 	//Read laser wavelength from Angstrom pulsed wavemeter. Store this information as well.
 
 	int			result;
-	int 		AngstromWavemeter_handle;
 	char		GenTecPort_String[64];
-	char		AngstromWavemeterAdd_String[64];
 	
 	//Open communication with the Gentex power meter and the Angstrom Wavelength meter
 	//Open settings panel in the background
@@ -703,12 +691,8 @@ void ReadPulsedLIF_WaveandEnergy (void)
 int CVICALLBACK Wavelength_Current (int panel, int control, int event,
 							   void *callbackData, int eventData1, int eventData2)
 {
-	int 		AngstromWavemeter_handle;
 	int 		result=0;
-	ViPUInt32	count=0;
 	double 		wavelength=0.0;
-	char		AngstromWavemeterAdd_String[64];
-	char		Angstrom_String[64];
 
 	switch (event)
 	{
@@ -748,7 +732,6 @@ int CVICALLBACK Wavelength_Move_to_Start (int panel, int control, int event,
 							   void *callbackData, int eventData1, int eventData2)
 {
 	int 	result;
-	int 	count;
 	int 	Cobra_handle;
 	float 	Wavelength_Start;
 	char	CobraPort_String[64];
@@ -766,7 +749,7 @@ int CVICALLBACK Wavelength_Move_to_Start (int panel, int control, int event,
 				
 			//Send command to move laser
 			sprintf (Cobra_String, "LASER:WAVELENGTH %f\r",Wavelength_Start);   																										
-			result = viWrite (Cobra_handle, Cobra_String, (unsigned int)strlen(Cobra_String), VI_NULL);
+			result = viWrite (Cobra_handle, (ViConstBuf)Cobra_String, (unsigned int)strlen(Cobra_String), VI_NULL);
 				
 			//update current laser wavelength value
 			Wavelength_Current (panel, control, event,&callbackData, eventData1,eventData2);
@@ -781,7 +764,6 @@ int CVICALLBACK Wavelength_Move_to_Stop (int panel, int control, int event,
 							   void *callbackData, int eventData1, int eventData2)
 {
 	int 	result;
-	int 	count;
 	int 	Cobra_handle;
 	float 	Wavelength_Stop;
 	char	CobraPort_String[64];
@@ -799,7 +781,7 @@ int CVICALLBACK Wavelength_Move_to_Stop (int panel, int control, int event,
 				
 			//Send command to move laseresult = viWrite (Cobra_handle, Cobra_String, (unsigned int)strlen(Cobra_String), &count);
 			sprintf (Cobra_String, "LASER:WAVELENGTH %f\r",Wavelength_Stop);   																										
-			result = viWrite (Cobra_handle, Cobra_String, (unsigned int)strlen(Cobra_String), VI_NULL);
+			result = viWrite (Cobra_handle, (ViConstBuf)Cobra_String, (unsigned int)strlen(Cobra_String), VI_NULL);
 				
 			//update current laser wavelength value
 			Wavelength_Current (panel, control, event,&callbackData, eventData1,eventData2);
@@ -812,12 +794,8 @@ int CVICALLBACK Wavelength_Move_to_Stop (int panel, int control, int event,
 float Get_PLIF_Wavelength (void)  
 {
 	//Read laser wavelegnth from the Angstrom wavelength meter
-	int 		AngstromWavemeter_handle;
 	int 		result=0;
-	ViPUInt32	count=0;
 	float 		wavelength=0.0;
-	char		AngstromWavemeterAdd_String[64];
-	char		Angstrom_String[64];
 
 	//Open up PLIF settings panel and get settings
 	PulsedLIF_panel = LoadPanel (0, "PulsedLIFSettings.uir", PLIF);
@@ -889,7 +867,7 @@ float Advance_PLIF_Laser(void)
 		if (!result) {
 			//Send command to move laser
 			sprintf (Cobra_String, "LASER:WAVELENGTH %f\r",New_Wavelength);   																										
-			result = viWrite (Cobra_handle, Cobra_String, (unsigned int)strlen(Cobra_String), VI_NULL);
+			result = viWrite (Cobra_handle, (ViConstBuf)Cobra_String, (unsigned int)strlen(Cobra_String), VI_NULL);
 		}
 	}
 	return New_Wavelength;

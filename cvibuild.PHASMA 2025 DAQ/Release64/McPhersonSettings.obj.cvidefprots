@@ -43,3 +43,8 @@ Class="Function"
 Prototype="int McP_Andor_Temp_Control(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
 SourceLocation="c:\PHASMA 2025 DAQ\McPherson\McPhersonSettings.c:411:17"
 
+[McP_TIMER_UPDATE_ICCD_STATUS]
+Class="Function"
+Prototype="int McP_TIMER_UPDATE_ICCD_STATUS(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="c:\PHASMA 2025 DAQ\McPherson\McPhersonSettings.c:450:17"
+

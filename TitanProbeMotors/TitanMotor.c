@@ -26,6 +26,7 @@ int TitanMotorMove(char ip_address[64], float current_position, float target_pos
 	int		result;
 	int		count;
 	int 	current_counts=0;
+	int		trap_count=0;
 	char	send_string[256]=" ";
 	char 	dummy_string[16];
 		
@@ -65,8 +66,8 @@ int TitanMotorMove(char ip_address[64], float current_position, float target_pos
 		//read the response from the motor
 		//result = viRead(Titan_handle, (ViConstBuf)send_string, 32, &count);
 		
-		//Set the target speed to 500
-		sprintf (send_string,"@01:HSPD=500\r\n");
+		//Set the target speed to 12
+		sprintf (send_string,"@01:HSPD=12\r\n");
 		result = viWrite (Titan_handle, (ViConstBuf)send_string, (ViUInt32)strlen(send_string), &count);
 		Delay(Titan_delay);		//Give device time to respond
 				
@@ -99,7 +100,11 @@ int TitanMotorMove(char ip_address[64], float current_position, float target_pos
 			//clear reply buffer from motor by reading it all out
 			result = viRead(Titan_handle, (ViConstBuf)send_string, 256, &count);
 		
-			while (fabs((current_counts - steps))>5) {
+			while ( (fabs((current_counts - steps))>5) && (trap_count < 20) ) {
+				
+				//increment trapped counts
+				trap_count=trap_count+1;
+				
 				//Check to see if motor reached goal
 				sprintf (send_string,"@01:EX\r\n");
 				result = viWrite (Titan_handle, (ViConstBuf)send_string, (ViUInt32)strlen(send_string), &count);

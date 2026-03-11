@@ -157,7 +157,7 @@ int MasterTriggerArm(void)
 	if (!result) {
 		//Send commands to set up each of the timing channels
 		sprintf (Trigger_string, "*TRG\r");   //Arm the trigger unit to get ready for external trigger
-		result = viWrite (Trigger1_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);	
+		result = viWrite (Trigger1_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);	
 	} //End check to see if device session opened
 
 	/***********************************************************************************************/
@@ -167,7 +167,7 @@ int MasterTriggerArm(void)
 	if (!result) {
 		//Send commands to set up each of the timing channels
 		sprintf (Trigger_string, "*TRG\r");   //Arm the trigger unit to get ready for external trigger
-		result = viWrite (Trigger2_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger2_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 	} //End check to see if device session opened
 	
 	/***********************************************************************************************/
@@ -176,7 +176,7 @@ int MasterTriggerArm(void)
 	
 	if (!result) {
 		sprintf (Trigger_string, "*TRG\r");   //Arm the trigger unit to get ready for external trigger
-		result = viWrite (Trigger3_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger3_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 	} //End check to see if device session opened
 	
 	//Discard panel
@@ -556,97 +556,97 @@ void Trigger_Settings_Activate (void)
 	if (!result) {
 		//Send commands to set up each of the timing channels
 		sprintf (Trigger_string, "DLAY 2,0,%f\r",SRSDG1_A);   							//Delay A relative to TO
-		result = viWrite (Trigger1_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger1_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 
 		sprintf (Trigger_string, "DLAY 3,0,%f\r",SRSDG1_B);   							//Delay B relative to TO
-		result = viWrite (Trigger1_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger1_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 
 		sprintf (Trigger_string, "LOFF 1,%f\r",Laser_Warmup_Low);   					//Set offset voltage of AB
-		result = viWrite (Trigger1_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger1_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 
 		if (Laser_Warmup_Low > Laser_Warmup_High)	{									//Check polarity of timing pulse, set negative if needed
 			polarity = 0;
 			sprintf (Trigger_string, "LOFF 1,%f\r",Laser_Warmup_High);   					//Set offset voltage of AB
-			result = viWrite (Trigger1_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+			result = viWrite (Trigger1_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 		} else {
 			polarity = 1;
 			sprintf (Trigger_string, "LOFF 1,%f\r",Laser_Warmup_Low);   					//Set offset voltage of AB
-			result = viWrite (Trigger1_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+			result = viWrite (Trigger1_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 		}
 		sprintf (Trigger_string, "LPOL 1,%d\r",polarity);   							//Set polarity of AB
-		result = viWrite (Trigger1_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger1_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 
 		sprintf (Trigger_string, "LAMP 1,%f\r",fabs(Laser_Warmup_High-Laser_Warmup_Low));   //Set amplitude of AB
-		result = viWrite (Trigger1_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger1_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 		
 		
 		sprintf (Trigger_string, "DLAY 4,0,%f\r",SRSDG1_C);   							//Delay C relative to TO
-		result = viWrite (Trigger1_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger1_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 
 		sprintf (Trigger_string, "DLAY 5,0,%f\r",SRSDG1_D);   							//Delay D relative to TO
-		result = viWrite (Trigger1_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger1_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 
 		if (Gun_Charging_Low > Gun_Charging_High)	{									//Check polarity of timing pulse, set negative if needed
 			polarity = 0;
 			sprintf (Trigger_string, "LOFF 2,%f\r",Gun_Charging_High);   						//Set offset voltage of CD
-			result = viWrite (Trigger1_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+			result = viWrite (Trigger1_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 		} else {
 			polarity = 1;
 			sprintf (Trigger_string, "LOFF 2,%f\r",Gun_Charging_Low);   						//Set offset voltage of CD
-			result = viWrite (Trigger1_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+			result = viWrite (Trigger1_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 		}
 		
 		sprintf (Trigger_string, "LPOL 2,%d\r",polarity);   							//Set polarity of CD
-		result = viWrite (Trigger1_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger1_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 
 		sprintf (Trigger_string, "LAMP 2,%f\r",fabs(Gun_Charging_High-Gun_Charging_Low));   //Set amplitude of CD
-		result = viWrite (Trigger1_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger1_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 
 		
 		sprintf (Trigger_string, "DLAY 6,0,%f\r",SRSDG1_E);   							//Delay E relative to TO
-		result = viWrite (Trigger1_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger1_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 
 		sprintf (Trigger_string, "DLAY 7,0,%f\r",SRSDG1_F);   							//Delay F relative to TO
-		result = viWrite (Trigger1_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger1_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 
 		if (Astrella_Synch_Low > Astrella_Synch_High)	{								//Check polarity of timing pulse, set negative if needed
 			polarity = 0;
 			sprintf (Trigger_string, "LOFF 3,%f\r",Astrella_Synch_Low);   					//Set offset voltage of EF
-			result = viWrite (Trigger1_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+			result = viWrite (Trigger1_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 		} else {
 			polarity = 1;
 			sprintf (Trigger_string, "LOFF 3,%f\r",Astrella_Synch_Low);   					//Set offset voltage of EF
-			result = viWrite (Trigger1_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+			result = viWrite (Trigger1_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 		}
 		sprintf (Trigger_string, "LPOL 3,%d\r",polarity);   							//Set polarity of EF
-		result = viWrite (Trigger1_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger1_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 
 		sprintf (Trigger_string, "LAMP 3,%f\r",fabs(Astrella_Synch_High-Astrella_Synch_Low));   //Set amplitude voltage of EF
-		result = viWrite (Trigger1_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger1_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 		
 		sprintf (Trigger_string, "DLAY 8,0,%f\r",SRSDG1_G);   //Delay G relative to TO
-		result = viWrite (Trigger1_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger1_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 
 		sprintf (Trigger_string, "DLAY 9,0,%f\r",SRSDG1_H);   //Delay H relative to TO
-		result = viWrite (Trigger1_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger1_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 
 		if (iCCD_Shutter_Low > iCCD_Shutter_High)	{								//Check polarity of timing pulse, set negative if needed
 			polarity = 0;
 			sprintf (Trigger_string, "LOFF 4,%f\r",iCCD_Shutter_High);   					//Set offset voltage of GH
-			result = viWrite (Trigger1_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+			result = viWrite (Trigger1_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 		} else {
 			polarity = 1;
 			sprintf (Trigger_string, "LOFF 4,%f\r",iCCD_Shutter_Low);   					//Set offset voltage of GH
-			result = viWrite (Trigger1_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+			result = viWrite (Trigger1_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 		}
 		sprintf (Trigger_string, "LPOL 4,%d\r",polarity);   							//Set polarity of GH
-		result = viWrite (Trigger1_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger1_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 
 		sprintf (Trigger_string, "LAMP 4,%f\r",fabs(iCCD_Shutter_High-iCCD_Shutter_Low));   //Set amplitude voltage of GH
-		result = viWrite (Trigger1_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger1_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 		
 		sprintf (Trigger_string, "TSRC 3\r");   //Set up triggering to be rising edge of externally supplied trigger
-		result = viWrite (Trigger1_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger1_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 		
 		viClose(Trigger1_handle);
 	} //End check to see if device session opened
@@ -658,92 +658,92 @@ void Trigger_Settings_Activate (void)
 	if (!result) {
 		//Send commands to set up each of the timing channels
 		sprintf (Trigger_string, "DLAY 2,0,%f\r",SRSDG2_A);   							//Delay A relative to TO
-		result = viWrite (Trigger2_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger2_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 
 		sprintf (Trigger_string, "DLAY 3,0,%f\r",SRSDG2_B);   							//Delay B relative to TO
-		result = viWrite (Trigger2_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger2_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 
 		if (Gas_Puff_Low > Gas_Puff_High)	{											//Check polarity of timing pulse, set negative if needed
 			polarity = 0;
 			sprintf (Trigger_string, "LOFF 1,%f\r",Gas_Puff_High);   					//Set offset voltage of AB
-			result = viWrite (Trigger2_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);	
+			result = viWrite (Trigger2_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);	
 		} else {
 			polarity = 1;
 			sprintf (Trigger_string, "LOFF 1,%f\r",Gas_Puff_Low);   					//Set offset voltage of AB
-			result = viWrite (Trigger2_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);	
+			result = viWrite (Trigger2_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);	
 		}
 		
 		sprintf (Trigger_string, "LPOL 1,%d\r",polarity);   							//Set polarity of AB
-		result = viWrite (Trigger2_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger2_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 
 		sprintf (Trigger_string, "LAMP 1,%f\r",fabs(Gas_Puff_High-Gas_Puff_Low));   //Set amplitude voltage of AB
-		result = viWrite (Trigger2_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger2_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 		
 		sprintf (Trigger_string, "DLAY 4,0,%f\r",SRSDG2_C);   							//Delay C relative to TO
-		result = viWrite (Trigger2_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger2_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 
 		sprintf (Trigger_string, "DLAY 5,0,%f\r",SRSDG2_D);   							//Delay D relative to TO
-		result = viWrite (Trigger2_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger2_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 
 		if (Arc_Low > Arc_High)	{														//Check polarity of timing pulse, set negative if needed
 			polarity = 0;
 			sprintf (Trigger_string, "LOFF 2,%f\r",Arc_High);   								//Set offset voltage of CD
-			result = viWrite (Trigger2_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+			result = viWrite (Trigger2_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 		} else {
 			polarity = 1;
 			sprintf (Trigger_string, "LOFF 2,%f\r",Arc_Low);   								//Set offset voltage of CD
-			result = viWrite (Trigger2_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+			result = viWrite (Trigger2_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 		}
 		sprintf (Trigger_string, "LPOL 2,%d\r",polarity);   							//Set polarity of CD
-		result = viWrite (Trigger2_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger2_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 
 		sprintf (Trigger_string, "LAMP 2,%f\r",fabs(Arc_High-Arc_Low));   				//Set amplitude voltage of CD
-		result = viWrite (Trigger2_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger2_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 
 		sprintf (Trigger_string, "DLAY 6,0,%f\r",SRSDG2_E);   							//Delay E relative to TO
-		result = viWrite (Trigger2_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger2_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 
 		sprintf (Trigger_string, "DLAY 7,0,%f\r",SRSDG2_F);   							//Delay F relative to TO
-		result = viWrite (Trigger2_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger2_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 
 		if (Bias1_Low > Bias1_High)	{													//Check polarity of timing pulse, set negative if needed
 			polarity = 0;
 			sprintf (Trigger_string, "LOFF 3,%f\r",Bias1_High);   							//Set offset voltage of EF
-			result = viWrite (Trigger2_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+			result = viWrite (Trigger2_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 		} else {
 			polarity = 1;
 			sprintf (Trigger_string, "LOFF 3,%f\r",Bias1_Low);   							//Set offset voltage of EF
-			result = viWrite (Trigger2_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+			result = viWrite (Trigger2_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 		}
 		sprintf (Trigger_string, "LPOL 3,%d\r",polarity);   							//Set polarity of EF
-		result = viWrite (Trigger2_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger2_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 
 		sprintf (Trigger_string, "LAMP 3,%f\r",fabs(Bias1_High-Bias1_Low));   				//Set amplitude voltage of EF
-		result = viWrite (Trigger2_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger2_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 				
 		sprintf (Trigger_string, "DLAY 8,0,%f\r",SRSDG2_G);   							//Delay G relative to TO
-		result = viWrite (Trigger2_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger2_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 
 		sprintf (Trigger_string, "DLAY 9,0,%f\r",SRSDG2_H);   							//Delay H relative to TO
-		result = viWrite (Trigger2_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger2_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 
 		if (Bias2_Low > Bias2_High)	{											//Check polarity of timing pulse, set negative if needed
 			polarity = 0;
 			sprintf (Trigger_string, "LOFF 4,%f\r",Bias2_High);   							//Set offset voltage of GH
-			result = viWrite (Trigger2_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+			result = viWrite (Trigger2_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 		} else {
 			polarity = 1;
 			sprintf (Trigger_string, "LOFF 4,%f\r",Bias2_Low);   							//Set offset voltage of GH
-			result = viWrite (Trigger2_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+			result = viWrite (Trigger2_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 		}
 		sprintf (Trigger_string, "LPOL 4,%d\r",polarity);   							//Set polarity of GH
-		result = viWrite (Trigger2_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger2_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 
 		sprintf (Trigger_string, "LAMP 4,%f\r",fabs(Bias2_High-Bias2_Low));   				//Set amplitude voltage of GH
-		result = viWrite (Trigger2_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger2_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 
 		sprintf (Trigger_string, "TSRC 3\r");   //Set up triggering to be rising edge of externally supplied trigger
-		result = viWrite (Trigger2_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger2_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 
 		viClose(Trigger2_handle);
 	} //End check to see if device session opened
@@ -756,92 +756,92 @@ void Trigger_Settings_Activate (void)
 	if (!result) {
 		//Send commands to set up each of the timing channels
 		sprintf (Trigger_string, "DLAY 2,0,%f\r",SRSDG3_A);   							//Delay A relative to TO
-		result = viWrite (Trigger3_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger3_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 
 		sprintf (Trigger_string, "DLAY 3,0,%f\r",SRSDG3_B);   							//Delay B relative to TO
-		result = viWrite (Trigger3_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger3_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 
 		if (PerpTS_Low > PerpTS_High)	{											//Check polarity of timing pulse, set negative if needed
 			polarity = 0;
 			sprintf (Trigger_string, "LOFF 1,%f\r",PerpTS_High);   						//Set offset voltage of AB
-			result = viWrite (Trigger3_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+			result = viWrite (Trigger3_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 		} else {
 			polarity = 1;
 			sprintf (Trigger_string, "LOFF 1,%f\r",PerpTS_Low);   						//Set offset voltage of AB
-			result = viWrite (Trigger3_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+			result = viWrite (Trigger3_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 		}
 		sprintf (Trigger_string, "LPOL 1,%d\r",polarity);   							//Set polarity of AB
-		result = viWrite (Trigger3_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger3_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 
 		sprintf (Trigger_string, "LAMP 1,%f\r",fabs(PerpTS_High-PerpTS_Low));   //Set amplitude voltage of AB
-		result = viWrite (Trigger3_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger3_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 		
 		sprintf (Trigger_string, "DLAY 4,0,%f\r",SRSDG3_C);   							//Delay C relative to TO
-		result = viWrite (Trigger3_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger3_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 
 		sprintf (Trigger_string, "DLAY 5,0,%f\r",SRSDG3_D);   							//Delay D relative to TO
-		result = viWrite (Trigger3_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger3_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 
 		if (ParaTS_Low > ParaTS_High)	{												//Check polarity of timing pulse, set negative if needed
 			polarity = 0;
 			sprintf (Trigger_string, "LOFF 2,%f\r",ParaTS_High);   							//Set offset voltage of CD
-			result = viWrite (Trigger3_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+			result = viWrite (Trigger3_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 		} else {
 			polarity = 1;
 			sprintf (Trigger_string, "LOFF 2,%f\r",ParaTS_Low);   							//Set offset voltage of CD
-			result = viWrite (Trigger3_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+			result = viWrite (Trigger3_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 		}
 		sprintf (Trigger_string, "LPOL 2,%d\r",polarity);   							//Set polarity of CD
-		result = viWrite (Trigger3_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger3_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 
 		sprintf (Trigger_string, "LAMP 2,%f\r",fabs(ParaTS_High-ParaTS_Low));   			//Set amplitude voltage of CD
-		result = viWrite (Trigger3_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger3_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 	
 		sprintf (Trigger_string, "DLAY 6,0,%f\r",SRSDG3_E);   							//Delay E relative to TO
-		result = viWrite (Trigger3_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger3_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 
 		sprintf (Trigger_string, "DLAY 7,0,%f\r",SRSDG3_F);   							//Delay F relative to TO
-		result = viWrite (Trigger3_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger3_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 
 		if (PLIF_Low > PLIF_High)	{													//Check polarity of timing pulse, set negative if needed
 			polarity = 0;
 			sprintf (Trigger_string, "LOFF 3,%f\r",PLIF_High);   								//Set offset voltage of EF
-			result = viWrite (Trigger3_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+			result = viWrite (Trigger3_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 		} else {
 			polarity = 1;
 			sprintf (Trigger_string, "LOFF 3,%f\r",PLIF_Low);   								//Set offset voltage of EF
-			result = viWrite (Trigger3_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+			result = viWrite (Trigger3_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 		}
 		sprintf (Trigger_string, "LPOL 3,%d\r",polarity);   							//Set polarity of EF
-		result = viWrite (Trigger3_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger3_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 
 		sprintf (Trigger_string, "LAMP 3,%f\r",fabs(PLIF_High-PLIF_Low));   				//Set amplitude voltage of EF
-		result = viWrite (Trigger3_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger3_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 		
 			
 		sprintf (Trigger_string, "DLAY 8,0,%f\r",SRSDG3_G);   							//Delay G relative to TO
-		result = viWrite (Trigger3_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger3_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 
 		sprintf (Trigger_string, "DLAY 9,0,%f\r",SRSDG3_H);   							//Delay H relative to TO
-		result = viWrite (Trigger3_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger3_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 
 		if (Other_Low > Other_High)	{													//Check polarity of timing pulse, set negative if needed
 			polarity = 0;
 			sprintf (Trigger_string, "LOFF 4,%f\r",Other_High);   							//Set offset voltage of GH
-			result = viWrite (Trigger3_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+			result = viWrite (Trigger3_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 		} else {
 			polarity = 1;
 			sprintf (Trigger_string, "LOFF 4,%f\r",Other_Low);   							//Set offset voltage of GH
-			result = viWrite (Trigger3_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+			result = viWrite (Trigger3_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 		}
 		sprintf (Trigger_string, "LPOL 4,%d\r",polarity);   							//Set polarity of GH
-		result = viWrite (Trigger3_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger3_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 
 		sprintf (Trigger_string, "LAMP 4,%f\r",fabs(Other_High-Other_Low));   				//Set amplitude voltage of GH
-		result = viWrite (Trigger3_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger3_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 
 		sprintf (Trigger_string, "TSRC 3\r");   //Set up triggering to be rising edge of externally supplied trigger
-		result = viWrite (Trigger3_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+		result = viWrite (Trigger3_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 		
 		viClose(Trigger3_handle);
 	} //End check to see if device session opened
@@ -855,11 +855,7 @@ void Trigger_Settings_Activate (void)
 //Send the master trigger from the NI DAQ card
 void Send_Trigger (void)  
 {
-	int			result;
-	int			count;
-	char		Trigger_string[16]="Null";
-	char 		Trigger1_Port_string[36];
-	ViSession 	Trigger1_handle;
+
 	
 	//get NI DAQ card to send out a trigger pulse by starting up the task  
 	DAQmxStartTask (OutputCardTrigHandle); 	  
@@ -876,7 +872,7 @@ void Send_Trigger (void)
 	//result=viOpen (Global_Visa_Session_Handle, Trigger1_Port_string, VI_NULL, VI_NULL, &Trigger1_handle);
 	//Send command to initiate trigger
 	//sprintf (Trigger_string, "*TRG\r"); 
-	//result = viWrite (Trigger1_handle, Trigger_string, (unsigned int)strlen(Trigger_string), &count);
+	//result = viWrite (Trigger1_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 	//Close ViSession
 	//result = viClose (Global_Visa_Session_Handle);
 	

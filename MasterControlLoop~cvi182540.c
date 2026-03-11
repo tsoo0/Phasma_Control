@@ -1366,8 +1366,6 @@ int		Complete_Single_Cycle (void)
 	return 0;
 }
 
-
- 
 /*********************************************************************************************************
 *	This function is the master sequence that
 *
@@ -1375,8 +1373,7 @@ int		Complete_Single_Cycle (void)
 *********************************************************************************************************/
 void	Repeat_Cycle (void)
 {
-
-
+	
 	int 	Trigger_panel;
 	int		TriggerSettings_setup_state = 4;		//WARNING, if this gets changed in the trigger code it must be changed here
 	

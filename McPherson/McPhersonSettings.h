@@ -42,6 +42,7 @@
 #define  McP209_TEXTMSG_39                27      /* control type: textMsg, callback function: (none) */
 #define  McP209_TEXTMSG_40                28      /* control type: textMsg, callback function: (none) */
 #define  McP209_TEXTMSG_41                29      /* control type: textMsg, callback function: (none) */
+#define  McP209_McP_TIMER_ICCD_STATUS     30      /* control type: timer, callback function: McP_TIMER_UPDATE_ICCD_STATUS */
 
 
      /* Control Arrays: */
@@ -58,6 +59,7 @@
 
 int  CVICALLBACK Close_McPherson209_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK McP_Andor_Temp_Control(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK McP_TIMER_UPDATE_ICCD_STATUS(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK Move_McPherson209(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK Set_McPherson209(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 

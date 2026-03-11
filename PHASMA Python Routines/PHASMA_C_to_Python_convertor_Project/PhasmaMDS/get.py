@@ -5,13 +5,13 @@ import mdsthin as mds
 
 from phasma_model.phasma_devices import devdict
 
-treename = "phasma_testo"
+treename = "phasma2025"
 
-exp_ip = '127.0.0.1:57800'
+exp_ip = '127.0.0.1:8000'
 
-raw_data_dir = "D:\\PHASMA_RawData"    
+raw_data_dir = r"C:\Users\tjroo\Desktop\Research\Light Data Analysis Tools\datavis\PhasmaMDS\example_data"    
 
-shotnum=717
+shotnum=417
 
 #read in a locally-stored white-space seperated table containing raw data for one shot on one digitizer
 def read_format_mds(device_fid):
@@ -37,8 +37,6 @@ def trycast(intorstr):
     
     return res
 
-shotfids = [shotfid for shotfid in os.listdir(raw_data_dir) if trycast(shotfid.split('_')[0]) == shotnum]
-
 #get tree structure from model shot by parsing the return from tcl; probably an easier way to do this 
 c.openTree(treename,-1)
 c.tcl('set def \TOP:DIAGNOSTICS')
@@ -50,7 +48,7 @@ c.tcl('set def \TOP:DIAGNOSTICS')
 
 # construct a dict of dicts with each diagnostic cotaining a dict of data for each found hardware device
 os.chdir(raw_data_dir)
-
+shotfids = [shotfid for shotfid in os.listdir(raw_data_dir) if trycast(shotfid.split('_')[0]) == shotnum]
 diagdata = {}
 for diag in list(devdict.values()):
     datadict = {}
@@ -82,9 +80,9 @@ for key in list(diagdata.keys()):
 
 
 diagdata_col = {}
-for diag in list(diagdata.values()):
+for diag in list(diagdata.keys()):
     
-    for data in list(diag.values()):
+    for data in list(diagdata[diag]):
         
         try:
             newdat = newdat.join(data.set_index('Time'),on='Time')
@@ -93,7 +91,7 @@ for diag in list(diagdata.values()):
             
         
    
-    diagdata_col.update({diag:newdat})
+    diagdata_col.update({diag.name_mds:newdat})
 
 
 

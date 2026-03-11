@@ -1,5 +1,5 @@
 -nologo
--out:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug64\PHASMA 2025 DAQ V2.0.exe
+-out:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug64\PHASMA 2025 DAQ V3.0.exe
 -arch:x64
 -timestamp
 -debug:2

@@ -41,5 +41,5 @@ SourceLocation="c:\PHASMA 2025 DAQ\MasterTrigger\MasterTriggerSettings.c:856:6"
 [Write_MasterTrigger]
 Class="Function"
 Prototype="void Write_MasterTrigger();"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterTrigger\MasterTriggerSettings.c:891:6"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterTrigger\MasterTriggerSettings.c:887:6"
 

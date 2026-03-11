@@ -1,3 +1,4 @@
+#include 	<utility.h>
 #include 	<ansi_c.h>
 #include	<visa.h>
 #include	<stdlib.h>
@@ -7,6 +8,15 @@
 #include 	"QuantumBeatSettings.h"  
 #include	"GlobalVariables.h"
 #include	"Lecroy.h"
+
+#define X3port "COM31" 		  
+#define Y3port "COM32" 
+#define Z3port "COM33" 
+
+#define	  xsteps_to_center 1.2	//Steps to center for X stage from positive limit switch
+#define	  ysteps_to_center 5.33	//Steps to center for Y stage from positive limit switch
+#define	  zsteps_to_center 5.0	//Steps to center for Z stage from positive limit switch
+
 
 int		QBS_panel;
 int		QBS_setup_state = 7001;
@@ -81,6 +91,94 @@ int CVICALLBACK Close_QBS_Settings (int panel, int control, int event,
 			DiscardPanel(panel);
 			break;
 	}
+	return 0;
+}
+
+int CVICALLBACK QBS_XYZ_Move (int panel, int control, int event,
+		void *callbackData, int eventData1, int eventData2)
+{
+
+	#define Step_to_cm 0.000004
+
+	char	send_string[30]=" ";
+	int		result;
+	int		count;
+	int		X_steps;
+	int		Y_steps;
+	int		Z_steps;
+	float	x_not=0;
+	float	y_not=0;
+	float	z_not=0;
+	int		last_steps=0; 					//Storage place for last value of steps moved
+	
+	ViSession Motion_visa_handle;
+	ViSession X_stage_handle;
+	ViSession Y_stage_handle;
+	ViSession Z_stage_handle;
+	
+	switch (event)
+		{
+		case EVENT_COMMIT:
+			
+			//Get target position
+			GetCtrlVal (panel, QBS_LIF_X_Not,&x_not);
+			GetCtrlVal (panel, QBS_LIF_Y_Not,&y_not);
+			GetCtrlVal (panel, QBS_LIF_Z_Not,&z_not);
+
+	
+			//Open Visa session 
+			//result = viOpenDefaultRM (&Motion_visa_handle);
+	
+			//Open Visa link to XYZ stages
+				result=viOpen (Motion_visa_handle, X3port, VI_NULL, VI_NULL, &X_stage_handle);
+				result=viOpen (Motion_visa_handle, Y3port, VI_NULL, VI_NULL, &Y_stage_handle);
+				result=viOpen (Motion_visa_handle, Z3port, VI_NULL, VI_NULL, &Z_stage_handle);
+			
+			//Enable the stages
+			sprintf (send_string,"DE=1\r\n");
+			result = viWrite (X_stage_handle, send_string, strlen(send_string), &count);
+			result = viWrite (Y_stage_handle, send_string, strlen(send_string), &count);
+			result = viWrite (Z_stage_handle, send_string, strlen(send_string), &count);
+
+			//Calculate move steps
+			X_steps=(int)(x_not/Step_to_cm);
+			Y_steps=(int)(y_not/Step_to_cm);
+			Z_steps=(int)(z_not/Step_to_cm);
+	
+			//Move x stage with a relative move
+			sprintf (send_string,"MR %d\r\n",X_steps);
+			result = viWrite (X_stage_handle, send_string, strlen(send_string), &count);
+ 	
+			//Move y stage with a relative move
+			sprintf (send_string,"MR %d\r\n",Y_steps);
+			result = viWrite (Y_stage_handle, send_string, strlen(send_string), &count);
+	
+			//Move z stage with a relative move if in that mode
+			sprintf (send_string,"MR %d\r\n",Z_steps);
+			result = viWrite (Z_stage_handle, send_string, strlen(send_string), &count);
+	
+			//Hold progam from advancing while stage moves based on largest travel
+			if ((fabs(X_steps) > fabs(Y_steps)) && (fabs(X_steps) > fabs(Z_steps))) {
+				Delay(fabs((X_steps-last_steps)*Step_to_cm/2));
+				last_steps=X_steps;
+			} else {
+				if (fabs(Y_steps) > fabs(Z_steps)) {
+					Delay(fabs((Y_steps-last_steps)*Step_to_cm/2));
+					last_steps=Y_steps;
+				} else {
+					Delay(fabs((Z_steps-last_steps)*Step_to_cm/2));
+					last_steps=Z_steps;
+				}	
+			}
+
+			//Close the ports to each motion drive
+			result=viClose (X_stage_handle);
+			result=viClose (Y_stage_handle);
+			result=viClose (Z_stage_handle);
+
+			
+			break;
+		}
 	return 0;
 }
 

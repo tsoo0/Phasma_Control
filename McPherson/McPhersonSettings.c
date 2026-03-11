@@ -443,3 +443,31 @@ int CVICALLBACK McP_Andor_Temp_Control (int panel, int control, int event,
 	}
 	return 0;
 }	
+
+
+
+// Periodically refresh the ICCD temperature display
+int CVICALLBACK McP_TIMER_UPDATE_ICCD_STATUS (int panel, int control, int event,
+		void *callbackData, int eventData1, int eventData2)
+{
+	int		error;
+	int		Actual_Temp;
+	int 	result;
+	
+	switch (event)
+	{
+		case EVENT_TIMER_TICK:
+				if (McP_Andor_cameraHandle > 0) {
+					result = SetCurrentCamera(McP_Andor_cameraHandle);						//Choose to make the TS camera the default camera if more than one camera
+				}
+						
+				GetCtrlVal (panel, McP209_Andor_Camera_Cooler,&result);
+
+				if (result) {
+					error = GetTemperature(&Actual_Temp);
+					SetCtrlVal (panel, McP209_Andor_Temp_Actual,Actual_Temp);
+				}
+			break;
+	}
+	return 0;
+}

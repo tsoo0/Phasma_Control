@@ -7,6 +7,6 @@ void ThomsonScatteringScopeandCamera(void);
 void Laser_ActiveMode(void);
 void Create_McPherson_Wavelength (double Wavelength[]);
 void ThomsonScatteringLaserControl(int );
-
+int	TransferTSData (double transfer_array1[], double transfer_array2[], double transfer_array3[]);
 
 
