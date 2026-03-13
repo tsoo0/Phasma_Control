@@ -1,4 +1,0 @@
-conda create --prefix "C:\Users\tjroo\Desktop\Research\phasma_control\Phasma_Control\PHASMA Python Routines\PHASMA_C_to_Python_convertor_Project\McPhersonControl" python=3.12 spyder-kernels numpy pyserial regex 
-
-
-conda config --append envs_dirs "C:\Users\tjroo\Desktop\Research\phasma_control\Phasma_Control\PHASMA Python Routines\PHASMA_C_to_Python_convertor_Project\McPhersonControl"

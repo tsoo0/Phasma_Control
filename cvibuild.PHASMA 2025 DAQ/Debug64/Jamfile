@@ -323,9 +323,9 @@ OUTFILE on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Debug64\\TripleProbeS
 PrjObjects += "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Debug64\\TripleProbeSettings.obj" ;
 Object "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Debug64\\resources.res" : "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Debug64\\resources.in.rc" ;
 Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Debug64\\resources.res" : "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Debug64\\manifest.xml" ;
-MainFromObjects "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Debug64\\PHASMA 2025 DAQ V3.0.exe" : $(PrjObjects) $(InstrObjects) ;
-Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Debug64\\PHASMA 2025 DAQ V3.0.exe" : "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Debug64\\link_options.txt" ;
-Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Debug64\\PHASMA 2025 DAQ V3.0.exe" : "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Debug64\\resources.res" ;
+MainFromObjects "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Debug64\\PHASMA 2025 DAQ V1.0.exe" : $(PrjObjects) $(InstrObjects) ;
+Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Debug64\\PHASMA 2025 DAQ V1.0.exe" : "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Debug64\\link_options.txt" ;
+Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Debug64\\PHASMA 2025 DAQ V1.0.exe" : "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Debug64\\resources.res" ;
 Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Debug64\\resources.res" :  "c:\\PHASMA 2025 DAQ\\Bdot\\BdotSettings.uir" ;
 Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Debug64\\resources.res" :  "c:\\PHASMA 2025 DAQ\\ContLIF\\ContLIFSettings.uir" ;
 Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Debug64\\resources.res" :  "c:\\PHASMA 2025 DAQ\\DoubleProbe\\DoubleProbeSettings.uir" ;
@@ -346,4 +346,4 @@ Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Debug64\\resources.res" 
 Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Debug64\\resources.res" :  "c:\\PHASMA 2025 DAQ\\TempDiag\\TempDiagSettings.uir" ;
 Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Debug64\\resources.res" :  "c:\\PHASMA 2025 DAQ\\ThomsonScattering\\ThomsonScatteringSettings.uir" ;
 Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Debug64\\resources.res" :  "c:\\PHASMA 2025 DAQ\\TripleProbe\\TripleProbeSettings.uir" ;
-Depends all : "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Debug64\\PHASMA 2025 DAQ V3.0.exe" ;
+Depends all : "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Debug64\\PHASMA 2025 DAQ V1.0.exe" ;

@@ -146,12 +146,6 @@ float		McP_AngleDiff;
 float		McP_FocalLength;
 float 		Current_Wavelength;
 
-double		*ThomsonScattering_Array1;	//Array to store TS results for passing later to main code
-double		*ThomsonScattering_Array2;	//Array to store TS results for passing later to main code
-double		*ThomsonScattering_Array3;	//Array to store TS results for passing later to main code
-double		*ThomsonScattering_Array4;	//Array to store TS results for passing later to main code
-double		*timebase;					//Array to store TS results for passing later to main code
-
 char		DetectorIniPath[64];		//Camera path
 char		agilent_string[30];
 char		rigol_string[30];
@@ -850,11 +844,11 @@ void Write_ThomsonScatteringData(void)
 	int		result;
 	int 	CollectionOptics_Flag;
 	float	TS_timestep=0.0;
-	//double	*ThomsonScattering_Array1;
-	//double	*ThomsonScattering_Array2;
-	//double	*ThomsonScattering_Array3;
-	//double	*ThomsonScattering_Array4;
-	
+	double	*ThomsonScattering_Array1;
+	double	*ThomsonScattering_Array2;
+	double	*ThomsonScattering_Array3;
+	double	*ThomsonScattering_Array4;
+	double	*timebase;
 	double	*VerticalIndex;
 	double	*TSWavelength;
 	double	*AndorImageDouble;
@@ -996,7 +990,6 @@ void Write_ThomsonScatteringData(void)
  	//Close TS data data file
 	fclose (outfile);
 }
-
 
 
 
@@ -1228,37 +1221,13 @@ int CVICALLBACK TIMER_UPDATE_ICCD_STATUS (int panel, int control, int event,
 {
 	int		error;
 	int		Actual_Temp;
-	int 	result;
 	
 	switch (event)
 	{
 		case EVENT_TIMER_TICK:
-				if (TS_Andor_cameraHandle > 0) {
-					result = SetCurrentCamera(TS_Andor_cameraHandle);						//Choose to make the TS camera the default camera if more than one camera
-				}
-						
-				GetCtrlVal (panel, ThomsonSct_Andor_Camera_Cooler,&result);
-
-				if (result) {
 					error = GetTemperature(&Actual_Temp);
 					SetCtrlVal (panel, ThomsonSct_Andor_Temp_Actual,Actual_Temp);
-				}
 			break;
 	}
 	return 0;
-}
-
-
-int TransferTSData (double transfer_array1[], double transfer_array2[], double transfer_array3[])  
-{
-int	j;
-		
-	//Update panel with 
-	for (j=0;j<TS_RecordLength;j++) {
-		transfer_array1[j]=timebase[j]*1.0E6;			//put time in microseconds
-		transfer_array2[j]=ThomsonScattering_Array1[j];
-		transfer_array3[j]=ThomsonScattering_Array2[j];
-	}
-
-	return TS_RecordLength;
 }

@@ -6,101 +6,132 @@ import mdsthin as mds
 from phasma_model.phasma_devices import devdict
 
 #read in a locally-stored white-space seperated table containing raw data for one shot on one digitizer
+#read in a locally-stored white-space seperated table containing raw data for one shot on one digitizer
 def read_format_mds(device_fid):
     
-    # shotdat = pd.read_csv(device_fid,delimiter='\t',header=0)
     shotdat = pd.read_csv(device_fid,delimiter=',',header=0)
     
     shotdat.columns = [acol.split(':')[-1] for acol in list(shotdat.columns)]
     
     return shotdat
 
-# Take raw shot data stored locally and write it to the mds server under a new 
-# shot within treename
-def push_all_mds(treename, exp_ip, raw_data_dir, shotnum):   
+def trycast(intorstr):
+    try:
+        res = int(intorstr)
+        
+    except:
+        return 0
+    
+    return res
 
+
+def push_all_mds(treename, exp_ip, raw_data_dir, shotnum):
+    
+    # construct a dict of dicts with each diagnostic cotaining a dict of data for each found hardware device
+    os.chdir(raw_data_dir)
+    shotfids = [shotfid for shotfid in os.listdir(raw_data_dir) if trycast(shotfid.split('_')[0]) == shotnum]
+    diagdata = {}
+    for diag in list(devdict.values()):
+        datadict = {}
+        devices = diag.devices.HWdevices
+    
+    # devmap = list(map(lambda dev: {dev.name_mds:dev.name_local}, devices))
+    
+        for dev in devices:
+            
+            devfid = list(filter(lambda x: dev.name_local in x, shotfids)) #shoud return one element
+            
+            try:
+                devdat = read_format_mds(devfid[0])
+            except:
+                print(f"failed initial read of {dev.name_mds}")
+                continue
+            
+            datadict.update({dev.name_mds:devdat})
+    
+        diagdata.update({diag:datadict})
+    
+    #remove diagnostics with no found data for this shot
+    for key in list(diagdata.keys()):
+        if not diagdata[key]:
+            del diagdata[key]
+            
     c = mds.Connection(exp_ip)
     
-    def trycast(intorstr):
-        try:
-            res = int(intorstr)
+    # create a new shot tree for the given shot number and populate with any files in raw_data_dir that match the local names in phasma_model
+    c.tcl(f'set tree {treename}')
+    
+    print(c.tcl(f"create pulse {shotnum}"))
+    print(c.tcl(f"set tree {treename}/shot={shotnum}"))
+    
+    for curdiag in list(diagdata.keys()):
+        curdata = diagdata.get(curdiag)
+        c.tcl(f"set def \TOP.DIAGNOSTICS.{curdiag.diag_name_mds}:DATA")
+        
+         #Write to DATA from each device channel
+        for devname in list(curdata.keys()):
             
-        except:
-            return 0
+            devdata = curdata.get(devname)
         
-        return res
-
-    shotfids = [shotfid for shotfid in os.listdir(raw_data_dir) if trycast(shotfid.split('_')[0]) == shotnum]
-    
-    #get tree structure from model shot by parsing the return from tcl; probably an easier way to do this 
-    c.openTree(treename,-1)
-    c.tcl('set def \TOP:DEVICES')
-    devstr = c.tcl('directory')    
-    devstr=devstr.replace("\PHASMA::TOP.DEVICES","")
-    devs = devstr.split('\n')
-    devs = devstr.split('  ')
-    devs = [dev for dev in [dev.strip() for dev in devs] if len(dev)>0 and dev.isupper()]
-    
-    # Get the locally stored raw shot data; scan the phasma_raw directory for fids starting 
-    # with desired shot number, then look for device labels in the resulting list
-    rawdata={}
-    os.chdir(raw_data_dir)
-    for shotfid in shotfids:
-        for dev in devs:
-            newprefix = str(shotnum) + '_' + dev
+            HWdevice = [a for a in curdiag.devices.HWdevices if a.name_mds == devname][0]
             
-            if newprefix.upper() in shotfid.upper():
-                shotdat = read_format_mds(shotfid)
-            
-                rawdata[dev] = shotdat
-    
-
-    # Reorganize data from rawdata into clusters defined by the mapping in their config file
-    
-    doof = {}
-    for diag in devdict:
+            devtype = HWdevice.grouping
         
-        diagdevs = [HWdev.name_local.upper() for HWdev in devdict[diag].devices.HWdevices]
-        for shotdev in list(rawdata.keys()):
-            if shotdev in diagdevs:
-               try:
-                   newdat= newdat.join(rawdata[shotdev].set_index('Time'),on='Time')
-                 
-               except:
-                   newdat = rawdata[shotdev]
-        try:
-            doof.update({diag:newdat})   
-            del newdat        
-        except:
-            continue
-    
-    c.tcl(f"create pulse {shotnum}")
-    c.tcl(f"set tree phasma2025/shot={shotnum}")
-    for shotdiag in doof.keys():
+            if devtype == "DATA":
         
-        diagdata = doof[shotdiag]
-        
-        c.tcl(f"set def \TOP.DIAGNOSTICS.{shotdiag}")
-        
-        channels = diagdata.columns
-        timearr = diagdata['Time'].values
-        for n,channel in enumerate(channels):
-            try:
-                channeldata = diagdata.iloc[:,n].values
-                if channel.lower() == 'time': # independent time axis should be irrelevant using signal datatype. Writing to 'Time' node fails
-                    continue
-                sig = mds.Signal(channeldata, None, timearr)
-                print(channel)
-                c.put(channel.upper(), '`SerializeIn($)', sig.serialize())
-            except:
-                continue
-        
-        # c.tcl("set def TOP")
+                channels = devdata.columns
+                
+                x_axis_name = channels[0]
+                
+                x_axis = devdata.get(x_axis_name)
+                
+                # if 
+                
+                for n,channel in enumerate(channels):
+                    try:
+                        channeldata = devdata.iloc[:,n].values
+                        if channel.lower() == x_axis_name.lower(): # independent time axis should be irrelevant using signal datatype. Writing to 'Time' node fails
+                            continue
+                        sig = mds.Signal(channeldata, None, x_axis)
+                       
+                        print(c.put(channel.strip(), '`SerializeIn($)', sig.serialize()))
+                    except:
+                        
+                        print(f"failed to write data: {curdiag.diag_name_mds}.DATA.{channel}")
+                        
+                        continue
+                    
+            elif devtype == "SETUP":
+                c.tcl(f"set def \TOP.DIAGNOSTICS.{curdiag.diag_name_mds}:SETUP")
+                channels = devdata.columns
+                channels = [a.upper()[:12] for a in channels]
+                devdata = devdata
+                for n,channel in enumerate(channels):
+                    try:
+                        channeldata = devdata.iloc[0,n]
+                        print(c.put(channel, '$', mds.Float32(channeldata)))
+                        # if type(channeldata==str):
+                       
+                        #     print(c.put(channel.upper(), '$', channeldata))
+                            
+                        # elif type(channeldata==float) or type(channel_data == int):
+                            
+                            
+                    except:
+                        
+                        print(f"failed to write data: {curdiag.diag_name_mds}.SETUP.{channel}")
+                        
+                        continue
+                    
+                    
+    c.tcl("close")
 
 def push_all_mds_latest(treename, exp_ip, raw_data_dir):
     c = mds.Connection(exp_ip)
     c.openTree(treename,-1)
+    
     curshot = int(c.tcl(f'show current {treename}').split(' ')[-1])
+    c.tcl("close")
     push_all_mds(treename, exp_ip, raw_data_dir, shotnum = curshot)
 
 if __name__ == '__main__':
@@ -109,5 +140,5 @@ if __name__ == '__main__':
     exp_ip = '127.0.0.1:57800'
     raw_data_dir = "D:\\PHASMA_RawData"    
 
-    # push_all_mds(treename, exp_ip, raw_data_dir, shotnum = 1)
+    # push_all_mds(treename, exp_ip, raw_data_dir, shotnum = 894)
     push_all_mds_latest(treename, exp_ip, raw_data_dir)

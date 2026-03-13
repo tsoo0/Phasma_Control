@@ -1,6 +1,10 @@
 from .devices import HWdevices
+# from ..position_base import position
+
 
 tag = "BDOT"
+
+# position = position()
 
 J1_chmap = {1:'BDOT_BX1',
             2:'BDOT_BY1',

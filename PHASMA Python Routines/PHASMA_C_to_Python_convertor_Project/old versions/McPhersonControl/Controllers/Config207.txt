@@ -1,6 +1,0 @@
-! Current Wavelength the spectrometer is at!
-CurrentWavelength = 566
-! Conversion factor between Counts and nm!
-COUNTSTONM = 7200.62935586
-! The port number that you are on !
-port = 2

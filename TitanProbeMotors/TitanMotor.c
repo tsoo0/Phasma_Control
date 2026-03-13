@@ -100,6 +100,7 @@ int TitanMotorMove(char ip_address[64], float current_position, float target_pos
 			//clear reply buffer from motor by reading it all out
 			result = viRead(Titan_handle, (ViConstBuf)send_string, 256, &count);
 		
+			//limit number of checks to 20 for motor position
 			while ( (fabs((current_counts - steps))>5) && (trap_count < 20) ) {
 				
 				//increment trapped counts

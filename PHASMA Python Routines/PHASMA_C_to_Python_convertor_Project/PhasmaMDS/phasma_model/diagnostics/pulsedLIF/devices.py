@@ -1,21 +1,22 @@
-from ...device_classes.pulsedLIF import pulsedLIF,pulsedLIF_setup
+from ...device_classes.pulsedLIF import pulsedLIF_data,pulsedLIF_spectra
 
 
-plif = pulsedLIF(name_mds='PulsedLIF',
+plif = pulsedLIF_data(name_mds='PLIF_DATA',
                  name_local='PulsedLIF',
-                 nchannels=2,
+                 nchannels=3,
                  diagnostic='PLIF',
                  grouping = "DATA",
                  tag = "PLIF",
-                 description = "Pulsed LIF Data"
+                 description = "Pulsed LIF signal, photodiode time series"
                  )
 
-plif_meta = pulsedLIF_setup(name_mds='PulsedLIF_setup',
-                           name_local='PulsedLIF_setup',
+plif_meta = pulsedLIF_spectra(name_mds='PLIF_SPECTRA',
+                           name_local='PulsedLIF_Spectrum',
+                           nchannels = 2,
                            diagnostic='PLIF',
-                           grouping='SETUP',
-                           tag = 'ENG_PLIF',
-                           description = "Pulsed LIF setup"
+                           grouping='DATA',
+                           tag = 'PLIF_SPECTRA',
+                           description = "Pulsed LIF spectrum"
                            )
 
 

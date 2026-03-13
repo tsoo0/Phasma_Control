@@ -110,8 +110,10 @@ int CVICALLBACK QBS_XYZ_Move (int panel, int control, int event,
 	float	y_not=0;
 	float	z_not=0;
 	int		last_steps=0; 					//Storage place for last value of steps moved
+	char	QBS_Xcom[30];
+	char	QBS_Ycom[30];
+	char	QBS_Zcom[30];
 	
-	ViSession Motion_visa_handle;
 	ViSession X_stage_handle;
 	ViSession Y_stage_handle;
 	ViSession Z_stage_handle;
@@ -119,20 +121,25 @@ int CVICALLBACK QBS_XYZ_Move (int panel, int control, int event,
 	switch (event)
 		{
 		case EVENT_COMMIT:
-			
+		
+			//Get COM ports
+			GetCtrlVal (QBS_panel, QBS_X_COM,QBS_Xcom);
+			GetCtrlVal (QBS_panel, QBS_Y_COM,QBS_Ycom);
+			GetCtrlVal (QBS_panel, QBS_Z_COM,QBS_Zcom);
+
 			//Get target position
-			GetCtrlVal (panel, QBS_LIF_X_Not,&x_not);
-			GetCtrlVal (panel, QBS_LIF_Y_Not,&y_not);
-			GetCtrlVal (panel, QBS_LIF_Z_Not,&z_not);
+			GetCtrlVal (QBS_panel, QBS_X_Target,&x_not);
+			GetCtrlVal (QBS_panel, QBS_Y_Target,&y_not);
+			GetCtrlVal (QBS_panel, QBS_Z_Target,&z_not);
 
 	
 			//Open Visa session 
 			//result = viOpenDefaultRM (&Motion_visa_handle);
 	
 			//Open Visa link to XYZ stages
-				result=viOpen (Motion_visa_handle, X3port, VI_NULL, VI_NULL, &X_stage_handle);
-				result=viOpen (Motion_visa_handle, Y3port, VI_NULL, VI_NULL, &Y_stage_handle);
-				result=viOpen (Motion_visa_handle, Z3port, VI_NULL, VI_NULL, &Z_stage_handle);
+			result=viOpen (Global_Visa_Session_Handle, QBS_Xcom, VI_NULL, VI_NULL, &X_stage_handle);
+			result=viOpen (Global_Visa_Session_Handle, QBS_Ycom, VI_NULL, VI_NULL, &Y_stage_handle);
+			result=viOpen (Global_Visa_Session_Handle, QBS_Zcom, VI_NULL, VI_NULL, &Z_stage_handle);
 			
 			//Enable the stages
 			sprintf (send_string,"DE=1\r\n");

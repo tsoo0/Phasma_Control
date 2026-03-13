@@ -51,7 +51,8 @@ import mdsthin as mds
 
 treename = 'phasma2025'
 # treename = 'phasma_testo'
-c = mds.Connection('127.0.0.1:8000')
+# c = mds.Connection('127.0.0.1:8000')
+c = mds.Connection('127.0.0.1:57800')
 
 # %%
 
@@ -75,7 +76,7 @@ for diagname in devdict.keys():
         
         c.tcl(f"set default .{diagname}")
         
-        # Create data node and and populate with diagnostic channels
+        # Create DATA node and and populate with diagnostic's data channels
         c.tcl("add node .DATA")
         c.tcl("set default .DATA")
         
@@ -93,23 +94,25 @@ for diagname in devdict.keys():
         HWdevs = devdict[diagname].channel_map.HWdevices
         
         for HW in HWdevs:
-        
-            c.tcl(f"add node .{HW.name_mds}")
-            c.tcl(f"set def .{HW.name_mds}")    
+            
+            print(c.tcl(f"add node .{HW.name_mds}"))
+            print(c.tcl(f"set def .{HW.name_mds}") )   
         
             metastrs=list(filter(lambda a: not a.startswith("__") and a not in excludestr, dir(HW))) # strip out non-relevant fields
-            
+
             for metastr in metastrs:
-                try:
-                    c.tcl(f"add node {metastr}/usage=text")
-                    param = getattr(HW,metastr)
-                    c.tcl(f"put {metastr} '{param}'")
-                except:
-                    print(f"skipping {root}.{diagname}.DEVICES.{HW.name_mds}.{metastr}, value = {getattr(HW,metastr)}")
-                    continue
+                param = getattr(HW,metastr)
+                if type(param) == str:
                 
-            c.tcl("set def .-")
-            
+                    c.tcl(f"add node .{metastr}/usage=text")
+                    
+                elif type(param) == int or type(param) == float:
+                    c.tcl(f"add node .{metastr}/usage=numeric")
+                    
+                print(c.tcl(f"put .{metastr} {param}"))   
+                    
+            c.tcl(f"set def \TOP:{root}.{diagname}.DEVICES")
+
         c.tcl("set def .-")
         
         # add SETUP node, if applicable
@@ -121,15 +124,15 @@ for diagname in devdict.keys():
             field_names = newdiag.channel_map.setup.values()
         
             for n,fieldname in enumerate(field_names):
-    
-                try:
-                    c.tcl(f"add node .{fieldname}/usage=text")
-                    c.tcl(f"add tag .{fieldname} {fieldname}")
-                except:
-                    print(f"skipping {root}.{diagname}.SETUP.{fieldname}")
-                    continue
+            
+                
+                c.tcl(f"add node .{fieldname}/usage=numeric")
+                c.tcl(f"add tag .{fieldname} {fieldname}")
+                # except:
+                #     print(f"skipping {root}.{diagname}.SETUP.{fieldname}")
+                #     continue
                     
-            c.tcl("set def .-")
+            c.tcl(f"set def \TOP:{root}.{diagname}.SETUP")
             
             
             
@@ -141,11 +144,13 @@ for diagname in devdict.keys():
             metastrs=list(filter(lambda a: not a.startswith("__") and a not in excludestr, newdiag.channel_map.position.values())) # strip out non-relevant fields
         
             for n,fieldname in enumerate(newdiag.channel_map.position.values()):
+                
+                
                 try:
-                    c.tcl(f"add node .{fieldname}/usage=numeric")
+                    print(c.tcl(f"add node .{fieldname}/usage=numeric"))
                     c.tcl(f"add tag .{fieldname} {fieldname}")
                 except:
-                    print(f"skipping {root}.{diagname}.SETUP.{fieldname}")
+                    print(f"skipping {root}.{diagname}.POSITION.{fieldname}")
                     continue
             
             c.tcl("set def .-")
@@ -159,8 +164,7 @@ c.tcl("set default .PHASMA")
 
 c.tcl("add node .MAGNETS")
 c.tcl("add node .PRESSURE")
-# c.tcl("add node .POSITION")
-# c.tcl("add node .")    
+  
 
 
 c.tcl("write")

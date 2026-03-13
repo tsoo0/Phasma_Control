@@ -17,7 +17,7 @@ MSO5104_02 = MSO5104('TS_PHOTO',
 
 Andor = Andor(
         name_mds='TS_ANDOR',
-        name_local='TS_Andor',
+        name_local='Thomson_Andor',
         diagnostic='Thomson',
         channel_prefix = "ANDOR_",
         description = "Thomson Spectra data from Andor",
@@ -27,7 +27,7 @@ Andor = Andor(
     )
 
 TS_setup = TSConfig(name_mds='TS_CONFIG',
-                    name_local='ThomsonScattering',
+                    name_local='Thomson_Settings',
                     diagnostic='Thomson',
                     grouping = "SETUP",
                     tag = "ENG_TS",

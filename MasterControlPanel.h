@@ -159,7 +159,8 @@
 #define  MasterCont_PyRunningLED          144     /* control type: LED, callback function: (none) */
 #define  MasterCont_CURRENTDIAGNOSTICPO_3 145     /* control type: textMsg, callback function: (none) */
 #define  MasterCont_PyTimer               146     /* control type: timer, callback function: PyUpdateHandleStatus */
-#define  MasterCont_TEXTMSG_3             147     /* control type: textMsg, callback function: (none) */
+#define  MasterCont_TIMER_GETONWITHIT     147     /* control type: textButton, callback function: GETONTWITHIT */
+#define  MasterCont_TEXTMSG_3             148     /* control type: textMsg, callback function: (none) */
 
 
      /* Control Arrays: */
@@ -185,6 +186,7 @@ int  CVICALLBACK DoubleProbe_Activate(int panel, int control, int event, void *c
 int  CVICALLBACK DoubleProbe_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK DPData_Switch(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK DPDPlot_Switch(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK GETONTWITHIT(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK Gun_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK Helicon_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK HeliconData_Switch(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);

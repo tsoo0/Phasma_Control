@@ -1,14 +1,13 @@
 from .devices import HWdevices
 from ..group_channels import group_channels
 
-tag = "HOUSE"
+from pathlib import Path
 
-MSO5104_01_chmap = {
-    9:"IA_HIGHRES",
-    10:"IB_HIGHRES",
-    11:"TS_PERP",
-    12:"TS_PARA"
-    }
+
+ROOT_DIR = Path(__file__).parent
+name_mds = str(ROOT_DIR).split('/')
+
+tag = "HOUSE"
 
 VX4244_chmap = {
      1:'IA_4',
@@ -20,6 +19,13 @@ VX4244_chmap = {
      7:'IB_B',
     }
 
+MSO5104_01_chmap = {
+    1:"IA_HIGHRES",
+    2:"IB_HIGHRES",
+    3:"TS_PERP",
+    4:"TS_PARA"
+    }
+
 PD1_chmap = {
     1:'PD1_HORZ1',
     2:'PD2_HORZ2',
@@ -28,26 +34,25 @@ PD1_chmap = {
     }
 
 PD2_chmap = {
-    5:'PD5_HORZ5',
-    6:'PD6_HORZ6',
-    7:'PD7_HORZ7',
-    8:'PD8_HORZ8',
+    1:'PD5_HORZ5',
+    2:'PD6_HORZ6',
+    3:'PD7_HORZ7',
+    4:'PD8_HORZ8',
     }
 
 PD3_chmap = {
-    9:'PD9_VERT1',
-    10:'PD10_VERT2',
-    11:'PD11_VERT3',
-    12:'PD12_VERT4',
+    1:'PD9_VERT1',
+    2:'PD10_VERT2',
+    3:'PD11_VERT3',
+    4:'PD12_VERT4',
     }
 
 PD4_chmap = {
-    13:'PD13_VERT5',
-    14:'PD14_VERT6',
-    15:'PD15_VERT7',
-    16:'PD16_VERT8',
+    1:'PD13_VERT5',
+    2:'PD14_VERT6',
+    3:'PD15_VERT7',
+    4:'PD16_VERT8',
     }
-
 
 chmaps = [MSO5104_01_chmap, VX4244_chmap, PD1_chmap, PD2_chmap, PD3_chmap, PD4_chmap]
     

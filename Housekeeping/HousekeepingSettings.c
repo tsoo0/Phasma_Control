@@ -36,7 +36,9 @@ double  	Houskeeping_Signal10[max_record_length];
 double  	Houskeeping_Signal11[max_record_length];
 double  	Houskeeping_Signal12[max_record_length];
 double  	time_array[max_record_length];
-double		timebase[max_record_length];
+//double		timebase[max_record_length];
+double *timebase;
+
 
 double		RIGOL_Housekeeping_clockspeed;
 double		SampleRate=2000000;
@@ -376,7 +378,7 @@ void displayErr(ViSession gInstrHndl,ViStatus err)
 
 //Take the acquired data from the instrument and print it to the common data folder
 void Write_HousekeepingData(void)
-{
+{	timebase = malloc (Housekeeping_RecordLength*8);
 	int ch;
 	char	ChannelNameString[64];
 	char	outfilename[64];
@@ -469,6 +471,8 @@ void Write_HousekeepingData(void)
 	
 	outfile=fopen (outfilename, "w");
 
+	timebase = malloc(RIGOL_RecordLength * 8);
+	
 	fprintf(outfile,fileheader);
 	for (j=0;j<RIGOL_RecordLength;j++) {
 		timebase[j]=(double)(j*RIGOL_timestep);

@@ -1,330 +1,335 @@
 [Store_Data]
 Class="Function"
 Prototype="void Store_Data();"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:153:6"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:154:6"
 
 [MasterArm]
 Class="Function"
 Prototype="void MasterArm();"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:210:7"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:211:7"
 
 [LaserMasterArm]
 Class="Function"
 Prototype="void LaserMasterArm();"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:233:7"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:234:7"
 
 [ClearSystemStatus]
 Class="Function"
 Prototype="void ClearSystemStatus();"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:255:7"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:256:7"
 
 [ClearMasterArm]
 Class="Function"
 Prototype="void ClearMasterArm();"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:296:7"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:297:7"
 
 [ManualMatLab_Plotting]
 Class="Function"
 Prototype="void ManualMatLab_Plotting();"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:318:6"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:319:6"
 
 [SingleStepAdvance]
 Class="Function"
 Prototype="void SingleStepAdvance();"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:340:7"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:341:7"
 
 [MagField_Settings]
 Class="Function"
 Prototype="int MagField_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:408:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:409:17"
 
 [MasterTrigger_Settings]
 Class="Function"
 Prototype="int MasterTrigger_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:423:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:424:17"
 
 [Helicon_Settings]
 Class="Function"
 Prototype="int Helicon_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:435:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:436:17"
 
 [Housekeeping_Settings]
 Class="Function"
 Prototype="int Housekeeping_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:447:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:448:17"
 
 [Gun_Settings]
 Class="Function"
 Prototype="int Gun_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:459:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:460:17"
 
 [MagProbe_Settings]
 Class="Function"
 Prototype="int MagProbe_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:476:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:477:17"
 
 [TripleProbe_Settings]
 Class="Function"
 Prototype="int TripleProbe_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:488:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:489:17"
 
 [DoubleProbe_Settings]
 Class="Function"
 Prototype="int DoubleProbe_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:500:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:501:17"
 
 [ThomsonsScattering_Settings]
 Class="Function"
 Prototype="int ThomsonsScattering_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:512:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:513:17"
 
 [PulsedLIF_Settings]
 Class="Function"
 Prototype="int PulsedLIF_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:524:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:525:17"
 
 [ContinLIF_Settings]
 Class="Function"
 Prototype="int ContinLIF_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:536:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:537:17"
 
 [Quantum_Settings]
 Class="Function"
 Prototype="int Quantum_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:551:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:552:17"
 
 [SingleLang_Settings]
 Class="Function"
 Prototype="int SingleLang_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:563:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:564:17"
 
 [Photodiode_Settings]
 Class="Function"
 Prototype="int Photodiode_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:577:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:578:17"
 
 [Camera_Settings]
 Class="Function"
 Prototype="int Camera_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:589:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:590:17"
 
 [OceanOptics_Settings]
 Class="Function"
 Prototype="int OceanOptics_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:601:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:602:17"
 
 [McPherson209_Settings]
 Class="Function"
 Prototype="int McPherson209_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:613:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:614:17"
 
 [Lightwave_Settings]
 Class="Function"
 Prototype="int Lightwave_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:625:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:626:17"
 
 [RFEA_Settings]
 Class="Function"
 Prototype="int RFEA_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:637:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:638:17"
 
 [Temporary_Settings]
 Class="Function"
 Prototype="int Temporary_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:649:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:650:17"
 
 [QBS_Settings]
 Class="Function"
 Prototype="int QBS_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:661:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:662:17"
 
 [MagField_Activate_Switch]
 Class="Function"
 Prototype="int MagField_Activate_Switch(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:680:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:681:17"
 
 [MasterTrigger_Activate]
 Class="Function"
 Prototype="int MasterTrigger_Activate(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:707:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:708:17"
 
 [HeliconSource_Activate]
 Class="Function"
 Prototype="int HeliconSource_Activate(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:727:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:728:17"
 
 [Housekeeping_Activate]
 Class="Function"
 Prototype="int Housekeeping_Activate(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:752:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:753:17"
 
 [PlasmaGun_Activate]
 Class="Function"
 Prototype="int PlasmaGun_Activate(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:774:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:775:17"
 
 [Bdot_Activate]
 Class="Function"
 Prototype="int Bdot_Activate(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:797:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:798:17"
 
 [TripleProbe_Activate]
 Class="Function"
 Prototype="int TripleProbe_Activate(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:817:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:818:17"
 
 [DoubleProbe_Activate]
 Class="Function"
 Prototype="int DoubleProbe_Activate(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:837:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:838:17"
 
 [TS_Activate]
 Class="Function"
 Prototype="int TS_Activate(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:857:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:858:17"
 
 [PulsedLIF_Activate]
 Class="Function"
 Prototype="int PulsedLIF_Activate(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:879:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:880:17"
 
 [Quantum_Activate]
 Class="Function"
 Prototype="int Quantum_Activate(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:900:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:901:17"
 
 [Photodiode_Activate]
 Class="Function"
 Prototype="int Photodiode_Activate(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:912:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:913:17"
 
 [Camera_Activate]
 Class="Function"
 Prototype="int Camera_Activate(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:932:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:933:17"
 
 [Ocean_Activate]
 Class="Function"
 Prototype="int Ocean_Activate(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:952:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:953:17"
 
 [McPherson209_Activate]
 Class="Function"
 Prototype="int McPherson209_Activate(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:964:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:965:17"
 
 [Lightwave_Activate]
 Class="Function"
 Prototype="int Lightwave_Activate(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:984:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:985:17"
 
 [RFEA_Activate]
 Class="Function"
 Prototype="int RFEA_Activate(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:996:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:997:17"
 
 [Temporary_Activate]
 Class="Function"
 Prototype="int Temporary_Activate(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1016:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1017:17"
 
 [mdstest]
 Class="Function"
 Prototype="int mdstest(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1044:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1045:17"
 
 [ManualArm]
 Class="Function"
 Prototype="int ManualArm(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1057:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1058:17"
 
 [ManualTrigger]
 Class="Function"
 Prototype="int ManualTrigger(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1070:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1071:17"
 
 [ManualProbe_Advance]
 Class="Function"
 Prototype="int ManualProbe_Advance(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1088:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1089:17"
 
 [ManualMatLab]
 Class="Function"
 Prototype="int ManualMatLab(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1100:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1101:17"
 
 [Auto_Advance_Probes]
 Class="Function"
 Prototype="int Auto_Advance_Probes(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1114:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1115:17"
 
 [Auto_Run_Matlab]
 Class="Function"
 Prototype="int Auto_Run_Matlab(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1127:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1128:17"
 
 [AutoCycle]
 Class="Function"
 Prototype="int AutoCycle(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1142:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1143:17"
 
 [PHASMA_ShutDown]
 Class="Function"
 Prototype="int PHASMA_ShutDown(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1159:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1160:17"
 
 [LaserSimmerMode]
 Class="Function"
 Prototype="int LaserSimmerMode(int mode);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1186:6"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1187:6"
 
 [Advance_Single_Cycle]
 Class="Function"
 Prototype="int Advance_Single_Cycle();"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1203:6"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1204:6"
 
 [Start_Single_Cycle]
 Class="Function"
 Prototype="int Start_Single_Cycle();"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1226:6"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1227:6"
 
 [Complete_Single_Cycle]
 Class="Function"
 Prototype="int Complete_Single_Cycle();"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1296:6"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1298:6"
 
 [Repeat_Cycle]
 Class="Function"
 Prototype="void Repeat_Cycle();"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1376:6"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1400:6"
 
 [main]
 Class="Function"
 Prototype="void main();"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1445:7"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1469:7"
 
 [countdown_timer]
 Class="Function"
 Prototype="int countdown_timer(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1517:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1541:17"
 
 [SetMasterClock]
 Class="Function"
 Prototype="int SetMasterClock(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1562:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1586:17"
 
 [manual_disarm_all]
 Class="Function"
 Prototype="int manual_disarm_all(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1576:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1600:17"
 
 [toggle_push_to_mds]
 Class="Function"
 Prototype="int toggle_push_to_mds(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1591:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1615:17"
 
 [PyUpdateHandleStatus]
 Class="Function"
 Prototype="int PyUpdateHandleStatus(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1606:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1627:17"
+
+[GETONTWITHIT]
+Class="Function"
+Prototype="int GETONTWITHIT(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1652:17"
 

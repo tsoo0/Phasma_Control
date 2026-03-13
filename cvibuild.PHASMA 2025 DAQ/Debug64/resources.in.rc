@@ -7,7 +7,7 @@
 
 STRINGTABLE DISCARDABLE
 BEGIN
-  65535  "PHASMA 2025 DAQ V3.0"
+  65535  "PHASMA 2025 DAQ V1.0"
 END
 
 VS_VERSION_INFO VERSIONINFO
@@ -24,12 +24,12 @@ BEGIN
         BLOCK "040904b0"
         BEGIN
             VALUE "CompanyName", "WVU\0"
-            VALUE "FileDescription", "PHASMA 2025 DAQ V3.0 (Debug x64)\0"
+            VALUE "FileDescription", "PHASMA 2025 DAQ V1.0 (Debug x64)\0"
             VALUE "FileVersion", "1.0\0"
-            VALUE "InternalName", "PHASMA 2025 DAQ V3.0\0"
+            VALUE "InternalName", "PHASMA 2025 DAQ V1.0\0"
             VALUE "LegalCopyright", "Copyright © WVU 2026\0"
-            VALUE "OriginalFilename", "PHASMA 2025 DAQ V3.0.exe\0"
-            VALUE "ProductName", "WVU PHASMA 2025 DAQ V3.0\0"
+            VALUE "OriginalFilename", "PHASMA 2025 DAQ V1.0.exe\0"
+            VALUE "ProductName", "WVU PHASMA 2025 DAQ V1.0\0"
             VALUE "ProductVersion", "1.0\0"
         END
     END

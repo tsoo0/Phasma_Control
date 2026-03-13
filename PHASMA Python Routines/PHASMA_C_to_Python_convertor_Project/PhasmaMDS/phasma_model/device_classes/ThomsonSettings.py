@@ -3,8 +3,8 @@ from .base import setup_base
 
 class TSConfig(setup_base):
     
-    def __init__(self,  name_mds, name_local, diagnostic, grouping, tag, description):
-        super().__init__(name_mds, name_local, diagnostic, grouping, tag, description)
+    def __init__(self,  name_mds, name_local, diagnostic, grouping, tag, description='Thomson'):
+        super().__init__(name_mds, name_local, diagnostic, grouping, tag, description='')
     
         fields=[
     	"Laser_Orientation",

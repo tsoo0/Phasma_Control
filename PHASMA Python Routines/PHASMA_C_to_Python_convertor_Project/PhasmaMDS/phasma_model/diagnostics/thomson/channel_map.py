@@ -4,14 +4,15 @@ tag = "TS"
 
 
 scopechmap = {
-    1:"PD1",
-    2:"PD2",
+    1: "TIME_PHOTO",
+    2:"TS_PHOTO1",
+    3:"TS_PHOTO2",
     }
 
 andorchmap = {
-    1:"TSWAVELEN",
-    2:"HORZ",
-    3:"VERT",
+    1:"ANDOR_WAVELEN",
+    2:"ANDOR_IMG1",
+    3:"ANDOR_IMG2",
     }
 
 chmaps = [scopechmap, andorchmap]

@@ -10,7 +10,7 @@ class device_base:
                  grouping='DATA', MToffset=0, description='', diagnostic = '',sample_rate=0, tag=''): 
         self.name_mds = name_mds     # mds node name
         self.name_local = name_local  # device name in local file system
-        self.grouping = 'DATA'        # Users of this class should all be experimental data, not setup information
+        self.grouping = 'DATA'        # Users of this class should all be experimental data, not setup information. Need to rethink the use of this field.
         self.num_channels=nchannels   # number of data channels, not including time
         self.MToffset = MToffset # time offset relative to master trigger in seconds (float)
         self.channel_prefix = channel_prefix # used to build default channel names in device subtree

@@ -1,17 +1,14 @@
 from .devices import HWdevices
 
+from ..group_channels import group_channels
+
 tag = "PLIF"
 
-chmap ={
-    1:'PLIF_Signal',
-    2:'PLIF_Diode',
-    3:'LASER_POWER',
-    4:'PLIF_WAVELENGTH',
-        
-    }
 
 
 
-# HWdevices[0].channel_names = plif_chmap
+chmap = group_channels([a.channel_names for a in HWdevices])
 
 diagnostic = chmap
+
+# setup = plif_setup.field_names

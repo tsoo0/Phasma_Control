@@ -12,6 +12,7 @@
 
 //General Include Statements
 #include 	<windows.h>
+#include 	<advanlys.h>
 #include 	<visa.h>
 #include 	<ansi_c.h>
 #include 	<utility.h>
@@ -1266,6 +1267,7 @@ int		Advance_Single_Cycle (void)
 	MasterArm();
 		
 	//Since the auto cycle button was selected, enable the timer - this starts the countdown sequence so it is followed immediately by firing the master trigger!
+	SetCtrlVal(Master_Control_Panel, MasterCont_TIMER_GETONWITHIT, 0);
 	SetCtrlAttribute (Master_Control_Panel, MasterCont_COUNTDOWN_TIMER, ATTR_ENABLED, 1);
 
 	//Update the interface window
@@ -1297,12 +1299,18 @@ int		Complete_Single_Cycle (void)
 {
 	int		record_length;
 	int 	result;
+	int 	j;
 	double	time[Housekeeping_max_record_length];
 	double	BiasI_a[Housekeeping_max_record_length];
 	double	BiasI_b[Housekeeping_max_record_length];
 	double	perp_diode[TS_max_record_length];
 	double	para_diode[TS_max_record_length];
-	 
+	double Min_Array;
+	double Max_Array;	 
+	double Max_Array_perp;
+	double Max_Array_para;	 
+	ssize_t Min_Index;
+	ssize_t Max_Index;
 	
 	//Clear all the arm states
 	ClearMasterArm();
@@ -1343,9 +1351,25 @@ int		Complete_Single_Cycle (void)
 		PlotXY (Master_Control_Panel, MasterCont_HousekeepingPlot, time, BiasI_a, record_length, VAL_DOUBLE, VAL_DOUBLE, VAL_FAT_LINE, VAL_SIMPLE_DOT, VAL_SOLID, 1, VAL_CYAN);
 		PlotXY (Master_Control_Panel, MasterCont_HousekeepingPlot, time, BiasI_b, record_length, VAL_DOUBLE, VAL_DOUBLE, VAL_FAT_LINE, VAL_SIMPLE_DOT, VAL_SOLID, 1, VAL_MAGENTA);
 		
-		//also plot TS laser pulse info to the same window if TS active
-		if(TSFlag) {
+		//also plot TS laser pulse in normalized units (and check for divide by zero) to the same window if TS active																				
+		if(TSFlag) { 
+			MaxMin1D (BiasI_a, record_length, &Max_Array, &Max_Index, &Min_Array, &Min_Index);
 			record_length=TransferTSData (time,para_diode,perp_diode);
+			MaxMin1D (perp_diode, record_length, &Max_Array_perp, &Max_Index, &Min_Array, &Min_Index);
+			MaxMin1D (para_diode, record_length, &Max_Array_para, &Max_Index, &Min_Array, &Min_Index);
+			if(Max_Array_perp > Max_Array_para) {
+				if (Max_Array_perp > 0) {
+					for (j=0;j<record_length;j++)  {  
+						perp_diode[j]=perp_diode[j]*Max_Array/Max_Array_perp;
+					}
+				} 
+			} else {
+				if (Max_Array_para > 0) {
+					for (j=0;j<record_length;j++)  {  
+						para_diode[j]=para_diode[j]*Max_Array/Max_Array_para;
+					}
+				}
+			}	
 			PlotXY (Master_Control_Panel, MasterCont_HousekeepingPlot, time, para_diode, record_length, VAL_DOUBLE, VAL_DOUBLE, VAL_FAT_LINE, VAL_SIMPLE_DOT, VAL_SOLID, 1, VAL_DK_GREEN);
 			PlotXY (Master_Control_Panel, MasterCont_HousekeepingPlot, time, perp_diode, record_length, VAL_DOUBLE, VAL_DOUBLE, VAL_FAT_LINE, VAL_SIMPLE_DOT, VAL_SOLID, 1, VAL_DK_GREEN);
 		}
@@ -1600,9 +1624,6 @@ int CVICALLBACK toggle_push_to_mds (int panel, int control, int event,
 	return 0;
 }
 
-
-
-
 int CVICALLBACK PyUpdateHandleStatus (int panel, int control, int event,
 									  void *callbackData, int eventData1, int eventData2)
 {
@@ -1623,6 +1644,21 @@ int CVICALLBACK PyUpdateHandleStatus (int panel, int control, int event,
 						
 			}		
 
+	}
+	return 0;
+}
+
+// Gets on with it
+int CVICALLBACK GETONTWITHIT (int panel, int control, int event,
+							  void *callbackData, int eventData1, int eventData2)
+{
+	switch (event)
+	{
+		case EVENT_COMMIT:
+				Countdown = 5; // Don't get on with it too much
+				
+				
+			break;
 	}
 	return 0;
 }

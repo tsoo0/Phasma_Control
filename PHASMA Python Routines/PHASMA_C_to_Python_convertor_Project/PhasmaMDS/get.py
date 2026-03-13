@@ -7,26 +7,24 @@ from phasma_model.phasma_devices import devdict
 
 treename = "phasma2025"
 
-exp_ip = '127.0.0.1:8000'
+# exp_ip = '127.0.0.1:8000'
 
-raw_data_dir = r"C:\Users\tjroo\Desktop\Research\Light Data Analysis Tools\datavis\PhasmaMDS\example_data"    
+# raw_data_dir = r"C:\Users\tjroo\Desktop\Research\Light Data Analysis Tools\datavis\PhasmaMDS\example_data"    
 
-shotnum=417
+
+exp_ip = '127.0.0.1.57800'
+raw_data_dir = r"D:\PHASMA_RawData"
+
+shotnum=894
 
 #read in a locally-stored white-space seperated table containing raw data for one shot on one digitizer
 def read_format_mds(device_fid):
     
-    # shotdat = pd.read_csv(device_fid,delimiter='\t',header=0)
     shotdat = pd.read_csv(device_fid,delimiter=',',header=0)
     
     shotdat.columns = [acol.split(':')[-1] for acol in list(shotdat.columns)]
     
     return shotdat
-
-# Take raw shot data stored locally and write it to the mds server under a new 
-# shot within treename
-
-c = mds.Connection(exp_ip)
 
 def trycast(intorstr):
     try:
@@ -36,15 +34,6 @@ def trycast(intorstr):
         return 0
     
     return res
-
-#get tree structure from model shot by parsing the return from tcl; probably an easier way to do this 
-c.openTree(treename,-1)
-c.tcl('set def \TOP:DIAGNOSTICS')
-# devstr = c.tcl('directory')    
-# devstr=devstr.replace("\PHASMA::TOP.DEVICES","")
-# devs = devstr.split('\n')
-# devs = devstr.split('  ')
-# devs = [dev for dev in [dev.strip() for dev in devs] if len(dev)>0 and dev.isupper()]
 
 # construct a dict of dicts with each diagnostic cotaining a dict of data for each found hardware device
 os.chdir(raw_data_dir)
@@ -69,57 +58,73 @@ for diag in list(devdict.values()):
     
     diagdata.update({diag:datadict})
 
-
 #remove diagnostics with no found data for this shot
 for key in list(diagdata.keys()):
     if not diagdata[key]:
         del diagdata[key]
         
-        
-# compile device data according to diagnostic
+c = mds.Connection('127.0.0.1:57800')
 
+c.tcl(f'set tree {treename}')
 
-diagdata_col = {}
-for diag in list(diagdata.keys()):
+print(c.tcl(f"create pulse {shotnum}"))
+print(c.tcl(f"set tree {treename}/shot={shotnum}"))
+
+for curdiag in list(diagdata.keys()):
+    curdata = diagdata.get(curdiag)
+    c.tcl(f"set def \TOP.DIAGNOSTICS.{curdiag.diag_name_mds}:DATA")
     
-    for data in list(diagdata[diag]):
+     #Write to DATA from each device channel
+    for devname in list(curdata.keys()):
         
-        try:
-            newdat = newdat.join(data.set_index('Time'),on='Time')
-        except:
-            newdat = data
+        devdata = curdata.get(devname)
+    
+        HWdevice = [a for a in curdiag.devices.HWdevices if a.name_mds == devname][0]
+        
+        devtype = HWdevice.grouping
+    
+        if devtype == "DATA":
+    
+            channels = devdata.columns
             
-        
-   
-    diagdata_col.update({diag.name_mds:newdat})
-
-
-
-    
-    
-    
-
-
-
-# c.tcl(f"create pulse {shotnum}")
-# c.tcl(f"set tree {treename}/shot={shotnum}")
-# for shotdiag in doof.keys():
-    
-#     diagdata = doof[shotdiag]
-    
-#     c.tcl(f"set def \TOP.DIAGNOSTICS.{shotdiag}")
-    
-#     channels = diagdata.columns
-#     timearr = diagdata['Time'].values
-#     for n,channel in enumerate(channels):
-#         try:
-#             channeldata = diagdata.iloc[:,n].values
-#             if channel.lower() == 'time': # independent time axis should be irrelevant using signal datatype. Writing to 'Time' node fails
-#                 continue
-#             sig = mds.Signal(channeldata, None, timearr)
-#             print(channel)
-#             c.put(channel.upper(), '`SerializeIn($)', sig.serialize())
-#         except:
-#             continue
-    
-#     # c.tcl("set def TOP")
+            x_axis_name = channels[0]
+            
+            x_axis = devdata.get(x_axis_name)
+            
+            # if 
+            
+            for n,channel in enumerate(channels):
+                try:
+                    channeldata = devdata.iloc[:,n].values
+                    if channel.lower() == x_axis_name.lower(): # independent time axis should be irrelevant using signal datatype. Writing to 'Time' node fails
+                        continue
+                    sig = mds.Signal(channeldata, None, x_axis)
+                   
+                    print(c.put(channel.strip(), '`SerializeIn($)', sig.serialize()))
+                except:
+                    
+                    print(f"failed to write data: {curdiag.diag_name_mds}.DATA.{channel}")
+                    
+                    continue
+                
+        elif devtype == "SETUP":
+            c.tcl(f"set def \TOP.DIAGNOSTICS.{curdiag.diag_name_mds}:SETUP")
+            channels = devdata.columns
+            channels = [a.upper()[:12] for a in channels]
+            devdata = devdata
+            for n,channel in enumerate(channels):
+                try:
+                    channeldata = devdata.iloc[0,n]
+                    print(c.put(channel, '$', mds.Float32(channeldata)))
+                    # if type(channeldata==str):
+                   
+                    #     print(c.put(channel.upper(), '$', channeldata))
+                        
+                    # elif type(channeldata==float) or type(channel_data == int):
+                        
+                        
+                except:
+                    
+                    print(f"failed to write data: {curdiag.diag_name_mds}.SETUP.{channel}")
+                    
+                    continue
