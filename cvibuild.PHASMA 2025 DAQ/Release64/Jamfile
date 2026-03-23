@@ -63,6 +63,7 @@ LOCATE on "HousekeepingSettings.c" = "c:\\PHASMA 2025 DAQ\\Housekeeping" ;
 LOCATE on "HousekeepingSettings.h" = "c:\\PHASMA 2025 DAQ\\Housekeeping" ;
 LOCATE on "HousekeepingSystems.h" = "c:\\PHASMA 2025 DAQ\\Housekeeping" ;
 LOCATE on "hp33120a.h" = "c:\\PHASMA 2025 DAQ\\ContLIF\\HP33120" ;
+LOCATE on "ipdesc.h" = "c:\\PHASMA 2025 DAQ\\MDSPlus Routines" ;
 LOCATE on "Joerger VTR10012-VISA.h" = "c:\\PHASMA 2025 DAQ\\Bdot" ;
 LOCATE on "Langmuir.c" = "c:\\PHASMA 2025 DAQ\\Langmuir" ;
 LOCATE on "LangmuirSettings.h" = "c:\\PHASMA 2025 DAQ\\Langmuir" ;

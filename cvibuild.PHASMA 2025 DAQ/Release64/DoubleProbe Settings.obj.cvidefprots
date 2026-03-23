@@ -6,40 +6,40 @@ SourceLocation="c:\PHASMA 2025 DAQ\DoubleProbe\DoubleProbe Settings.c:26:6"
 [DoubleProbeArm]
 Class="Function"
 Prototype="int DoubleProbeArm();"
-SourceLocation="c:\PHASMA 2025 DAQ\DoubleProbe\DoubleProbe Settings.c:136:5"
+SourceLocation="c:\PHASMA 2025 DAQ\DoubleProbe\DoubleProbe Settings.c:175:5"
 
 [Write_DoubleProbeData]
 Class="Function"
 Prototype="void Write_DoubleProbeData();"
-SourceLocation="c:\PHASMA 2025 DAQ\DoubleProbe\DoubleProbe Settings.c:152:6"
+SourceLocation="c:\PHASMA 2025 DAQ\DoubleProbe\DoubleProbe Settings.c:191:6"
 
 [OpenDoubleProbe_Settings]
 Class="Function"
 Prototype="void OpenDoubleProbe_Settings();"
-SourceLocation="c:\PHASMA 2025 DAQ\DoubleProbe\DoubleProbe Settings.c:204:6"
+SourceLocation="c:\PHASMA 2025 DAQ\DoubleProbe\DoubleProbe Settings.c:243:6"
 
 [Close_DoubleProbe_Settings]
 Class="Function"
 Prototype="int Close_DoubleProbe_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\DoubleProbe\DoubleProbe Settings.c:216:17"
+SourceLocation="c:\PHASMA 2025 DAQ\DoubleProbe\DoubleProbe Settings.c:255:17"
 
 [DoubleProbe_Move_to_Start]
 Class="Function"
 Prototype="int DoubleProbe_Move_to_Start(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\DoubleProbe\DoubleProbe Settings.c:230:17"
+SourceLocation="c:\PHASMA 2025 DAQ\DoubleProbe\DoubleProbe Settings.c:269:17"
 
 [DoubleProbe_Move_to_Stop]
 Class="Function"
 Prototype="int DoubleProbe_Move_to_Stop(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\DoubleProbe\DoubleProbe Settings.c:264:17"
+SourceLocation="c:\PHASMA 2025 DAQ\DoubleProbe\DoubleProbe Settings.c:303:17"
 
 [DoubleProbe_Home]
 Class="Function"
 Prototype="int DoubleProbe_Home(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\DoubleProbe\DoubleProbe Settings.c:294:17"
+SourceLocation="c:\PHASMA 2025 DAQ\DoubleProbe\DoubleProbe Settings.c:333:17"
 
 [Advance_DoubleProbe_Probe]
 Class="Function"
 Prototype="float Advance_DoubleProbe_Probe();"
-SourceLocation="c:\PHASMA 2025 DAQ\DoubleProbe\DoubleProbe Settings.c:319:7"
+SourceLocation="c:\PHASMA 2025 DAQ\DoubleProbe\DoubleProbe Settings.c:358:7"
 

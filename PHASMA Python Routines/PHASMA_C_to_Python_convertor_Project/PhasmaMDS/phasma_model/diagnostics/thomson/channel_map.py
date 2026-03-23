@@ -4,7 +4,7 @@ tag = "TS"
 
 
 scopechmap = {
-    1: "TIME_PHOTO",
+    1:"TIME_PHOTO",
     2:"TS_PHOTO1",
     3:"TS_PHOTO2",
     }

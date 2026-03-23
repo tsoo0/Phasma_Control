@@ -520,11 +520,11 @@ void Write_PulsedLIFData(void)
 	double	*timebase;
 
 	//Create temporary data arrays	
-	PulsedLIF_Array1 = malloc (PLIF_RecordLength);
-	PulsedLIF_Array2 = malloc (PLIF_RecordLength);
-	PulsedLIF_Array3 = malloc (PLIF_RecordLength);
-	PulsedLIF_Array4 = malloc (PLIF_RecordLength);
-	timebase = malloc (PLIF_RecordLength);
+	PulsedLIF_Array1 = malloc (PLIF_RecordLength*sizeof(double));
+	PulsedLIF_Array2 = malloc (PLIF_RecordLength*sizeof(double));
+	PulsedLIF_Array3 = malloc (PLIF_RecordLength*sizeof(double));
+	PulsedLIF_Array4 = malloc (PLIF_RecordLength*sizeof(double));
+	timebase = malloc (PLIF_RecordLength*sizeof(double));
 	
 	//Grab data from all four channels of the oscilloscope
 	Rigol(PLIF_Scope_Rigol_handle, PLIF_RecordLength, &PulsedLIF_timestep, PulsedLIF_Array1, PulsedLIF_Array2, PulsedLIF_Array3, PulsedLIF_Array4);   

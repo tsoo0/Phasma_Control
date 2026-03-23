@@ -118,11 +118,11 @@ void Write_RFEAData(void)
 	double	*timebase;
 		
 	//Create temporary data arrays	
-	RFEA_Array1 = malloc (RFEA_RecordLength);
-	RFEA_Array2 = malloc (RFEA_RecordLength);
-	RFEA_Array3 = malloc (RFEA_RecordLength);
-	RFEA_Array4 = malloc (RFEA_RecordLength);
-	timebase = malloc (RFEA_RecordLength);
+	RFEA_Array1 = malloc (RFEA_RecordLength*sizeof(double));
+	RFEA_Array2 = malloc (RFEA_RecordLength*sizeof(double));
+	RFEA_Array3 = malloc (RFEA_RecordLength*sizeof(double));
+	RFEA_Array4 = malloc (RFEA_RecordLength*sizeof(double));
+	timebase = malloc (RFEA_RecordLength*sizeof(double));
 
 	//Grab data from all four channels of the oscilloscope
 	Rigol(Rigol_handle, RFEA_RecordLength, &RFEA_timestep, RFEA_Array1, RFEA_Array2, RFEA_Array3, RFEA_Array4);   

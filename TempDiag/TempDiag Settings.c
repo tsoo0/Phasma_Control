@@ -192,16 +192,16 @@ void Write_TempDiagData(void)
 	double	*timebase_lecroy;
 		
 	//Create temporary data arrays	
-	TempDiag_Array1 = malloc (TemporaryDiag_RecordLength);
-	TempDiag_Array2 = malloc (TemporaryDiag_RecordLength);
-	TempDiag_Array3 = malloc (TemporaryDiag_RecordLength);
-	TempDiag_Array4 = malloc (TemporaryDiag_RecordLength);
-	TempDiag_Array5 = malloc (TemporaryDiag_RecordLength_lecroy);
-	TempDiag_Array6 = malloc (TemporaryDiag_RecordLength_lecroy);
-	TempDiag_Array7 = malloc (TemporaryDiag_RecordLength_lecroy);
-	TempDiag_Array8 = malloc (TemporaryDiag_RecordLength_lecroy);
-	timebase = malloc (TemporaryDiag_RecordLength);
-	timebase_lecroy = malloc (TemporaryDiag_RecordLength_lecroy);
+	TempDiag_Array1 = malloc (TemporaryDiag_RecordLength*sizeof(double));
+	TempDiag_Array2 = malloc (TemporaryDiag_RecordLength*sizeof(double));
+	TempDiag_Array3 = malloc (TemporaryDiag_RecordLength*sizeof(double));
+	TempDiag_Array4 = malloc (TemporaryDiag_RecordLength*sizeof(double));
+	TempDiag_Array5 = malloc (TemporaryDiag_RecordLength_lecroy*sizeof(double));
+	TempDiag_Array6 = malloc (TemporaryDiag_RecordLength_lecroy*sizeof(double));
+	TempDiag_Array7 = malloc (TemporaryDiag_RecordLength_lecroy*sizeof(double));
+	TempDiag_Array8 = malloc (TemporaryDiag_RecordLength_lecroy*sizeof(double));
+	timebase = malloc (TemporaryDiag_RecordLength*sizeof(double));
+	timebase_lecroy = malloc (TemporaryDiag_RecordLength_lecroy*sizeof(double));
 	
 	//Grab data from all four channels of the oscilloscope
 	if (Rigol_flag) Rigol(Rigol_handle, TemporaryDiag_RecordLength, &TempDiag_timestep, TempDiag_Array1, TempDiag_Array2, TempDiag_Array3, TempDiag_Array4);   

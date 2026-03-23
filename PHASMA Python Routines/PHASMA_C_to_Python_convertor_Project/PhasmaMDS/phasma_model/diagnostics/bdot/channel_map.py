@@ -2,7 +2,7 @@ from .devices import HWdevices
 # from ..position_base import position
 
 
-tag = "BDOT"
+tag = "MAG"
 
 # position = position()
 

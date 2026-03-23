@@ -5,13 +5,13 @@ import mdsthin as mds
 
 from phasma_model.phasma_devices import devdict
 
-#read in a locally-stored white-space seperated table containing raw data for one shot on one digitizer
-#read in a locally-stored white-space seperated table containing raw data for one shot on one digitizer
+# Read a .csv file into a dataframe; first row must contain field names and first column 
+#   will be interpreted as the independent axis
 def read_format_mds(device_fid):
     
     shotdat = pd.read_csv(device_fid,delimiter=',',header=0)
     
-    shotdat.columns = [acol.split(':')[-1] for acol in list(shotdat.columns)]
+    # shotdat.columns = [acol.split(':')[-1] for acol in list(shotdat.columns)]
     
     return shotdat
 
@@ -24,7 +24,15 @@ def trycast(intorstr):
     
     return res
 
+# Error checking tcl write; print errors from mds server they any
+def tcl_write(conn, msgstr):
+    
+    retval = conn.tcl(msgstr)
 
+    if retval is not None:
+        print(retval)
+
+# creates a new shot tree in the mds server and populates it with data from the local file system
 def push_all_mds(treename, exp_ip, raw_data_dir, shotnum):
     
     # construct a dict of dicts with each diagnostic cotaining a dict of data for each found hardware device
@@ -35,8 +43,6 @@ def push_all_mds(treename, exp_ip, raw_data_dir, shotnum):
         datadict = {}
         devices = diag.devices.HWdevices
     
-    # devmap = list(map(lambda dev: {dev.name_mds:dev.name_local}, devices))
-    
         for dev in devices:
             
             devfid = list(filter(lambda x: dev.name_local in x, shotfids)) #shoud return one element
@@ -44,29 +50,29 @@ def push_all_mds(treename, exp_ip, raw_data_dir, shotnum):
             try:
                 devdat = read_format_mds(devfid[0])
             except:
-                print(f"failed initial read of {dev.name_mds}")
+                print(f"couldn't find or open data for device {dev.name_local}")
                 continue
             
             datadict.update({dev.name_mds:devdat})
     
         diagdata.update({diag:datadict})
     
-    #remove diagnostics with no found data for this shot
+    #remove entries for diagnostics with no found data for this shot
     for key in list(diagdata.keys()):
         if not diagdata[key]:
             del diagdata[key]
             
+    # create a new shot tree for the given shot number and populate it with any files in raw_data_dir that 
+    # match the local names in phasma_model
     c = mds.Connection(exp_ip)
     
-    # create a new shot tree for the given shot number and populate with any files in raw_data_dir that match the local names in phasma_model
-    c.tcl(f'set tree {treename}')
-    
-    print(c.tcl(f"create pulse {shotnum}"))
-    print(c.tcl(f"set tree {treename}/shot={shotnum}"))
+    tcl_write(c,f'set tree {treename}')
+    tcl_write(c,f"create pulse {shotnum}")
+    tcl_write(c,f"set tree {treename}/shot={shotnum}")
     
     for curdiag in list(diagdata.keys()):
         curdata = diagdata.get(curdiag)
-        c.tcl(f"set def \TOP.DIAGNOSTICS.{curdiag.diag_name_mds}:DATA")
+        tcl_write(c,f"set def \TOP.DIAGNOSTICS.{curdiag.diag_name_mds}:DATA")
         
          #Write to DATA from each device channel
         for devname in list(curdata.keys()):
@@ -80,21 +86,34 @@ def push_all_mds(treename, exp_ip, raw_data_dir, shotnum):
             if devtype == "DATA":
         
                 channels = devdata.columns
-                
+                channels = [a.upper()[:12] for a in channels]
                 x_axis_name = channels[0]
                 
                 x_axis = devdata.get(x_axis_name)
                 
-                # if 
-                
                 for n,channel in enumerate(channels):
                     try:
                         channeldata = devdata.iloc[:,n].values
-                        if channel.lower() == x_axis_name.lower(): # independent time axis should be irrelevant using signal datatype. Writing to 'Time' node fails
-                            continue
+                        # if channel.lower() == x_axis_name.lower(): # independent time axis should be irrelevant using
+                        #                                            # signal datatype. Writing to 'Time' node fails
+                                                                   
+                        #     sig = mds.Signal(x_axis,None,x_axis)
+                           
+                        #     retval = c.put(channel.strip(), '`SerializeIn($)', sig.serialize())
+                            
+                        #     if retval is not None:
+                        #         print(retval)                                           
+                                                                   
+                        #     continue
+                        
+                        # else:
                         sig = mds.Signal(channeldata, None, x_axis)
                        
-                        print(c.put(channel.strip(), '`SerializeIn($)', sig.serialize()))
+                        retval = c.put(channel.strip(), '`SerializeIn($)', sig.serialize())
+                        
+                        if retval is not None:
+                            print(retval)
+                        
                     except:
                         
                         print(f"failed to write data: {curdiag.diag_name_mds}.DATA.{channel}")
@@ -102,21 +121,19 @@ def push_all_mds(treename, exp_ip, raw_data_dir, shotnum):
                         continue
                     
             elif devtype == "SETUP":
-                c.tcl(f"set def \TOP.DIAGNOSTICS.{curdiag.diag_name_mds}:SETUP")
+                tcl_write(c,f"set def \TOP.DIAGNOSTICS.{curdiag.diag_name_mds}:SETUP")
                 channels = devdata.columns
                 channels = [a.upper()[:12] for a in channels]
                 devdata = devdata
                 for n,channel in enumerate(channels):
                     try:
                         channeldata = devdata.iloc[0,n]
-                        print(c.put(channel, '$', mds.Float32(channeldata)))
-                        # if type(channeldata==str):
-                       
-                        #     print(c.put(channel.upper(), '$', channeldata))
-                            
-                        # elif type(channeldata==float) or type(channel_data == int):
-                            
-                            
+                        
+                        retval = c.put(channel, '$', mds.Float32(channeldata))
+                        
+                        if retval is not None:
+                            print(retval)
+  
                     except:
                         
                         print(f"failed to write data: {curdiag.diag_name_mds}.SETUP.{channel}")
@@ -138,7 +155,9 @@ if __name__ == '__main__':
 
     treename = 'phasma2025'
     exp_ip = '127.0.0.1:57800'
-    raw_data_dir = "D:\\PHASMA_RawData"    
+    # exp_ip = '127.0.0.1:8000'
+    raw_data_dir = "D:\\PHASMA_RawData"   
+    # raw_data_dir = r'C:\Users\tjroo\Desktop\Research\Light Data Analysis Tools\datavis\PhasmaMDS\example_data'
 
-    # push_all_mds(treename, exp_ip, raw_data_dir, shotnum = 894)
+    # push_all_mds(treename, exp_ip, raw_data_dir, shotnum = 1005)
     push_all_mds_latest(treename, exp_ip, raw_data_dir)

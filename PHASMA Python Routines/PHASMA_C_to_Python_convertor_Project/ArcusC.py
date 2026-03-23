@@ -152,7 +152,7 @@ def home(ip: str, speed=20, accel=4000, jerk=10000, movePattern=1, homingMode=0)
 
 ## Testing 
 #home("192.168.1.43", speed=3)
-move("192.168.1.43", 0.75, 4003.74, 300, 12)
+move("192.168.1.43", 10, 4003.74, 300, 12)
 ##
 
 

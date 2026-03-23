@@ -108,7 +108,7 @@ int		CLIF_RecordLength;
 int		DualCLIFSwitch; 				//Flag to choose between single or dual LIF measurements
 int		IFIT_PTS;
 int		Wavemeter_COM_Port;
-int		ShotNum; 
+int		CLIF_ShotNum=0; 
 int		Lockin_reserve;		   			// SRS lock in reserve 
 int		Lockin_slope;		   			// SRS lock in slope
 int		sensitivity;					// SRS lock in sensitivity parameter 
@@ -1203,15 +1203,11 @@ void write_CLIF_data(void)
 	FILE*	outfile;
 
 	//Store PID module info into system parameters array
-
-	
-	//Get current shot number
-	ShotNum=getMDSCurrentShot();
-
 		
 	//Dump LIF results to a file
 	sprintf(outfilename, RawDataPath);
-	strcat(outfilename, ShotNumberString);
+	sprintf(dummychar,"_%d_",CLIF_ShotNum);
+	strcat(outfilename,dummychar);
 	strcat(outfilename, "_");
 	strcat(outfilename, "CLIF.txt");
 	
@@ -1303,12 +1299,12 @@ void write_CLIF_data(void)
 	char 	*time = TimeStr();
 	
 	//Get current shot number
-	ShotNum=getMDSCurrentShot();
+	//ShotNum=getMDSCurrentShot();
 	
 	//Write an array of all the instrument write-t-mds flags to a spreadsheet to maintain a permanent list
 	//of which data are stored for each shot. Include the shot number, the date, and all the flags.
 	outfile = fopen (PHASMA_LOG_String, "a");
-	fprintf(outfile,"%d,%s,%s,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,&d,&d\n",ShotNum,date,time,0, 0,0,0,0,
+	fprintf(outfile,"%d,%s,%s,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d,%d\n",CLIF_ShotNum,date,time,0, 0,0,0,0,
 		0,0,0,0,0,0,0,0,0,0,0,0,0,1,0);
 
  	//Close magnetic field profile data file
@@ -1570,19 +1566,27 @@ int CVICALLBACK Wavemeter_Call (int panel, int control, int event,
 int CVICALLBACK CLIF_Activate_Button (int panel, int control, int event,
 		void *callbackData, int eventData1, int eventData2)
 {
-int	shotnum;
 int result;
 
 	switch (event)
 	{
 		case EVENT_COMMIT:
+			//Only use MDS shot number first time through
+			if (CLIF_ShotNum < getMDSCurrentShot()) {
+				CLIF_ShotNum = getMDSCurrentShot();
+			}
+			
 			//Open MDS to new shot number
 			result=	IncrementMDSCurrentShot();
 			
-			shotnum= getMDSCurrentShot();  
+			if (result < 2) {
+				CLIF_ShotNum= CLIF_ShotNum+1;			//Artifically increment the shot number if working in laser lab.
+			} else {			
+				CLIF_ShotNum= getMDSCurrentShot();   //Use the shot number in the MDS system if working in main lab
+			}
 			
 			//Update shot number in panel
-			SetCtrlVal (ContinLIF_panel, CLIF_PANEL_MDS_Shot,shotnum);
+			SetCtrlVal (ContinLIF_panel, CLIF_PANEL_MDS_Shot,CLIF_ShotNum);
 	
 			ContinLIF_Activate();
 			CLIF_acquire(); 

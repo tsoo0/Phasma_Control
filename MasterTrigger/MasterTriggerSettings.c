@@ -357,15 +357,18 @@ void Trigger_Settings_Activate (void)
 	GetCtrlVal (Trigger_panel, Trigger_SRSDG1_V_High_CD,&Gun_Charging_High);
 	GetCtrlVal (Trigger_panel, Trigger_SRSDG1_V_Low_CD,&Gun_Charging_Low);
 	
-	//If master cycle time is shorter than laser warmup, correct master cycle time.
-	if (Laser_Warmup >= Total_Cycle_Time)   {
-		Total_Cycle_Time=1.0+Laser_Warmup;
-		//Save this value of the cycle time to the global cycle time variable
-		Master_cycle_time=Total_Cycle_Time;
-		//set the overall cycle time to the new value
-		SetCtrlVal (Trigger_panel, Trigger_Total_Cycle,Total_Cycle_Time);
+	//Only if lasers are in use, then correct overall cycle time to account for laser warmup
+	if ( (PulsedLIFFlag) || (TSFlag) ) {	
+		//If master cycle time is shorter than laser warmup, correct master cycle time.
+		if (Laser_Warmup >= Total_Cycle_Time)   {
+			Total_Cycle_Time=1.0+Laser_Warmup;
+			//Save this value of the cycle time to the global cycle time variable
+			Master_cycle_time=Total_Cycle_Time;
+			//set the overall cycle time to the new value
+			SetCtrlVal (Trigger_panel, Trigger_Total_Cycle,Total_Cycle_Time);
+		}
 	}
-
+	
 	GetCtrlVal (Trigger_panel, Trigger_SRSDG1_ChannelE,&Astrella_Synch);
 	GetCtrlVal (Trigger_panel, Trigger_SRSDG1_ChannelF,&Astrella_Synch_Pulse_Length);
 	Astrella_Synch=Astrella_Synch/1.0E6;													//Convert from microseconds

@@ -1,3 +1,5 @@
+// Controls 96-channel photodiode system (2x ACQ2106 48channel)
+
 #include <userint.h>
 #include <utility.h>
 #include	"PHASMA_C_to_Python_convertor.h"
@@ -12,6 +14,8 @@
 #include    "HelperFunctions.h"
 
 #define STRBUFFSIZE 512U
+
+int PD_recall_from_master_conf = 0; // whether to use config settings in the master_control file or stick with what's currently in the UI
 
 int acq2106_config(char* , int , int , int, char *);
 
@@ -43,9 +47,7 @@ void PDRunPython(char * PyFunc, char ** PyArgs, int numargs)
 	
 	snprintf(command, sizeof(command), "%s conda activate %s & cd %s & %s %s %s",  
 			PD_PyShell, PD_PyEnvPath, PD_PyWdir, PD_PyCall, PD_PyScript, PyFunc);
-	
-	//strcat(command,PyArgs[0]);
-	
+
 	for (k=0; k<numargs; k++){
 		strcat(command," ");
 		strcat(command,PyArgs[k]);
@@ -56,7 +58,7 @@ void PDRunPython(char * PyFunc, char ** PyArgs, int numargs)
 	
 	if (!LaunchExecutableEx(command, LE_HIDE, &PyHandle))
 		{
-			//SetCtrlVal (panelHandle, Photodiode_CONSOLE, command);
+			//SetCtrlVal (panelHandle, Photodiode_CONSOLE, command); // TODO: should have a plaintext readout in the main screen to display output from devices, external scripts, etc
 		}
     else
 		MessagePopup ("ERROR", "Failed to launch executable!");		
@@ -87,7 +89,7 @@ int PhotodiodeActivate(){
 	char trig_source[16];
 	
 	Photodiode_panel = LoadPanel (0, "PhotodiodeSettings.uir", Photodiode);
-	//RecallPanelState (Photodiode_panel, "Master_Control_Storage_File", Photodiode_setup_state);
+	if (PD_recall_from_master_conf) RecallPanelState (Photodiode_panel, "Master_Control_Storage_File", Photodiode_setup_state);
 	
 	//Access the info from the interface
 	GetCtrlVal (Photodiode_panel, Photodiode_acq2106_1_IP,Photodiode_IP1);
@@ -129,7 +131,7 @@ int PhotodiodeArm(){
 	return 1;	// return > 0 to indicate ready
 }
 
-//configure a single ac2106
+//push configuration settings from UI to a single ac2106
 int acq2106_config( char * IP, int numsamples, int samplerate, int inZbool, char * trig_source)
 {
 	char SRstr[16] ;
@@ -163,7 +165,7 @@ void Write_PhotodiodeData(void)
 	char 		acq2nameStr[64];
 	
 	Photodiode_panel = LoadPanel (0, "PhotodiodeSettings.uir", Photodiode);
-	//RecallPanelState (Photodiode_panel, "Master_Control_Storage_File", Photodiode_setup_state);
+	if (PD_recall_from_master_conf) RecallPanelState (Photodiode_panel, "Master_Control_Storage_File", Photodiode_setup_state);
 
 	GetCtrlVal (Photodiode_panel, Photodiode_acq2106_1_IP,Photodiode_IP1);
 	GetCtrlVal (Photodiode_panel, Photodiode_acq2106_2_IP,Photodiode_IP2);	
@@ -191,7 +193,9 @@ void OpenPhotodiode_Settings (void)
 {
 	//Open settings panel and load saved values
 	Photodiode_panel = LoadPanel (0, "PhotodiodeSettings.uir", Photodiode);
-	//RecallPanelState (Photodiode_panel, "Master_Control_Storage_File", Photodiode_setup_state);
+	
+	if (PD_recall_from_master_conf) RecallPanelState (Photodiode_panel, "Master_Control_Storage_File", Photodiode_setup_state);
+	
 	DisplayPanel(Photodiode_panel);
 	
 	// Start interacting with user

@@ -8,8 +8,6 @@ int move_probe(char *, float, float, float);
 //int acq400_config(char * , char *);
 int home_probe(char *);
 
-//int Write_PhotodiodeData(void);
-
 int WritePrimesToFile(void);
 
 int command209(char *);

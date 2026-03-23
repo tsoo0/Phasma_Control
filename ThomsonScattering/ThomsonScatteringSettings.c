@@ -225,10 +225,10 @@ void ThomsonScatteringLaserControl(int simmermode)
 			//laser trigger time plus the user requested delay to optimize laser power if in regular power mode. If
 			//not, switch to simmer mode time delay. Time in seconds.
 			if (!simmermode) {
-				sprintf (rigol_string, ":SOUR1:BURS:TDEL %f\r",((Q850_InstrinsicDelay+Q850_Q_delay)/1000000.0));   
+				sprintf (rigol_string, ":SOUR1:BURS:TDEL %f\r",((Q1500_InstrinsicDelay+Q1500_Q_delay)/1000000.0));   
 				result = viWrite (Rigol_handle, (ViConstBuf)rigol_string, (unsigned int)strlen(rigol_string), VI_NULL);
 			} else {
-				sprintf (rigol_string, ":SOUR1:BURS:TDEL %f\r",((Q850_InstrinsicDelay+Q850_Simmer_delay)/1000000.0));   
+				sprintf (rigol_string, ":SOUR1:BURS:TDEL %f\r",((Q1500_InstrinsicDelay+Q1500_Simmer_delay)/1000000.0));   
 				result = viWrite (Rigol_handle, (ViConstBuf)rigol_string, (unsigned int)strlen(rigol_string), VI_NULL);
 			}	
 
@@ -838,6 +838,18 @@ void Create_McPherson_Wavelength (double Wavelength[])
 	for (j=0;j<(int)(Andor_Horiz_pixels/Andor_H_bin);j++) {
 		Wavelength[j]= ((j-(Andor_Horiz_pixels/Andor_H_bin)/2.0)*Wavelength_step+McP_Current_Wlength);		//This assumes no stretching of axis or offsets from calibration
 	}
+	
+	
+// reverse the order of the wavelength data; it's coming off the McPherson backwards - TR 3_13_26
+	double temp[(int)(Andor_Horiz_pixels/Andor_H_bin)];
+	
+	for (j=0; j < (int)(Andor_Horiz_pixels/Andor_H_bin) ; j++) {
+		temp[j] = Wavelength[(int)(Andor_Horiz_pixels/Andor_H_bin) -1 - j];	
+	}
+	for (j=0; j < (int)(Andor_Horiz_pixels/Andor_H_bin) ; j++) {
+		Wavelength[j] = temp[j];	
+	}
+	
 }
 
 

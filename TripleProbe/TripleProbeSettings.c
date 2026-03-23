@@ -6,8 +6,8 @@
 #include	<stdlib.h>
 #include 	<formatio.h>
 #include	"PHASMA-MDS-Routines.h"
-#include 	"c:\PHASMA 2025 DAQ\TripleProbe\TripleProbeSystems.h"
-#include 	"c:\PHASMA 2025 DAQ\TripleProbe\TripleProbeSettings.h"
+#include 	"TripleProbeSystems.h"
+#include 	"TripleProbeSettings.h"
 #include	"GlobalVariables.h"
 #include 	"TitanMotor.h"
 

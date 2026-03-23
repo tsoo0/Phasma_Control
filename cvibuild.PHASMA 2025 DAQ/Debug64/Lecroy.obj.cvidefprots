@@ -1,5 +1,20 @@
+[swapFloat]
+Class="Function"
+Prototype="float swapFloat(float val);"
+SourceLocation="c:\PHASMA 2025 DAQ\LeCroy Routines\Lecroy.c:33:7"
+
+[swapInt]
+Class="Function"
+Prototype="int swapInt(int val);"
+SourceLocation="c:\PHASMA 2025 DAQ\LeCroy Routines\Lecroy.c:44:5"
+
+[ReadWaveformChannel]
+Class="Function"
+Prototype="float *ReadWaveformChannel(unsigned long LC_VisaHandle, const char *channel, int *numSamples);"
+SourceLocation="c:\PHASMA 2025 DAQ\LeCroy Routines\Lecroy.c:55:8"
+
 [Lecroy]
 Class="Function"
-Prototype="void Lecroy(int Lecroy_visa_handle, int Lecroy_RecordLength, float *timestep, double Chan1[], double Chan2[], double Chan3[], double Chan4[]);"
-SourceLocation="c:\PHASMA 2025 DAQ\LeCroy Routines\Lecroy.c:7:6"
+Prototype="int Lecroy(unsigned long visa_handle, int Lecroy_RecordLength, float *timestep, float Chan1[], float Chan2[], float Chan3[], float Chan4[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\LeCroy Routines\Lecroy.c:185:5"
 

@@ -1,2 +1,2 @@
-void Lecroy(int, int, float *, double Chan1[], double Chan2[], double Chan3[], double Chan4[]);
+void Lecroy(ViSession, int, float *, float  Chan1[], float  Chan2[], float  Chan3[], float  Chan4[]);
 							 

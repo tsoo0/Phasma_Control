@@ -66,50 +66,50 @@ SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\ContLIFSettings.c:1196:6"
 [write_CLIF_data_MDS]
 Class="Function"
 Prototype="void write_CLIF_data_MDS();"
-SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\ContLIFSettings.c:1299:7"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\ContLIFSettings.c:1295:7"
 
 [CLIF_acquire]
 Class="Function"
 Prototype="void CLIF_acquire();"
-SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\ContLIFSettings.c:1322:6"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\ContLIFSettings.c:1318:6"
 
 [Laser_Shift]
 Class="Function"
 Prototype="int Laser_Shift(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\ContLIFSettings.c:1468:17"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\ContLIFSettings.c:1464:17"
 
 [Laser_Shift_Down]
 Class="Function"
 Prototype="int Laser_Shift_Down(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\ContLIFSettings.c:1495:17"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\ContLIFSettings.c:1491:17"
 
 [ContLIF_Laser_Reset]
 Class="Function"
 Prototype="void ContLIF_Laser_Reset(double wavelength);"
-SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\ContLIFSettings.c:1520:6"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\ContLIFSettings.c:1516:6"
 
 [Wavemeter_Call]
 Class="Function"
 Prototype="int Wavemeter_Call(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\ContLIFSettings.c:1541:17"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\ContLIFSettings.c:1537:17"
 
 [CLIF_Activate_Button]
 Class="Function"
 Prototype="int CLIF_Activate_Button(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\ContLIFSettings.c:1570:17"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\ContLIFSettings.c:1566:17"
 
 [XYZ_Move]
 Class="Function"
 Prototype="int XYZ_Move(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\ContLIFSettings.c:1623:17"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\ContLIFSettings.c:1627:17"
 
 [XYZ_Home]
 Class="Function"
 Prototype="int XYZ_Home(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\ContLIFSettings.c:1713:17"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\ContLIFSettings.c:1717:17"
 
 [UpdateSettings]
 Class="Function"
 Prototype="int UpdateSettings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\ContLIFSettings.c:1806:17"
+SourceLocation="c:\PHASMA 2025 DAQ\ContLIF\ContLIFSettings.c:1810:17"
 

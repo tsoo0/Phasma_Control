@@ -12,8 +12,8 @@
 #include 	<TitanMotor.h>
 
 int			DoubleProbe_panel;
-int			DoubleProbe_setup_state = 30;
-int			Double_Probe_RecordLength=8192;
+int			DoubleProbe_setup_state = 300;
+int			Double_Probe_RecordLength=256000;
 float		Double_Probe_VoltageRange=10.0;
 float		Double_Probe_TriggerLevel=1.0;
 float		Double_Probe_TimeWindow=200;
@@ -56,36 +56,56 @@ void DoubleProbeActivate(void)
 
 	if (!result) {
 		//Make sure scope is running so commands will work, but focus on stopping before reconfiguration
-		sprintf(DoubleProbe_string, "STOP\n");
+		sprintf(DoubleProbe_string, "STOP\r\n");
 		viWrite(DoubleProbeLeCroy_handle1, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
 
 		//Setup the rate, record length, trigger system, and voltage range for the LeCroy scope
-		sprintf(DoubleProbe_string, "TDIV %g\n", (Double_Probe_TimeWindow/10.0));  										//Set up timebase scaling based on target sample window and 10 divisions
+		sprintf(DoubleProbe_string, "TDIV %g\r\n", (Double_Probe_TimeWindow*1.0E-6/10.0));  										//Set up timebase scaling based on target sample window in microseconds and 10 divisions
 		viWrite(DoubleProbeLeCroy_handle1, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
-		sprintf(DoubleProbe_string, "VBS 'app.Acquisition.Horizontal.MaxSamples=%d'\n", Double_Probe_RecordLength);			// NOTE: this sets the *maximum* samples used by acquisition memory.
+		sprintf(DoubleProbe_string, "VBS 'app.Acquisition.Horizontal.MaxSamples=%d'\r\n", Double_Probe_RecordLength);			// NOTE: this sets the *maximum* samples used by acquisition memory.
 		viWrite(DoubleProbeLeCroy_handle1, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
-		
-		sprintf(DoubleProbe_string, "C1:VDIV %gV\n", Double_Probe_VoltageRange); 											//Set the voltage scale of the channel to the target value
+	
+		//Turn on all four traces
+		sprintf(DoubleProbe_string, "C1:TRA ON\r\n"); 											
 		result = viWrite(DoubleProbeLeCroy_handle1, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
-		sprintf(DoubleProbe_string, "C2:VDIV %gV\n", Double_Probe_VoltageRange);  										//Set the voltage scale of the channel to the target value
+		sprintf(DoubleProbe_string, "C2:TRA ON\r\n"); 											
 		result = viWrite(DoubleProbeLeCroy_handle1, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
-		sprintf(DoubleProbe_string, "C3:VDIV %gV\n", Double_Probe_VoltageRange); 											//Set the voltage scale of the channel to the target value
+		sprintf(DoubleProbe_string, "C3:TRA ON\r\n"); 											
 		result = viWrite(DoubleProbeLeCroy_handle1, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
-		sprintf(DoubleProbe_string, "C4:VDIV %gV\n", Double_Probe_VoltageRange);  										//Set the voltage scale of the channel to the target value
-		result = viWrite(DoubleProbeLeCroy_handle1, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
-		
-		sprintf(DoubleProbe_string, "TRSE EDGE,SR,%s\n", Double_Probe_TriggerSource);
-		viWrite(DoubleProbeLeCroy_handle1, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
-		sprintf(DoubleProbe_string, "%s:TRCP AC\n", Double_Probe_TriggerSource); 
+		sprintf(DoubleProbe_string, "C4:TRA ON\r\n"); 											
 		result = viWrite(DoubleProbeLeCroy_handle1, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
 		
-		sprintf(DoubleProbe_string, "%s:TRSL POS\n", Double_Probe_TriggerSource);
+		//Set offsets		
+		sprintf(DoubleProbe_string, "C1:OFST 0.0 V\r\n"); 											
 		result = viWrite(DoubleProbeLeCroy_handle1, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
-		sprintf(DoubleProbe_string, "%s:TRLV %gV\n", Double_Probe_TriggerSource, Double_Probe_TriggerLevel);
+		sprintf(DoubleProbe_string, "C2:OFST 0.0 V\r\n"); 											
+		result = viWrite(DoubleProbeLeCroy_handle1, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
+		sprintf(DoubleProbe_string, "C3:OFST 0.0 V\r\n"); 											
+		result = viWrite(DoubleProbeLeCroy_handle1, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
+		sprintf(DoubleProbe_string, "C4:OFST 0.0 V\r\n"); 											
+		result = viWrite(DoubleProbeLeCroy_handle1, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);		
+		
+		sprintf(DoubleProbe_string, "C1:VOLT_DIV %f V\r\n", Double_Probe_VoltageRange); 											//Set the voltage scale of the channel to the target value
+		result = viWrite(DoubleProbeLeCroy_handle1, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
+		sprintf(DoubleProbe_string, "C2:VOLT_DIV %f V\r\n", Double_Probe_VoltageRange);  										//Set the voltage scale of the channel to the target value
+		result = viWrite(DoubleProbeLeCroy_handle1, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
+		sprintf(DoubleProbe_string, "C3:VDIV %fV\r\n", Double_Probe_VoltageRange); 											//Set the voltage scale of the channel to the target value
+		result = viWrite(DoubleProbeLeCroy_handle1, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
+		sprintf(DoubleProbe_string, "C4:VDIV %fV\r\n", Double_Probe_VoltageRange);  										//Set the voltage scale of the channel to the target value
+		result = viWrite(DoubleProbeLeCroy_handle1, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
+		
+		sprintf(DoubleProbe_string, "TRSE EDGE,SR,%s\r\n", Double_Probe_TriggerSource);
+		viWrite(DoubleProbeLeCroy_handle1, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
+		sprintf(DoubleProbe_string, "%s:TRCP AC\r\n", Double_Probe_TriggerSource); 
+		result = viWrite(DoubleProbeLeCroy_handle1, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
+		
+		sprintf(DoubleProbe_string, "%s:TRSL POS\r\n", Double_Probe_TriggerSource);
+		result = viWrite(DoubleProbeLeCroy_handle1, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
+		sprintf(DoubleProbe_string, "%s:TRLV %gV\r\n", Double_Probe_TriggerSource, Double_Probe_TriggerLevel);
 		result = viWrite(DoubleProbeLeCroy_handle1, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
 
 		// Put scope back into normal trigger mode (acquiring)
-		sprintf(DoubleProbe_string, "TRMD NORM\n");
+		sprintf(DoubleProbe_string, "TRMD SINGLE\r\n");
 		result = viWrite(DoubleProbeLeCroy_handle1, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
 		
 	}
@@ -96,37 +116,56 @@ void DoubleProbeActivate(void)
 
 	if (!result) {
 		//Make sure scope is running so commands will work, but focus on stopping before reconfiguration
-		sprintf(DoubleProbe_string, "STOP\n");
+		sprintf(DoubleProbe_string, "STOP\r\n");
 		viWrite(DoubleProbeLeCroy_handle2, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
 
 		//Setup the rate, record length, trigger system, and voltage range for the LeCroy scope
-		sprintf(DoubleProbe_string, "TDIV %g\n", (Double_Probe_TimeWindow/10.0));  											//Set up timebase scaling based on target sample window and 10 divisions
+		sprintf(DoubleProbe_string, "TDIV %g\r\n", (Double_Probe_TimeWindow*1.0E-6/10.0));  										//Set up timebase scaling based on target sample window in microseconds and 10 divisions
 		viWrite(DoubleProbeLeCroy_handle2, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
-		sprintf(DoubleProbe_string, "VBS 'app.Acquisition.Horizontal.MaxSamples=%d'\n", Double_Probe_RecordLength);				// NOTE: this sets the *maximum* samples used by acquisition memory.
+		sprintf(DoubleProbe_string, "VBS 'app.Acquisition.Horizontal.MaxSamples=%d'\r\n", Double_Probe_RecordLength);			// NOTE: this sets the *maximum* samples used by acquisition memory.
 		viWrite(DoubleProbeLeCroy_handle2, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
-
-		
-		sprintf(DoubleProbe_string, "C1:VDIV %gV\n", Double_Probe_VoltageRange); 											//Set the voltage scale of the channel to the target value
+	
+		//Turn on all four traces
+		sprintf(DoubleProbe_string, "C1:TRA ON\r\n"); 											
 		result = viWrite(DoubleProbeLeCroy_handle2, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
-		sprintf(DoubleProbe_string, "C2:VDIV %gV\n", Double_Probe_VoltageRange);  										//Set the voltage scale of the channel to the target value
+		sprintf(DoubleProbe_string, "C2:TRA ON\r\n"); 											
 		result = viWrite(DoubleProbeLeCroy_handle2, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
-		sprintf(DoubleProbe_string, "C3:VDIV %gV\n", Double_Probe_VoltageRange); 											//Set the voltage scale of the channel to the target value
+		sprintf(DoubleProbe_string, "C3:TRA ON\r\n"); 											
 		result = viWrite(DoubleProbeLeCroy_handle2, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
-		sprintf(DoubleProbe_string, "C4:VDIV %gV\n", Double_Probe_VoltageRange);  										//Set the voltage scale of the channel to the target value
-		result = viWrite(DoubleProbeLeCroy_handle2, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
-		
-		sprintf(DoubleProbe_string, "TRSE EDGE,SR,%s\n", Double_Probe_TriggerSource);
-		viWrite(DoubleProbeLeCroy_handle2, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
-		sprintf(DoubleProbe_string, "%s:TRCP AC\n", Double_Probe_TriggerSource); 
+		sprintf(DoubleProbe_string, "C4:TRA ON\r\n"); 											
 		result = viWrite(DoubleProbeLeCroy_handle2, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
 		
-		sprintf(DoubleProbe_string, "%s:TRSL POS\n", Double_Probe_TriggerSource);
+		//Set offsets		
+		sprintf(DoubleProbe_string, "C1:OFST 0.0 V\r\n"); 											
 		result = viWrite(DoubleProbeLeCroy_handle2, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
-		sprintf(DoubleProbe_string, "%s:TRLV %gV\n", Double_Probe_TriggerSource, Double_Probe_TriggerLevel);
+		sprintf(DoubleProbe_string, "C2:OFST 0.0 V\r\n"); 											
+		result = viWrite(DoubleProbeLeCroy_handle2, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
+		sprintf(DoubleProbe_string, "C3:OFST 0.0 V\r\n"); 											
+		result = viWrite(DoubleProbeLeCroy_handle2, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
+		sprintf(DoubleProbe_string, "C4:OFST 0.0 V\r\n"); 											
+		result = viWrite(DoubleProbeLeCroy_handle2, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);		
+		
+		sprintf(DoubleProbe_string, "C1:VOLT_DIV %f V\r\n", Double_Probe_VoltageRange); 											//Set the voltage scale of the channel to the target value
+		result = viWrite(DoubleProbeLeCroy_handle2, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
+		sprintf(DoubleProbe_string, "C2:VOLT_DIV %f V\r\n", Double_Probe_VoltageRange);  										//Set the voltage scale of the channel to the target value
+		result = viWrite(DoubleProbeLeCroy_handle2, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
+		sprintf(DoubleProbe_string, "C3:VDIV %fV\r\n", Double_Probe_VoltageRange); 											//Set the voltage scale of the channel to the target value
+		result = viWrite(DoubleProbeLeCroy_handle2, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
+		sprintf(DoubleProbe_string, "C4:VDIV %fV\r\n", Double_Probe_VoltageRange);  										//Set the voltage scale of the channel to the target value
+		result = viWrite(DoubleProbeLeCroy_handle2, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
+		
+		sprintf(DoubleProbe_string, "TRSE EDGE,SR,%s\r\n", Double_Probe_TriggerSource);
+		viWrite(DoubleProbeLeCroy_handle2, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
+		sprintf(DoubleProbe_string, "%s:TRCP AC\r\n", Double_Probe_TriggerSource); 
+		result = viWrite(DoubleProbeLeCroy_handle2, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
+		
+		sprintf(DoubleProbe_string, "%s:TRSL POS\r\n", Double_Probe_TriggerSource);
+		result = viWrite(DoubleProbeLeCroy_handle2, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
+		sprintf(DoubleProbe_string, "%s:TRLV %gV\r\n", Double_Probe_TriggerSource, Double_Probe_TriggerLevel);
 		result = viWrite(DoubleProbeLeCroy_handle2, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
 
 		// Put scope back into normal trigger mode (acquiring)
-		sprintf(DoubleProbe_string, "TRMD NORM\n");
+		sprintf(DoubleProbe_string, "TRMD SINGLE\r\n");
 		result = viWrite(DoubleProbeLeCroy_handle2, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
 		
 	}
@@ -139,11 +178,11 @@ int DoubleProbeArm(void)
 	int		count;
 	char	DoubleProbe_string[16]="Null";
 	
-	sprintf(DoubleProbe_string, "TRMD SINGLE\n"); 			//Single Trigger Sweep
+	sprintf(DoubleProbe_string, "TRMD SINGLE\r\n"); 			//Single Trigger Sweep
 	result = viWrite (DoubleProbeLeCroy_handle1, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
 	result = viWrite (DoubleProbeLeCroy_handle2, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
 
-	return result;
+	return !result;
 }
 
 
@@ -152,30 +191,30 @@ int DoubleProbeArm(void)
 void Write_DoubleProbeData(void)
 {
 
-	char	outfilename[36];
+	char	outfilename[64];
 	FILE*	outfile;
 	int		j;
 	float 	DoubleProbe_timestep=0.0;
-	double	*DoubleProbe_Array1;
-	double	*DoubleProbe_Array2;
-	double	*DoubleProbe_Array3;
-	double	*DoubleProbe_Array4;
-	double	*DoubleProbe_Array5;
-	double	*DoubleProbe_Array6;
-	double	*DoubleProbe_Array7;
-	double	*DoubleProbe_Array8;
-	double	*timebase;
+	float	*DoubleProbe_Array1;
+	float	*DoubleProbe_Array2;
+	float	*DoubleProbe_Array3;
+	float	*DoubleProbe_Array4;
+	float	*DoubleProbe_Array5;
+	float	*DoubleProbe_Array6;
+	float	*DoubleProbe_Array7;
+	float	*DoubleProbe_Array8;
+	float	*DoubleProbe_timebase;
 		
 	//Create temporary data arrays	
-	DoubleProbe_Array1 = malloc (Double_Probe_RecordLength);
-	DoubleProbe_Array2 = malloc (Double_Probe_RecordLength);
-	DoubleProbe_Array3 = malloc (Double_Probe_RecordLength);
-	DoubleProbe_Array4 = malloc (Double_Probe_RecordLength);
-	DoubleProbe_Array5 = malloc (Double_Probe_RecordLength);
-	DoubleProbe_Array6 = malloc (Double_Probe_RecordLength);
-	DoubleProbe_Array7 = malloc (Double_Probe_RecordLength);
-	DoubleProbe_Array8 = malloc (Double_Probe_RecordLength);
-	timebase = malloc (Double_Probe_RecordLength);
+	DoubleProbe_Array1 = malloc (Double_Probe_RecordLength*sizeof(double));
+	DoubleProbe_Array2 = malloc (Double_Probe_RecordLength*sizeof(double));
+	DoubleProbe_Array3 = malloc (Double_Probe_RecordLength*sizeof(double));
+	DoubleProbe_Array4 = malloc (Double_Probe_RecordLength*sizeof(double));
+	DoubleProbe_Array5 = malloc (Double_Probe_RecordLength*sizeof(double));
+	DoubleProbe_Array6 = malloc (Double_Probe_RecordLength*sizeof(double));
+	DoubleProbe_Array7 = malloc (Double_Probe_RecordLength*sizeof(double));
+	DoubleProbe_Array8 = malloc (Double_Probe_RecordLength*sizeof(double));
+	DoubleProbe_timebase = malloc (Double_Probe_RecordLength*sizeof(double));
 	
 	//Grab data from all four channels of the oscilloscopes
 	Lecroy(DoubleProbeLeCroy_handle1, Double_Probe_RecordLength, &DoubleProbe_timestep, DoubleProbe_Array1, DoubleProbe_Array2, DoubleProbe_Array3, DoubleProbe_Array4); 
@@ -188,10 +227,10 @@ void Write_DoubleProbeData(void)
 	strcat(outfilename, "DoubleProbe.txt");
 	
 	outfile=fopen (outfilename, "w");
-	fprintf(outfile,"t, Chanel1, Channel2, Channel3,Channel4,Channel5,Channel6\n");
+	fprintf(outfile,"t, Chanel1, Channel2, Channel3,Channel4,Channel5,Channel6\r\n");
 	for (j=0;j<Double_Probe_RecordLength;j++) {
-		timebase[j]=(double)(j*DoubleProbe_timestep);
-		fprintf(outfile,"%f,%f,%f,%f,%f,%f,%f,%f,%f\n",timebase[j],DoubleProbe_Array1[j],DoubleProbe_Array2[j],DoubleProbe_Array3[j],DoubleProbe_Array4[j],DoubleProbe_Array5[j],DoubleProbe_Array6[j]);
+		DoubleProbe_timebase[j]=(double)(j*DoubleProbe_timestep);
+		fprintf(outfile,"%f,%f,%f,%f,%f,%f,%f,%f,%f\r\n",DoubleProbe_timebase[j],DoubleProbe_Array1[j],DoubleProbe_Array2[j],DoubleProbe_Array3[j],DoubleProbe_Array4[j],DoubleProbe_Array5[j],DoubleProbe_Array6[j], DoubleProbe_Array7[j], DoubleProbe_Array8[j]);
 	}
 
 	//Close Double Probe data file
@@ -205,11 +244,11 @@ void OpenDoubleProbe_Settings (void)
 {
 	//Open settings panel and load saved values
 	DoubleProbe_panel = LoadPanel (0, "DoubleProbeSettings.uir", DoublePrbe);
-	SavePanelState (DoubleProbe_panel, "Master_Control_Storage_File", DoubleProbe_setup_state);
+	RecallPanelState (DoubleProbe_panel, "Master_Control_Storage_File", DoubleProbe_setup_state);
 	DisplayPanel(DoubleProbe_panel);
 	
 	// Start interacting with user
- RunUserInterface ();
+	RunUserInterface ();
 
 }
 
@@ -221,7 +260,7 @@ int CVICALLBACK Close_DoubleProbe_Settings (int panel, int control, int event,
 		case EVENT_COMMIT:
 			//Save current state of panel and close interface
 			SavePanelState (DoubleProbe_panel, "Master_Control_Storage_File", DoubleProbe_setup_state);
-			DiscardPanel(panel);
+			DiscardPanel(DoubleProbe_panel);
 			break;
 	}
 	return 0;
