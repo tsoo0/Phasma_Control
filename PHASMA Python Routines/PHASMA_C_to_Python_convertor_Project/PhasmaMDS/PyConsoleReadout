@@ -1,0 +1,64 @@
+#define numreadsper 8U
+#define TELEM_BUFF_LEN numreadsper*256U  // amount of text that the python stdout display can hold before rolling over
+int MAX_NUMLINES = 64;
+char telem_filebuf[TELEM_BUFF_LEN];
+int count = 0;
+char pystdout_path[] = "C://PHASMA 2025 DAQ//PyStdOutBuffer.txt";
+long telempos=0;
+int CVICALLBACK PyUpdateTelemetry (int panel, int control, int event,
+								 void *callbackData, int eventData1, int eventData2)
+{
+	
+	static FILE * fptr;
+	fptr = fopen(pystdout_path,"r");
+	int tabhandle;
+	int is_same;
+	int live_update_toggle = 0;
+	char* retval;
+	char prev[64];
+	int numlines=0;
+	GetPanelHandleFromTabPage(panel,MasterCont_Telemetry_Tabs,0,&tabhandle);
+	
+	GetCtrlVal(panel,MasterCont_Telemetry_Update_Togg, &live_update_toggle);
+	
+	if (live_update_toggle == 1)
+	{
+		
+		switch (event)
+		{
+			case EVENT_COMMIT:
+			case EVENT_TIMER_TICK:
+				
+				fseek(fptr, telempos, SEEK_CUR);
+					
+				for (count = 0; count < numreadsper; count++) {
+					retval = fgets(telem_filebuf,sizeof(telem_filebuf), fptr) ;
+					if (retval != NULL) {
+						if (!strncmp(retval,"donezo",6)) {
+							clear_telem_filebuffer();
+							return 0;
+						};
+						
+						
+						SetCtrlVal(tabhandle, TABPANEL_TELEMETRY_TEXTBOX,telem_filebuf);
+					}
+				}
+				
+				GetNumTextBoxLines(tabhandle,TABPANEL_TELEMETRY_TEXTBOX,&numlines);
+				if (numlines > MAX_NUMLINES) DeleteTextBoxLine(tabhandle,TABPANEL_TELEMETRY_TEXTBOX,numreadsper); // delete the first displayed line if the line limit is exceeded
+				
+				telempos = ftell(fptr);
+				break;
+		}
+	}
+	return 0;
+}
+
+void clear_telem_filebuffer(void)
+{
+	FILE *fptr;
+	//fclose(fptr);
+	fptr = fopen(pystdout_path,"w");
+	fclose(fptr);
+}
+
