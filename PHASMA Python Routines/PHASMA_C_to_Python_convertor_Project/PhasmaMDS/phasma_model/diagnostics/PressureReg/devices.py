@@ -1,17 +1,20 @@
-from .base import setup_base
+from ...device_classes.base import setup_base
 
 class pressure_regulator(setup_base):
     
-    def __init__(self,  name_mds, name_local, diagnostic, grouping, tag, description):
-        super().__init__(name_mds, name_local, diagnostic, grouping, tag, description)
+    def __init__(self,  name_mds, name_local, diagnostic='', grouping="PHASMA", tag='', description=''):
+        super().__init__(name_mds, name_local, diagnostic='', grouping="PHASMA", tag='', description='')
     
         fields=[
-            "P_SET",
-            "P_MEAS"]
+            "PRESS_SET",
+            "PRESS_MEAS"]
     
         chd={}
         [chd.update({i:chstr}) for i,chstr in enumerate(fields)]
         self.field_names = chd
+        
+        self.grouping = "PHASMA"
+        
     
     def write_dummy_local(self, destdir,shot=1,length=1):
         import pandas as pd
@@ -29,12 +32,12 @@ class pressure_regulator(setup_base):
         # dat = [self.field_names.values for field in self.fields]
         
 p_reg = pressure_regulator(
-    name_mds = "PRESSURE",
-    name_local = "idk",
+    name_mds = "PressureReg",
+    name_local = "PressureReg.text",
     diagnostic = "PRESSURE",
-    grouping = "ENG",
     tag = "PRS"
     
     )
 
 HWdevices = [p_reg]
+

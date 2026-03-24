@@ -2,8 +2,6 @@ from .devices import HWdevices
 
 tag = "TRG"
 
-grouping = "SETUP"
+grouping = "PHASMA"
 
 diagnostic = HWdevices[0].field_names
-
-setup = HWdevices[0].field_names

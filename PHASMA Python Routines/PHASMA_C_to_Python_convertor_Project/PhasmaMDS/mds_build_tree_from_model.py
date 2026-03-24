@@ -14,7 +14,9 @@ sys.path.append(r'C:\PHASMA 2025 DAQ\PHASMA Python Routines\PHASMA_C_to_Python_c
 
 from phasma_model.phasma_devices import devdict
 
-excludediag = ['PulsedLIF']
+phasmadiags = [d for d in list(devdict.keys()) if devdict.get(d).grouping == "PHASMA" ]
+
+excludediag = ['PulsedLIF','new_device_template']
 excludestr = ['name_mds', 'num_channels', 'diagnostic', 'channel_prefix', 'channel_names','tag','write_dummy_local']
 
 """
@@ -48,13 +50,14 @@ Creates an MDS model tree with the format:
 """
 
 import mdsthin as mds
+from functions import tcl_write_print
+# %%
+
 
 treename = 'phasma2025'
 # treename = 'phasma_testo'
 # c = mds.Connection('127.0.0.1:8000')
 c = mds.Connection('127.0.0.1:57800')
-
-# %%
 
 print(c.tcl(f'edit {treename}/new'))
         
@@ -72,7 +75,7 @@ for diagname in devdict.keys():
         
         c.tcl(f'add node .{diagname}')
         
-        c.tcl(f"add tag .{diagname} {newdiag.channel_map.tag}")
+        c.tcl(f"add tag .{diagname} {newdiag.diag_def.tag}")
         
         c.tcl(f"set default .{diagname}")
         
@@ -80,10 +83,10 @@ for diagname in devdict.keys():
         c.tcl("add node .DATA")
         c.tcl("set default .DATA")
         
-        for n,chname in enumerate (newdiag.channel_map.diagnostic.values()): 
+        for n,chname in enumerate (newdiag.diag_def.diagnostic.values()): 
             newname = f"{chname}"
             c.tcl(f"add node .{newname}/usage=signal")
-            c.tcl(f"add tag .{newname} {newdiag.channel_map.tag}{n}")
+            c.tcl(f"add tag .{newname} {newdiag.diag_def.tag}{n}")
         
         c.tcl("set def .-")
     
@@ -91,25 +94,35 @@ for diagname in devdict.keys():
         c.tcl("add node .DEVICES")
         c.tcl("set def .DEVICES")
         
-        HWdevs = devdict[diagname].channel_map.HWdevices
+        HWdevs = devdict[diagname].diag_def.HWdevices
         
         for HW in HWdevs:
             
-            print(c.tcl(f"add node .{HW.name_mds}"))
-            print(c.tcl(f"set def .{HW.name_mds}") )   
+            tcl_write_print(c,f"add node .{HW.name_mds}")
+            tcl_write_print(c,f"set def .{HW.name_mds}")  
         
             metastrs=list(filter(lambda a: not a.startswith("__") and a not in excludestr, dir(HW))) # strip out non-relevant fields
 
             for metastr in metastrs:
                 param = getattr(HW,metastr)
                 if type(param) == str:
-                
+                    print(param)
                     c.tcl(f"add node .{metastr}/usage=text")
                     
+                    # if ' ' in param:
+
+                    arg = f"put {metastr} \"'{param}'\"" # strings containing spaces need to be wrapped with
+                                                              # "' to be as interpreted as literals
+                        
+                    # else:
+                    #     arg = f"put .{metastr} {param}"
+                    tcl_write_print(c,arg)
+
+                
                 elif type(param) == int or type(param) == float:
                     c.tcl(f"add node .{metastr}/usage=numeric")
-                    
-                print(c.tcl(f"put .{metastr} {param}"))   
+                    tcl_write_print(c,f"put .{metastr} {param}")
+                 
                     
             c.tcl(f"set def \TOP:{root}.{diagname}.DEVICES")
 
@@ -117,11 +130,11 @@ for diagname in devdict.keys():
         
         # add SETUP node, if applicable
        
-        if ("setup" in dir(newdiag.channel_map)):
+        if ("setup" in dir(newdiag.diag_def)):
             c.tcl("add node .SETUP")
             c.tcl("set default .SETUP")
     
-            field_names = newdiag.channel_map.setup.values()
+            field_names = newdiag.diag_def.setup.values()
         
             for n,fieldname in enumerate(field_names):
             
@@ -136,18 +149,19 @@ for diagname in devdict.keys():
             
             
             
-        if ("position" in dir(newdiag.channel_map)):   # Create position subtree, if it's in channel_map
+        if ("position" in dir(newdiag.diag_def)):   # Create position subtree, if it's in diag_def
             
             c.tcl("add node .POSITION")
             c.tcl("set def .POSITION") 
            
-            metastrs=list(filter(lambda a: not a.startswith("__") and a not in excludestr, newdiag.channel_map.position.values())) # strip out non-relevant fields
+            metastrs=list(filter(lambda a: not a.startswith("__") and a not in excludestr, newdiag.diag_def.position.values())) # strip out non-relevant fields
         
-            for n,fieldname in enumerate(newdiag.channel_map.position.values()):
+            for n,fieldname in enumerate(newdiag.diag_def.position.values()):
                 
                 
                 try:
-                    print(c.tcl(f"add node .{fieldname}/usage=numeric"))
+                   
+                    tcl_write_print(c,f"add node .{fieldname}/usage=numeric")
                     c.tcl(f"add tag .{fieldname} {fieldname}")
                 except:
                     print(f"skipping {root}.{diagname}.POSITION.{fieldname}")
@@ -160,14 +174,38 @@ c.tcl("set def \TOP")
 c.tcl(f"add node .{root}")
 c.tcl(f"add tag .{root} PHASMA")
 
-c.tcl("set default .PHASMA")
 
-c.tcl("add node .MAGNETS")
-c.tcl("add node .PRESSURE")
-  
+for diagname in phasmadiags:
+    
+    newdiag = devdict.get(diagname)
+    
+    c.tcl(f"set default \TOP:{root}")
+    
+    c.tcl(f'add node .{diagname}')
+    
+    c.tcl(f"add tag .{diagname} {newdiag.diag_def.tag}")
+    
+    c.tcl(f"set default .{diagname}")
+    
+
+      
+    field_names = list(devdict.get(diagname).diag_def.diagnostic.values())
+
+    for n,fieldname in enumerate(field_names):
+    
+        try:
+            
+            c.tcl(f"add node .{fieldname}/usage=numeric")
+            c.tcl(f"add tag .{fieldname} {fieldname}")
+        except:
+            print(f"skipping {root}.{diagname}.SETUP.{fieldname}")
+            continue
+            
+
+              
 
 
 c.tcl("write")
-c.tcl("close")
+c.tcl("close/confirm")
 
 

@@ -16,7 +16,7 @@ Project 0001 Folder Instrument Files Collapsed = True
 Project 0001 FolderId 4 Collapsed = True
 Drag Bar Left = 387
 Window Top = 59
-Window Left = 1283
+Window Left = 1762
 Window Bottom = 2139
 Window Right = 3739
 Maximized = False
@@ -32,7 +32,7 @@ Save Changes Before Compiling = "Always"
 Hide Windows = False
 Break At First Statement = False
 Sort Type = "File Name"
-Number of Opened Files = 2
+Number of Opened Files = 5
 Window Confinement Region Enabled = True
 MainColumnWidth = 370
 FileDateColumnWidth = 70
@@ -117,11 +117,12 @@ Path = "/c/PHASMA 2025 DAQ/QuantumBeat/QBSSettings.c"
 File Type = "CSource"
 Disk Date = 3856164352
 In Projects = "1,"
-Source Window State = "1,149,149,149,34,34,34,0,0,0,0,0,0,0,0,0,115,0,149,34,401,833,1,0,"
+Source Window State = "1,149,149,149,34,34,34,0,0,0,0,0,0,0,0,0,2,0,149,34,401,833,1,0,"
 Breakpoint 0001 = "140,0,enabled,"
 Tracepoint 0001 = "0,0,141,1,"
 Window Top = 126
 Window Left = 58
+Window Z-Order = 2
 
 [File 0010]
 Path = "/c/PHASMA 2025 DAQ/TitanProbeMotors/TitanMotor.c"
@@ -190,10 +191,10 @@ Path = "/c/PHASMA 2025 DAQ/MasterControlLoop.c"
 File Type = "CSource"
 Disk Date = 3856164508
 In Projects = "1,"
-Source Window State = "1,1466,1466,1466,1,1,1,0,0,0,0,0,0,0,0,0,1448,0,1466,1,401,861,1,0,"
+Source Window State = "1,1454,1454,1454,71,71,71,0,0,0,0,0,0,0,0,0,1448,0,1454,71,401,861,1,0,"
 Window Top = 33
 Window Left = 10
-Window Z-Order = 1
+Window Z-Order = 4
 
 [File 0016]
 Path = "/c/PHASMA 2025 DAQ/ContLIF/ContLIFSettings.c"
@@ -1112,7 +1113,7 @@ In Projects = "1,"
 Source Window State = "1,188,188,188,0,0,0,0,0,0,0,0,0,0,0,0,105,0,188,0,401,714,1,0,"
 Window Top = 33
 Window Left = 10
-Window Z-Order = 2
+Window Z-Order = 5
 
 [File 0117]
 Path = "/c/PHASMA 2025 DAQ/PlasmaGun/PlasmaGunSettings.c"
@@ -1131,6 +1132,7 @@ In Projects = "1,"
 Source Window State = "1,526,526,526,55,55,55,0,0,0,0,0,0,0,0,0,493,0,526,55,401,630,1,0,"
 Window Top = 33
 Window Left = 10
+Window Z-Order = 3
 
 [File 0119]
 Path = "/c/PHASMA 2025 DAQ/RFEA/RFEASettings.c"
@@ -1146,9 +1148,10 @@ Path = "/c/PHASMA 2025 DAQ/Rigol Routines/Rigol.c"
 File Type = "CSource"
 Disk Date = 3854457442
 In Projects = "1,"
-Source Window State = "1,9,9,9,4,4,4,0,0,0,0,0,0,0,0,0,1,0,9,4,401,840,1,0,"
+Source Window State = "1,23,23,23,0,0,0,0,0,0,0,0,0,0,0,0,1,0,23,0,401,840,1,0,"
 Window Top = 126
 Window Left = 58
+Window Z-Order = 1
 
 [File 0121]
 Path = "/c/PHASMA 2025 DAQ/Housekeeping/setup_4244.c"
@@ -1273,6 +1276,9 @@ In Projects = "1,"
 [Tab Order]
 Tab 0001 = "/c/PHASMA 2025 DAQ/MasterControlLoop.c"
 Tab 0002 = "/c/PHASMA 2025 DAQ/Photodiodes/PhotodiodeSettings.c"
+Tab 0003 = "/c/PHASMA 2025 DAQ/PulsedLIF/PLIFSettings.c"
+Tab 0004 = "/c/PHASMA 2025 DAQ/QuantumBeat/QBSSettings.c"
+Tab 0005 = "/c/PHASMA 2025 DAQ/Rigol Routines/Rigol.c"
 
 [Default Build Config 0001 Debug]
 Generate Browse Info = True

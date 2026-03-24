@@ -1,6 +1,6 @@
 from ...device_classes.Joerger import Joerger
 
-diagnostic = "MAGNETICS"
+diagnostic = "BDOT"
 devtag = "MAG"
 devgroup = "DATA"
 

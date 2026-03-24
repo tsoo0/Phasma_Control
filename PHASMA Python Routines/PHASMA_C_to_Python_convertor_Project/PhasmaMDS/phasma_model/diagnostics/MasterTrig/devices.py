@@ -2,11 +2,11 @@ from ...device_classes.MasterTrigger import MasterTriggerConfig
 
 
 times = MasterTriggerConfig(
-    name_mds = "MASTER_TRIG",
+    name_mds = "MasterTrig",
     name_local = "MasterTrigger",
-    diagnostic = 'MASTER_TRIG',
+    diagnostic = 'MasterTrig',
     description='Trigger delays and offset information for guns, lasers, etc',
-    grouping = 'SETUP', 
+    grouping = 'PHASMA', 
     tag = 'TRG'
     
     

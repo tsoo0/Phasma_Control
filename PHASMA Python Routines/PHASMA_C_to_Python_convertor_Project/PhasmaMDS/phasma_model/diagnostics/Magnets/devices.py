@@ -1,17 +1,20 @@
-from .base import setup_base
+from ...device_classes.base import setup_base
 
-class pressure_regulator(setup_base):
+class magnetic_field(setup_base):
     
-    def __init__(self,  name_mds, name_local, diagnostic, grouping, tag, description):
-        super().__init__(name_mds, name_local, diagnostic, grouping, tag, description)
+    def __init__(self,  name_mds, name_local, diagnostic='', grouping="SETUP", tag='', description=''):
+        super().__init__(name_mds, name_local, diagnostic='', grouping="SETUP", tag='', description='')
     
         fields=[
-            "P_SET",
-            "P_MEAS"]
+            "I_coil",
+            "otherstuff"]
     
         chd={}
         [chd.update({i:chstr}) for i,chstr in enumerate(fields)]
         self.field_names = chd
+        
+        self.grouping = "PHASMA"
+        
     
     def write_dummy_local(self, destdir,shot=1,length=1):
         import pandas as pd
@@ -26,15 +29,13 @@ class pressure_regulator(setup_base):
         
         df.to_csv(f"{destdir}/{testfid}",sep=',',header=colnames, index= False,float_format="%.3f")
         
-        # dat = [self.field_names.values for field in self.fields]
-        
-p_reg = pressure_regulator(
-    name_mds = "PRESSURE",
-    name_local = "idk",
-    diagnostic = "PRESSURE",
-    grouping = "ENG",
-    tag = "PRS"
+     
+mag_field = magnetic_field(
+    
+    name_mds = "MAGNETS",
+    name_local = "Bfield",
     
     )
 
-HWdevices = [p_reg]
+
+HWdevices = [mag_field]

@@ -10,7 +10,7 @@ scopechmap = {
     }
 
 andorchmap = {
-    1:"ANDOR_WAVELEN",
+    1:"ANDOR_WAVELN",
     2:"ANDOR_IMG1",
     3:"ANDOR_IMG2",
     }
