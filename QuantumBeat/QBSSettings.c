@@ -103,13 +103,15 @@ int CVICALLBACK QBS_XYZ_Move (int panel, int control, int event,
 	char	send_string[30]=" ";
 	int		result;
 	int		count;
-	int		X_steps;
-	int		Y_steps;
-	int		Z_steps;
-	float	x_not=0;
-	float	y_not=0;
-	float	z_not=0;
-	int		last_steps=0; 					//Storage place for last value of steps moved
+	int		QBS_X_steps;
+	int		QBS_Y_steps;
+	int		QBS_Z_steps;
+	float	QBS_X_Current;
+	float	QBS_Y_Current;
+	float	QBS_Z_Current;
+	float	QBS_X_Target;
+	float	QBS_Y_Target;
+	float	QBS_Z_Target;
 	char	QBS_Xcom[30];
 	char	QBS_Ycom[30];
 	char	QBS_Zcom[30];
@@ -127,62 +129,53 @@ int CVICALLBACK QBS_XYZ_Move (int panel, int control, int event,
 			GetCtrlVal (QBS_panel, QBS_Y_COM,QBS_Ycom);
 			GetCtrlVal (QBS_panel, QBS_Z_COM,QBS_Zcom);
 
-			//Get target position
-			GetCtrlVal (QBS_panel, QBS_X_Target,&x_not);
-			GetCtrlVal (QBS_panel, QBS_Y_Target,&y_not);
-			GetCtrlVal (QBS_panel, QBS_Z_Target,&z_not);
-
-	
-			//Open Visa session 
-			//result = viOpenDefaultRM (&Motion_visa_handle);
-	
 			//Open Visa link to XYZ stages
 			result=viOpen (Global_Visa_Session_Handle, QBS_Xcom, VI_NULL, VI_NULL, &X_stage_handle);
 			result=viOpen (Global_Visa_Session_Handle, QBS_Ycom, VI_NULL, VI_NULL, &Y_stage_handle);
 			result=viOpen (Global_Visa_Session_Handle, QBS_Zcom, VI_NULL, VI_NULL, &Z_stage_handle);
 			
+			//Get current positions
+			GetCtrlVal (QBS_panel, QBS_X_current,&QBS_X_Current);
+			GetCtrlVal (QBS_panel, QBS_Y_current,&QBS_Y_Current);
+			GetCtrlVal (QBS_panel, QBS_Z_current,&QBS_Z_Current);
+			
+			//Get target positions
+			GetCtrlVal (QBS_panel, QBS_X_target,&QBS_X_Target);
+			GetCtrlVal (QBS_panel, QBS_Y_target,&QBS_Y_Target);
+			GetCtrlVal (QBS_panel, QBS_Z_target,&QBS_Z_Target);
+			
 			//Enable the stages
 			sprintf (send_string,"DE=1\r\n");
-			result = viWrite (X_stage_handle, send_string, strlen(send_string), &count);
-			result = viWrite (Y_stage_handle, send_string, strlen(send_string), &count);
-			result = viWrite (Z_stage_handle, send_string, strlen(send_string), &count);
+			result = viWrite (X_stage_handle, send_string, (ViUInt32)strlen(send_string), &count);
+			result = viWrite (Y_stage_handle, send_string, (ViUInt32)strlen(send_string), &count);
+			result = viWrite (Z_stage_handle, send_string, (ViUInt32)strlen(send_string), &count);
 
-			//Calculate move steps
-			X_steps=(int)(x_not/Step_to_cm);
-			Y_steps=(int)(y_not/Step_to_cm);
-			Z_steps=(int)(z_not/Step_to_cm);
+			//Calculate move steps in absolute units
+			QBS_X_steps=(int)((QBS_X_Target-QBS_X_Current)/Step_to_cm);
+			QBS_Y_steps=(int)((QBS_Y_Target-QBS_Y_Current)/Step_to_cm);
+			QBS_Z_steps=(int)((QBS_Z_Target-QBS_Z_Current)/Step_to_cm);
 	
 			//Move x stage with a relative move
-			sprintf (send_string,"MR %d\r\n",X_steps);
-			result = viWrite (X_stage_handle, send_string, strlen(send_string), &count);
+			sprintf (send_string,"MR %d\r\n",QBS_X_steps);
+			result = viWrite (X_stage_handle, (ViConstBuf)send_string, (ViUInt32)strlen(send_string), &count);
  	
 			//Move y stage with a relative move
-			sprintf (send_string,"MR %d\r\n",Y_steps);
-			result = viWrite (Y_stage_handle, send_string, strlen(send_string), &count);
+			sprintf (send_string,"MR %d\r\n",QBS_Y_steps);
+			result = viWrite (Y_stage_handle, (ViConstBuf)send_string, (ViUInt32)strlen(send_string), &count);
 	
 			//Move z stage with a relative move if in that mode
-			sprintf (send_string,"MR %d\r\n",Z_steps);
-			result = viWrite (Z_stage_handle, send_string, strlen(send_string), &count);
-	
-			//Hold progam from advancing while stage moves based on largest travel
-			if ((fabs(X_steps) > fabs(Y_steps)) && (fabs(X_steps) > fabs(Z_steps))) {
-				Delay(fabs((X_steps-last_steps)*Step_to_cm/2));
-				last_steps=X_steps;
-			} else {
-				if (fabs(Y_steps) > fabs(Z_steps)) {
-					Delay(fabs((Y_steps-last_steps)*Step_to_cm/2));
-					last_steps=Y_steps;
-				} else {
-					Delay(fabs((Z_steps-last_steps)*Step_to_cm/2));
-					last_steps=Z_steps;
-				}	
-			}
-
+			sprintf (send_string,"MR %d\r\n",QBS_Z_steps);
+			result = viWrite (Z_stage_handle, (ViConstBuf)send_string, (ViUInt32)strlen(send_string), &count);
+			
+			//Set current positions
+			SetCtrlVal (QBS_panel, QBS_X_current,QBS_X_Target);
+			SetCtrlVal (QBS_panel, QBS_Y_current,QBS_Y_Target);
+			SetCtrlVal (QBS_panel, QBS_Z_current,QBS_Z_Target);
+			
 			//Close the ports to each motion drive
 			result=viClose (X_stage_handle);
 			result=viClose (Y_stage_handle);
 			result=viClose (Z_stage_handle);
-
 			
 			break;
 		}

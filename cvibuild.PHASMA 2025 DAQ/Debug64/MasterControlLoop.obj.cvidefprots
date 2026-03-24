@@ -276,60 +276,60 @@ SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1160:17"
 [LaserSimmerMode]
 Class="Function"
 Prototype="int LaserSimmerMode(int mode);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1187:6"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1189:6"
 
 [Advance_Single_Cycle]
 Class="Function"
 Prototype="int Advance_Single_Cycle();"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1204:6"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1206:6"
 
 [Start_Single_Cycle]
 Class="Function"
 Prototype="int Start_Single_Cycle();"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1227:6"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1229:6"
 
 [Complete_Single_Cycle]
 Class="Function"
 Prototype="int Complete_Single_Cycle();"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1298:6"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1300:6"
 
 [Repeat_Cycle]
 Class="Function"
 Prototype="void Repeat_Cycle();"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1400:6"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1402:6"
 
 [main]
 Class="Function"
 Prototype="void main();"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1469:7"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1471:7"
 
 [countdown_timer]
 Class="Function"
 Prototype="int countdown_timer(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1541:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1543:17"
 
 [SetMasterClock]
 Class="Function"
 Prototype="int SetMasterClock(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1586:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1588:17"
 
 [manual_disarm_all]
 Class="Function"
 Prototype="int manual_disarm_all(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1600:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1602:17"
 
 [toggle_push_to_mds]
 Class="Function"
 Prototype="int toggle_push_to_mds(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1615:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1617:17"
 
 [PyUpdateHandleStatus]
 Class="Function"
 Prototype="int PyUpdateHandleStatus(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1627:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1629:17"
 
 [GETONTWITHIT]
 Class="Function"
 Prototype="int GETONTWITHIT(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1652:17"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterControlLoop.c:1654:17"
 

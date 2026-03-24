@@ -42,7 +42,7 @@ int		TemporaryDiagDataFlag=0;
 
 
 void	Repeat_Cycle (void);
-
+void clear_telem_filebuffer(void); 
 
 /*********************************************************************************************************
 *	Here are all the callback functions from the Main Control Loop Panel that determine if a particular 

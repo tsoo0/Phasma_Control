@@ -14,18 +14,18 @@
      /* Panels and Controls: */
 
 #define  QBS                              1
-#define  QBS_Z_Target                     2       /* control type: numeric, callback function: (none) */
-#define  QBS_Y_Target                     3       /* control type: numeric, callback function: (none) */
+#define  QBS_Z_target                     2       /* control type: numeric, callback function: (none) */
+#define  QBS_Y_target                     3       /* control type: numeric, callback function: (none) */
 #define  QBS_Z_Offset                     4       /* control type: numeric, callback function: (none) */
-#define  QBS_Z_Current                    5       /* control type: numeric, callback function: (none) */
+#define  QBS_Z_current                    5       /* control type: numeric, callback function: (none) */
 #define  QBS_Z_COM                        6       /* control type: ring, callback function: (none) */
 #define  QBS_Y_COM                        7       /* control type: ring, callback function: (none) */
 #define  QBS_X_COM                        8       /* control type: ring, callback function: (none) */
-#define  QBS_X_Target                     9       /* control type: numeric, callback function: (none) */
+#define  QBS_X_target                     9       /* control type: numeric, callback function: (none) */
 #define  QBS_Y_Offset                     10      /* control type: numeric, callback function: (none) */
-#define  QBS_Y_Current                    11      /* control type: numeric, callback function: (none) */
+#define  QBS_Y_current                    11      /* control type: numeric, callback function: (none) */
 #define  QBS_X_Offset                     12      /* control type: numeric, callback function: (none) */
-#define  QBS_X_Current                    13      /* control type: numeric, callback function: (none) */
+#define  QBS_X_current                    13      /* control type: numeric, callback function: (none) */
 #define  QBS_MOVETOTARGETLOCATION         14      /* control type: command, callback function: QBS_XYZ_Move */
 #define  QBS_CLOSEQBSSYSTEM               15      /* control type: command, callback function: Close_QBS_Settings */
 #define  QBS_Chan1QBSName                 16      /* control type: string, callback function: (none) */

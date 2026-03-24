@@ -35,7 +35,7 @@ void VTR10012_RESET(ViSession instrument_handle, ViUInt32 Base_address)
 	if ( viOut16 (instrument_handle, VI_A16_SPACE, Total_address, 0) )
 	{
 		printf("Unable to reset VTR10012 module\n");
-		exit (0);
+		//exit (0);
 	}
 }
 
@@ -51,7 +51,7 @@ void VTR10012_READ_ID(ViSession instrument_handle, ViUInt32 Base_address, int *R
 	if ( viIn16 (instrument_handle, VI_A16_SPACE, Total_address, &Register_value) )
 	{
 		printf("Unable to read VTR10012 module ID register\n");
-		exit (0);
+		//exit (0);
 	}
 	*Reg_value=Register_value;
 }
@@ -70,7 +70,7 @@ void VTR10012_SET_A32_ADDRESS(ViSession instrument_handle,ViUInt32 Base_address,
 	if ( viOut16 (instrument_handle, VI_A16_SPACE, Total_address, (ViUInt16)address) )
 	{
 		printf("Unable to setup A32 base address on VTR10012 module\n");
-		exit (0);
+		//exit (0);
 	}
 }
 
@@ -106,7 +106,7 @@ void VTR10012_SET_CLOCK(ViSession instrument_handle, ViUInt32 Base_address, int 
 	if ( viOut16 (instrument_handle, VI_A16_SPACE, Total_address, (ViUInt16)Rate) )
 	{
 		printf("Unable to set VTR10012 digitation rate\n");
-		exit (0);
+		//exit (0);
 	}
 }
 
@@ -124,7 +124,7 @@ void VTR10012_SET_TRIGGER(ViSession instrument_handle, ViUInt32 Base_address)
 	if ( viOut16 (instrument_handle, VI_A16_SPACE, Total_address, 0x1F) )
 	{
 		printf("Unable to setup trigger state on VTR10012 module\n");
-		exit (0);
+		//exit (0);
 	}
 
 
@@ -136,7 +136,7 @@ void VTR10012_SET_TRIGGER(ViSession instrument_handle, ViUInt32 Base_address)
 	if ( viOut16 (instrument_handle, VI_A16_SPACE, Total_address, 0x0) )
 	{
 		printf("Unable to setup threshold comparator state on VTR10012 module\n");
-		exit (0);
+		//exit (0);
 	}
 	
 	//Create total address and then write to Trigger Delay register to set delat from trigger to zero
@@ -145,7 +145,7 @@ void VTR10012_SET_TRIGGER(ViSession instrument_handle, ViUInt32 Base_address)
 	if ( viOut16 (instrument_handle, VI_A16_SPACE, Total_address, 0x0) )
 	{
 		printf("Unable to setup trigger delay register on VTR10012 module\n");
-		exit (0);
+		//exit (0);
 	}
 }
 
@@ -167,7 +167,7 @@ void VTR10012_SET_RECORD_LENGTH(ViSession instrument_handle, ViUInt32 Base_addre
 		if ( viOut16 (instrument_handle, VI_A16_SPACE, Total_address, 131071) )
 		{
 			printf("Unable to set high byte on gate duration register on VTR10012 module\n");
-			exit (0);
+			//exit (0);
 		}
 		
 		//Create total address for low byte and then write to gate duration register to setup record length
@@ -179,7 +179,7 @@ void VTR10012_SET_RECORD_LENGTH(ViSession instrument_handle, ViUInt32 Base_addre
 		if ( viOut16 (instrument_handle, VI_A16_SPACE, Total_address, (ViUInt16)samples) )
 		{
 			printf("Unable to set low byte on gate duration register on VTR10012 module\n");
-			exit (0);
+			//exit (0);
 		}
 	}
 	else {
@@ -206,7 +206,7 @@ void VTR10012_SET_RECORD_LENGTH(ViSession instrument_handle, ViUInt32 Base_addre
 		if ( viOut16 (instrument_handle, VI_A16_SPACE, Total_address,(ViUInt16)samples)  )
 		{
 			printf("Unable to set high byte on gate duration register on VTR10012 module\n");
-			exit (0);
+			//exit (0);
 		}
 		
 		//Create total address for low byte and then write to gate duration register to setup record length
@@ -217,7 +217,7 @@ void VTR10012_SET_RECORD_LENGTH(ViSession instrument_handle, ViUInt32 Base_addre
 		if ( viOut16 (instrument_handle, VI_A16_SPACE, Total_address, (ViUInt16)lower_samples) )
 		{
 			printf("Unable to set low byte on gate duration register on VTR10012 module\n");
-			exit (0);
+			//exit (0);
 		}
 	}
 }
@@ -234,7 +234,7 @@ void VTR10012_RESET_MEM_COUNTER(ViSession instrument_handle, ViUInt32 Base_addre
 	if ( viOut16 (instrument_handle, VI_A16_SPACE, Total_address, 0) )
 	{
 		printf("Unable to reset memory counter register for VTR10012 module\n");
-		exit (0);
+		//exit (0);
 	}
 }
 
@@ -252,7 +252,7 @@ void VTR10012_READ_STATUS(ViSession instrument_handle, ViUInt32 Base_address, in
 	if ( viIn16 (instrument_handle, VI_A16_SPACE, Total_address, &Register_value)  )
 	{
 		printf("Unable to read VTR10012 module status register\n");
-		exit (0);
+		//exit (0);
 	}
 	*Reg_value=Register_value;
 }
@@ -271,7 +271,7 @@ void VTR10012_ARM(ViSession instrument_handle, ViUInt32 Base_address)
 	if ( viOut16 (instrument_handle, VI_A16_SPACE, Total_address, 0)  )
 	{
 		printf("Unable to arm VTR10012 module\n");
-		exit (0);
+		//exit (0);
 	}
 }
 
@@ -287,7 +287,7 @@ void VTR10012_DISARM(ViSession instrument_handle, ViUInt32 Base_address)
 	if ( viOut16 (instrument_handle, VI_A16_SPACE, Total_address, 0)  )
 	{
 		printf("Unable to disarm VTR10012 module\n");
-		exit (0);
+		//exit (0);
 	}
 	//Create total address and then write to instrument clearing IRQ source register
 	//Total_address=Base_address+0x16; //Add offset of 0x16 for clearing IRQ source register
@@ -296,7 +296,7 @@ void VTR10012_DISARM(ViSession instrument_handle, ViUInt32 Base_address)
 	if ( viOut16 (instrument_handle, VI_A16_SPACE, Total_address, 0)  )
 	{
 		printf("Unable to reset IRQ status for VTR10012 module\n");
-		exit (0);
+		//exit (0);
 	}
 }
 
@@ -313,7 +313,7 @@ void VTR10012_SOFTWARE_TRIGGER(ViSession instrument_handle, ViUInt32 Base_addres
 	if ( viOut16 (instrument_handle, VI_A16_SPACE, Total_address, 0))
 	{
 		printf("Unable to trigger VTR10012 module via software\n");
-		exit (0);
+		//exit (0);
 	}
 }
 
@@ -354,7 +354,7 @@ void VTR10012_READ_A32_ADDRESS(ViSession instrument_handle, ViUInt32 Base_addres
 	if ( viIn16 (instrument_handle, VI_A16_SPACE, Total_address, &Register_value) )   //Read as a single byte
 	{
 		printf("Unable to read A32 base address from VTR10012 module\n");
-		exit (0);
+		//exit (0);
 	}
 	*address=Register_value;
 }
@@ -373,7 +373,7 @@ void VTR10012_READ_CLOCK(ViSession instrument_handle, ViUInt32 Base_address, int
 	if ( viIn16 (instrument_handle, VI_A16_SPACE, Total_address, &Register_value)  )
 	{
 		printf("Unable to read VTR10012 digitation rate\n");
-		exit (0);
+		//exit (0);
 	}
 	
 	//Use returned value to set value of rate variable
@@ -758,7 +758,7 @@ void VTR10014_SET_RECORD_LENGTH(ViSession instrument_handle, ViUInt32 Base_addre
 		if ( viOut16 (instrument_handle, VI_A16_SPACE, Total_address, 0) )
 		{
 			printf("Unable to set high byte on gate duration register on VTR10014 module\n");
-			exit (0);
+			//exit (0);
 		}
 		
 		//Create total address for low byte and then write to gate duration register to setup record length
@@ -770,7 +770,7 @@ void VTR10014_SET_RECORD_LENGTH(ViSession instrument_handle, ViUInt32 Base_addre
 		if ( viOut16 (instrument_handle, VI_A16_SPACE, Total_address, (ViUInt16)samples) )
 		{
 			printf("Unable to set low byte on gate duration register on VTR10014 module\n");
-			exit (0);
+			//exit (0);
 		}
 	}
 	else {
@@ -797,7 +797,7 @@ void VTR10014_SET_RECORD_LENGTH(ViSession instrument_handle, ViUInt32 Base_addre
 		if ( viOut16 (instrument_handle, VI_A16_SPACE, Total_address, (ViUInt16)samples) )
 		{
 			printf("Unable to set high byte on gate duration register on VTR10014 module\n");
-			exit (0);
+			//exit (0);
 		}
 		
 		//Create total address for low byte and then write to gate duration register to setup record length
@@ -808,7 +808,7 @@ void VTR10014_SET_RECORD_LENGTH(ViSession instrument_handle, ViUInt32 Base_addre
 		if ( viOut16 (instrument_handle, VI_A16_SPACE, Total_address, (ViUInt16)lower_samples) )
 		{
 			printf("Unable to set low byte on gate duration register on VTR10014 module\n");
-			exit (0);
+			//exit (0);
 		}
 	}
 }
@@ -836,7 +836,7 @@ void VTR10014_SET_CLOCK(ViSession instrument_handle, ViUInt32 Base_address, int 
 	if ( viOut16 (instrument_handle, VI_A16_SPACE, Total_address, (ViUInt16)Rate) )
 	{
 		printf("Unable to set VTR10014 digitation rate\n");
-		exit (0);
+		//exit (0);
 	}
 }
 

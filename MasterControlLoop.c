@@ -1166,6 +1166,8 @@ int CVICALLBACK PHASMA_ShutDown (int panel, int control, int event,
 	{
 		case EVENT_COMMIT:
 
+			//clear_telem_filebuffer(); // clear the filebuffer holding console output from Python
+			
 			//Close Visa session and release all the instruments
 			result = viClose (Global_Visa_Session_Handle);
 			
@@ -1662,3 +1664,4 @@ int CVICALLBACK GETONTWITHIT (int panel, int control, int event,
 	}
 	return 0;
 }
+

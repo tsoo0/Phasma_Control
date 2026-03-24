@@ -369,7 +369,7 @@ void Write_PlasmaGunData(void)
 	strcat(outfilename, "Plasma_Gun_Settings.txt");
 	outfile=fopen (outfilename, "w");
 	
-	fprintf(outfile, "Gun1_Bias_Volts, Gun2_Bias_Volts,Gun1_Arc_Volts,Gun2_Arc_Volts,Gun1_Bias_Amps,Gun2_Bias_Amps,Gun1_Arc_Amps,Gun2_Arc_Amps \n");
+	fprintf(outfile, "GUN1_V_BIAS, GUN2_V_BIAS,GUN1_V_ARC,GUN2_V_ARC,GUN1_I_BIAS,GUN2_I_BIAS,GUN1_I_ARC,GUN2_I_ARC \n");
 	
 	fprintf(outfile, "%f, %f, %f, %f,%f,%f,%f,%f", GunSystem_Parameters[0],GunSystem_Parameters[1],GunSystem_Parameters[2],GunSystem_Parameters[3],GunSystem_Parameters[4],GunSystem_Parameters[5],GunSystem_Parameters[6],GunSystem_Parameters[7]);
 	

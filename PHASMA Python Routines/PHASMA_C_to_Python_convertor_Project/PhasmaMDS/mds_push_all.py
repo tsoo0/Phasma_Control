@@ -5,6 +5,7 @@ import mdsthin as mds
 
 from phasma_model.phasma_devices import devdict
 
+# from contextlib import redirect_stdout
 
 #read in a locally-stored comma seperated table containing raw data for one shot on one digitizer
 def read_format_mds(device_fid):
@@ -25,6 +26,16 @@ def trycast(intorstr):
     return res
 
 
+def streamout(arg):
+    
+    if type(arg) == str:
+        print(arg)
+        
+        with open(r"C:\PHASMA 2025 DAQ\PyStdOutBuffer.txt", 'a') as f:
+            f.write(arg)
+            f.write('\n')
+        f.close()
+
 def push_all_mds(treename, exp_ip, raw_data_dir, shotnum):
     
     # construct a dict of dicts with each diagnostic cotaining a dict of data for each found hardware device
@@ -43,8 +54,9 @@ def push_all_mds(treename, exp_ip, raw_data_dir, shotnum):
             
             try:
                 devdat = read_format_mds(devfid[0])
+                print(f"found {dev.name_mds}")
             except:
-                print(f"failed initial read of {dev.name_mds}")
+                print(f"unable to find or read {dev.name_mds}")
                 continue
             
             datadict.update({dev.name_mds:devdat})
@@ -61,12 +73,12 @@ def push_all_mds(treename, exp_ip, raw_data_dir, shotnum):
     # create a new shot tree for the given shot number and populate with any files in raw_data_dir that match the local names in phasma_model
     c.tcl(f'set tree {treename}')
     
-    print(c.tcl(f"create pulse {shotnum}"))
-    print(c.tcl(f"set tree {treename}/shot={shotnum}"))
+    streamout(c.tcl(f"create pulse {shotnum}"))
+    streamout(c.tcl(f"set tree {treename}/shot={shotnum}"))
     
     for curdiag in list(diagdata.keys()):
         curdata = diagdata.get(curdiag)
-        c.tcl(f"set def \TOP.DIAGNOSTICS.{curdiag.diag_name_mds}:DATA")
+        streamout(c.tcl(f"set def \TOP.DIAGNOSTICS.{curdiag.diag_name_mds}:DATA"))
         
          #Write to DATA from each device channel
         for devname in list(curdata.keys()):
@@ -85,8 +97,6 @@ def push_all_mds(treename, exp_ip, raw_data_dir, shotnum):
                 
                 x_axis = devdata.get(x_axis_name)
                 
-                # if 
-                
                 for n,channel in enumerate(channels):
                     try:
                         channeldata = devdata.iloc[:,n].values
@@ -94,10 +104,12 @@ def push_all_mds(treename, exp_ip, raw_data_dir, shotnum):
                         #     continue
                         sig = mds.Signal(channeldata, None, x_axis)
                        
-                        print(c.put(channel.strip(), '`SerializeIn($)', sig.serialize()))
+                        channel = channel.strip() # remove any leading or trailing spaces that may occur in the column name 
+                       
+                        streamout(c.put(channel, '`SerializeIn($)', sig.serialize())) # do not remove `
                     except:
                         
-                        print(f"failed to write data: {curdiag.diag_name_mds}.DATA.{channel}")
+                        streamout(f"failed to write data: {curdiag.diag_name_mds}.DATA.{channel}")
                         
                         continue
                     
@@ -109,10 +121,7 @@ def push_all_mds(treename, exp_ip, raw_data_dir, shotnum):
                 for n,channel in enumerate(channels):
                     try:
                         channeldata = devdata.iloc[0,n]
-                        
-                        chname_sanitized = channel.strip()
-                        
-                        print(c.put(chname_sanitized, '$', mds.Float32(channeldata)))
+                        streamout(c.put(channel, '$', mds.Float32(channeldata)))
                         # if type(channeldata==str):
                        
                         #     print(c.put(channel.upper(), '$', channeldata))
@@ -122,12 +131,12 @@ def push_all_mds(treename, exp_ip, raw_data_dir, shotnum):
                             
                     except:
                         
-                        print(f"failed to write data: {curdiag.diag_name_mds}.SETUP.{channel}")
+                        streamout(f"failed to write data: {curdiag.diag_name_mds}.SETUP.{channel}")
                         
                         continue
-                    
-                    
-    c.tcl("close")
+    c.tcl('close')
+    
+    streamout('donezo')
 
 def push_all_mds_latest(treename, exp_ip, raw_data_dir):
     c = mds.Connection(exp_ip)
@@ -143,5 +152,5 @@ if __name__ == '__main__':
     exp_ip = '127.0.0.1:57800'
     raw_data_dir = "D:\\PHASMA_RawData"    
 
-    push_all_mds(treename, exp_ip, raw_data_dir, shotnum = 1288)
-    # push_all_mds_latest(treename, exp_ip, raw_data_dir)
+    # push_all_mds(treename, exp_ip, raw_data_dir, shotnum = 1328)
+    push_all_mds_latest(treename, exp_ip, raw_data_dir)

@@ -16,6 +16,8 @@ from phasma_model.phasma_devices import devdict
 
 phasmadiags = [d for d in list(devdict.keys()) if devdict.get(d).grouping == "PHASMA" ]
 
+datadiags = [d for d in list(devdict.keys()) if devdict.get(d).grouping == "DATA"]
+
 excludediag = ['PulsedLIF','new_device_template']
 excludestr = ['name_mds', 'num_channels', 'diagnostic', 'channel_prefix', 'channel_names','tag','write_dummy_local']
 
@@ -68,7 +70,7 @@ c.tcl(f"add tag .{root} DIAG")
 
 for diagname in devdict.keys():
     
-    if diagname not in excludediag:
+    if diagname not in excludediag and diagname in datadiags:
         newdiag = devdict.get(diagname)
         
         c.tcl(f"set default \TOP:{root}")
@@ -109,16 +111,11 @@ for diagname in devdict.keys():
                     print(param)
                     c.tcl(f"add node .{metastr}/usage=text")
                     
-                    # if ' ' in param:
-
                     arg = f"put {metastr} \"'{param}'\"" # strings containing spaces need to be wrapped with
                                                               # "' to be as interpreted as literals
                         
-                    # else:
-                    #     arg = f"put .{metastr} {param}"
                     tcl_write_print(c,arg)
 
-                
                 elif type(param) == int or type(param) == float:
                     c.tcl(f"add node .{metastr}/usage=numeric")
                     tcl_write_print(c,f"put .{metastr} {param}")
@@ -146,7 +143,6 @@ for diagname in devdict.keys():
                 #     continue
                     
             c.tcl(f"set def \TOP:{root}.{diagname}.SETUP")
-            
             
             
         if ("position" in dir(newdiag.diag_def)):   # Create position subtree, if it's in diag_def
@@ -187,8 +183,6 @@ for diagname in phasmadiags:
     
     c.tcl(f"set default .{diagname}")
     
-
-      
     field_names = list(devdict.get(diagname).diag_def.diagnostic.values())
 
     for n,fieldname in enumerate(field_names):
@@ -200,9 +194,7 @@ for diagname in phasmadiags:
         except:
             print(f"skipping {root}.{diagname}.SETUP.{fieldname}")
             continue
-            
-
-              
+                          
 
 
 c.tcl("write")

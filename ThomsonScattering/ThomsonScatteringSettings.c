@@ -836,20 +836,9 @@ void Create_McPherson_Wavelength (double Wavelength[])
 	Wavelength_step= Andor_H_bin*PixelDimensions*0.001*linear_disp;
 	
 	for (j=0;j<(int)(Andor_Horiz_pixels/Andor_H_bin);j++) {
-		Wavelength[j]= ((j-(Andor_Horiz_pixels/Andor_H_bin)/2.0)*Wavelength_step+McP_Current_Wlength);		//This assumes no stretching of axis or offsets from calibration
+		Wavelength[(int)(Andor_Horiz_pixels/Andor_H_bin)-j-1]= ((j-(Andor_Horiz_pixels/Andor_H_bin)/2.0)*Wavelength_step+McP_Current_Wlength);		//This assumes no stretching of axis or offsets from calibration and puts the wavelengths in the order TS code expects 3-24-2026 (EES)
 	}
-	
-	
-// reverse the order of the wavelength data; it's coming off the McPherson backwards - TR 3_13_26
-	double temp[(int)(Andor_Horiz_pixels/Andor_H_bin)];
-	
-	for (j=0; j < (int)(Andor_Horiz_pixels/Andor_H_bin) ; j++) {
-		temp[j] = Wavelength[(int)(Andor_Horiz_pixels/Andor_H_bin) -1 - j];	
-	}
-	for (j=0; j < (int)(Andor_Horiz_pixels/Andor_H_bin) ; j++) {
-		Wavelength[j] = temp[j];	
-	}
-	
+
 }
 
 
@@ -966,7 +955,7 @@ void Write_ThomsonScatteringData(void)
 	strcat(outfilename, "_");
 	strcat(outfilename, "Thomson_Andor.txt");
 	outfile=fopen (outfilename, "w");
-	fprintf(outfile,"ANDOR_WAVELEN, ANDOR_IMG1, ANDOR_IMG2 \n");
+	fprintf(outfile,"ANDOR_WAVELN, ANDOR_IMG1, ANDOR_IMG2 \n");
 	
 	if (TS_Andor_cameraHandle > 0) {
 		result = SetCurrentCamera(TS_Andor_cameraHandle);												//Choose to make the TS camera the default camera if more than one camera
