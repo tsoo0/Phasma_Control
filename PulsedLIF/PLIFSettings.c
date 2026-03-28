@@ -94,7 +94,7 @@
 
 #define		agilent_highlevel 5.0   	//Set square wave pulse amplitude to 3 V	
 #define		agilent_lowlevel 0.0		//Set square wave pulse amplitude to 3 V	
-#define		agilent_pulsewidth 350.0	//Set square wave pulse length to 120 microseconds based on Peiyun's LabView code		
+#define		agilent_pulsewidth 120.0	//Set square wave pulse length to 120 microseconds 
 #define		agilent_burstphase 55.1		//Set square wave burst phase to start burst in synch with external trigger. For a 20% duty cycle, this phase delay
 										//gives a 40-60 microsecond delay in the start of the agilent burst signal.
 #define		rigol_pulsewidth 120.0			
@@ -139,7 +139,6 @@ void PLIFLaserControl(int simmermode)
 	int			num_pulses;
 	int			PLIF_QSW_Source;
 
-	float		duty_cycle;
 	char		PLIF_Agilent_Add[64]; 
 	char		PLIF_Rigol_Add[64]; 
 
@@ -270,12 +269,21 @@ void PLIFLaserControl(int simmermode)
 		result = viWrite (PLIF_Agilent_handle, (ViConstBuf)agilent_string, (unsigned int)strlen(agilent_string), VI_NULL);
 
 		//Set square wave duty cycle
-		duty_cycle=(agilent_pulsewidth/1000000.0)*PLIF_Frequency*100;
-		if (duty_cycle < 20) duty_cycle=20;	//minumum duty cycle is 20%
-		sprintf (agilent_string, "FUNC:PULSE:DCYCLE %f\r", duty_cycle);   
+		//duty_cycle=(agilent_pulsewidth/1000000.0)*PLIF_Frequency*100;
+		//if (duty_cycle < 20) duty_cycle=20;	//minumum duty cycle is 20%
+		//sprintf (agilent_string, "FUNC:PULSE:DCYCLE %f\r", duty_cycle);   
+		//result = viWrite (PLIF_Agilent_handle, (ViConstBuf)agilent_string, (unsigned int)strlen(agilent_string), VI_NULL);
+
+		//Set output to be a pulse
+		sprintf (agilent_string, "FUNC:PULSE\r");   
 		result = viWrite (PLIF_Agilent_handle, (ViConstBuf)agilent_string, (unsigned int)strlen(agilent_string), VI_NULL);
 
-		//Turn on Burst state if not in simmermode
+		//Set the pulse width
+		sprintf (agilent_string, "FUNC:PULSE:WIDTH %f\r", (agilent_pulsewidth/1000000.0));   
+		result = viWrite (PLIF_Agilent_handle, (ViConstBuf)agilent_string, (unsigned int)strlen(agilent_string), VI_NULL);
+
+
+			//Turn on Burst state if not in simmermode
 		if (!simmermode) {
 				
 			//Turn on burst mode
@@ -393,7 +401,7 @@ void PLIFScope(void)
 	  	sprintf (PulsedLIF_string, ":TIM:MAIN:SCAL %f\r",(PLIF_TimeSpan/10.0/1.0E9));   											//Set up timebase scaling based on target sample window and 10 divisions
 		result = viWrite (PLIF_Scope_Rigol_handle, (ViConstBuf)PulsedLIF_string, (unsigned int)strlen(PulsedLIF_string), &count);
 		
-		sprintf (PulsedLIF_string, ":TIM:OFFS %f\r",PLIF_CenterTime);   															//Set center of trigger window
+		sprintf (PulsedLIF_string, ":TIM:OFFS %f\r",PLIF_CenterTime/1.0E9);   															//Set center of trigger window
 		result = viWrite (PLIF_Scope_Rigol_handle, (ViConstBuf)PulsedLIF_string, (unsigned int)strlen(PulsedLIF_string), &count);
 			
 		sprintf (PulsedLIF_string, ":CHAN1:SCAL  %f\r",PLIF_VoltageRange1);   														//Set the voltage scale of the channel to the target value

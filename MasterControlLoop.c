@@ -155,10 +155,13 @@ void	Store_Data (void)
 {
 	//Always store timing parameters
 	//Write_Timing();
-	//while(ExecutableHasTerminated(PyHandle) != PyScriptFinished){
-	//Go through diagnostics and store data
-	if (PhotodiodeDataFlag) 	Write_PhotodiodeData(); // ACQ devices should begin first because they can work in the background but probably take the longest
+	
+		//Go through diagnostics and store data
+		
+	//Delay(5); // without this delay the data collection is starting before the master trig even goes out.... TR 3/26/26
 	if (MasterTriggerDataFlag) 	Write_MasterTrigger();
+	if (PhotodiodeDataFlag) 	Write_PhotodiodeData(); // ACQ devices should begin first because they can work in the background but probably take the longest
+	if (TripleProbeDataFlag) 	Write_TripleProbeData();
 	if (MagFieldDataFlag) 		Write_MagField();
 	if (HeliconDataFlag) 		Write_HeliconSettings();
 	if (BdotDataFlag) 			Write_BdotData();
@@ -170,7 +173,7 @@ void	Store_Data (void)
 	if (PhotronCameraDataFlag) 	Write_PhotronCameraData();   
 	if (TSDataFlag) 			Write_ThomsonScatteringData();
 	if (PulsedLIFDataFlag) 		Write_PulsedLIFData();
-	if (TripleProbeDataFlag) 	Write_TripleProbeData();
+	
 	if (McPherson209DataFlag) 	Write_McPherson209Data();
 	//
 	/*
@@ -178,9 +181,9 @@ void	Store_Data (void)
 	if (OceanOpticsDataFlag) 	Write_OceanOpticsData();
 	if (LightwvIntferomDataFlag)Write_LightwvIntferomData() ;
 	*/
-	
+
 	//if any data flags were turned on, push raw data from the text files to the MDS system
-	//if (push_to_mds_flag && (ExecutableHasTerminated(PyHandle))) // ensure python has finished writing data before attempting mds push
+	//while (ExecutableHasTerminated(PyHandle) == PyScriptNotFinished) // ensure python has finished writing data before attempting mds push
 	
 	if (push_to_mds_flag)
 	{ 
@@ -390,7 +393,7 @@ void ManualMatLab_Plotting(void)
 	outfile=fopen (outfilename, "w");
 	
 	//Write out the headers for the positions
-	fprintf(outfile,"Gun1_position, Gun2_position, Bdot_position, DoubleProbe_position, TripleProbe_position, RFEA_position, PulsedLIF_Wavelength\n");
+	fprintf(outfile,"POS_GUN1, POS_GUN2, POS_BDOT, POS_2PROBE, POS_3PROBE, POS_RFEA, PLIF_WAVELN\n");
 	
 	//Write out positions
 	fprintf(outfile,"%f,%f,%f,%f,%f,%f,%f\n",Gun1_Pos, Gun2_Pos, Bdot_position, DoubleProbe_position, TripleProbe_position, RFEA_position, PulsedLIF_wavelength);	
@@ -1634,14 +1637,14 @@ int CVICALLBACK PyUpdateHandleStatus (int panel, int control, int event,
 		case EVENT_TIMER_TICK:
 			switch (ExecutableHasTerminated(PyHandle))
 			{
+				case PyHandleInvalid:
 				case PyScriptFinished:
 					SetCtrlVal(Master_Control_Panel, MasterCont_PyRunningLED,0);
 					break;
 				case PyScriptNotFinished:
 					SetCtrlVal(Master_Control_Panel, MasterCont_PyRunningLED,1);
 					break;
-				case PyHandleInvalid:
-					break;
+
 						
 						
 			}		

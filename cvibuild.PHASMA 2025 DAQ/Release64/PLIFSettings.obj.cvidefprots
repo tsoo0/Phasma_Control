@@ -6,70 +6,70 @@ SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:136:6"
 [PLIFScope]
 Class="Function"
 Prototype="void PLIFScope();"
-SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:337:6"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:345:6"
 
 [Get_PLIF_Laser_Offsets]
 Class="Function"
 Prototype="void Get_PLIF_Laser_Offsets(float *PLIF_offset, float *PLIF_Laser_Warmup);"
-SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:440:6"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:448:6"
 
 [PulsedLIFActivate]
 Class="Function"
 Prototype="int PulsedLIFActivate();"
-SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:470:5"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:478:5"
 
 [PulsedLIFArm]
 Class="Function"
 Prototype="int PulsedLIFArm();"
-SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:484:5"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:492:5"
 
 [Write_PulsedLIFData]
 Class="Function"
 Prototype="void Write_PulsedLIFData();"
-SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:510:6"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:518:6"
 
 [OpenPulsedLIF_Settings]
 Class="Function"
 Prototype="void OpenPulsedLIF_Settings();"
-SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:558:6"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:566:6"
 
 [Close_PulsedLIF_Settings]
 Class="Function"
 Prototype="int Close_PulsedLIF_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:576:17"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:584:17"
 
 [AngstromReadFunction]
 Class="Function"
 Prototype="int AngstromReadFunction(void *functionData);"
-SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:593:17"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:601:17"
 
 [ReadPulsedLIF_WaveandEnergy]
 Class="Function"
 Prototype="void ReadPulsedLIF_WaveandEnergy();"
-SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:637:6"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:645:6"
 
 [Wavelength_Current]
 Class="Function"
 Prototype="int Wavelength_Current(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:691:17"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:699:17"
 
 [Wavelength_Move_to_Start]
 Class="Function"
 Prototype="int Wavelength_Move_to_Start(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:731:17"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:739:17"
 
 [Wavelength_Move_to_Stop]
 Class="Function"
 Prototype="int Wavelength_Move_to_Stop(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:763:17"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:771:17"
 
 [Get_PLIF_Wavelength]
 Class="Function"
 Prototype="float Get_PLIF_Wavelength();"
-SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:794:7"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:802:7"
 
 [Advance_PLIF_Laser]
 Class="Function"
 Prototype="float Advance_PLIF_Laser();"
-SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:834:7"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:842:7"
 

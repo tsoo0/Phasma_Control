@@ -6,7 +6,7 @@ import mdsthin as mds
 from phasma_model.phasma_devices import devdict
 
 # from contextlib import redirect_stdout
-
+stream_output = False
 #read in a locally-stored comma seperated table containing raw data for one shot on one digitizer
 def read_format_mds(device_fid):
     
@@ -27,14 +27,14 @@ def trycast(intorstr):
 
 
 def streamout(arg):
-    
-    if type(arg) == str:
-        print(arg)
-        
-        with open(r"C:\PHASMA 2025 DAQ\PyStdOutBuffer.txt", 'a') as f:
-            f.write(arg)
-            f.write('\n')
-        f.close()
+    if stream_output == True:
+        if type(arg) == str:
+            print(arg)
+            
+            with open(r"C:\PHASMA 2025 DAQ\PyStdOutBuffer.txt", 'a') as f:
+                f.write(arg)
+                f.write('\n')
+            f.close()
 
 def push_all_mds(treename, exp_ip, raw_data_dir, shotnum):
     
@@ -152,5 +152,5 @@ if __name__ == '__main__':
     exp_ip = '127.0.0.1:57800'
     raw_data_dir = "D:\\PHASMA_RawData"    
 
-    # push_all_mds(treename, exp_ip, raw_data_dir, shotnum = 1328)
+    # push_all_mds(treename, exp_ip, raw_data_dir, shotnum = 1400)
     push_all_mds_latest(treename, exp_ip, raw_data_dir)

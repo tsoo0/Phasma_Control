@@ -172,7 +172,7 @@ float* ReadWaveformChannel(ViSession LC_VisaHandle, const char *channel, int *nu
 
     for (int i = 0; i < *numSamples; i++) {
         /* buffer[i] is signed char: range -128 to +127 */
-        wave[i] = (float)buffer[i] * vertical_gain*(10.0/256) + vertical_offset;
+        wave[i] = (float)buffer[i] * vertical_gain*(8.0/256) + vertical_offset;
     }
 
     free(buffer);

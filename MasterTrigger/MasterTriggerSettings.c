@@ -336,12 +336,15 @@ void Trigger_Settings_Activate (void)
 	RecallPanelState (Trigger_panel, "Master_Control_Storage_File", TriggerSettings_setup_state);
 
 	//Get the overall cycle time from the front panel
-	GetCtrlVal (Trigger_panel, Trigger_Total_Cycle,&Total_Cycle_Time);
+	//GetCtrlVal (Trigger_panel, Trigger_Total_Cycle,&Total_Cycle_Time);
 	
 	//Save this value of the cycle time to the global cycle time variable
-	Master_cycle_time=Total_Cycle_Time;
+	//Master_cycle_time=Total_Cycle_Time;
+	
 
-
+	//Get the overall cycle time from the global variable set by the front panel
+	Total_Cycle_Time=Master_cycle_time;
+	
 	/***********************************************************************************************/
 	//Get the port address of the first SRSDG645
 	GetCtrlVal (Trigger_panel, Trigger_Trigger_IP_1,Trigger1_Port_string);

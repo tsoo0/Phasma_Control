@@ -1,75 +1,75 @@
 [PDRunPython]
 Class="Function"
 Prototype="void PDRunPython(char *PyFunc, char **PyArgs, int numargs);"
-SourceLocation="c:\PHASMA 2025 DAQ\Photodiodes\PhotodiodeSettings.c:35:6"
+SourceLocation="c:\PHASMA 2025 DAQ\Photodiodes\PhotodiodeSettings.c:36:6"
 
 [PDTryPython]
 Class="Function"
 Prototype="int PDTryPython();"
-SourceLocation="c:\PHASMA 2025 DAQ\Photodiodes\PhotodiodeSettings.c:67:5"
+SourceLocation="c:\PHASMA 2025 DAQ\Photodiodes\PhotodiodeSettings.c:69:5"
 
 [PhotodiodeActivate]
 Class="Function"
 Prototype="int PhotodiodeActivate();"
-SourceLocation="c:\PHASMA 2025 DAQ\Photodiodes\PhotodiodeSettings.c:80:5"
+SourceLocation="c:\PHASMA 2025 DAQ\Photodiodes\PhotodiodeSettings.c:82:5"
 
 [PhotodiodeArm]
 Class="Function"
 Prototype="int PhotodiodeArm();"
-SourceLocation="c:\PHASMA 2025 DAQ\Photodiodes\PhotodiodeSettings.c:114:5"
+SourceLocation="c:\PHASMA 2025 DAQ\Photodiodes\PhotodiodeSettings.c:116:5"
 
 [acq2106_config]
 Class="Function"
 Prototype="int acq2106_config(char *IP, int numsamples, int samplerate, int inZbool, char *trig_source);"
-SourceLocation="c:\PHASMA 2025 DAQ\Photodiodes\PhotodiodeSettings.c:135:5"
+SourceLocation="c:\PHASMA 2025 DAQ\Photodiodes\PhotodiodeSettings.c:137:5"
 
 [Write_PhotodiodeData]
 Class="Function"
 Prototype="void Write_PhotodiodeData();"
-SourceLocation="c:\PHASMA 2025 DAQ\Photodiodes\PhotodiodeSettings.c:153:6"
+SourceLocation="c:\PHASMA 2025 DAQ\Photodiodes\PhotodiodeSettings.c:155:6"
 
 [OpenPhotodiode_Settings]
 Class="Function"
 Prototype="void OpenPhotodiode_Settings();"
-SourceLocation="c:\PHASMA 2025 DAQ\Photodiodes\PhotodiodeSettings.c:192:6"
+SourceLocation="c:\PHASMA 2025 DAQ\Photodiodes\PhotodiodeSettings.c:194:6"
 
 [Close_Photodiode_Settings]
 Class="Function"
 Prototype="int Close_Photodiode_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\Photodiodes\PhotodiodeSettings.c:206:17"
+SourceLocation="c:\PHASMA 2025 DAQ\Photodiodes\PhotodiodeSettings.c:208:17"
 
 [PyConsoleUpdate]
 Class="Function"
 Prototype="int PyConsoleUpdate(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\Photodiodes\PhotodiodeSettings.c:222:17"
+SourceLocation="c:\PHASMA 2025 DAQ\Photodiodes\PhotodiodeSettings.c:224:17"
 
 [acq2106_set_abort]
 Class="Function"
 Prototype="int acq2106_set_abort(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\Photodiodes\PhotodiodeSettings.c:234:17"
+SourceLocation="c:\PHASMA 2025 DAQ\Photodiodes\PhotodiodeSettings.c:236:17"
 
 [acq2106_manual_arm]
 Class="Function"
 Prototype="int acq2106_manual_arm(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\Photodiodes\PhotodiodeSettings.c:258:17"
+SourceLocation="c:\PHASMA 2025 DAQ\Photodiodes\PhotodiodeSettings.c:260:17"
 
 [acq2106_soft_trig]
 Class="Function"
 Prototype="int acq2106_soft_trig(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\Photodiodes\PhotodiodeSettings.c:282:17"
+SourceLocation="c:\PHASMA 2025 DAQ\Photodiodes\PhotodiodeSettings.c:284:17"
 
 [acq2106_pull_data]
 Class="Function"
 Prototype="int acq2106_pull_data(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\Photodiodes\PhotodiodeSettings.c:306:17"
+SourceLocation="c:\PHASMA 2025 DAQ\Photodiodes\PhotodiodeSettings.c:308:17"
 
 [acq2106_push_config]
 Class="Function"
 Prototype="int acq2106_push_config(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\Photodiodes\PhotodiodeSettings.c:319:17"
+SourceLocation="c:\PHASMA 2025 DAQ\Photodiodes\PhotodiodeSettings.c:321:17"
 
 [PD_ACQ2106_TRG_DELAY_SET]
 Class="Function"
 Prototype="int PD_ACQ2106_TRG_DELAY_SET(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\Photodiodes\PhotodiodeSettings.c:331:17"
+SourceLocation="c:\PHASMA 2025 DAQ\Photodiodes\PhotodiodeSettings.c:333:17"
 

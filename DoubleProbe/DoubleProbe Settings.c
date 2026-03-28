@@ -258,9 +258,14 @@ int CVICALLBACK Close_DoubleProbe_Settings (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
+
 			//Save current state of panel and close interface
-			SavePanelState (DoubleProbe_panel, "Master_Control_Storage_File", DoubleProbe_setup_state);
-			DiscardPanel(DoubleProbe_panel);
+			SavePanelState (panel, "Master_Control_Storage_File", DoubleProbe_setup_state);
+			DiscardPanel(panel);
+			
+			//Run the setup sequence for the scopes
+			DoubleProbeActivate();
+
 			break;
 	}
 	return 0;

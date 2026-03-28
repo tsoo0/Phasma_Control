@@ -1,12 +1,11 @@
 import sys
 sys.path.append(r"C:\PHASMA 2025 DAQ\D_TACQ Instruments")
 sys.path.append(r"C:\PHASMA 2025 DAQ\D_TACQ Instruments\acq400_hapi_master")
+
+print(sys.path)
 import numpy as np
 import acq400_hapi as acq
 import time
-
-import pandas as pd
-pd.options.plotting.backend = 'plotly'
 
 V_full_scale = 4
 
@@ -24,11 +23,13 @@ def config_master(dev_ip,num_samples = 1000,termination='50R', trig_source='FP',
         soft_tr=0,
         ))
     
-    # site1 = comm_s1(devip);
-    # site0.sr('set.site 1 trg 1,0,1')
+    termination = '50R' # hard code this because LW can only do 1M
     
-    site0.sr('set.site 1 trg 1,1,1')
-    site0.sr('set.site 0 transient SOFT_TRIGGER=1') # useful for debugging only
+    
+    # site1 = comm_s1(devip);
+    site0.sr('set.site 1 trg 1,0,1')
+    
+    # site0.sr('set.site 0 transient SOFT_TRIGGER=1') # useful for debugging only
 
     if trig_source == "HDMI":# Use breakout board's external trigger (48-channel acq2106)
         # site0.sr(f"set.site 0 sync_role master {sample_rate} TRG:DX=d0")
@@ -126,29 +127,37 @@ def post_proc(dev_ip,rawdat,num_samples,V_full_scale):
     
     return np.array(rawdat).T
 
-def store_local(data, datafid, path,diagnostic, moniker):
-    # import pandas as pd
+def store_local(data, shotnum, path,device,diagnostic):
+    import pandas as pd
     
     sys.path.append(r"C:\PHASMA 2025 DAQ\PHASMA Python Routines\PHASMA_C_to_Python_convertor_Project\PhasmaMDS")
     
     from phasma_model.phasma_devices import devdict
     
-    # chnames = [a for a in devdict[diagnostic.upper()].devices.HWdevices if a.name_mds==moniker][0].channel_names
-    # chnames = np.arange(1,48)
+    diagnames = devdict.keys()
+    
+    diagname = [diagname for diagname in diagnames if diagnostic.lower() in diagname.lower()][0] # need to make dict access insensitive to case if key string
+    print(device)
+    print(diagname)
+    dev = [a for a in devdict[diagname].devices.HWdevices if a.name_mds.upper() == device.upper()]
+    
+    chnames = dev[0].channel_names
+    # print(chnames)
     df = pd.DataFrame(data)
     
-    # df = df.rename(columns=chnames)
+    df = df.rename(columns=chnames)
+    
+    datafid = f"{shotnum}_{device}.txt"
     
     df.to_csv(path + "/" +  datafid)
     
-    
-def readout_store(dev_ip, num_channels, num_samples, shotnum, readout_dir,moniker):
+def readout_store(dev_ip, num_channels, num_samples, shotnum, readout_dir,moniker,diagnostic):
 
     raw = read_format_raw(dev_ip,num_channels,num_samples)
     
     data = post_proc(dev_ip, raw, num_samples,V_full_scale)
 
-    store_local(data, str(shotnum) + f"_{moniker}_tomography" + ".txt", readout_dir)
+    store_local(data, shotnum, readout_dir, moniker, diagnostic)
     
 if __name__ == "__main__":
     # dev1= "192.168.1.22" # acq2106_372
@@ -166,23 +175,19 @@ if __name__ == "__main__":
     
     tstart = time.time_ns()
     
-    config_master(dev1,num_samples=num_samples,trig_source='FP') # Set the acq up for transient (one-shot) acquisition using an 
-    #                             #  external trigger. This line and everything before it only needs to be run 
-    #                             #  once - the subsequent lines can be put in a loop
-    #                             #  for repeated measurements.
+    config_master(dev1,num_samples=num_samples,trig_source='HDMI') # Set the acq up for transient (one-shot) acquisition using an 
+
     
-# %%
+    # %%
+
+
     arm_transient(dev1)
 
     time.sleep(arm_delay)     
 
     # Config_Arm(dev1, num_samples)
                        
-# %%
-    
-    
-    # time.sleep(read_delay) # need some time between arming and acquiring
-                            # if the functions are called consecutively
+
     #%%
     raw = read_format_raw(dev1,num_channels,num_samples)
     

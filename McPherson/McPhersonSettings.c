@@ -13,7 +13,7 @@
 
 
 int			McPherson209_panel;
-int			McPherson209_setup_state = 651;
+int			McPherson209_setup_state = 652;
 int			McPherson209_RecordLength=1024;
 int			McP_Andor_H_bin;
 int			McP_Andor_V_bin;

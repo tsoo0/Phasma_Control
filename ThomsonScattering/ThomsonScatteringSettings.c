@@ -93,7 +93,7 @@
 
 #define		agilent_highlevel 5.0   	//Set square wave pulse amplitude to 5 V	
 #define		agilent_lowlevel 0.0		//Set square wave pulse low to 0 V	
-#define		agilent_pulsewidth 350.0	//Set square wave pulse length to 350 microseconds based on Peiyun's LabView code		
+#define		agilent_pulsewidth 120.0	//Set square wave pulse length to 120 microseconds 	
 #define		agilent_burstphase 55.1		//Set square wave burst phase to start burst in synch with external trigger. For a 20% duty cycle, this phase delay
 										//gives a 40-60 microsecond delay in the start of the agilent burst signal.
 
@@ -169,7 +169,6 @@ void ThomsonScatteringLaserControl(int simmermode)
 {
 	int 		result; 					//	Error-checking variable
 	int			num_pulses;
-	float		duty_cycle;
 
 	//Open up TS settings panel and get settings
 	ThomsonScattering_panel = LoadPanel (0, "ThomsonScatteringSettings.uir", ThomsonSct);
@@ -298,9 +297,17 @@ void ThomsonScatteringLaserControl(int simmermode)
 			result = viWrite (Agilent_handle, (ViConstBuf)agilent_string, (unsigned int)strlen(agilent_string), VI_NULL);
 
 			//Set square wave duty cycle
-			duty_cycle=(agilent_pulsewidth/1000000.0)*Q1500_Frequency*100;
-			if (duty_cycle < 20) duty_cycle=20;	//minumum duty cycle is 20%
-			sprintf (agilent_string, "FUNC:PULSE:DCYCLE %f\r", duty_cycle);   
+			//duty_cycle=(agilent_pulsewidth/1000000.0)*Q1500_Frequency*100;
+			//if (duty_cycle < 20) duty_cycle=20;	//minumum duty cycle is 20%
+			//sprintf (agilent_string, "FUNC:PULSE:DCYCLE %f\r", duty_cycle);   
+			//result = viWrite (Agilent_handle, (ViConstBuf)agilent_string, (unsigned int)strlen(agilent_string), VI_NULL);
+
+			//Set output to be a pulse
+			sprintf (agilent_string, "FUNC:PULSE\r");   
+			result = viWrite (Agilent_handle, (ViConstBuf)agilent_string, (unsigned int)strlen(agilent_string), VI_NULL);
+
+			//Set the pulse width
+			sprintf (agilent_string, "FUNC:PULSE:WIDTH %f\r", (agilent_pulsewidth/1000000.0));   
 			result = viWrite (Agilent_handle, (ViConstBuf)agilent_string, (unsigned int)strlen(agilent_string), VI_NULL);
 
 	 		//Turn on Burst state if not in simmermode
@@ -473,12 +480,20 @@ void ThomsonScatteringLaserControl(int simmermode)
 			result = viWrite (Agilent_handle, (ViConstBuf)agilent_string, (unsigned int)strlen(agilent_string), VI_NULL);
 
 			//Set square wave duty cycle
-			duty_cycle=(agilent_pulsewidth/1000000.0)*Q850_Frequency*100;
-			if (duty_cycle < 20) duty_cycle=20;	//minumum duty cycle is 20%
-			sprintf (agilent_string, "FUNC:PULSE:DCYCLE %f\r", duty_cycle);   
+			//duty_cycle=(agilent_pulsewidth/1000000.0)*Q850_Frequency*100;
+			//if (duty_cycle < 20) duty_cycle=20;	//minumum duty cycle is 20%
+			//sprintf (agilent_string, "FUNC:PULSE:DCYCLE %f\r", duty_cycle);   
+			//result = viWrite (Agilent_handle, (ViConstBuf)agilent_string, (unsigned int)strlen(agilent_string), VI_NULL);
+
+			//Set output to be a pulse
+			sprintf (agilent_string, "FUNC:PULSE\r");   
 			result = viWrite (Agilent_handle, (ViConstBuf)agilent_string, (unsigned int)strlen(agilent_string), VI_NULL);
 
-	 		//Turn on Burst state if not in simmermode
+			//Set the pulse width
+			sprintf (agilent_string, "FUNC:PULSE:WIDTH %f\r", (agilent_pulsewidth/1000000.0));   
+			result = viWrite (Agilent_handle, (ViConstBuf)agilent_string, (unsigned int)strlen(agilent_string), VI_NULL);
+
+			//Turn on Burst state if not in simmermode
 			if (!simmermode) {
 				
 				//Turn on burst mode
@@ -616,7 +631,7 @@ void ThomsonScatteringScopeandCamera(void)
 	  	sprintf (ThomsonScattering_string, ":TIM:MAIN:SCAL %f\r",(TS_TimeSpan/10.0/1.0E9));   													//Set up timebase scaling based on target sample window and 10 divisions
 		result = viWrite (ThomsonScatteringRigol_handle, (ViConstBuf)ThomsonScattering_string, (unsigned int)strlen(ThomsonScattering_string), &count);
 		
-		sprintf (ThomsonScattering_string, ":TIM:OFFS %f\r",TS_CenterTime);   															   		//Set center of trigger window
+		sprintf (ThomsonScattering_string, ":TIM:OFFS %f\r",TS_CenterTime/1.0E9);   															//Set center of trigger window
 		result = viWrite (ThomsonScatteringRigol_handle, (ViConstBuf)ThomsonScattering_string, (unsigned int)strlen(ThomsonScattering_string), &count);
 			
 		sprintf (ThomsonScattering_string, ":CHAN1:SCAL  %f\r",TS_VoltageRange1);   															//Set the voltage scale of the channel to the target value

@@ -12,13 +12,15 @@ VXIplug&play Framework 64-bit Dir = "/C/Program Files/IVI Foundation/VISA/win64"
 Number of Projects = 1
 Active Project = 1
 Project 0001 = "PHASMA 2025 DAQ.prj"
+Project 0001 Folder Include Files Collapsed = True
+Project 0001 FolderId 1 Collapsed = True
 Project 0001 Folder Instrument Files Collapsed = True
 Project 0001 FolderId 4 Collapsed = True
 Drag Bar Left = 387
-Window Top = 141
-Window Left = 1687
-Window Bottom = 2221
-Window Right = 3782
+Window Top = 122
+Window Left = 704
+Window Bottom = 1937
+Window Right = 2961
 Maximized = False
 Maximized Children = True
 Max32 Number Of Errors = 20
@@ -32,7 +34,7 @@ Save Changes Before Compiling = "Always"
 Hide Windows = False
 Break At First Statement = False
 Sort Type = "File Name"
-Number of Opened Files = 17
+Number of Opened Files = 11
 Window Confinement Region Enabled = True
 MainColumnWidth = 370
 FileDateColumnWidth = 70
@@ -42,7 +44,7 @@ FileSizeColumnWidth = 70
 Version = 2000
 Don't Update DistKit = False
 Platform Code = 4
-Build Configuration = "Debug64"
+Build Configuration = "Release64"
 Warn User If Debugging Release = 0
 Batch Build Release = False
 Batch Build Debug = False
@@ -84,12 +86,12 @@ In Projects = "1,"
 [File 0006]
 Path = "/c/PHASMA 2025 DAQ/MasterControlLoop.c"
 File Type = "CSource"
-Disk Date = 3857207788
+Disk Date = 3857375465
 In Projects = "1,"
-Source Window State = "1,171,171,171,8,8,8,0,0,0,0,0,0,0,0,0,127,0,171,8,401,938,1,0,"
+Source Window State = "1,212,212,212,106,106,106,0,0,0,0,0,0,0,0,0,212,0,212,106,401,938,1,0,"
 Window Top = 33
 Window Left = 10
-Window Z-Order = 2
+Window Z-Order = 5
 
 [File 0007]
 Path = "/c/PHASMA 2025 DAQ/Photron Camera/PhotronSettings.c"
@@ -105,16 +107,6 @@ Window Top = 281
 Window Left = 138
 
 [File 0008]
-Path = "/c/PHASMA 2025 DAQ/QuantumBeat/QBSSettings.c"
-File Type = "CSource"
-Disk Date = 3857201192
-In Projects = "1,"
-Source Window State = "1,140,140,140,12,12,12,0,0,0,0,0,0,0,0,0,94,0,140,12,401,833,1,0,"
-Window Top = 126
-Window Left = 58
-Window Z-Order = 11
-
-[File 0009]
 Path = "/c/PHASMA 2025 DAQ/TitanProbeMotors/TitanMotor.c"
 File Type = "CSource"
 Disk Date = 3856531276
@@ -127,12 +119,12 @@ Tracepoint 0002 = "0,0,216,1,"
 Window Top = 405
 Window Left = 202
 
-[File 0010]
+[File 0009]
 Path = "/c/PHASMA 2025 DAQ/LeCroy Routines/Lecroy.c"
 File Type = "CSource"
-Disk Date = 3856613918
+Disk Date = 3857465714
 In Projects = "1,"
-Source Window State = "1,180,180,180,0,0,0,0,0,0,0,0,0,0,0,0,179,0,180,0,401,658,1,0,"
+Source Window State = "1,174,174,174,55,55,55,0,0,0,0,0,0,0,0,0,141,0,174,55,401,658,1,0,"
 Breakpoint 0001 = "313,0,enabled,"
 Tracepoint 0001 = "0,0,76,1,"
 Breakpoint 0002 = "371,0,enabled,"
@@ -147,100 +139,90 @@ Breakpoint 0006 = "469,0,enabled,"
 Tracepoint 0006 = "0,0,235,1,"
 Window Top = 157
 Window Left = 74
+Window Z-Order = 3
 
-[File 0011]
+[File 0010]
 Path = "/c/PHASMA 2025 DAQ/MasterControlPanel.uir"
 File Type = "User Interface Resource"
-Disk Date = 3857207698
+Disk Date = 3857365404
 In Projects = "1,"
 Window Top = 45
 Window Left = 10
 Window Height = 349
 Window Width = 787
-Window Z-Order = 9
+Window Z-Order = 10
 
-[File 0012]
-Path = "/c/PHASMA 2025 DAQ/QuantumBeat/QuantumBeatSettings.uir"
-File Type = "User Interface Resource"
-Disk Date = 3857200945
-In Projects = "1,"
-Window Top = 281
-Window Left = 138
-Window Height = 401
-Window Width = 833
-Window Z-Order = 12
-
-[File 0013]
-Path = "/c/PHASMA 2025 DAQ/Bdot/Joerger VTR10012-VISA.h"
-File Type = "Include"
-Disk Date = 3857198580
-In Projects = "1,"
-Source Window State = "1,327,327,327,1,1,1,0,0,0,0,472,0,480,75,0,236,0,327,1,349,1011,1,9,"
-Window Top = 157
-Window Left = 74
-Window Z-Order = 17
-
-[File 0014]
-Path = "/c/PHASMA 2025 DAQ/NewmarkMotors/Newmark.c"
-File Type = "CSource"
-Disk Date = 3833207634
-In Projects = ""
-Source Window State = "1,22,22,22,78,78,78,0,0,0,0,0,0,0,0,0,22,0,22,78,400,600,1,0,"
-Window Top = 31
-Window Z-Order = 16
-
-[File 0015]
-Path = "/c/PHASMA 2025 DAQ/ContLIF/ContLIFSettings.uir"
-File Type = "User Interface Resource"
-Disk Date = 3856076298
-In Projects = "1,"
-Window Top = 33
-Window Left = 10
-Window Height = 401
-Window Width = 777
-Window Z-Order = 15
-
-[File 0016]
+[File 0011]
 Path = "/c/PHASMA 2025 DAQ/HelperFunctions.c"
 File Type = "CSource"
 Disk Date = 3854989454
 In Projects = "1,"
-Source Window State = "1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,401,1477,1,0,"
+Source Window State = "1,15,15,15,12,35,12,0,3,0,0,0,0,0,0,0,0,0,15,35,401,1477,1,0,"
 Window Top = 157
 Window Left = 74
-Window Z-Order = 14
+Window Z-Order = 11
+
+[File 0012]
+Path = "/c/PHASMA 2025 DAQ/Photodiodes/PhotodiodeSettings.c"
+File Type = "CSource"
+Disk Date = 3857372236
+In Projects = "1,"
+Source Window State = "1,71,71,71,5,5,5,0,0,0,0,0,0,0,0,0,0,0,71,5,401,714,1,0,"
+Window Top = 33
+Window Left = 10
+Window Z-Order = 9
+
+[File 0013]
+Path = "/c/PHASMA 2025 DAQ/ThomsonScattering/ThomsonScatteringSettings.uir"
+File Type = "User Interface Resource"
+Disk Date = 3856090662
+In Projects = "1,"
+Window Top = 33
+Window Left = 10
+Window Height = 349
+Window Width = 1003
+Window Z-Order = 8
+
+[File 0014]
+Path = "/c/PHASMA 2025 DAQ/PulsedLIF/PLIFSettings.c"
+File Type = "CSource"
+Disk Date = 3857402000
+In Projects = "1,"
+Source Window State = "1,425,425,425,67,67,67,0,0,0,0,0,0,0,0,0,366,0,425,67,401,630,1,0,"
+Window Top = 33
+Window Left = 10
+Window Z-Order = 7
+
+[File 0015]
+Path = "/c/PHASMA 2025 DAQ/ThomsonScattering/ThomsonScatteringSettings.c"
+File Type = "CSource"
+Disk Date = 3857401948
+In Projects = "1,"
+Source Window State = "1,633,633,633,60,73,60,0,3,0,0,0,0,0,0,0,575,0,633,73,401,770,1,0,"
+Window Top = 31
+Window Z-Order = 6
+
+[File 0016]
+Path = "/c/PHASMA 2025 DAQ/DoubleProbe/DoubleProbe Settings.c"
+File Type = "CSource"
+Disk Date = 3857465714
+In Projects = "1,"
+Source Window State = "1,250,250,250,4,4,4,0,0,0,0,0,0,0,0,0,173,0,250,4,401,1001,1,0,"
+Window Top = 219
+Window Left = 106
+Window Z-Order = 2
 
 [File 0017]
-Path = "/c/PHASMA 2025 DAQ/QuantumBeat/QuantumBeatSettings.h"
-File Type = "Include"
-Disk Date = 3857200945
+Path = "/c/PHASMA 2025 DAQ/MasterTrigger/MasterTriggerSettings.c"
+File Type = "CSource"
+Disk Date = 3857464479
 In Projects = "1,"
-Source Window State = "1,16,16,16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,16,0,401,833,1,0,"
-Window Top = 374
-Window Left = 186
-Window Z-Order = 13
+Source Window State = "1,363,363,363,9,9,9,0,0,0,0,0,0,0,0,0,317,0,363,9,401,875,1,0,"
+Window Top = 95
+Window Left = 42
+Window Z-Order = 4
 
 [File 0018]
-Path = "/c/PHASMA 2025 DAQ/Housekeeping/setup_4244.c"
-File Type = "CSource"
-Disk Date = 3857163560
-In Projects = "1,"
-Source Window State = "1,295,295,295,26,26,26,0,0,0,0,0,0,0,0,0,229,0,295,26,401,938,1,0,"
-Window Top = 33
-Window Left = 10
-Window Z-Order = 10
-
-[File 0019]
-Path = "/c/PHASMA 2025 DAQ/MDS/PHASMA-MDS-Routines.c"
-File Type = "CSource"
-Disk Date = 3854376508
-In Projects = "1,"
-Source Window State = "1,247,247,247,0,0,0,0,0,0,0,0,0,0,0,0,180,0,247,0,401,630,1,0,"
-Window Top = 33
-Window Left = 10
-Window Z-Order = 5
-
-[File 0020]
 Path = "/c/PHASMA 2025 DAQ/Bdot/BdotSettings.uir"
 File Type = "User Interface Resource"
 Disk Date = 3856531528
@@ -250,17 +232,28 @@ Window Left = 138
 Window Height = 349
 Window Width = 987
 
-[File 0021]
+[File 0019]
+Path = "/c/PHASMA 2025 DAQ/ContLIF/ContLIFSettings.uir"
+File Type = "User Interface Resource"
+Disk Date = 3856076298
+In Projects = "1,"
+Window Top = 33
+Window Left = 10
+Window Height = 401
+Window Width = 777
+
+[File 0020]
 Path = "/c/PHASMA 2025 DAQ/DoubleProbe/DoubleProbeSettings.uir"
 File Type = "User Interface Resource"
-Disk Date = 3856611882
+Disk Date = 3857488159
 In Projects = "1,"
 Window Top = 343
 Window Left = 170
 Window Height = 349
 Window Width = 843
+Window Z-Order = 1
 
-[File 0022]
+[File 0021]
 Path = "/c/PHASMA 2025 DAQ/Helicon/Helicon_Settings.uir"
 File Type = "User Interface Resource"
 Disk Date = 3847465304
@@ -270,23 +263,27 @@ Window Left = 106
 Window Height = 349
 Window Width = 715
 
-[File 0023]
+[File 0022]
 Path = "/c/PHASMA 2025 DAQ/Housekeeping/HousekeepingSystems.uir"
 File Type = "User Interface Resource"
 Disk Date = 3857163560
 In Projects = "1,"
+Window Top = 33
+Window Left = 10
+Window Height = 401
+Window Width = 973
 
-[File 0024]
+[File 0023]
 Path = "/c/PHASMA 2025 DAQ/Langmuir/LangmuirSettings.uir"
 File Type = "User Interface Resource"
-Disk Date = 3854178330
+Disk Date = 3857288035
 In Projects = "1,"
 Window Top = 64
 Window Left = 26
 Window Height = 349
 Window Width = 843
 
-[File 0025]
+[File 0024]
 Path = "/c/PHASMA 2025 DAQ/Magnetic Field/MagField_Settings.uir"
 File Type = "User Interface Resource"
 Disk Date = 3831278270
@@ -296,7 +293,7 @@ Window Left = 90
 Window Height = 349
 Window Width = 715
 
-[File 0026]
+[File 0025]
 Path = "/c/PHASMA 2025 DAQ/MasterTrigger/MasterTriggerSettings.uir"
 File Type = "User Interface Resource"
 Disk Date = 3850485852
@@ -306,17 +303,17 @@ Window Left = 10
 Window Height = 349
 Window Width = 715
 
-[File 0027]
+[File 0026]
 Path = "/c/PHASMA 2025 DAQ/McPherson/McPhersonSettings.uir"
 File Type = "User Interface Resource"
-Disk Date = 3856090472
+Disk Date = 3857295083
 In Projects = "1,"
 Window Top = 64
 Window Left = 26
 Window Height = 349
 Window Width = 715
 
-[File 0028]
+[File 0027]
 Path = "/c/PHASMA 2025 DAQ/Ocean Optics/OceanOpticsSettings.uir"
 File Type = "User Interface Resource"
 Disk Date = 3851103746
@@ -326,10 +323,10 @@ Window Left = 90
 Window Height = 401
 Window Width = 875
 
-[File 0029]
+[File 0028]
 Path = "/c/PHASMA 2025 DAQ/Photodiodes/PhotodiodeSettings.uir"
 File Type = "User Interface Resource"
-Disk Date = 3854194556
+Disk Date = 3857356126
 In Projects = "1,"
 Window Top = 533
 Window Left = 739
@@ -337,7 +334,7 @@ Window Height = 1058
 Window Width = 1310
 Window Released = True
 
-[File 0030]
+[File 0029]
 Path = "/c/PHASMA 2025 DAQ/Photron Camera/PhotronCameraSettings.uir"
 File Type = "User Interface Resource"
 Disk Date = 3855657998
@@ -347,7 +344,7 @@ Window Left = 202
 Window Height = 349
 Window Width = 971
 
-[File 0031]
+[File 0030]
 Path = "/c/PHASMA 2025 DAQ/PlasmaGun/PlasmaGunSettings.uir"
 File Type = "User Interface Resource"
 Disk Date = 3855607136
@@ -357,7 +354,7 @@ Window Left = 202
 Window Height = 349
 Window Width = 987
 
-[File 0032]
+[File 0031]
 Path = "/c/PHASMA 2025 DAQ/PulsedLIF/PulsedLIFSettings.uir"
 File Type = "User Interface Resource"
 Disk Date = 3849030326
@@ -366,6 +363,16 @@ Window Top = 126
 Window Left = 58
 Window Height = 349
 Window Width = 1003
+
+[File 0032]
+Path = "/c/PHASMA 2025 DAQ/QuantumBeat/QuantumBeatSettings.uir"
+File Type = "User Interface Resource"
+Disk Date = 3857200945
+In Projects = "1,"
+Window Top = 281
+Window Left = 138
+Window Height = 401
+Window Width = 833
 
 [File 0033]
 Path = "/c/PHASMA 2025 DAQ/RFEA/RFEASettings.uir"
@@ -388,16 +395,6 @@ Window Height = 349
 Window Width = 859
 
 [File 0035]
-Path = "/c/PHASMA 2025 DAQ/ThomsonScattering/ThomsonScatteringSettings.uir"
-File Type = "User Interface Resource"
-Disk Date = 3856090662
-In Projects = "1,"
-Window Top = 33
-Window Left = 10
-Window Height = 349
-Window Width = 1003
-
-[File 0036]
 Path = "/c/PHASMA 2025 DAQ/TripleProbe/TripleProbeSettings.uir"
 File Type = "User Interface Resource"
 Disk Date = 3854202804
@@ -407,7 +404,7 @@ Window Left = 218
 Window Height = 401
 Window Width = 980
 
-[File 0037]
+[File 0036]
 Path = "/c/PHASMA 2025 DAQ/D_TACQ Instruments/ACQ2106.h"
 File Type = "Include"
 Disk Date = 3854187762
@@ -416,7 +413,7 @@ Source Window State = "1,2,2,2,50,50,50,0,0,0,0,0,0,0,0,0,0,0,2,50,401,1477,1,0,
 Window Top = 560
 Window Left = 282
 
-[File 0038]
+[File 0037]
 Path = "/c/PHASMA 2025 DAQ/Andor Camera/Andor SDK/ATMCD32D.H"
 File Type = "Include"
 Disk Date = 3830120662
@@ -424,9 +421,8 @@ In Projects = "1,"
 Source Window State = "1,195,195,195,20,31,20,0,3,0,0,0,0,0,0,0,151,0,195,31,401,868,1,0,"
 Window Top = 33
 Window Left = 10
-Window Z-Order = 3
 
-[File 0039]
+[File 0038]
 Path = "/c/PHASMA 2025 DAQ/Bdot/BdotSettings.h"
 File Type = "Include"
 Disk Date = 3853143860
@@ -435,7 +431,7 @@ Source Window State = "1,87,87,87,104,104,104,0,0,0,0,0,0,0,0,0,35,0,87,104,349,
 Window Top = 467
 Window Left = 234
 
-[File 0040]
+[File 0039]
 Path = "/c/PHASMA 2025 DAQ/Bdot/BdotSystems.h"
 File Type = "Include"
 Disk Date = 3832597580
@@ -444,7 +440,7 @@ Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,401,679,1,0,"
 Window Top = 33
 Window Left = 10
 
-[File 0041]
+[File 0040]
 Path = "/c/PHASMA 2025 DAQ/ContLIF/Bristol.h"
 File Type = "Include"
 Disk Date = 3830119556
@@ -453,7 +449,7 @@ Source Window State = "1,6,6,6,0,23,23,0,0,0,0,0,0,0,0,0,0,0,6,0,349,971,1,0,"
 Window Top = 95
 Window Left = 42
 
-[File 0042]
+[File 0041]
 Path = "/c/PHASMA 2025 DAQ/ContLIF/ContLIFSettings.h"
 File Type = "Include"
 Disk Date = 3852476364
@@ -462,7 +458,7 @@ Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,401,1421,1,0,"
 Window Top = 219
 Window Left = 106
 
-[File 0043]
+[File 0042]
 Path = "/c/PHASMA 2025 DAQ/ContLIF/ContLIFSystems.h"
 File Type = "Include"
 Disk Date = 3835000636
@@ -471,14 +467,14 @@ Source Window State = "1,5,5,5,24,24,24,0,0,0,0,0,0,0,0,0,0,0,5,24,349,851,1,10,
 Window Top = 467
 Window Left = 234
 
-[File 0044]
+[File 0043]
 Path = "/c/PHASMA 2025 DAQ/DoubleProbe/DoubleProbeSettings.h"
 File Type = "Include"
 Disk Date = 3853157542
 In Projects = "1,"
 Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,16,0,0,0,400,600,0,0,"
 
-[File 0045]
+[File 0044]
 Path = "/c/PHASMA 2025 DAQ/DoubleProbe/DoubleProbeSystems.h"
 File Type = "Include"
 Disk Date = 3833658276
@@ -487,7 +483,7 @@ Source Window State = "1,0,0,0,8,8,8,0,0,0,0,0,0,0,0,0,0,0,0,8,349,843,1,0,"
 Window Top = 653
 Window Left = 330
 
-[File 0046]
+[File 0045]
 Path = "/c/PHASMA 2025 DAQ/GlobalVariables.h"
 File Type = "Include"
 Disk Date = 3854189036
@@ -496,7 +492,7 @@ Source Window State = "1,17,17,17,0,0,0,0,0,0,0,0,0,0,0,0,0,0,17,0,401,875,1,0,"
 Window Top = 64
 Window Left = 26
 
-[File 0047]
+[File 0046]
 Path = "/c/PHASMA 2025 DAQ/Helicon/Helicon_Settings.h"
 File Type = "Include"
 Disk Date = 3833179524
@@ -505,7 +501,7 @@ Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,401,1421,1,0,"
 Window Top = 188
 Window Left = 90
 
-[File 0048]
+[File 0047]
 Path = "/c/PHASMA 2025 DAQ/Helicon/HeliconSourceSettings.h"
 File Type = "Include"
 Disk Date = 3829209326
@@ -514,7 +510,7 @@ Source Window State = "1,8,8,8,8,23,8,0,3,0,0,0,0,0,0,0,0,0,8,23,349,715,1,0,"
 Window Top = 64
 Window Left = 26
 
-[File 0049]
+[File 0048]
 Path = "/c/PHASMA 2025 DAQ/HelperFunctions.h"
 File Type = "Include"
 Disk Date = 3854190874
@@ -523,7 +519,7 @@ Source Window State = "1,0,0,0,20,20,20,0,0,0,0,0,0,0,0,0,0,0,0,20,401,1477,1,0,
 Window Top = 188
 Window Left = 90
 
-[File 0050]
+[File 0049]
 Path = "/c/PHASMA 2025 DAQ/HelperFunctions.h.h"
 File Type = "Include"
 Disk Date = 3854989432
@@ -532,7 +528,7 @@ Source Window State = "1,3,3,3,21,21,21,0,0,0,0,0,0,0,0,0,0,0,3,21,401,770,1,0,"
 Window Top = 126
 Window Left = 58
 
-[File 0051]
+[File 0050]
 Path = "/c/PHASMA 2025 DAQ/Housekeeping/HousekeepingSettings.h"
 File Type = "Include"
 Disk Date = 3857163560
@@ -541,7 +537,7 @@ Source Window State = "1,18,18,18,0,116,116,0,3,0,0,1,0,1,0,0,0,0,18,0,349,923,1
 Window Top = 64
 Window Left = 26
 
-[File 0052]
+[File 0051]
 Path = "/c/PHASMA 2025 DAQ/Housekeeping/HousekeepingSystems.h"
 File Type = "Include"
 Disk Date = 3857163560
@@ -550,7 +546,7 @@ Source Window State = "1,39,39,39,9,28,9,0,3,0,0,0,0,0,0,0,0,0,39,28,349,923,1,0
 Window Top = 33
 Window Left = 10
 
-[File 0053]
+[File 0052]
 Path = "/c/PHASMA 2025 DAQ/ContLIF/HP33120/hp33120a.h"
 File Type = "Include"
 Disk Date = 2949931788
@@ -559,17 +555,26 @@ Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,349,803,1,0,"
 Window Top = 219
 Window Left = 106
 
-[File 0054]
+[File 0053]
 Path = "/c/PHASMA 2025 DAQ/MDSPlus Routines/ipdesc.h"
 File Type = "Include"
 Disk Date = 3804534074
 In Projects = "1,"
 Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
 
+[File 0054]
+Path = "/c/PHASMA 2025 DAQ/Bdot/Joerger VTR10012-VISA.h"
+File Type = "Include"
+Disk Date = 3857198580
+In Projects = "1,"
+Source Window State = "1,327,327,327,1,1,1,0,0,0,0,472,0,480,75,0,239,0,327,1,349,1011,1,9,"
+Window Top = 157
+Window Left = 74
+
 [File 0055]
 Path = "/c/PHASMA 2025 DAQ/Langmuir/LangmuirSettings.h"
 File Type = "Include"
-Disk Date = 3854178330
+Disk Date = 3857288035
 In Projects = "1,"
 Source Window State = "1,45,45,45,44,44,44,0,0,0,0,0,0,0,0,0,22,0,45,44,349,843,1,0,"
 Window Top = 560
@@ -619,7 +624,6 @@ In Projects = "1,"
 Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,146,0,0,0,401,938,1,0,"
 Window Top = 126
 Window Left = 58
-Window Z-Order = 8
 
 [File 0061]
 Path = "/c/PHASMA 2025 DAQ/MasterControlSettings.h"
@@ -629,7 +633,6 @@ In Projects = "1,"
 Source Window State = "1,30,30,30,32,32,32,0,0,0,0,0,0,0,0,0,22,0,30,32,349,971,1,0,"
 Window Top = 374
 Window Left = 186
-Window Z-Order = 7
 
 [File 0062]
 Path = "/c/PHASMA 2025 DAQ/MasterTrigger/MasterTriggerSettings.h"
@@ -829,13 +832,22 @@ Source Window State = "1,2,2,2,9,9,9,0,0,0,0,0,0,0,0,0,0,0,2,9,400,600,1,0,"
 Window Top = 31
 
 [File 0084]
+Path = "/c/PHASMA 2025 DAQ/QuantumBeat/QuantumBeatSettings.h"
+File Type = "Include"
+Disk Date = 3857200945
+In Projects = "1,"
+Source Window State = "1,16,16,16,0,0,0,0,0,0,0,0,0,0,0,0,0,0,16,0,401,833,1,0,"
+Window Top = 374
+Window Left = 186
+
+[File 0085]
 Path = "/c/PHASMA 2025 DAQ/RFEA/RFEASettings.h"
 File Type = "Include"
 Disk Date = 3834839896
 In Projects = "1,"
 Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
 
-[File 0085]
+[File 0086]
 Path = "/c/PHASMA 2025 DAQ/RFEA/RFEASystems.h"
 File Type = "Include"
 Disk Date = 3833658274
@@ -844,7 +856,7 @@ Source Window State = "1,4,4,4,27,27,27,0,0,0,0,0,0,0,0,0,0,0,4,27,349,859,1,0,"
 Window Top = 126
 Window Left = 58
 
-[File 0086]
+[File 0087]
 Path = "/c/PHASMA 2025 DAQ/Rigol Routines/Rigol.h"
 File Type = "Include"
 Disk Date = 3836905498
@@ -853,7 +865,7 @@ Source Window State = "1,0,0,0,28,28,28,0,0,0,0,0,0,0,0,0,0,0,0,28,401,840,1,0,"
 Window Top = 312
 Window Left = 154
 
-[File 0087]
+[File 0088]
 Path = "/c/PHASMA 2025 DAQ/ContLIF/Sirah.h"
 File Type = "Include"
 Disk Date = 3834389564
@@ -862,14 +874,14 @@ Source Window State = "1,9,9,9,28,28,28,0,0,0,0,0,0,0,0,0,0,0,9,28,349,779,1,0,"
 Window Top = 95
 Window Left = 42
 
-[File 0088]
+[File 0089]
 Path = "/c/PHASMA 2025 DAQ/Instrument Drivers and Source Code/srds345.h"
 File Type = "Include"
 Disk Date = 3820225346
 In Projects = "1,"
 Source Window State = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
 
-[File 0089]
+[File 0090]
 Path = "/c/PHASMA 2025 DAQ/TempDiag/TempDiagSettings.h"
 File Type = "Include"
 Disk Date = 3836899920
@@ -878,7 +890,7 @@ Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,349,987,0,0,"
 Window Top = 250
 Window Left = 122
 
-[File 0090]
+[File 0091]
 Path = "/c/PHASMA 2025 DAQ/TempDiag/TempDiagSystems.h"
 File Type = "Include"
 Disk Date = 3829597894
@@ -887,7 +899,7 @@ Source Window State = "1,3,3,3,31,31,31,0,0,0,0,0,0,0,0,0,0,0,3,31,349,987,1,9,"
 Window Top = 219
 Window Left = 106
 
-[File 0091]
+[File 0092]
 Path = "/c/PHASMA 2025 DAQ/ThomsonScattering/ThomsonScatteringSettings.h"
 File Type = "Include"
 Disk Date = 3855652688
@@ -896,7 +908,7 @@ Source Window State = "1,78,78,78,34,34,34,0,0,0,0,0,0,0,0,0,50,0,78,34,349,1003
 Window Top = 95
 Window Left = 42
 
-[File 0092]
+[File 0093]
 Path = "/c/PHASMA 2025 DAQ/ThomsonScattering/ThomsonScatteringSystems.h"
 File Type = "Include"
 Disk Date = 3856074700
@@ -904,9 +916,8 @@ In Projects = "1,"
 Source Window State = "1,12,12,12,0,0,0,0,0,0,0,0,0,0,0,0,0,0,12,0,349,979,1,0,"
 Window Top = 64
 Window Left = 26
-Window Z-Order = 4
 
-[File 0093]
+[File 0094]
 Path = "/c/PHASMA 2025 DAQ/ContLIF/ThorLabs Chopper/ThorLabsChopperSettings.h"
 File Type = "Include"
 Disk Date = 3834389512
@@ -915,7 +926,7 @@ Source Window State = "1,2,2,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,349,923,1,0,"
 Window Top = 95
 Window Left = 42
 
-[File 0094]
+[File 0095]
 Path = "/c/PHASMA 2025 DAQ/TitanProbeMotors/TitanMotor.h"
 File Type = "Include"
 Disk Date = 3854179154
@@ -924,7 +935,7 @@ Source Window State = "1,0,0,0,103,103,103,0,0,0,0,0,0,0,0,0,0,0,0,103,401,945,1
 Window Top = 250
 Window Left = 122
 
-[File 0095]
+[File 0096]
 Path = "/c/PHASMA 2025 DAQ/Housekeeping/tkvx4244.h"
 File Type = "Include"
 Disk Date = 3857163560
@@ -933,7 +944,7 @@ Source Window State = "1,773,773,773,18,18,18,0,0,0,0,0,0,0,0,0,773,0,773,18,349
 Window Top = 343
 Window Left = 170
 
-[File 0096]
+[File 0097]
 Path = "/c/PHASMA 2025 DAQ/MDSPlus Routines/treeshr.h"
 File Type = "Include"
 Disk Date = 3804534074
@@ -942,7 +953,7 @@ Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,401,665,1,0,"
 Window Top = 157
 Window Left = 74
 
-[File 0097]
+[File 0098]
 Path = "/c/PHASMA 2025 DAQ/TripleProbe/TripleProbeSettings.h"
 File Type = "Include"
 Disk Date = 3854193958
@@ -950,7 +961,7 @@ In Projects = "1,"
 Source Window State = "1,44,44,44,20,20,20,0,0,0,0,0,0,0,0,0,4,0,44,20,400,600,1,0,"
 Window Top = 31
 
-[File 0098]
+[File 0099]
 Path = "/c/PHASMA 2025 DAQ/TripleProbe/TripleProbeSystems.h"
 File Type = "Include"
 Disk Date = 3833658276
@@ -959,7 +970,7 @@ Source Window State = "1,6,6,6,0,0,0,0,0,0,0,0,0,0,0,0,0,0,6,0,401,868,1,0,"
 Window Top = 250
 Window Left = 122
 
-[File 0099]
+[File 0100]
 Path = "/c/PHASMA 2025 DAQ/VXICrate/VXI_Crate.h"
 File Type = "Include"
 Disk Date = 3852628774
@@ -968,7 +979,7 @@ Source Window State = "1,1,1,1,5,13,5,0,3,0,0,0,0,0,0,0,0,0,1,13,401,784,1,0,"
 Window Top = 33
 Window Left = 10
 
-[File 0100]
+[File 0101]
 Path = "/c/PHASMA 2025 DAQ/PulsedLIF/AngstromWavemeter/wlmData.h"
 File Type = "Include"
 Disk Date = 3830815952
@@ -977,7 +988,7 @@ Source Window State = "1,41,41,41,39,39,39,0,0,0,0,0,0,0,0,0,33,0,41,39,349,1003
 Window Top = 622
 Window Left = 314
 
-[File 0101]
+[File 0102]
 Path = "/c/PHASMA 2025 DAQ/Bdot/Bdot_Settings.c"
 File Type = "CSource"
 Disk Date = 3854178890
@@ -986,32 +997,23 @@ Source Window State = "1,205,205,205,25,25,25,0,0,0,0,0,0,0,0,0,205,0,205,25,401
 Window Top = 188
 Window Left = 90
 
-[File 0102]
+[File 0103]
 Path = "/c/PHASMA 2025 DAQ/ContLIF/Bristol.c"
 File Type = "CSource"
 Disk Date = 3834997060
 In Projects = "1,"
-Source Window State = "1,348,348,348,4,4,4,0,0,0,0,0,0,0,0,0,348,0,348,4,349,851,0,0,"
+Source Window State = "1,28,28,28,74,74,74,0,0,0,0,0,0,0,0,0,16,0,28,74,349,851,0,0,"
 Window Top = 436
 Window Left = 218
 
-[File 0103]
+[File 0104]
 Path = "/c/PHASMA 2025 DAQ/ContLIF/ContLIFSettings.c"
 File Type = "CSource"
 Disk Date = 3856622280
 In Projects = "1,"
-Source Window State = "1,1626,1807,1626,0,1,0,0,3,0,0,595,0,0,0,0,1746,0,1807,1,349,835,1,0,"
+Source Window State = "1,1799,1799,1799,50,50,50,0,0,0,0,595,0,0,0,0,1711,0,1799,50,349,835,1,0,"
 Window Top = 281
 Window Left = 138
-
-[File 0104]
-Path = "/c/PHASMA 2025 DAQ/DoubleProbe/DoubleProbe Settings.c"
-File Type = "CSource"
-Disk Date = 3856612283
-In Projects = "1,"
-Source Window State = "1,207,207,207,36,36,36,0,0,0,0,0,0,0,0,0,193,0,207,36,401,1001,1,0,"
-Window Top = 219
-Window Left = 106
 
 [File 0105]
 Path = "/c/PHASMA 2025 DAQ/Helicon/HeliconSourceSettings.c"
@@ -1036,7 +1038,7 @@ Path = "/c/PHASMA 2025 DAQ/Langmuir/Langmuir.c"
 File Type = "CSource"
 Disk Date = 3854178548
 In Projects = "1,"
-Source Window State = "1,30,30,30,26,26,26,0,0,0,0,0,0,0,0,0,30,0,30,26,349,819,0,0,"
+Source Window State = "1,30,30,30,26,26,26,0,0,0,0,0,0,0,0,0,30,0,30,26,349,819,1,0,"
 Window Top = 126
 Window Left = 58
 
@@ -1050,25 +1052,15 @@ Window Top = 281
 Window Left = 138
 
 [File 0109]
-Path = "/c/PHASMA 2025 DAQ/MasterTrigger/MasterTriggerSettings.c"
-File Type = "CSource"
-Disk Date = 3856554768
-In Projects = "1,"
-Source Window State = "1,886,886,886,0,0,0,0,0,0,0,0,0,0,0,0,831,0,886,0,401,875,1,0,"
-Window Top = 95
-Window Left = 42
-Window Z-Order = 6
-
-[File 0110]
 Path = "/c/PHASMA 2025 DAQ/McPherson/McPhersonSettings.c"
 File Type = "CSource"
-Disk Date = 3856075204
+Disk Date = 3857295083
 In Projects = "1,"
-Source Window State = "1,320,320,320,1,1,1,0,0,0,0,0,0,0,0,0,305,0,320,1,401,868,1,0,"
+Source Window State = "1,282,282,282,8,8,8,0,0,0,0,0,0,0,0,0,240,0,282,8,401,868,1,0,"
 Window Top = 343
 Window Left = 170
 
-[File 0111]
+[File 0110]
 Path = "/c/PHASMA 2025 DAQ/Magnetic Field/NR_elle.c"
 File Type = "CSource"
 Disk Date = 3806656638
@@ -1077,7 +1069,7 @@ Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,401,1022,0,0,"
 Window Top = 157
 Window Left = 74
 
-[File 0112]
+[File 0111]
 Path = "/c/PHASMA 2025 DAQ/Magnetic Field/NR_ellf.c"
 File Type = "CSource"
 Disk Date = 3806656638
@@ -1086,7 +1078,7 @@ Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,349,987,0,0,"
 Window Top = 188
 Window Left = 90
 
-[File 0113]
+[File 0112]
 Path = "/c/PHASMA 2025 DAQ/Magnetic Field/NR_nrutil.c"
 File Type = "CSource"
 Disk Date = 3806656638
@@ -1095,7 +1087,7 @@ Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,401,630,0,0,"
 Window Top = 591
 Window Left = 298
 
-[File 0114]
+[File 0113]
 Path = "/c/PHASMA 2025 DAQ/Magnetic Field/NR_rd.c"
 File Type = "CSource"
 Disk Date = 3806656638
@@ -1104,7 +1096,7 @@ Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,401,630,0,0,"
 Window Top = 622
 Window Left = 314
 
-[File 0115]
+[File 0114]
 Path = "/c/PHASMA 2025 DAQ/Magnetic Field/NR_rf.c"
 File Type = "CSource"
 Disk Date = 3806656638
@@ -1113,25 +1105,25 @@ Source Window State = "1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,401,630,0,0,"
 Window Top = 653
 Window Left = 330
 
-[File 0116]
+[File 0115]
 Path = "/c/PHASMA 2025 DAQ/Ocean Optics/OceanOptics.c"
 File Type = "CSource"
 Disk Date = 3837421622
 In Projects = "1,"
-Source Window State = "1,157,157,157,8,8,8,0,0,0,0,0,0,0,0,0,157,0,157,8,401,875,0,0,"
+Source Window State = "1,157,157,157,8,8,8,0,0,0,0,0,0,0,0,0,94,0,157,8,401,875,1,0,"
 Window Top = 126
 Window Left = 58
 
-[File 0117]
-Path = "/c/PHASMA 2025 DAQ/Photodiodes/PhotodiodeSettings.c"
+[File 0116]
+Path = "/c/PHASMA 2025 DAQ/MDS/PHASMA-MDS-Routines.c"
 File Type = "CSource"
-Disk Date = 3857149991
+Disk Date = 3854376508
 In Projects = "1,"
-Source Window State = "1,188,188,188,0,0,0,0,0,0,0,0,0,0,0,0,111,0,188,0,401,714,1,0,"
+Source Window State = "1,369,369,369,39,271,39,0,3,0,0,0,0,0,0,0,320,0,369,271,401,630,1,0,"
 Window Top = 33
 Window Left = 10
 
-[File 0118]
+[File 0117]
 Path = "/c/PHASMA 2025 DAQ/PlasmaGun/PlasmaGunSettings.c"
 File Type = "CSource"
 Disk Date = 3857165931
@@ -1140,16 +1132,16 @@ Source Window State = "1,408,408,408,42,42,42,0,0,0,0,2,0,2,0,0,356,0,408,42,349
 Window Top = 498
 Window Left = 250
 
-[File 0119]
-Path = "/c/PHASMA 2025 DAQ/PulsedLIF/PLIFSettings.c"
+[File 0118]
+Path = "/c/PHASMA 2025 DAQ/QuantumBeat/QBSSettings.c"
 File Type = "CSource"
-Disk Date = 3856540398
+Disk Date = 3857201192
 In Projects = "1,"
-Source Window State = "1,526,526,526,55,55,55,0,0,0,0,0,0,0,0,0,493,0,526,55,401,630,1,0,"
-Window Top = 33
-Window Left = 10
+Source Window State = "1,140,140,140,12,12,12,0,0,0,0,0,0,0,0,0,94,0,140,12,401,833,1,0,"
+Window Top = 126
+Window Left = 58
 
-[File 0120]
+[File 0119]
 Path = "/c/PHASMA 2025 DAQ/RFEA/RFEASettings.c"
 File Type = "CSource"
 Disk Date = 3856540398
@@ -1158,7 +1150,7 @@ Source Window State = "1,124,124,124,55,55,55,0,0,0,0,0,0,0,0,0,91,0,124,55,349,
 Window Top = 498
 Window Left = 250
 
-[File 0121]
+[File 0120]
 Path = "/c/PHASMA 2025 DAQ/Rigol Routines/Rigol.c"
 File Type = "CSource"
 Disk Date = 3854457442
@@ -1166,6 +1158,15 @@ In Projects = "1,"
 Source Window State = "1,68,68,68,5,5,5,0,0,0,0,0,0,0,0,0,1,0,68,5,401,840,1,0,"
 Window Top = 126
 Window Left = 58
+
+[File 0121]
+Path = "/c/PHASMA 2025 DAQ/Housekeeping/setup_4244.c"
+File Type = "CSource"
+Disk Date = 3857163560
+In Projects = "1,"
+Source Window State = "1,295,295,295,26,26,26,0,0,0,0,0,0,0,0,0,295,0,295,26,401,938,0,0,"
+Window Top = 33
+Window Left = 10
 
 [File 0122]
 Path = "/c/PHASMA 2025 DAQ/ContLIF/Sirah.c"
@@ -1195,24 +1196,15 @@ Window Top = 343
 Window Left = 170
 
 [File 0125]
-Path = "/c/PHASMA 2025 DAQ/ThomsonScattering/ThomsonScatteringSettings.c"
-File Type = "CSource"
-Disk Date = 3857209353
-In Projects = "1,"
-Source Window State = "1,1059,1059,1059,4,4,4,0,0,0,0,0,0,0,0,0,1015,0,1059,4,401,770,1,0,"
-Window Top = 31
-Window Z-Order = 1
-
-[File 0126]
 Path = "/c/PHASMA 2025 DAQ/ContLIF/ThorLabs Chopper/ThorLabs_Chopper.c"
 File Type = "CSource"
 Disk Date = 3852537776
 In Projects = "1,"
-Source Window State = "1,34,34,34,8,8,8,0,0,0,0,0,0,0,0,0,34,0,34,8,349,899,0,0,"
+Source Window State = "1,57,57,57,1,1,1,0,0,0,0,0,0,0,0,0,0,0,57,1,349,899,1,0,"
 Window Top = 33
 Window Left = 10
 
-[File 0127]
+[File 0126]
 Path = "/c/PHASMA 2025 DAQ/Housekeeping/Tkvx4244/tkvx4244.c"
 File Type = "CSource"
 Disk Date = 3857163560
@@ -1221,67 +1213,67 @@ Source Window State = "1,505,505,505,0,0,0,0,0,0,0,0,0,0,0,0,472,0,505,0,349,747
 Window Top = 33
 Window Left = 10
 
-[File 0128]
+[File 0127]
 Path = "/c/PHASMA 2025 DAQ/TripleProbe/TripleProbeSettings.c"
 File Type = "CSource"
 Disk Date = 3856619516
 In Projects = "1,"
-Source Window State = "1,25,25,25,32,32,32,0,0,0,0,0,0,0,0,0,1,0,25,32,1503,1708,0,0,"
+Source Window State = "1,14,14,14,0,0,0,0,0,0,0,0,0,0,0,0,0,0,14,0,1503,1708,0,0,"
 Window Top = 249
 Window Left = 1709
 Window Released = True
 
-[File 0129]
+[File 0128]
 Path = "/c/PHASMA 2025 DAQ/Andor Camera/Andor SDK/atmcd64m.lib"
 File Type = "Library"
 Disk Date = 3830120662
 In Projects = "1,"
 
-[File 0130]
+[File 0129]
 Path = "/c/PHASMA 2025 DAQ/ContLIF/ThorLabs Chopper/MC2000CommandLibWin64.lib"
 File Type = "Library"
 Disk Date = 3666069732
 In Projects = "1,"
 
-[File 0131]
+[File 0130]
 Path = "/c/PHASMA 2025 DAQ/MDS/mdslib.lib"
 File Type = "Library"
 Disk Date = 3497961470
 In Projects = "1,"
 
-[File 0132]
+[File 0131]
 Path = "/c/PHASMA 2025 DAQ/MDS/mdsshr.lib"
 File Type = "Library"
 Disk Date = 3497955012
 In Projects = "1,"
 
-[File 0133]
+[File 0132]
 Path Line0001 = "/c/Program Files (x86)/National Instruments/Shared/ExternalCompilerSupport/C/lib"
 Path Line0002 = "64/msvc/NIDAQmx.lib"
 File Type = "Library"
 Disk Date = 3668547008
 In Projects = "1,"
 
-[File 0134]
+[File 0133]
 Path = "/c/PHASMA 2025 DAQ/Photron Camera/PDCLIB.lib"
 File Type = "Library"
 Disk Date = 3829989566
 In Projects = "1,"
 
-[File 0135]
+[File 0134]
 Path Line0001 = "/c/PHASMA 2025 DAQ/PHASMA Python Routines/PHASMA_C_to_Python_convertor_Project/P"
 Path Line0002 = "HASMA_C_to_Python_convertor.lib"
 File Type = "Library"
 Disk Date = 3835012396
 In Projects = "1,"
 
-[File 0136]
+[File 0135]
 Path = "/c/PHASMA 2025 DAQ/PulsedLIF/AngstromWavemeter/wlmData.lib"
 File Type = "Library"
 Disk Date = 3493306362
 In Projects = "1,"
 
-[File 0137]
+[File 0136]
 Path = "/c/PHASMA 2025 DAQ/ContLIF/BristolSoftware/CLDevIFace.dll"
 File Type = "DLL"
 Disk Date = 3829909660
@@ -1290,21 +1282,15 @@ In Projects = "1,"
 [Tab Order]
 Tab 0001 = "/c/PHASMA 2025 DAQ/MasterControlLoop.c"
 Tab 0002 = "/c/PHASMA 2025 DAQ/MasterControlPanel.uir"
-Tab 0003 = "/c/PHASMA 2025 DAQ/Bdot/Joerger VTR10012-VISA.h"
-Tab 0004 = "/c/PHASMA 2025 DAQ/QuantumBeat/QuantumBeatSettings.uir"
-Tab 0005 = "/c/PHASMA 2025 DAQ/QuantumBeat/QBSSettings.c"
-Tab 0006 = "/c/PHASMA 2025 DAQ/NewmarkMotors/Newmark.c"
-Tab 0007 = "/c/PHASMA 2025 DAQ/ContLIF/ContLIFSettings.uir"
-Tab 0008 = "/c/PHASMA 2025 DAQ/HelperFunctions.c"
-Tab 0009 = "/c/PHASMA 2025 DAQ/QuantumBeat/QuantumBeatSettings.h"
-Tab 0010 = "/c/PHASMA 2025 DAQ/Housekeeping/setup_4244.c"
-Tab 0011 = "/c/PHASMA 2025 DAQ/MDS/PHASMA-MDS-Routines.c"
-Tab 0012 = "/c/PHASMA 2025 DAQ/ThomsonScattering/ThomsonScatteringSettings.c"
-Tab 0013 = "/c/PHASMA 2025 DAQ/MasterTrigger/MasterTriggerSettings.c"
-Tab 0014 = "/c/PHASMA 2025 DAQ/MasterControlSettings.h"
-Tab 0015 = "/c/PHASMA 2025 DAQ/MasterControlPanel.h"
-Tab 0016 = "/c/PHASMA 2025 DAQ/ThomsonScattering/ThomsonScatteringSystems.h"
-Tab 0017 = "/c/PHASMA 2025 DAQ/Andor Camera/Andor SDK/ATMCD32D.H"
+Tab 0003 = "/c/PHASMA 2025 DAQ/HelperFunctions.c"
+Tab 0004 = "/c/PHASMA 2025 DAQ/Photodiodes/PhotodiodeSettings.c"
+Tab 0005 = "/c/PHASMA 2025 DAQ/ThomsonScattering/ThomsonScatteringSettings.uir"
+Tab 0006 = "/c/PHASMA 2025 DAQ/ThomsonScattering/ThomsonScatteringSettings.c"
+Tab 0007 = "/c/PHASMA 2025 DAQ/PulsedLIF/PLIFSettings.c"
+Tab 0008 = "/c/PHASMA 2025 DAQ/DoubleProbe/DoubleProbe Settings.c"
+Tab 0009 = "/c/PHASMA 2025 DAQ/LeCroy Routines/Lecroy.c"
+Tab 0010 = "/c/PHASMA 2025 DAQ/MasterTrigger/MasterTriggerSettings.c"
+Tab 0011 = "/c/PHASMA 2025 DAQ/DoubleProbe/DoubleProbeSettings.uir"
 
 [Default Build Config 0001 Debug]
 Generate Browse Info = True
@@ -1393,31 +1379,4 @@ External Process Path = ""
 Command Line Args = ""
 Working Directory = ""
 Environment Options = ""
-
-[Watch 1]
-Watch Expression = "Bdot_signal3"
-
-[Watch 2]
-Watch Expression = "Bdot_signal3"
-
-[Watch 3]
-Watch Expression = "ch"
-
-[Watch 4]
-Watch Expression = "fileheader"
-
-[Watch 5]
-Watch Expression = "McP_retval"
-
-[Watch 6]
-Watch Expression = "command"
-
-[Watch 7]
-Watch Expression = "iCoolerStatus"
-
-[Watch 8]
-Watch Expression = "prev"
-
-[Watch 9]
-Watch Expression = "retval"
 

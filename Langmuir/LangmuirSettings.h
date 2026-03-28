@@ -71,8 +71,8 @@
 #define  LANG_PANEL_FloatPot1             56      /* control type: numeric, callback function: (none) */
 #define  LANG_PANEL_TEXTMSG_20            57      /* control type: textMsg, callback function: (none) */
 #define  LANG_PANEL_KEITHLEYGPIB2         58      /* control type: ring, callback function: (none) */
-#define  LANG_PANEL_SendHome_2            59      /* control type: command, callback function: Bdot_Home2 */
-#define  LANG_PANEL_SendHome              60      /* control type: command, callback function: Bdot_Home1 */
+#define  LANG_PANEL_SendHome_2            59      /* control type: command, callback function: Langmuir_Home2 */
+#define  LANG_PANEL_SendHome              60      /* control type: command, callback function: Langmuir_Home1 */
 #define  LANG_PANEL_KEITHLEYGPIB1         61      /* control type: ring, callback function: (none) */
 #define  LANG_PANEL_TEXTMSG_18            62      /* control type: textMsg, callback function: (none) */
 #define  LANG_PANEL_TEXTMSG_22            63      /* control type: textMsg, callback function: (none) */
@@ -98,10 +98,10 @@
 
      /* Callback Prototypes: */
 
-int  CVICALLBACK Bdot_Home1(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
-int  CVICALLBACK Bdot_Home2(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK Close_Langmuir_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK Langmuir_Activate_Button(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK Langmuir_Home1(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK Langmuir_Home2(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK Langmuir_Move_to_Start1(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK Langmuir_Move_to_Start2(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 int  CVICALLBACK Langmuir_Move_to_Stop1(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);

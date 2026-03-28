@@ -15,7 +15,7 @@
 
 #define STRBUFFSIZE 512U
 
-int PD_recall_from_master_conf = 0; // whether to use config settings in the master_control file or stick with what's currently in the UI
+int PD_recall_from_master_conf = 1; // whether to use config settings in the master_control file or stick with what's currently in the UI
 
 int acq2106_config(char* , int , int , int, char *);
 
@@ -25,11 +25,12 @@ int 	    Photodiode_panel;
 
 const char PD_PyShell[]  = "cmd.exe /c ";
 const char PD_PyCall[] = "python ";
+
 static char PD_PyEnvPath[STRBUFFSIZE];
 static char PD_PyWdir[STRBUFFSIZE];
 static char PD_PyScript[STRBUFFSIZE]; 
 
-
+	//const char command[] = "cmd.exe /c conda activate \"C:/PHASMA 2025 DAQ/PHASMA Python Routines/PHASMA_C_to_Python_convertor_Project/PhasmaMDS/Python\" & python \"C:/PHASMA 2025 DAQ/PHASMA Python Routines/PHASMA_C_to_Python_convertor_Project/PhasmaMDS/mds_push_all.py\"";
 int panelHandle = Photodiode;
 
 void PDRunPython(char * PyFunc, char ** PyArgs, int numargs)
@@ -45,7 +46,7 @@ void PDRunPython(char * PyFunc, char ** PyArgs, int numargs)
 	GetCtrlVal (Photodiode_panel, Photodiode_ACQ2106_WDIR,PD_PyWdir);
 	GetCtrlVal (Photodiode_panel, Photodiode_ACQ_PY_SCRIPT,PD_PyScript);
 	
-	snprintf(command, sizeof(command), "%s conda activate %s & cd %s & %s %s %s",  
+	snprintf(command, sizeof(command), "%s conda activate \"%s\" & cd \"%s\" & %s %s %s",  
 			PD_PyShell, PD_PyEnvPath, PD_PyWdir, PD_PyCall, PD_PyScript, PyFunc);
 
 	for (k=0; k<numargs; k++){
@@ -53,6 +54,7 @@ void PDRunPython(char * PyFunc, char ** PyArgs, int numargs)
 		strcat(command,PyArgs[k]);
 		
 	}
+	//strcat(command,"");
 	
 	DiscardPanel(Photodiode_panel);
 	
@@ -61,7 +63,7 @@ void PDRunPython(char * PyFunc, char ** PyArgs, int numargs)
 			//SetCtrlVal (panelHandle, Photodiode_CONSOLE, command); // TODO: should have a plaintext readout in the main screen to display output from devices, external scripts, etc
 		}
     else
-		MessagePopup ("ERROR", "Failed to launch executable!");		
+		MessagePopup ("ERROR", "Failed to launch Py script!");		
 }
 
 int PDTryPython()

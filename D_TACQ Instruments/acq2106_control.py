@@ -1,6 +1,8 @@
 import sys
 sys.path.append(r"C:\PHASMA 2025 DAQ\D_TACQ Instruments")
 sys.path.append(r"C:\PHASMA 2025 DAQ\D_TACQ Instruments\acq400_hapi_master")
+
+print(sys.path)
 import numpy as np
 import acq400_hapi as acq
 import time
@@ -20,6 +22,9 @@ def config_master(dev_ip,num_samples = 1000,termination='50R', trig_source='FP',
         demux=1,
         soft_tr=0,
         ))
+    
+    termination = '50R' # hard code this because LW can only do 1M
+    
     
     # site1 = comm_s1(devip);
     site0.sr('set.site 1 trg 1,0,1')
@@ -129,15 +134,22 @@ def store_local(data, shotnum, path,device,diagnostic):
     
     from phasma_model.phasma_devices import devdict
     
-    chnames = [a for a in devdict[diagnostic].devices.HWdevices if a.name_local==device][0].channel_names
+    diagnames = devdict.keys()
     
+    diagname = [diagname for diagname in diagnames if diagnostic.lower() in diagname.lower()][0] # need to make dict access insensitive to case if key string
+    print(device)
+    print(diagname)
+    dev = [a for a in devdict[diagname].devices.HWdevices if a.name_mds.upper() == device.upper()]
+    
+    chnames = dev[0].channel_names
+    # print(chnames)
     df = pd.DataFrame(data)
     
     df = df.rename(columns=chnames)
     
     datafid = f"{shotnum}_{device}.txt"
     
-    df.to_csv(path + "/" +  datafid)
+    df.to_csv(path + "/" +  datafid,index=False)
     
 def readout_store(dev_ip, num_channels, num_samples, shotnum, readout_dir,moniker,diagnostic):
 
@@ -154,6 +166,10 @@ if __name__ == "__main__":
     
     devip = sys.argv[ip_ind]
     func = sys.argv[func_ind]
+
+
+    for arg in sys.argv:
+        print(arg)
 
     match func:
         case "arm_transient":

@@ -11043,3 +11043,3369 @@ failed to write data: MasterTrig.SETUP.OTHER_PULSE_
 failed to write data: MasterTrig.SETUP.OTHER_HIGH
 failed to write data: MasterTrig.SETUP.OTHER_LOW
 donezo
+donezo
+donezo
+donezo
+donezo
+donezo
+donezo
+donezo
+donezo
+donezo
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo
+failed to write data: housekeeping.DATA.Time
+failed to write data: housekeeping.DATA.Time
+Error: Problem setting default to node '\TOP.DIAGNOSTICS.MasterTrig:DATA'
+Error message was: %TREE-W-NNF, Node Not Found
+mdsdcl: --> failed on line 'set def \TOP.DIAGNOSTICS.MasterTrig:DATA'
+
+failed to write data: MasterTrig.SETUP.TOTAL_CYCLE_
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. LASER_WARMU
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. GUN_CHARGIN
+failed to write data: MasterTrig.SETUP. ASTRELLA_SY
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ASTRELLA_SYN
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.ICCD_SHUTTER
+failed to write data: MasterTrig.SETUP.GAS_PUFF
+failed to write data: MasterTrig.SETUP.GAS_PUFF_PUL
+failed to write data: MasterTrig.SETUP.GAS_PUFF_HIG
+failed to write data: MasterTrig.SETUP.GAS_PUFF_LOW
+failed to write data: MasterTrig.SETUP.ARC
+failed to write data: MasterTrig.SETUP.ARC_PULSE_LE
+failed to write data: MasterTrig.SETUP.ARC_HIGH
+failed to write data: MasterTrig.SETUP.ARC_LOW
+failed to write data: MasterTrig.SETUP.BIAS1
+failed to write data: MasterTrig.SETUP.BIAS1_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS1_HIGH
+failed to write data: MasterTrig.SETUP.BIAS1_LOW
+failed to write data: MasterTrig.SETUP.BIAS2
+failed to write data: MasterTrig.SETUP.BIAS2_PULSE_
+failed to write data: MasterTrig.SETUP.BIAS2_HIGH
+failed to write data: MasterTrig.SETUP.BIAS2_LOW
+failed to write data: MasterTrig.SETUP.PERPTS
+failed to write data: MasterTrig.SETUP.PERPTS_PULSE
+failed to write data: MasterTrig.SETUP.PERPTS_HIGH
+failed to write data: MasterTrig.SETUP.PERPTS_LOW
+failed to write data: MasterTrig.SETUP.PARATS
+failed to write data: MasterTrig.SETUP.PARATS_PULSE
+failed to write data: MasterTrig.SETUP.PARATS_HIGH
+failed to write data: MasterTrig.SETUP.PARATS_LOW
+failed to write data: MasterTrig.SETUP.PLIF
+failed to write data: MasterTrig.SETUP.PLIF_PULSE_L
+failed to write data: MasterTrig.SETUP.PLIF_HIGH
+failed to write data: MasterTrig.SETUP.PLIF_LOW
+failed to write data: MasterTrig.SETUP.OTHER
+failed to write data: MasterTrig.SETUP.OTHER_PULSE_
+failed to write data: MasterTrig.SETUP.OTHER_HIGH
+failed to write data: MasterTrig.SETUP.OTHER_LOW
+donezo

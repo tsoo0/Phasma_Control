@@ -36,10 +36,10 @@ SourceLocation="c:\PHASMA 2025 DAQ\MasterTrigger\MasterTriggerSettings.c:211:6"
 [Send_Trigger]
 Class="Function"
 Prototype="void Send_Trigger();"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterTrigger\MasterTriggerSettings.c:859:6"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterTrigger\MasterTriggerSettings.c:862:6"
 
 [Write_MasterTrigger]
 Class="Function"
 Prototype="void Write_MasterTrigger();"
-SourceLocation="c:\PHASMA 2025 DAQ\MasterTrigger\MasterTriggerSettings.c:890:6"
+SourceLocation="c:\PHASMA 2025 DAQ\MasterTrigger\MasterTriggerSettings.c:893:6"
 

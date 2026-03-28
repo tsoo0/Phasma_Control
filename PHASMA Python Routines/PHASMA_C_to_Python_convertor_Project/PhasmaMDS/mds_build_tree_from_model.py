@@ -1,5 +1,5 @@
 # REPLACES EXISTING MODEL TREE! #
-# Generate a new experimental model on a running mds server
+# Generates a new model tree according to /phasma_model
 
 import sys
 import os
@@ -54,7 +54,6 @@ Creates an MDS model tree with the format:
 import mdsthin as mds
 from functions import tcl_write_print
 # %%
-
 
 treename = 'phasma2025'
 # treename = 'phasma_testo'
@@ -135,7 +134,6 @@ for diagname in devdict.keys():
         
             for n,fieldname in enumerate(field_names):
             
-                
                 c.tcl(f"add node .{fieldname}/usage=numeric")
                 c.tcl(f"add tag .{fieldname} {fieldname}")
                 # except:
@@ -153,8 +151,7 @@ for diagname in devdict.keys():
             metastrs=list(filter(lambda a: not a.startswith("__") and a not in excludestr, newdiag.diag_def.position.values())) # strip out non-relevant fields
         
             for n,fieldname in enumerate(newdiag.diag_def.position.values()):
-                
-                
+                 
                 try:
                    
                     tcl_write_print(c,f"add node .{fieldname}/usage=numeric")
@@ -169,7 +166,6 @@ root="PHASMA"
 c.tcl("set def \TOP")
 c.tcl(f"add node .{root}")
 c.tcl(f"add tag .{root} PHASMA")
-
 
 for diagname in phasmadiags:
     
