@@ -153,10 +153,9 @@ if __name__ == '__main__':
     raw_data_dir = "D:\\PHASMA_RawData"    
     import numpy as np
 
-    shotmin = 1149
-    shotmax = 1280
+    shotmin = 1620
+    shotmax = 1625
     shots = np.arange(shotmin,shotmax)
     
     for shot in shots:
         push_all_mds(treename, exp_ip, raw_data_dir, shotnum = shot)
-    # push_all_mds_latest(treename, exp_ip, raw_data_dir)

@@ -17,3 +17,4 @@ void 		acquire_data(ViSession handle, int channel,double voltage_scale, int reco
 				double output_array[]);
 void 		displayErr(ViSession gInstrHndl,ViStatus err);    
 int			TransferHousekeepingData (double transfer_array1[], double transfer_array2[], double transfer_array3[]);
+void	    Photodiodes_16x_Arm(void);

@@ -156,17 +156,19 @@ void	Store_Data (void)
 	//Always store timing parameters
 	//Write_Timing();
 	
-		//Go through diagnostics and store data
-		
-	//Delay(5); // without this delay the data collection is starting before the master trig even goes out.... TR 3/26/26
+	//Go through diagnostics and store data
+	
+	Delay(1);
+	
 	if (MasterTriggerDataFlag) 	Write_MasterTrigger();
-	if (PhotodiodeDataFlag) 	Write_PhotodiodeData(); // ACQ devices should begin first because they can work in the background but probably take the longest
+	if (HousekeepingDataFlag) 	Write_HousekeepingData();
+	
 	if (TripleProbeDataFlag) 	Write_TripleProbeData();
 	if (MagFieldDataFlag) 		Write_MagField();
 	if (HeliconDataFlag) 		Write_HeliconSettings();
 	if (BdotDataFlag) 			Write_BdotData();
 	if (PlasmaGunDataFlag) 		Write_PlasmaGunData();
-	if (HousekeepingDataFlag) 	Write_HousekeepingData();
+	
 	if (TemporaryDiagDataFlag) 	Write_TempDiagData();
 	if (RFEADataFlag) 			Write_RFEAData();
 	if (DoubleProbeDataFlag) 	Write_DoubleProbeData(); 
@@ -175,6 +177,13 @@ void	Store_Data (void)
 	if (PulsedLIFDataFlag) 		Write_PulsedLIFData();
 	
 	if (McPherson209DataFlag) 	Write_McPherson209Data();
+	if (PhotodiodeDataFlag)     Write_PhotodiodeData();
+	
+	//if (PhotodiodeDataFlag) {
+	//	
+	//	if (ExecutableHasTerminated(PyHandle) == PyScriptFinished) Write_PhotodiodeData();
+	//} 
+	//
 	//
 	/*
 	if (QuantumBeatDataFlag) 	Write_QuantumBeatData();
@@ -183,14 +192,14 @@ void	Store_Data (void)
 	*/
 
 	//if any data flags were turned on, push raw data from the text files to the MDS system
-	//while (ExecutableHasTerminated(PyHandle) == PyScriptNotFinished) // ensure python has finished writing data before attempting mds push
-	
+	//if (PhotodiodeDataFlag) {while (ExecutableHasTerminated(PyHandle) == PyScriptNotFinished) {} } // ensure python has finished writing data before attempting mds push
+	Delay(8);
 	if (push_to_mds_flag)
 	{ 
 		if ( (MagFieldDataFlag) || (HeliconDataFlag) || (BdotDataFlag) || (PlasmaGunDataFlag) || (HousekeepingDataFlag) || (TemporaryDiagDataFlag)	|| (RFEADataFlag) 	|| 
 				(DoubleProbeDataFlag) 	|| (PhotronCameraDataFlag) 	||(TSDataFlag) 	|| (PulsedLIFDataFlag) ||(PhotodiodeDataFlag) 	|| (TripleProbeDataFlag) || (McPherson209DataFlag) 	|| 
 				(QuantumBeatDataFlag) || (OceanOpticsDataFlag) 	||(LightwvIntferomDataFlag) ||(MasterTriggerDataFlag) ) {
-			Delay(0.5); // wait a moment between disc write and mds push 
+			Delay(1); // wait a moment between disc write and mds push; about 10 seconds is necessary if Housekeeping photodiodes are in use.
 			push_mds();
 		}
 	}

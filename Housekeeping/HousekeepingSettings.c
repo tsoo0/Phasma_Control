@@ -1,3 +1,4 @@
+#include <userint.h>
 #include 	<utility.h>
 #include 	<visa.h>
 #include 	"HousekeepingSystems.h"
@@ -15,6 +16,8 @@
 ViSession  	sig_cond_hndl;
 ViSession 	digitizer_hndl;
 
+
+int photodiodes_active = 1; 
 
 int			bit_mask; 
 int			Housekeeping_panel;
@@ -148,6 +151,12 @@ void HousekeepingActivate(void)
 			
 			viClose(Housekeeping_RIGOL1_handle);
 		}
+		
+		
+		
+		
+		
+		
 		//Discard housekeeping panel
 		DiscardPanel(Housekeeping_panel);
 		
@@ -174,7 +183,15 @@ int HousekeepingArm(void)
  		result = viWrite (Housekeeping_RIGOL1_handle, RIGOL_Housekeeping_string, (unsigned int)strlen(RIGOL_Housekeeping_string), &count);
 		viClose(Housekeeping_RIGOL1_handle);
 	}
+	
+	// Arm Rigol Scopes for Photodiodes]
 
+	if (photodiodes_active){
+		char command[] = "cmd.exe /c conda activate \"C:/PHASMA 2025 DAQ/PHASMA Python Routines/PHASMA_C_to_Python_convertor_Project/PhasmaMDS/Python\" & python \"C:\\Users\\Scime Lab\\Desktop\\MSO5000 Ethernet Drivers\\labwindows.py\" arm";
+		
+		LaunchExecutable(command);
+	}
+	
 	return !result;
 }
 
@@ -479,8 +496,22 @@ void Write_HousekeepingData(void)
 		fprintf(outfile,"%f,%f,%f,%f,%f\n",timebase[j],Houskeeping_Signal9[j],Houskeeping_Signal10[j],Houskeeping_Signal11[j],Houskeeping_Signal12[j]);
 	}
 
- 	//Close high res housekeeping data file
+	
+
 	fclose (outfile);	
+//Close high res housekeeping data file
+	
+	if (photodiodes_active){
+		char command[1024] = "cmd.exe /c conda activate \"C:/PHASMA 2025 DAQ/PHASMA Python Routines/PHASMA_C_to_Python_convertor_Project/PhasmaMDS/Python\" & python \"C:\\Users\\Scime Lab\\Desktop\\MSO5000 Ethernet Drivers\\labwindows.py\" read ";
+		
+		strcat(command, ShotNumberString);
+		strcat(command, "\"");
+		
+		LaunchExecutable(command);
+	}
+	
+ 	
+	
 }
 
 
@@ -528,4 +559,16 @@ int	j;
 	}
 
 	return RIGOL_RecordLength;
+}
+
+int CVICALLBACK PHOTODIODE_TOGGLE_ONOFF (int panel, int control, int event,
+		void *callbackData, int eventData1, int eventData2)
+{
+	switch (event)
+	{
+		case EVENT_COMMIT:
+			GetCtrlVal(panel,control,&photodiodes_active);
+			break;
+	}
+	return 0;
 }

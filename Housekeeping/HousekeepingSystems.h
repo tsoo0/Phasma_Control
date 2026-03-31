@@ -39,6 +39,8 @@
 #define  Housekeep_Chan1Name              24      /* control type: string, callback function: (none) */
 #define  Housekeep_Chan0Name              25      /* control type: string, callback function: (none) */
 #define  Housekeep_RIGOL_RecordLength     26      /* control type: slide, callback function: (none) */
+#define  Housekeep_PHOTODIODE_PATH        27      /* control type: string, callback function: (none) */
+#define  Housekeep_PHOTODIODE_USE_IO      28      /* control type: binary, callback function: PHOTODIODE_TOGGLE_ONOFF */
 
 
      /* Control Arrays: */
@@ -54,6 +56,7 @@
      /* Callback Prototypes: */
 
 int  CVICALLBACK Close_Housekeeping_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
+int  CVICALLBACK PHOTODIODE_TOGGLE_ONOFF(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);
 
 
 #ifdef __cplusplus
