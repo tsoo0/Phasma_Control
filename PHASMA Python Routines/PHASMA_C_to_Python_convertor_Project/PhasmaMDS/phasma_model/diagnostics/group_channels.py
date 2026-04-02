@@ -1,6 +1,6 @@
 def group_channels(chmaps):
     diagdict = {}
-    n=1;
+    n=0;
     for i,chmap in enumerate(chmaps):
         for j in chmap.values():
             diagdict.update({n:j})

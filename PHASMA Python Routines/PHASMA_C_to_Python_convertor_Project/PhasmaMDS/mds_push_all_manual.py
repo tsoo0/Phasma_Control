@@ -152,5 +152,4 @@ if __name__ == '__main__':
     exp_ip = '127.0.0.1:57800'
     raw_data_dir = "D:\\PHASMA_RawData"    
 
-    # push_all_mds(treename, exp_ip, raw_data_dir, shotnum = 1605)
-    push_all_mds_latest(treename, exp_ip, raw_data_dir)
+    push_all_mds(treename, exp_ip, raw_data_dir, shotnum = 1752)

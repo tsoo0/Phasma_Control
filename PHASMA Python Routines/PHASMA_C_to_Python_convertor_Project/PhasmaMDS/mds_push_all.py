@@ -100,8 +100,7 @@ def push_all_mds(treename, exp_ip, raw_data_dir, shotnum):
                 for n,channel in enumerate(channels):
                     try:
                         channeldata = devdata.iloc[:,n].values
-                        # if channel.lower() == x_axis_name.lower(): # independent time axis should be irrelevant using signal datatype. Writing to 'Time' node fails
-                        #     continue
+
                         sig = mds.Signal(channeldata, None, x_axis)
                        
                         channel = channel.strip() # remove any leading or trailing spaces that may occur in the column name 
@@ -113,7 +112,7 @@ def push_all_mds(treename, exp_ip, raw_data_dir, shotnum):
                         
                         continue
                     
-            elif devtype == "SETUP":
+            elif devtype == "SETUP": 
                 c.tcl(f"set def \TOP.DIAGNOSTICS.{curdiag.diag_name_mds}:SETUP")
                 channels = devdata.columns
                 channels = [a.upper()[:12] for a in channels]

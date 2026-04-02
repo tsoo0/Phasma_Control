@@ -192,8 +192,8 @@ void	Store_Data (void)
 	*/
 
 	//if any data flags were turned on, push raw data from the text files to the MDS system
-	//if (PhotodiodeDataFlag) {while (ExecutableHasTerminated(PyHandle) == PyScriptNotFinished) {} } // ensure python has finished writing data before attempting mds push
-	Delay(8);
+	if (PhotodiodeDataFlag) {while (ExecutableHasTerminated(PyHandle) == PyScriptNotFinished) {} } // ensure python has finished writing data before attempting mds push
+	//Delay(8);
 	if (push_to_mds_flag)
 	{ 
 		if ( (MagFieldDataFlag) || (HeliconDataFlag) || (BdotDataFlag) || (PlasmaGunDataFlag) || (HousekeepingDataFlag) || (TemporaryDiagDataFlag)	|| (RFEADataFlag) 	|| 

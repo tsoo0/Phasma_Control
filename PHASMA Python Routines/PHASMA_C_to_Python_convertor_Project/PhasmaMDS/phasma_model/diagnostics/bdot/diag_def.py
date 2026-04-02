@@ -1,4 +1,5 @@
 from .devices import HWdevices
+from ..group_channels import group_channels
 # from ..position_base import position
 
 
@@ -6,7 +7,10 @@ tag = "BDOT"
 
 # position = position()
 
-J1_chmap = {1:'BDOT_BX1',
+
+
+J1_chmap = {
+            1:'BDOT_BX1',
             2:'BDOT_BY1',
             3:'BDOT_BX2',
             4:'BDOT_BY2',
@@ -55,13 +59,16 @@ J5_chmap= {
     38:'BDOT_BY18',
     39:'J39',
     40:'J40',
+    41:"TIME"
     }
 
 chmaps = [J1_chmap, J2_chmap, J3_chmap, J4_chmap, J5_chmap]
 
-chmap = {}
-for i,dev in enumerate(HWdevices):
-    dev.channel_names=chmaps[i]
-    chmap |= chmaps[i]
 
-diagnostic = chmap
+
+diagnostic = group_channels(chmaps)
+
+
+
+
+
