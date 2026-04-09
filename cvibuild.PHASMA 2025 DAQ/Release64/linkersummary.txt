@@ -27,7 +27,6 @@ RFEASettings.obj
 Rigol.obj
 setup_4244.obj
 Sirah.obj
-srds345.obj
 TempDiag Settings.obj
 ThomsonScatteringSettings.obj
 ThorLabs_Chopper.obj
@@ -39,7 +38,6 @@ cvi.lib
 advanlys.lib
 atmcd64m.lib
 gpib.lib
-ivi.lib
 kernel32.lib
 MC2000CommandLibWin64.lib
 mdslib.lib

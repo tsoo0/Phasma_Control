@@ -6,6 +6,7 @@
  * 				            												*
  *																			*
  *	5/1/2025		Code modified to integrate with new PHASMA DAQ code		*
+ *  4/8/2026        All SRDS routines removed and replaced with visa calls  *
  *  																		*
  ****************************************************************************/		
 
@@ -21,7 +22,6 @@
 #include <rs232.h>
 #include <string.h> 
 #include <NIDAQmx.h>
-#include <srds345.h> 
 #include "GlobalVariables.h"   
 
 //Settings Specific Include Files
@@ -32,10 +32,9 @@
 //Global Variables for settings panel
 int			Helicon_setup_state = 2;
 int			Helicon_panel;
-int			DS345_Active=1;			//Initialize to not finding instrument
-int			rfsource_gpibdev=-1;		//initialize to not finding instrument  
+int			rfsource_gpibdev_handle=-1;		//initialize to not finding instrument  
 char		SRS365_GPIB[18];  
-short		found=0;					//initialize to not finding instrument
+short		found=0;						//initialize to not finding instrument
 float		SCCM1, SCCM2;
 float		species_mass;
 double		rf_freq;
@@ -56,8 +55,10 @@ double		corrected_downstream_pressure;
 void 	rfsource_configure(int power_state)
 {
 	int		result;
+	int 	count;
  	double 	rf_amp_ptp;
- 
+ 	char 	gpibdev_string[32];
+
  	//Open settings panel in the background
 	Helicon_panel = LoadPanel (0, "Helicon_Settings.uir", Helicon);
 	RecallPanelState (Helicon_panel, "Master_Control_Storage_File", Helicon_setup_state);
@@ -70,10 +71,9 @@ void 	rfsource_configure(int power_state)
 	//DiscardPanel(Helicon_panel);
 	
 	//Communicate with SRS Function Generator at GPIB 15 if properly opened
- 	if (found > 0 ) {
-		if (DS345_Active)	{  
-			DS345_Active = srds345_init (SRS365_GPIB, VI_TRUE, VI_FALSE, &rfsource_gpibdev);
-		}
+ 	result=viOpen (Global_Visa_Session_Handle, SRS365_GPIB, VI_NULL, VI_NULL, &rfsource_gpibdev_handle);
+	//DS345_Active = srds345_init (SRS365_GPIB, VI_TRUE, VI_FALSE, &rfsource_gpibdev_handle);
+	
 	//Convert to Peak-to_peak voltage and convert to millivolts
 	rf_amp_ptp=2.0*rf_amp*power_state/1000;
 	
@@ -81,12 +81,13 @@ void 	rfsource_configure(int power_state)
 	rf_freq=rf_freq*1.0E6;
 	
 	//Communicate with RF source if opening command successful
-	if (!DS345_Active) {
-		result=srds345_ConfigureOutputMode (rfsource_gpibdev, SRDS345_VAL_OUTPUT_FUNC);
-		result=srds345_ConfigureStandardWaveform (rfsource_gpibdev, "1", SRDS345_VAL_WFM_SINE, rf_amp_ptp, 0, rf_freq, 0.00);
-		result=srds345_ConfigureOperationMode (rfsource_gpibdev, "1", SRDS345_VAL_OPERATE_CONTINUOUS);
-		result=srds345_ConfigureOutputImpedance (rfsource_gpibdev, "1", 50.00);
-		result=srds345_ConfigureOutputEnabled (rfsource_gpibdev, "1", VI_TRUE); 
+	if (rfsource_gpibdev_handle > 0) {
+		sprintf (gpibdev_string, "FUNC 0\n");   																							
+		result = viWrite (rfsource_gpibdev_handle, (ViConstBuf)gpibdev_string, (unsigned int)strlen(gpibdev_string), &count);
+		sprintf (gpibdev_string, "FREQ %f\n",rf_freq);   																							
+		result = viWrite (rfsource_gpibdev_handle, (ViConstBuf)gpibdev_string, (unsigned int)strlen(gpibdev_string), &count);
+		sprintf (gpibdev_string, "AMPL %f VP\n",rf_amp_ptp);   														//Set voltage amplitude in peak to peak									
+		result = viWrite (rfsource_gpibdev_handle, (ViConstBuf)gpibdev_string, (unsigned int)strlen(gpibdev_string), &count);
 	}
 	
 	//delay to let rfsource get ready for next command
@@ -96,9 +97,8 @@ void 	rfsource_configure(int power_state)
 	//DiscardPanel(Helicon_panel);
 
 	//Close communications with rf source
-	srds345_close (rfsource_gpibdev);
-	DS345_Active=1;
- 	}
+	viClose (rfsource_gpibdev_handle);
+ 
 }
 
 
@@ -110,7 +110,10 @@ void rfsource_parameters(double *rfsource_freq, double *rfsource_amp)
  	double	dummy1,dummy2;
 	int		GPIB_Address;
 	int		result;
+	int 	count;
 	char	dummy[8];
+	char 	gpibdev_string[32];
+	char 	rtn_string[18];
 					  
    	//Open settings panel in the background
 	//Helicon_panel = LoadPanel (0, "Helicon_Settings.uir", Helicon);
@@ -127,37 +130,42 @@ void rfsource_parameters(double *rfsource_freq, double *rfsource_amp)
 
 	// Check to see if SRS Function Generator on bus at address #15
 	result = ibln (1, GPIB_Address, 0, &found);
-	
+		
 	//Only proceed if valid device found 
 	if (found > 0) {
 		
-		if (DS345_Active)	{  
-			DS345_Active = srds345_init (SRS365_GPIB, VI_TRUE, VI_FALSE, &rfsource_gpibdev);
-		}
- 
-		if (rfsource_gpibdev > 0) {
+		result=viOpen (Global_Visa_Session_Handle, SRS365_GPIB, VI_NULL, VI_NULL, &rfsource_gpibdev_handle);
+		//DS345_Active = srds345_init (SRS365_GPIB, VI_TRUE, VI_FALSE, &rfsource_gpibdev_handle);
+	 
+		if (rfsource_gpibdev_handle > 0) {
 		 	//Read current frequency and amplitude of the RF source
-			result = srds345_GetAttributeViReal64 (rfsource_gpibdev, "1", SRDS345_ATTR_FUNC_AMPLITUDE, &dummy1);
-			result = srds345_GetAttributeViReal64 (rfsource_gpibdev, "1", SRDS345_ATTR_FUNC_FREQUENCY, &dummy2);
-
-			*rfsource_freq=dummy2/1.0E6;
-			*rfsource_amp=dummy1*1000.0/2.0;
+			sprintf (gpibdev_string, "AMPL?\n");   																							
+			result = viWrite (rfsource_gpibdev_handle, (ViConstBuf)gpibdev_string, (unsigned int)strlen(gpibdev_string), &count);
+			result = viRead (rfsource_gpibdev_handle, (ViPBuf)rtn_string, 9, &count);
+			Scan(rtn_string,"%f",&dummy2);	   
+			
+			sprintf (gpibdev_string, "FREQ?\n");   																							
+			result = viWrite (rfsource_gpibdev_handle, (ViConstBuf)gpibdev_string, (unsigned int)strlen(gpibdev_string), &count);
+			result = viRead (rfsource_gpibdev_handle, (ViPBuf)rtn_string, 18, &count);
+			Scan(rtn_string,"%f",&dummy1);	   
+			
+			*rfsource_freq=dummy1/1.0E6;
+			*rfsource_amp=dummy2*1000.0/2.0;
 		} else {
 			dummy1=0.0;
 			dummy2=0.0;
 		}
-
-	//Send values to the front panel
-	SetCtrlVal (Helicon_panel, Helicon_RF_freq,dummy2/1.0E6);
- 	SetCtrlVal (Helicon_panel, Helicon_RF_Amp,dummy1*1000.0/2.0);
-	
-	//Close Panel
-	//SavePanelState (Helicon_panel, "Master_Control_Storage_File", Helicon_setup_state);
-	//DiscardPanel(Helicon_panel);
-	
-	//Close communications with rf source
-	srds345_close (rfsource_gpibdev);
-	DS345_Active=1;
+		
+		//Send values to the front panel
+		SetCtrlVal (Helicon_panel, Helicon_RF_freq,dummy1/1.0E6);
+	 	SetCtrlVal (Helicon_panel, Helicon_RF_Amp,dummy2*1000.0/2.0);
+		
+		//Close Panel
+		//SavePanelState (Helicon_panel, "Master_Control_Storage_File", Helicon_setup_state);
+		//DiscardPanel(Helicon_panel);
+		
+		//Close communications with rf source
+		viClose (rfsource_gpibdev_handle);
 	}
 }
 
@@ -645,7 +653,6 @@ void HeliconSource_Settings (void)
 void Write_HeliconSettings(void)
 {
 	int		j;
-	double	Dummy_array[12];
 	double	System_Parameters[12]={0};
 	char	outfilename[36];
 	FILE*	outfile;
@@ -735,7 +742,9 @@ int CVICALLBACK Close_Helicon_Settings_Activate (int panel, int control, int eve
 		void *callbackData, int eventData1, int eventData2)
 {
 	int		result;
+	int 	count;
  	double 	rf_amp_ptp;
+	char 	gpibdev_string[32];
 	
 	switch (event)
 	{
@@ -746,24 +755,29 @@ int CVICALLBACK Close_Helicon_Settings_Activate (int panel, int control, int eve
 		 	GetCtrlVal (Helicon_panel,Helicon_RF_Amp,&rf_amp);
 
 			//Communicate with SRS Function Generator at GPIB 15 if properly opened
-		 	if (found > 0 ) {
-				if (DS345_Active)	{  
-					DS345_Active = srds345_init (SRS365_GPIB, VI_TRUE, VI_FALSE, &rfsource_gpibdev);
-				}
-				//Convert to Peak-to_peak voltage and convert to millivolts
-				rf_amp_ptp=2.0*rf_amp/1000;
+			result=viOpen (Global_Visa_Session_Handle, SRS365_GPIB, VI_NULL, VI_NULL, &rfsource_gpibdev_handle);
+			//DS345_Active = srds345_init (SRS365_GPIB, VI_TRUE, VI_FALSE, &rfsource_gpibdev_handle);
+
+			//Convert to Peak-to_peak voltage and convert to millivolts
+			rf_amp_ptp=2.0*rf_amp/1000;
 				
-				//Convert frequency to MHz
-				rf_freq=rf_freq*1.0E6;
+			//Convert frequency to MHz
+			rf_freq=rf_freq*1.0E6;
 				
-				//Communicate with RF source if opening command successful
-				if (!DS345_Active) {
-					result=srds345_ConfigureOutputMode (rfsource_gpibdev, SRDS345_VAL_OUTPUT_FUNC);
-					result=srds345_ConfigureStandardWaveform (rfsource_gpibdev, "1", SRDS345_VAL_WFM_SINE, rf_amp_ptp, 0, rf_freq, 0.00);
-					result=srds345_ConfigureOperationMode (rfsource_gpibdev, "1", SRDS345_VAL_OPERATE_CONTINUOUS);
-					result=srds345_ConfigureOutputImpedance (rfsource_gpibdev, "1", 50.00);
-					result=srds345_ConfigureOutputEnabled (rfsource_gpibdev, "1", VI_TRUE); 
-				}
+			//Communicate with RF source if opening command successful
+			if (rfsource_gpibdev_handle > 0) {
+				sprintf (gpibdev_string, "FUNC 0\n");   																							
+				result = viWrite (rfsource_gpibdev_handle, (ViConstBuf)gpibdev_string, (unsigned int)strlen(gpibdev_string), &count);
+				sprintf (gpibdev_string, "FREQ %f\n",rf_freq);   																							
+				result = viWrite (rfsource_gpibdev_handle, (ViConstBuf)gpibdev_string, (unsigned int)strlen(gpibdev_string), &count);
+				sprintf (gpibdev_string, "AMPL %f VP\n",rf_amp_ptp);   															//Set voltage amplitude in peak to peak								
+				result = viWrite (rfsource_gpibdev_handle, (ViConstBuf)gpibdev_string, (unsigned int)strlen(gpibdev_string), &count);
+					
+				//result=srds345_ConfigureOutputMode (rfsource_gpibdev_handle, SRDS345_VAL_OUTPUT_FUNC);
+				//result=srds345_ConfigureStandardWaveform (rfsource_gpibdev_handle, "1", SRDS345_VAL_WFM_SINE, rf_amp_ptp, 0, rf_freq, 0.00);
+				//result=srds345_ConfigureOperationMode (rfsource_gpibdev_handle, "1", SRDS345_VAL_OPERATE_CONTINUOUS);
+				//result=srds345_ConfigureOutputImpedance (rfsource_gpibdev_handle, "1", 50.00);
+				//result=srds345_ConfigureOutputEnabled (rfsource_gpibdev_handle, "1", VI_TRUE); 
 			}
 				
 			//Save current state of parameters
@@ -817,7 +831,10 @@ int CVICALLBACK ReadRFPower (int panel, int control, int event,
 int CVICALLBACK PulsedSource (int panel, int control, int event,
 		void *callbackData, int eventData1, int eventData2)
 {
+	int 	result;
+	int 	count;
 	double 	Pulse_Freq;
+	char 	gpibdev_string[32];
 	
 	switch (event)
 		{
@@ -826,23 +843,22 @@ int CVICALLBACK PulsedSource (int panel, int control, int event,
 			//Get settings from helicon interface panel
 			GetCtrlVal (Helicon_panel, Helicon_Pulse_Freq,&Pulse_Freq);
 	 			
-			if (found > 0) {
+			result=viOpen (Global_Visa_Session_Handle, SRS365_GPIB, VI_NULL, VI_NULL, &rfsource_gpibdev_handle);
+			//DS345_Active = srds345_init (SRS365_GPIB, VI_TRUE, VI_FALSE, &rfsource_gpibdev_handle);
+							
+			sprintf (gpibdev_string, "DPTH 100\n");   											//Set modulation depth to 100%																				
+			result = viWrite (rfsource_gpibdev_handle, (ViConstBuf)gpibdev_string, (unsigned int)strlen(gpibdev_string), &count);
+			sprintf (gpibdev_string, "MDWF 4\n");   											//Set modulation type to square wave																				
+			result = viWrite (rfsource_gpibdev_handle, (ViConstBuf)gpibdev_string, (unsigned int)strlen(gpibdev_string), &count);
+			sprintf (gpibdev_string, "MENA 1\n");   											//Enable modulation																				
+			result = viWrite (rfsource_gpibdev_handle, (ViConstBuf)gpibdev_string, (unsigned int)strlen(gpibdev_string), &count);
 				
-				if (DS345_Active)	{  
-					DS345_Active = srds345_init (SRS365_GPIB, VI_TRUE, VI_FALSE, &rfsource_gpibdev);
-				}
-		 
-			 	//Turn on amplitude modulation on the function generator 
-				srds345_ConfigureAMInternal (rfsource_gpibdev, 100, SRDS345_VAL_AM_INTERNAL_SQUARE, Pulse_Freq);
-				srds345_ConfigureAMEnabled (rfsource_gpibdev, "1", VI_TRUE);
-				
-				//Turn on RF function generator output
-				rfsource_configure(1);		
-				
-				//Close communications with rf source
-				srds345_close (rfsource_gpibdev);
-				DS345_Active=1;
-			}
+			//Turn on RF function generator output
+			rfsource_configure(1);		
+			
+			//Close communications with rf source
+			viClose (rfsource_gpibdev_handle);
+
 		}
 	return 0;
 }
@@ -850,23 +866,28 @@ int CVICALLBACK PulsedSource (int panel, int control, int event,
 int CVICALLBACK Stop_PulsedSource (int panel, int control, int event,
 		void *callbackData, int eventData1, int eventData2)
 {
+	int 	result;
+	int 	count;
+	char 	gpibdev_string[32];
+	
 	switch (event)
 		{
 		case EVENT_COMMIT:
 			if (found > 0) {
 				
-				if (DS345_Active)	{  
-					DS345_Active = srds345_init (SRS365_GPIB, VI_TRUE, VI_FALSE, &rfsource_gpibdev);
-				}
+	 			result=viOpen (Global_Visa_Session_Handle, SRS365_GPIB, VI_NULL, VI_NULL, &rfsource_gpibdev_handle);
+				//DS345_Active = srds345_init (SRS365_GPIB, VI_TRUE, VI_FALSE, &rfsource_gpibdev_handle);
 		 
 				//Turn off AM modulation and RF function generator output
-				srds345_ConfigureAMEnabled (rfsource_gpibdev, "0", VI_TRUE);
+				sprintf (gpibdev_string, "MENA 0n");   											//Disable modulation																				
+				result = viWrite (rfsource_gpibdev_handle, (ViConstBuf)gpibdev_string, (unsigned int)strlen(gpibdev_string), &count);
+
+				//srds345_ConfigureAMEnabled (rfsource_gpibdev_handle, "0", VI_TRUE);
+				//Turn on rf source
 				rfsource_configure(1);		
 				
 				//Close communications with rf source
-				srds345_close (rfsource_gpibdev);
-				DS345_Active=1;
-
+				viClose (rfsource_gpibdev_handle);
 			}
 		}
 	return 0;

@@ -3,6 +3,7 @@
 -arch:x64
 -timestamp
 -debug:2
+-loadextmod
 -project:c:\PHASMA 2025 DAQ\PHASMA 2025 DAQ.prj
 -res:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug64\resources.res
 -entry:CVIWinMainStartupCodeForDebugging
@@ -43,7 +44,6 @@
 -in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug64\Rigol.obj
 -in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug64\setup_4244.obj
 -in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug64\Sirah.obj
--in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug64\srds345.obj
 -in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug64\TempDiag Settings.obj
 -in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug64\ThomsonScatteringSettings.obj
 -in:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug64\ThorLabs_Chopper.obj
@@ -54,10 +54,8 @@
 -more:c:\program files (x86)\national instruments\cvi2020\bin\msvc64\cvi.lib
 -more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc64\advanlys.lib
 -more:C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x64\advapi32.lib
--more:c:\Program Files (x86)\National Instruments\CVI2020\toolslib\toolbox\msvc64\asynctmr.obj
 -more:c:\PHASMA 2025 DAQ\Andor Camera\Andor SDK\atmcd64m.lib
 -more:C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x64\bufferoverflowu.lib
--more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc64\cvi_db.lib
 -more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc64\cviauto.lib
 -more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc64\cvidotnet.lib
 -more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc64\cvinetstreams.lib
@@ -67,7 +65,6 @@
 -more:C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x64\gdi32.lib
 -more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc64\gpib.lib
 -more:c:\PHASMA 2025 DAQ\cvibuild.PHASMA 2025 DAQ\Debug64\hp33120a.obj
--more:c:\Program Files (x86)\National Instruments\Shared\CVI\toolslib\custctrl\msvc64\ImageControl.obj
 -more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc64\ivi.lib
 -more:C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x64\kernel32.lib
 -more:c:\PHASMA 2025 DAQ\ContLIF\ThorLabs Chopper\MC2000CommandLibWin64.lib
@@ -75,12 +72,7 @@
 -more:c:\PHASMA 2025 DAQ\MDS\mdsshr.lib
 -more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc64\NIDAQmx.lib
 -more:c:\Program Files (x86)\National Instruments\Shared\ExternalCompilerSupport\C\lib64\msvc\NIDAQmx.lib
--more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc64\niimaqdx.lib
--more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc64\nise.lib
--more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc64\niseCfg.obj
 -more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc64\nisyscfg.lib
--more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc64\nivision.lib
--more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc64\nixnet.lib
 -more:c:\Program Files (x86)\National Instruments\CVI2020\bin\msvc64\omp.lib
 -more:c:\PHASMA 2025 DAQ\Photron Camera\PDCLIB.lib
 -more:c:\PHASMA 2025 DAQ\PHASMA Python Routines\PHASMA_C_to_Python_convertor_Project\PHASMA_C_to_Python_convertor.lib

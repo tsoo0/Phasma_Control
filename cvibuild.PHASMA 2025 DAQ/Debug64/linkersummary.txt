@@ -27,7 +27,6 @@ RFEASettings.obj
 Rigol.obj
 setup_4244.obj
 Sirah.obj
-srds345.obj
 TempDiag Settings.obj
 ThomsonScatteringSettings.obj
 ThorLabs_Chopper.obj
@@ -37,7 +36,6 @@ TripleProbeSettings.obj
 cvi.lib
 advanlys.lib
 gpib.lib
-ivi.lib
 NIDAQmx.lib
 visa.lib
 cvistart.lib
@@ -47,8 +45,8 @@ MC2000CommandLibWin64.lib
 mdslib.lib
 mdsshr.lib
 PDCLIB.lib
-user32.lib
 wlmData.lib
+user32.lib
 EXE Symbol Module
 Exports Module
 Resource Module

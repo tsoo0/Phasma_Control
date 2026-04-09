@@ -12,7 +12,7 @@ mdsshr.lib
 mdsshr.dll
 PDCLIB.lib
 PDCLIB.dll
-user32.lib
-USER32.dll
 wlmData.lib
 wlmData.dll
+user32.lib
+USER32.dll

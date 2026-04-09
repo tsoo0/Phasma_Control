@@ -1,75 +1,75 @@
 [rfsource_configure]
 Class="Function"
 Prototype="void rfsource_configure(int power_state);"
-SourceLocation="c:\PHASMA 2025 DAQ\Helicon\HeliconSourceSettings.c:56:7"
+SourceLocation="c:\PHASMA 2025 DAQ\Helicon\HeliconSourceSettings.c:55:7"
 
 [rfsource_parameters]
 Class="Function"
 Prototype="void rfsource_parameters(double *rfsource_freq, double *rfsource_amp);"
-SourceLocation="c:\PHASMA 2025 DAQ\Helicon\HeliconSourceSettings.c:108:6"
+SourceLocation="c:\PHASMA 2025 DAQ\Helicon\HeliconSourceSettings.c:114:6"
 
 [EandI_meter]
 Class="Function"
 Prototype="void EandI_meter(double *Forward, double *Reflected);"
-SourceLocation="c:\PHASMA 2025 DAQ\Helicon\HeliconSourceSettings.c:166:6"
+SourceLocation="c:\PHASMA 2025 DAQ\Helicon\HeliconSourceSettings.c:184:6"
 
 [read_pfeiffer_pressure]
 Class="Function"
 Prototype="double read_pfeiffer_pressure();"
-SourceLocation="c:\PHASMA 2025 DAQ\Helicon\HeliconSourceSettings.c:244:8"
+SourceLocation="c:\PHASMA 2025 DAQ\Helicon\HeliconSourceSettings.c:262:8"
 
 [readpressureLesker300]
 Class="Function"
 Prototype="double readpressureLesker300();"
-SourceLocation="c:\PHASMA 2025 DAQ\Helicon\HeliconSourceSettings.c:408:8"
+SourceLocation="c:\PHASMA 2025 DAQ\Helicon\HeliconSourceSettings.c:426:8"
 
 [GetSCCM]
 Class="Function"
 Prototype="void GetSCCM(float *SCCM1, float *SCCM2);"
-SourceLocation="c:\PHASMA 2025 DAQ\Helicon\HeliconSourceSettings.c:503:6"
+SourceLocation="c:\PHASMA 2025 DAQ\Helicon\HeliconSourceSettings.c:521:6"
 
 [Helicon_Activate]
 Class="Function"
 Prototype="void Helicon_Activate(int Helicon_Status);"
-SourceLocation="c:\PHASMA 2025 DAQ\Helicon\HeliconSourceSettings.c:591:6"
+SourceLocation="c:\PHASMA 2025 DAQ\Helicon\HeliconSourceSettings.c:609:6"
 
 [HeliconSource_Settings]
 Class="Function"
 Prototype="void HeliconSource_Settings();"
-SourceLocation="c:\PHASMA 2025 DAQ\Helicon\HeliconSourceSettings.c:619:6"
+SourceLocation="c:\PHASMA 2025 DAQ\Helicon\HeliconSourceSettings.c:637:6"
 
 [Write_HeliconSettings]
 Class="Function"
 Prototype="void Write_HeliconSettings();"
-SourceLocation="c:\PHASMA 2025 DAQ\Helicon\HeliconSourceSettings.c:645:6"
+SourceLocation="c:\PHASMA 2025 DAQ\Helicon\HeliconSourceSettings.c:663:6"
 
 [Close_Helicon_Settings]
 Class="Function"
 Prototype="int Close_Helicon_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\Helicon\HeliconSourceSettings.c:719:17"
+SourceLocation="c:\PHASMA 2025 DAQ\Helicon\HeliconSourceSettings.c:737:17"
 
 [Close_Helicon_Settings_Activate]
 Class="Function"
 Prototype="int Close_Helicon_Settings_Activate(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\Helicon\HeliconSourceSettings.c:734:17"
+SourceLocation="c:\PHASMA 2025 DAQ\Helicon\HeliconSourceSettings.c:752:17"
 
 [ReadPressure]
 Class="Function"
 Prototype="int ReadPressure(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\Helicon\HeliconSourceSettings.c:783:17"
+SourceLocation="c:\PHASMA 2025 DAQ\Helicon\HeliconSourceSettings.c:808:17"
 
 [ReadRFPower]
 Class="Function"
 Prototype="int ReadRFPower(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\Helicon\HeliconSourceSettings.c:803:17"
+SourceLocation="c:\PHASMA 2025 DAQ\Helicon\HeliconSourceSettings.c:828:17"
 
 [PulsedSource]
 Class="Function"
 Prototype="int PulsedSource(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\Helicon\HeliconSourceSettings.c:817:17"
+SourceLocation="c:\PHASMA 2025 DAQ\Helicon\HeliconSourceSettings.c:842:17"
 
 [Stop_PulsedSource]
 Class="Function"
 Prototype="int Stop_PulsedSource(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\Helicon\HeliconSourceSettings.c:850:17"
+SourceLocation="c:\PHASMA 2025 DAQ\Helicon\HeliconSourceSettings.c:882:17"
 

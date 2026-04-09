@@ -1,5 +1,5 @@
 Object "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\hp33120a.obj" : "c:\\PHASMA 2025 DAQ\\ContLIF\\HP33120\\hp33120a.c" ;
-FILENUM on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\hp33120a.obj" = 37 ;
+FILENUM on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\hp33120a.obj" = 36 ;
 DEFPROTS on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\hp33120a.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\hp33120a.obj.cvidefprots" ;
 OUTFILE on "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\hp33120a.obj" = "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\hp33120a.obj.out" ;
 InstrObjects += "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\hp33120a.obj" ;
@@ -32,7 +32,6 @@ Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PHASMA 2025 D
 Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PHASMA 2025 DAQ V1.0.exe" : "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\Rigol.obj" ;
 Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PHASMA 2025 DAQ V1.0.exe" : "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\setup_4244.obj" ;
 Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PHASMA 2025 DAQ V1.0.exe" : "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\Sirah.obj" ;
-Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PHASMA 2025 DAQ V1.0.exe" : "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\srds345.obj" ;
 Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PHASMA 2025 DAQ V1.0.exe" : "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\TempDiag Settings.obj" ;
 Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PHASMA 2025 DAQ V1.0.exe" : "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\ThomsonScatteringSettings.obj" ;
 Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PHASMA 2025 DAQ V1.0.exe" : "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\ThorLabs_Chopper.obj" ;
@@ -43,14 +42,10 @@ Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PHASMA 2025 D
 NoCare "c:\\Program Files (x86)\\National Instruments\\CVI2020\\bin\\msvc64\\advanlys.lib" ;
 Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PHASMA 2025 DAQ V1.0.exe" : "C:\\Program Files (x86)\\Windows Kits\\8.1\\Lib\\winv6.3\\um\\x64\\advapi32.lib" ;
 NoCare "C:\\Program Files (x86)\\Windows Kits\\8.1\\Lib\\winv6.3\\um\\x64\\advapi32.lib" ;
-Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PHASMA 2025 DAQ V1.0.exe" : "c:\\Program Files (x86)\\National Instruments\\CVI2020\\toolslib\\toolbox\\msvc64\\asynctmr.obj" ;
-NoCare "c:\\Program Files (x86)\\National Instruments\\CVI2020\\toolslib\\toolbox\\msvc64\\asynctmr.obj" ;
 Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PHASMA 2025 DAQ V1.0.exe" : "c:\\PHASMA 2025 DAQ\\Andor Camera\\Andor SDK\\atmcd64m.lib" ;
 NoCare "c:\\PHASMA 2025 DAQ\\Andor Camera\\Andor SDK\\atmcd64m.lib" ;
 Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PHASMA 2025 DAQ V1.0.exe" : "C:\\Program Files (x86)\\Windows Kits\\8.1\\Lib\\winv6.3\\um\\x64\\bufferoverflowu.lib" ;
 NoCare "C:\\Program Files (x86)\\Windows Kits\\8.1\\Lib\\winv6.3\\um\\x64\\bufferoverflowu.lib" ;
-Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PHASMA 2025 DAQ V1.0.exe" : "c:\\Program Files (x86)\\National Instruments\\Shared\\CVI\\Bin\\msvc64\\cvi_db.lib" ;
-NoCare "c:\\Program Files (x86)\\National Instruments\\Shared\\CVI\\Bin\\msvc64\\cvi_db.lib" ;
 Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PHASMA 2025 DAQ V1.0.exe" : "c:\\Program Files (x86)\\National Instruments\\CVI2020\\bin\\msvc64\\cviauto.lib" ;
 NoCare "c:\\Program Files (x86)\\National Instruments\\CVI2020\\bin\\msvc64\\cviauto.lib" ;
 Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PHASMA 2025 DAQ V1.0.exe" : "c:\\Program Files (x86)\\National Instruments\\CVI2020\\bin\\msvc64\\cvidotnet.lib" ;
@@ -68,8 +63,6 @@ NoCare "C:\\Program Files (x86)\\Windows Kits\\8.1\\Lib\\winv6.3\\um\\x64\\gdi32
 Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PHASMA 2025 DAQ V1.0.exe" : "c:\\Program Files (x86)\\National Instruments\\CVI2020\\bin\\msvc64\\gpib.lib" ;
 NoCare "c:\\Program Files (x86)\\National Instruments\\CVI2020\\bin\\msvc64\\gpib.lib" ;
 Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PHASMA 2025 DAQ V1.0.exe" : "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\hp33120a.obj" ;
-Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PHASMA 2025 DAQ V1.0.exe" : "c:\\Program Files (x86)\\National Instruments\\Shared\\CVI\\toolslib\\custctrl\\msvc64\\ImageControl.obj" ;
-NoCare "c:\\Program Files (x86)\\National Instruments\\Shared\\CVI\\toolslib\\custctrl\\msvc64\\ImageControl.obj" ;
 Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PHASMA 2025 DAQ V1.0.exe" : "c:\\Program Files (x86)\\National Instruments\\Shared\\CVI\\Bin\\msvc64\\ivi.lib" ;
 NoCare "c:\\Program Files (x86)\\National Instruments\\Shared\\CVI\\Bin\\msvc64\\ivi.lib" ;
 Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PHASMA 2025 DAQ V1.0.exe" : "C:\\Program Files (x86)\\Windows Kits\\8.1\\Lib\\winv6.3\\um\\x64\\kernel32.lib" ;
@@ -84,18 +77,8 @@ Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PHASMA 2025 D
 NoCare "c:\\Program Files (x86)\\National Instruments\\Shared\\CVI\\Bin\\msvc64\\NIDAQmx.lib" ;
 Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PHASMA 2025 DAQ V1.0.exe" : "c:\\Program Files (x86)\\National Instruments\\Shared\\ExternalCompilerSupport\\C\\lib64\\msvc\\NIDAQmx.lib" ;
 NoCare "c:\\Program Files (x86)\\National Instruments\\Shared\\ExternalCompilerSupport\\C\\lib64\\msvc\\NIDAQmx.lib" ;
-Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PHASMA 2025 DAQ V1.0.exe" : "c:\\Program Files (x86)\\National Instruments\\Shared\\CVI\\Bin\\msvc64\\niimaqdx.lib" ;
-NoCare "c:\\Program Files (x86)\\National Instruments\\Shared\\CVI\\Bin\\msvc64\\niimaqdx.lib" ;
-Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PHASMA 2025 DAQ V1.0.exe" : "c:\\Program Files (x86)\\National Instruments\\Shared\\CVI\\Bin\\msvc64\\nise.lib" ;
-NoCare "c:\\Program Files (x86)\\National Instruments\\Shared\\CVI\\Bin\\msvc64\\nise.lib" ;
-Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PHASMA 2025 DAQ V1.0.exe" : "c:\\Program Files (x86)\\National Instruments\\Shared\\CVI\\Bin\\msvc64\\niseCfg.obj" ;
-NoCare "c:\\Program Files (x86)\\National Instruments\\Shared\\CVI\\Bin\\msvc64\\niseCfg.obj" ;
 Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PHASMA 2025 DAQ V1.0.exe" : "c:\\Program Files (x86)\\National Instruments\\Shared\\CVI\\Bin\\msvc64\\nisyscfg.lib" ;
 NoCare "c:\\Program Files (x86)\\National Instruments\\Shared\\CVI\\Bin\\msvc64\\nisyscfg.lib" ;
-Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PHASMA 2025 DAQ V1.0.exe" : "c:\\Program Files (x86)\\National Instruments\\Shared\\CVI\\Bin\\msvc64\\nivision.lib" ;
-NoCare "c:\\Program Files (x86)\\National Instruments\\Shared\\CVI\\Bin\\msvc64\\nivision.lib" ;
-Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PHASMA 2025 DAQ V1.0.exe" : "c:\\Program Files (x86)\\National Instruments\\Shared\\CVI\\Bin\\msvc64\\nixnet.lib" ;
-NoCare "c:\\Program Files (x86)\\National Instruments\\Shared\\CVI\\Bin\\msvc64\\nixnet.lib" ;
 Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PHASMA 2025 DAQ V1.0.exe" : "c:\\Program Files (x86)\\National Instruments\\CVI2020\\bin\\msvc64\\omp.lib" ;
 NoCare "c:\\Program Files (x86)\\National Instruments\\CVI2020\\bin\\msvc64\\omp.lib" ;
 Depends "c:\\PHASMA 2025 DAQ\\cvibuild.PHASMA 2025 DAQ\\Release64\\PHASMA 2025 DAQ V1.0.exe" : "c:\\PHASMA 2025 DAQ\\Photron Camera\\PDCLIB.lib" ;
