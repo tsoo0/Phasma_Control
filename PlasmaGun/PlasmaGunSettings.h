@@ -51,6 +51,7 @@
 #define  PlasmaGun_Gun1_COUNTSPERMM       36      /* control type: numeric, callback function: (none) */
 #define  PlasmaGun_TEXTMSG                37      /* control type: textMsg, callback function: (none) */
 #define  PlasmaGun_GUN_PRESSURE_TIMER     38      /* control type: timer, callback function: Pressure_Refresh_Timer */
+#define  PlasmaGun_TEXTMSG_21             39      /* control type: textMsg, callback function: (none) */
 
 
      /* Control Arrays: */

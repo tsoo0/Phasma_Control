@@ -153,8 +153,8 @@ if __name__ == '__main__':
     raw_data_dir = "D:\\PHASMA_RawData"    
     import numpy as np
 
-    shotmin = 1868
-    shotmax = 1872
+    shotmin = 1900
+    shotmax = 1979
     shots = np.arange(shotmin,shotmax)
     
     for shot in shots:

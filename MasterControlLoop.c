@@ -179,10 +179,19 @@ void	Store_Data (void)
 	if (McPherson209DataFlag) 	Write_McPherson209Data();
 	if (PhotodiodeDataFlag)     Write_PhotodiodeData();
 	
-	//if (PhotodiodeDataFlag) {
-	//	
-	//	if (ExecutableHasTerminated(PyHandle) == PyScriptFinished) Write_PhotodiodeData();
-	//} 
+	if (PhotodiodeDataFlag) {
+		
+		switch (ExecutableHasTerminated(PyHandle))
+		{
+			case PyScriptFinished:
+				break;
+			case PyScriptNotFinished:
+				while(ExecutableHasTerminated(PyHandle) != PyScriptFinished) Delay(0.5);
+				break;
+			case PyHandleInvalid:
+				MessagePopup("Oops","Python did something weird");
+		}
+	} 
 	//
 	//
 	/*
@@ -192,14 +201,14 @@ void	Store_Data (void)
 	*/
 
 	//if any data flags were turned on, push raw data from the text files to the MDS system
-	if (PhotodiodeDataFlag) {while (ExecutableHasTerminated(PyHandle) == PyScriptNotFinished) {} } // ensure python has finished writing data before attempting mds push
-	//Delay(8);
+	if (PhotodiodeDataFlag) {while (ExecutableHasTerminated(PyHandle) == PyScriptNotFinished) {Delay(0.5);} } // ensure python has finished writing data before attempting mds push
+	
 	if (push_to_mds_flag)
 	{ 
 		if ( (MagFieldDataFlag) || (HeliconDataFlag) || (BdotDataFlag) || (PlasmaGunDataFlag) || (HousekeepingDataFlag) || (TemporaryDiagDataFlag)	|| (RFEADataFlag) 	|| 
 				(DoubleProbeDataFlag) 	|| (PhotronCameraDataFlag) 	||(TSDataFlag) 	|| (PulsedLIFDataFlag) ||(PhotodiodeDataFlag) 	|| (TripleProbeDataFlag) || (McPherson209DataFlag) 	|| 
 				(QuantumBeatDataFlag) || (OceanOpticsDataFlag) 	||(LightwvIntferomDataFlag) ||(MasterTriggerDataFlag) ) {
-			Delay(1); // wait a moment between disc write and mds push; about 10 seconds is necessary if Housekeeping photodiodes are in use.
+			Delay(2); // wait a moment between disc write and mds push; about 5 seconds is necessary if Housekeeping photodiodes are in use.
 			push_mds();
 		}
 	}
@@ -209,7 +218,7 @@ void	Store_Data (void)
 	if (LightwvIntferomDataFlag)Write_LightwvIntferomData() ;
 	*/
 
-
+	SetCtrlVal(Master_Control_Panel, MasterCont_Data_Transfer_Done, 1);
 	
 	return;
 }
@@ -297,6 +306,8 @@ void	Store_Data (void)
 	SetCtrlVal (Master_Control_Panel, MasterCont_Photodiode_Data, 0);
 	SetCtrlVal (Master_Control_Panel, MasterCont_TripleProbe_Data, 0);
 	SetCtrlVal (Master_Control_Panel, MasterCont_McPherson209_Data, 0);
+	
+	SetCtrlVal(Master_Control_Panel, MasterCont_Data_Transfer_Done, 0);
 	
 }
 
@@ -481,6 +492,10 @@ int CVICALLBACK Gun_Settings (int panel, int control, int event,
 			SetCtrlVal (Master_Control_Panel, MasterCont_PlasmaGun_Arm, 0);	
 			SetCtrlVal (Master_Control_Panel, MasterCont_PlasmaGun_Status, 0);				
 			OpenPlasmaGun_Settings (); 
+			
+			//Delay(1); // re-enable them on close (TR 4/14/26)
+			//PlasmaGunFlag=1;
+			//PlasmaGun_ActivateSystem(1);
 			break;
 	}
 	return 0;
@@ -1281,7 +1296,7 @@ int		Advance_Single_Cycle (void)
 	MasterArm();
 		
 	//Since the auto cycle button was selected, enable the timer - this starts the countdown sequence so it is followed immediately by firing the master trigger!
-	SetCtrlVal(Master_Control_Panel, MasterCont_TIMER_GETONWITHIT, 0);
+	
 	SetCtrlAttribute (Master_Control_Panel, MasterCont_COUNTDOWN_TIMER, ATTR_ENABLED, 1);
 
 	//Update the interface window
@@ -1653,27 +1668,12 @@ int CVICALLBACK PyUpdateHandleStatus (int panel, int control, int event,
 				case PyScriptNotFinished:
 					SetCtrlVal(Master_Control_Panel, MasterCont_PyRunningLED,1);
 					break;
-
-						
-						
+	
 			}		
 
 	}
 	return 0;
 }
 
-// Gets on with it
-int CVICALLBACK GETONTWITHIT (int panel, int control, int event,
-							  void *callbackData, int eventData1, int eventData2)
-{
-	switch (event)
-	{
-		case EVENT_COMMIT:
-				Countdown = 5; // Don't get on with it too much
-				
-				
-			break;
-	}
-	return 0;
-}
+
 

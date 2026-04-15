@@ -507,7 +507,7 @@ void Write_HousekeepingData(void)
 		strcat(command, ShotNumberString);
 		strcat(command, "\"");
 		
-		LaunchExecutable(command);
+		LaunchExecutableEx(command, LE_HIDE, &PyHandle);
 	}
 	
  	
