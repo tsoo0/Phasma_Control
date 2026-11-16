@@ -1,75 +1,85 @@
 [PLIFLaserControl]
 Class="Function"
 Prototype="void PLIFLaserControl(int simmermode);"
-SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:136:6"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:142:6"
 
 [PLIFScope]
 Class="Function"
 Prototype="void PLIFScope();"
-SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:345:6"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:351:6"
 
 [Get_PLIF_Laser_Offsets]
 Class="Function"
 Prototype="void Get_PLIF_Laser_Offsets(float *PLIF_offset, float *PLIF_Laser_Warmup);"
-SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:448:6"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:456:6"
 
 [PulsedLIFActivate]
 Class="Function"
 Prototype="int PulsedLIFActivate();"
-SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:478:5"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:486:5"
 
 [PulsedLIFArm]
 Class="Function"
 Prototype="int PulsedLIFArm();"
-SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:492:5"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:499:5"
+
+[PulsedLIFMeterArm]
+Class="Function"
+Prototype="int PulsedLIFMeterArm();"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:524:5"
 
 [Write_PulsedLIFData]
 Class="Function"
 Prototype="void Write_PulsedLIFData();"
-SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:518:6"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:538:6"
 
 [OpenPulsedLIF_Settings]
 Class="Function"
 Prototype="void OpenPulsedLIF_Settings();"
-SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:566:6"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:593:6"
 
 [Close_PulsedLIF_Settings]
 Class="Function"
 Prototype="int Close_PulsedLIF_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:584:17"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:611:17"
 
 [AngstromReadFunction]
 Class="Function"
 Prototype="int AngstromReadFunction(void *functionData);"
-SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:601:17"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:628:17"
 
 [ReadPulsedLIF_WaveandEnergy]
 Class="Function"
 Prototype="void ReadPulsedLIF_WaveandEnergy();"
-SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:645:6"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:691:6"
 
-[Wavelength_Current]
+[PLIF_Wavemeter_Call]
 Class="Function"
-Prototype="int Wavelength_Current(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:699:17"
+Prototype="int PLIF_Wavemeter_Call(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:734:17"
 
 [Wavelength_Move_to_Start]
 Class="Function"
 Prototype="int Wavelength_Move_to_Start(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:739:17"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:766:17"
 
 [Wavelength_Move_to_Stop]
 Class="Function"
 Prototype="int Wavelength_Move_to_Stop(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:771:17"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:800:17"
 
 [Get_PLIF_Wavelength]
 Class="Function"
 Prototype="float Get_PLIF_Wavelength();"
-SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:802:7"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:833:7"
 
 [Advance_PLIF_Laser]
 Class="Function"
 Prototype="float Advance_PLIF_Laser();"
-SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:842:7"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:855:7"
+
+[TransferPLIFData]
+Class="Function"
+Prototype="int TransferPLIFData(double transfer_array1[], double transfer_array2[], double transfer_array3[]);"
+SourceLocation="c:\PHASMA 2025 DAQ\PulsedLIF\PLIFSettings.c:902:5"
 

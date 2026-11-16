@@ -63,7 +63,7 @@ void TempDiagActivate(void)
 			result = viWrite (Rigol_handle, TempDiag_string, (unsigned int)strlen(TempDiag_string), &count);
 
 			//Setup the rate, record length, trigger system, and voltage range for the Rigol scope
-		  	sprintf (TempDiag_string, ":TIM:MAIN:SCAL %f\r",(TimeWindow/10.0));   													//Set up timebase scaling based on target sample window and 10 divisions
+		  	sprintf (TempDiag_string, ":TIM:MAIN:SCAL %e\r",(TimeWindow/10.0));   													//Set up timebase scaling based on target sample window and 10 divisions
 			result = viWrite (Rigol_handle, TempDiag_string, (unsigned int)strlen(TempDiag_string), &count);
 			sprintf (TempDiag_string, ":ACQ:MDEP %d\r",TemporaryDiag_RecordLength);   												//Set the record length by setting the Memory Depth and upload the record length in k
 			result = viWrite (Rigol_handle, TempDiag_string, (unsigned int)strlen(TempDiag_string), &count);
@@ -178,8 +178,8 @@ void Write_TempDiagData(void)
 	char	outfilename[36];
 	FILE*	outfile;
 	int		j;
-	float 	TempDiag_timestep=0.0;
-	float 	TempDiag_timestep_lecroy=0.0;
+	double 	TempDiag_timestep=0.0;
+	double 	TempDiag_timestep_lecroy=0.0;
 	double	*TempDiag_Array1;
 	double	*TempDiag_Array2;
 	double	*TempDiag_Array3;
@@ -205,7 +205,7 @@ void Write_TempDiagData(void)
 	
 	//Grab data from all four channels of the oscilloscope
 	if (Rigol_flag) Rigol(Rigol_handle, TemporaryDiag_RecordLength, &TempDiag_timestep, TempDiag_Array1, TempDiag_Array2, TempDiag_Array3, TempDiag_Array4);   
-	if (Lecroy_flag) Rigol(Rigol_handle, TemporaryDiag_RecordLength_lecroy, &TempDiag_timestep_lecroy, TempDiag_Array5, TempDiag_Array6, TempDiag_Array7, TempDiag_Array8);   
+	if (Lecroy_flag) Lecroy(Lecroy_handle, TemporaryDiag_RecordLength_lecroy, &TempDiag_timestep_lecroy, TempDiag_Array5, TempDiag_Array6, TempDiag_Array7, TempDiag_Array8);   
 	
 	//Dump results to a file
 	sprintf(outfilename, RawDataPath);
@@ -216,18 +216,18 @@ void Write_TempDiagData(void)
 	outfile=fopen (outfilename, "w");
 	
 	if (Rigol_flag) {
-		fprintf(outfile,"t, Channel1, Channel2, Channel3,Channel4\n");
+		fprintf(outfile,"time, Channel1, Channel2, Channel3,Channel4\n");
 		for (j=0;j<TemporaryDiag_RecordLength;j++) {
-			timebase[j]=(double)(j*TempDiag_timestep);
-			fprintf(outfile,"%f,%f,%f,%f,%f,%f,%f,%f,%f\n",timebase[j],TempDiag_Array1[j],TempDiag_Array2[j],TempDiag_Array3[j],TempDiag_Array4[j]);
+			timebase[j]=(double)(j*TempDiag_timestep*1.0E6);
+			fprintf(outfile,"%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf\n",timebase[j],TempDiag_Array1[j],TempDiag_Array2[j],TempDiag_Array3[j],TempDiag_Array4[j]);
 		}
 	}
 	
 	if (Lecroy_flag) {
-		fprintf(outfile,"t, Channel5, Channel6, Channel7,Channel8\n");
+		fprintf(outfile,"time, Channel5, Channel6, Channel7,Channel8\n");
 		for (j=0;j<TemporaryDiag_RecordLength_lecroy;j++) {
-			timebase[j]=(double)(j*TempDiag_timestep_lecroy);
-			fprintf(outfile,"%f,%f,%f,%f,%f,%f,%f,%f,%f\n",timebase[j],TempDiag_Array1[j],TempDiag_Array2[j],TempDiag_Array3[j],TempDiag_Array4[j]);
+			timebase[j]=(double)(j*TempDiag_timestep_lecroy*1.0E6);
+			fprintf(outfile,"%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf\n",timebase[j],TempDiag_Array1[j],TempDiag_Array2[j],TempDiag_Array3[j],TempDiag_Array4[j]);
 		}
 	}
 	

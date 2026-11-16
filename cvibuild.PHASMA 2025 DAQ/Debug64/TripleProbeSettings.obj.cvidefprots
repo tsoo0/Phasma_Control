@@ -6,80 +6,80 @@ SourceLocation="c:\PHASMA 2025 DAQ\TripleProbe\TripleProbeSettings.c:31:6"
 [TripleProbeActivate]
 Class="Function"
 Prototype="void TripleProbeActivate();"
-SourceLocation="c:\PHASMA 2025 DAQ\TripleProbe\TripleProbeSettings.c:67:6"
+SourceLocation="c:\PHASMA 2025 DAQ\TripleProbe\TripleProbeSettings.c:65:6"
 
 [TripleProbeArm]
 Class="Function"
 Prototype="int TripleProbeArm();"
-SourceLocation="c:\PHASMA 2025 DAQ\TripleProbe\TripleProbeSettings.c:100:5"
+SourceLocation="c:\PHASMA 2025 DAQ\TripleProbe\TripleProbeSettings.c:98:5"
 
 [TLP_acq2106_config]
 Class="Function"
 Prototype="int TLP_acq2106_config(char *IP, int numsamples, int samplerate, int inZbool, char *trig_source);"
-SourceLocation="c:\PHASMA 2025 DAQ\TripleProbe\TripleProbeSettings.c:121:5"
+SourceLocation="c:\PHASMA 2025 DAQ\TripleProbe\TripleProbeSettings.c:122:5"
 
 [Write_TripleProbeData]
 Class="Function"
 Prototype="void Write_TripleProbeData();"
-SourceLocation="c:\PHASMA 2025 DAQ\TripleProbe\TripleProbeSettings.c:140:6"
+SourceLocation="c:\PHASMA 2025 DAQ\TripleProbe\TripleProbeSettings.c:139:6"
 
 [Close_Triple_Settings]
 Class="Function"
 Prototype="int Close_Triple_Settings(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\TripleProbe\TripleProbeSettings.c:176:17"
+SourceLocation="c:\PHASMA 2025 DAQ\TripleProbe\TripleProbeSettings.c:172:17"
 
 [OpenTripleProbe_Settings]
 Class="Function"
 Prototype="void OpenTripleProbe_Settings();"
-SourceLocation="c:\PHASMA 2025 DAQ\TripleProbe\TripleProbeSettings.c:193:6"
+SourceLocation="c:\PHASMA 2025 DAQ\TripleProbe\TripleProbeSettings.c:189:6"
 
 [TLP_acq2106_set_abort]
 Class="Function"
 Prototype="int TLP_acq2106_set_abort(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\TripleProbe\TripleProbeSettings.c:205:17"
+SourceLocation="c:\PHASMA 2025 DAQ\TripleProbe\TripleProbeSettings.c:201:17"
 
 [TLP_acq2106_manual_arm]
 Class="Function"
 Prototype="int TLP_acq2106_manual_arm(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\TripleProbe\TripleProbeSettings.c:229:17"
+SourceLocation="c:\PHASMA 2025 DAQ\TripleProbe\TripleProbeSettings.c:225:17"
 
 [TLP_acq2106_soft_trig]
 Class="Function"
 Prototype="int TLP_acq2106_soft_trig(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\TripleProbe\TripleProbeSettings.c:253:17"
+SourceLocation="c:\PHASMA 2025 DAQ\TripleProbe\TripleProbeSettings.c:249:17"
 
 [TLP_acq2106_pull_data]
 Class="Function"
 Prototype="int TLP_acq2106_pull_data(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\TripleProbe\TripleProbeSettings.c:277:17"
+SourceLocation="c:\PHASMA 2025 DAQ\TripleProbe\TripleProbeSettings.c:273:17"
 
 [TLP_acq2106_push_config]
 Class="Function"
 Prototype="int TLP_acq2106_push_config(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\TripleProbe\TripleProbeSettings.c:290:17"
+SourceLocation="c:\PHASMA 2025 DAQ\TripleProbe\TripleProbeSettings.c:286:17"
 
 [TLP_ACQ2106_TRG_DELAY_SET]
 Class="Function"
 Prototype="int TLP_ACQ2106_TRG_DELAY_SET(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\TripleProbe\TripleProbeSettings.c:302:17"
+SourceLocation="c:\PHASMA 2025 DAQ\TripleProbe\TripleProbeSettings.c:298:17"
 
 [TripleProbe_Move_to_Start]
 Class="Function"
 Prototype="int TripleProbe_Move_to_Start(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\TripleProbe\TripleProbeSettings.c:330:17"
+SourceLocation="c:\PHASMA 2025 DAQ\TripleProbe\TripleProbeSettings.c:326:17"
 
 [TripleProbe_Move_to_Stop]
 Class="Function"
 Prototype="int TripleProbe_Move_to_Stop(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\TripleProbe\TripleProbeSettings.c:364:17"
+SourceLocation="c:\PHASMA 2025 DAQ\TripleProbe\TripleProbeSettings.c:360:17"
 
 [TripleProbe_Home]
 Class="Function"
 Prototype="int TripleProbe_Home(int panel, int control, int event, void *callbackData, int eventData1, int eventData2);"
-SourceLocation="c:\PHASMA 2025 DAQ\TripleProbe\TripleProbeSettings.c:396:17"
+SourceLocation="c:\PHASMA 2025 DAQ\TripleProbe\TripleProbeSettings.c:392:17"
 
 [Advance_TripleProbe_Probe]
 Class="Function"
 Prototype="float Advance_TripleProbe_Probe();"
-SourceLocation="c:\PHASMA 2025 DAQ\TripleProbe\TripleProbeSettings.c:421:7"
+SourceLocation="c:\PHASMA 2025 DAQ\TripleProbe\TripleProbeSettings.c:417:7"
 

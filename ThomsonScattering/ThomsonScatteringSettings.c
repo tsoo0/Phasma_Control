@@ -103,7 +103,7 @@
 
 
 int			ThomsonScattering_panel;
-int			ThomsonScattering_setup_state = 552;
+int			ThomsonScattering_setup_state = 556;
 int			TS_Para_Perp_flag=0; 
 int			TS_RecordLength; 
 int			Andor_H_bin;
@@ -118,6 +118,8 @@ int 		TS_Andor_cameraIndex = 0;			//select first camera, assume it is the Thomso
 int 		TS_Andor_cameraHandle;   			//Handle for first camera
 int			TS_Andor_cameraInitializeFlag=0;	//Tracks if the TS Andor camera has already been initialized so it is not done again
 int 		iCoolerStatus=0;
+int			Andor_Multi_Pulse;					//1 = normal single pulse operation, 0 = multiple pulse operation
+int 		Andor_Pulse_Num=0;					//Num of pulses to average Andor camera when doing multipoint Thomson scattering
 
 float		Andor_Exp_Time;
 float		Andor_DDGDelay;
@@ -140,6 +142,7 @@ float		Q850_Simmer_delay;
 float		Q850_Circuit_Delay;
 float		Q850_Trigger_Time;
 float		TS_TimeSpan;
+float		TS_CenterTime;
 float		McP_Current_Wlength;
 float		McP_GrooveDen;
 float		McP_AngleDiff;
@@ -200,6 +203,9 @@ void ThomsonScatteringLaserControl(int simmermode)
 		
 		//Get Laser trigger source flag
 	 	GetCtrlVal (ThomsonScattering_panel, ThomsonSct_Q1500_QSW_Source,&Q1500_QSW_Source);
+		
+		//If internal laser operation chosen, no need to set up Rigol and Agilent, go ahead and jump out of loop
+		if(Q1500_QSW_Source) return;
 			
 		//Calculate laser firing time to be used in various places
 		Laser_Firing_Time = (Q1500_Trigger_Time- Q1500_InstrinsicDelay- Q1500_Q_delay -Q1500_Circuit_Delay)/1.0E6;
@@ -357,6 +363,9 @@ void ThomsonScatteringLaserControl(int simmermode)
 			}
 		}
 
+		//Set up camera Q-switch choice device for perpendicular
+		result = Set_Camera_QSW(1);
+		
 	} else { //Parallel choice
 		
 		//Get Laser pulse frequency
@@ -379,6 +388,9 @@ void ThomsonScatteringLaserControl(int simmermode)
 		
 		//Get Laser trigger source flag
 	 	GetCtrlVal (ThomsonScattering_panel, ThomsonSct_Q850_QSW_Source,&Q850_QSW_Source);
+
+		//If internal laser operation chosen, no need to set up Rigol and Agilent, go ahead and jump out of loop
+		if(Q850_QSW_Source) return;
 		
 		//Get Andor camera delay time
 	 	GetCtrlVal (ThomsonScattering_panel, ThomsonSct_Q850_DDG_Delay,&Q850_DDG_Delay);
@@ -543,6 +555,9 @@ void ThomsonScatteringLaserControl(int simmermode)
 
 		//Get laser specific Rigol Scope address
 		GetCtrlVal (ThomsonScattering_panel, ThomsonSct_RIGOL_ParaScope, TS_IP_Address_string);
+		
+		//Set up camera Q-switch choice device for perpendicular
+		result = Set_Camera_QSW(0);
 	}	
 	//Discard housekeeping panel
 	DiscardPanel(ThomsonScattering_panel);
@@ -558,7 +573,6 @@ void ThomsonScatteringScopeandCamera(void)
 	int			Andor_Camera_Cooler;
 	int			Andor_Temp;
 	
-	float		TS_CenterTime;
 	float		TS_VoltageRange1;
 	float		TS_Chan1_Offset;
 	float		TS_VoltageRange2;
@@ -579,91 +593,98 @@ void ThomsonScatteringScopeandCamera(void)
 	//Get Andor camera delay time
 	GetCtrlVal (ThomsonScattering_panel, ThomsonSct_Q1500_DDG_Delay,&Q1500_DDG_Delay);
 	
-
-	/******************************************************************************/
-	//Set up Rigol Scope for photodiode measurements
+	//Get Andor pulse state - if in multipulse, skip setting up the scope
+	GetCtrlVal (ThomsonScattering_panel, ThomsonSct_AndorMultiPulse,&Andor_Multi_Pulse);
 	
-	//Get sample rate, record length, and channel scales
-	GetCtrlVal (ThomsonScattering_panel, ThomsonSct_TS_RecordLength,&TS_RecordLength);
-	GetCtrlVal (ThomsonScattering_panel, ThomsonSct_TS_CenterTime,&TS_CenterTime);
-	GetCtrlVal (ThomsonScattering_panel, ThomsonSct_TS_VoltageRange1,&TS_VoltageRange1);
-	GetCtrlVal (ThomsonScattering_panel, ThomsonSct_TS_Chan1_Offset,&TS_Chan1_Offset);
-	GetCtrlVal (ThomsonScattering_panel, ThomsonSct_TS_VoltageRange2,&TS_VoltageRange2);
-	GetCtrlVal (ThomsonScattering_panel, ThomsonSct_TS_Chan2_Offset,&TS_Chan2_Offset);
-	GetCtrlVal (ThomsonScattering_panel, ThomsonSct_TS_TriggerSource,TS_TriggerSource);
-	GetCtrlVal (ThomsonScattering_panel, ThomsonSct_TS_TriggerLevel,&TS_TriggerLevel);
-	GetCtrlVal (ThomsonScattering_panel, ThomsonSct_TS_TimeSpan,&TS_TimeSpan);
-
-	//Depending on orientation choice, get relevant settings from interface and set up Agilent function generator and Rigol Delay generator
-	if (TS_Para_Perp_flag) {   //Perp choice
-		GetCtrlVal (ThomsonScattering_panel, ThomsonSct_RIGOL_PerpScope,TS_IP_Address_string);
-	} else {
-		GetCtrlVal (ThomsonScattering_panel, ThomsonSct_RIGOL_ParaScope,TS_IP_Address_string);
-	}	
+	//If Andor is in normal, single pulse mode, set up oscilloscope
+	if (Andor_Multi_Pulse) {
 	
-	//Open connection to the scope for photodiode measurements
-	result=viOpen (Global_Visa_Session_Handle, TS_IP_Address_string, VI_NULL, VI_NULL, &ThomsonScatteringRigol_handle);
-
-	if(!result) {
-		//Make sure scope is running so commands will work
-		sprintf (ThomsonScattering_string, ":RUN\r");   																							//Send the run command
-		result = viWrite (ThomsonScatteringRigol_handle, (ViConstBuf)ThomsonScattering_string, (unsigned int)strlen(ThomsonScattering_string), &count);
-
-		//Setup the rate, record length, trigger system, and voltage range for the Rigol scope 
-		sprintf (ThomsonScattering_string, ":CHAN1:DISP ON\r");   
-		result = viWrite (ThomsonScatteringRigol_handle, (ViConstBuf)ThomsonScattering_string, (unsigned int)strlen(ThomsonScattering_string), &count);
-
-		sprintf (ThomsonScattering_string, ":CHAN2:DISP ON\r");   
-		result = viWrite (ThomsonScatteringRigol_handle, (ViConstBuf)ThomsonScattering_string, (unsigned int)strlen(ThomsonScattering_string), &count);
-
-		sprintf (ThomsonScattering_string, ":CHAN1:COUP DC\r");   
-		result = viWrite (ThomsonScatteringRigol_handle, (ViConstBuf)ThomsonScattering_string, (unsigned int)strlen(ThomsonScattering_string), &count);
-
-		sprintf (ThomsonScattering_string, ":CHAN2:COUP DC\r");   
-		result = viWrite (ThomsonScatteringRigol_handle, (ViConstBuf)ThomsonScattering_string, (unsigned int)strlen(ThomsonScattering_string), &count);
-
-		sprintf (ThomsonScattering_string, ":SINGLE\r");   
-		result = viWrite (ThomsonScatteringRigol_handle, (ViConstBuf)ThomsonScattering_string, (unsigned int)strlen(ThomsonScattering_string), &count);
-			
-		sprintf (ThomsonScattering_string, ":ACQ:MDEP %d\r",TS_RecordLength);   																//Set the record length by setting the Memory Depth and upload the record length in k
-		result = viWrite (ThomsonScatteringRigol_handle, (ViConstBuf)ThomsonScattering_string, (unsigned int)strlen(ThomsonScattering_string), &count);
-
-	  	sprintf (ThomsonScattering_string, ":TIM:MAIN:SCAL %f\r",(TS_TimeSpan/10.0/1.0E9));   													//Set up timebase scaling based on target sample window and 10 divisions
-		result = viWrite (ThomsonScatteringRigol_handle, (ViConstBuf)ThomsonScattering_string, (unsigned int)strlen(ThomsonScattering_string), &count);
+	
+		/******************************************************************************/
+		//Set up Rigol Scope for photodiode measurements
 		
-		sprintf (ThomsonScattering_string, ":TIM:OFFS %f\r",TS_CenterTime/1.0E9);   															//Set center of trigger window
-		result = viWrite (ThomsonScatteringRigol_handle, (ViConstBuf)ThomsonScattering_string, (unsigned int)strlen(ThomsonScattering_string), &count);
-			
-		sprintf (ThomsonScattering_string, ":CHAN1:SCAL  %f\r",TS_VoltageRange1);   															//Set the voltage scale of the channel to the target value
-		result = viWrite (ThomsonScatteringRigol_handle, (ViConstBuf)ThomsonScattering_string, (unsigned int)strlen(ThomsonScattering_string), &count);
+		//Get sample rate, record length, and channel scales
+		GetCtrlVal (ThomsonScattering_panel, ThomsonSct_TS_RecordLength,&TS_RecordLength);
+		GetCtrlVal (ThomsonScattering_panel, ThomsonSct_TS_CenterTime,&TS_CenterTime);
+		GetCtrlVal (ThomsonScattering_panel, ThomsonSct_TS_VoltageRange1,&TS_VoltageRange1);
+		GetCtrlVal (ThomsonScattering_panel, ThomsonSct_TS_Chan1_Offset,&TS_Chan1_Offset);
+		GetCtrlVal (ThomsonScattering_panel, ThomsonSct_TS_VoltageRange2,&TS_VoltageRange2);
+		GetCtrlVal (ThomsonScattering_panel, ThomsonSct_TS_Chan2_Offset,&TS_Chan2_Offset);
+		GetCtrlVal (ThomsonScattering_panel, ThomsonSct_TS_TriggerSource,TS_TriggerSource);
+		GetCtrlVal (ThomsonScattering_panel, ThomsonSct_TS_TriggerLevel,&TS_TriggerLevel);
+		GetCtrlVal (ThomsonScattering_panel, ThomsonSct_TS_TimeSpan,&TS_TimeSpan);
 
-		sprintf (ThomsonScattering_string, ":CHAN2:SCAL  %f\r",TS_VoltageRange2);   															//Set the voltage scale of the channel to the target value
-		result = viWrite (ThomsonScatteringRigol_handle, (ViConstBuf)ThomsonScattering_string, (unsigned int)strlen(ThomsonScattering_string), &count);
-			
-		sprintf (ThomsonScattering_string, ":CHAN1:OFFS  %f\r",TS_Chan1_Offset);   																//Set the voltage offset of the channel to the target value
-		result = viWrite (ThomsonScatteringRigol_handle, (ViConstBuf)ThomsonScattering_string, (unsigned int)strlen(ThomsonScattering_string), &count);
-
-		sprintf (ThomsonScattering_string, ":CHAN2:OFFS  %f\r",TS_Chan2_Offset);   																//Set the voltage offset of the channel to the target value
-		result = viWrite (ThomsonScatteringRigol_handle, (ViConstBuf)ThomsonScattering_string, (unsigned int)strlen(ThomsonScattering_string), &count);
-			
-		sprintf (ThomsonScattering_string, ":TRIG:MODE EDGE\r");   
-		result = viWrite (ThomsonScatteringRigol_handle, (ViConstBuf)ThomsonScattering_string, (unsigned int)strlen(ThomsonScattering_string), &count);
-
-		sprintf (ThomsonScattering_string, ":TRIG:COUP AC\r");   
-		result = viWrite (ThomsonScatteringRigol_handle, (ViConstBuf)ThomsonScattering_string, (unsigned int)strlen(ThomsonScattering_string), &count);
-
-		sprintf (ThomsonScattering_string, ":TRIG:EDGE:SOUR %s\r",TS_TriggerSource);  															//Set the trigger source to the target value 
-		result = viWrite (ThomsonScatteringRigol_handle, (ViConstBuf)ThomsonScattering_string, (unsigned int)strlen(ThomsonScattering_string), &count);
-
-		sprintf (ThomsonScattering_string, ":TRIG:EDGE:SLOP POS\r");   
-		result = viWrite (ThomsonScatteringRigol_handle, (ViConstBuf)ThomsonScattering_string, (unsigned int)strlen(ThomsonScattering_string), &count);
-
-		sprintf (ThomsonScattering_string, ":TRIG:EDGE:LEV %f\r",TS_TriggerLevel);   
-		result = viWrite (ThomsonScatteringRigol_handle, (ViConstBuf)ThomsonScattering_string, (unsigned int)strlen(ThomsonScattering_string), &count);
+		//Depending on orientation choice, get relevant settings from interface and set up Agilent function generator and Rigol Delay generator
+		if (TS_Para_Perp_flag) {   //Perp choice
+			GetCtrlVal (ThomsonScattering_panel, ThomsonSct_RIGOL_PerpScope,TS_IP_Address_string);
+		} else {
+			GetCtrlVal (ThomsonScattering_panel, ThomsonSct_RIGOL_ParaScope,TS_IP_Address_string);
+		}	
 		
-		sprintf (ThomsonScattering_string, ":SYST:KEY:PRES MOFF\r");   												 							//Hide menu on scope screen
-	 	result = viWrite (ThomsonScatteringRigol_handle, (ViConstBuf)ThomsonScattering_string, (unsigned int)strlen(ThomsonScattering_string), &count);	
-	}
+		//Open connection to the scope for photodiode measurements
+		result=viOpen (Global_Visa_Session_Handle, TS_IP_Address_string, VI_NULL, VI_NULL, &ThomsonScatteringRigol_handle);
+
+		if(!result) {
+			//Make sure scope is running so commands will work
+			sprintf (ThomsonScattering_string, ":RUN\r");   																							//Send the run command
+			result = viWrite (ThomsonScatteringRigol_handle, (ViConstBuf)ThomsonScattering_string, (unsigned int)strlen(ThomsonScattering_string), &count);
+
+			//Setup the rate, record length, trigger system, and voltage range for the Rigol scope 
+			sprintf (ThomsonScattering_string, ":CHAN1:DISP ON\r");   
+			result = viWrite (ThomsonScatteringRigol_handle, (ViConstBuf)ThomsonScattering_string, (unsigned int)strlen(ThomsonScattering_string), &count);
+
+			sprintf (ThomsonScattering_string, ":CHAN2:DISP ON\r");   
+			result = viWrite (ThomsonScatteringRigol_handle, (ViConstBuf)ThomsonScattering_string, (unsigned int)strlen(ThomsonScattering_string), &count);
+
+			sprintf (ThomsonScattering_string, ":CHAN1:COUP DC\r");   
+			result = viWrite (ThomsonScatteringRigol_handle, (ViConstBuf)ThomsonScattering_string, (unsigned int)strlen(ThomsonScattering_string), &count);
+
+			sprintf (ThomsonScattering_string, ":CHAN2:COUP DC\r");   
+			result = viWrite (ThomsonScatteringRigol_handle, (ViConstBuf)ThomsonScattering_string, (unsigned int)strlen(ThomsonScattering_string), &count);
+
+			sprintf (ThomsonScattering_string, ":SINGLE\r");   
+			result = viWrite (ThomsonScatteringRigol_handle, (ViConstBuf)ThomsonScattering_string, (unsigned int)strlen(ThomsonScattering_string), &count);
+				
+			sprintf (ThomsonScattering_string, ":ACQ:MDEP %d\r",TS_RecordLength);   																//Set the record length by setting the Memory Depth and upload the record length in k
+			result = viWrite (ThomsonScatteringRigol_handle, (ViConstBuf)ThomsonScattering_string, (unsigned int)strlen(ThomsonScattering_string), &count);
+
+		  	sprintf (ThomsonScattering_string, ":TIM:MAIN:SCAL %e\r",(TS_TimeSpan/10.0/1.0E9));   													//Set up timebase scaling based on target sample window and 10 divisions
+			result = viWrite (ThomsonScatteringRigol_handle, (ViConstBuf)ThomsonScattering_string, (unsigned int)strlen(ThomsonScattering_string), &count);
+			
+			sprintf (ThomsonScattering_string, ":TIM:OFFS %e\r",TS_CenterTime/1.0E9);   															//Set center of trigger window
+			result = viWrite (ThomsonScatteringRigol_handle, (ViConstBuf)ThomsonScattering_string, (unsigned int)strlen(ThomsonScattering_string), &count);
+				
+			sprintf (ThomsonScattering_string, ":CHAN1:SCAL  %f\r",TS_VoltageRange1);   															//Set the voltage scale of the channel to the target value
+			result = viWrite (ThomsonScatteringRigol_handle, (ViConstBuf)ThomsonScattering_string, (unsigned int)strlen(ThomsonScattering_string), &count);
+
+			sprintf (ThomsonScattering_string, ":CHAN2:SCAL  %f\r",TS_VoltageRange2);   															//Set the voltage scale of the channel to the target value
+			result = viWrite (ThomsonScatteringRigol_handle, (ViConstBuf)ThomsonScattering_string, (unsigned int)strlen(ThomsonScattering_string), &count);
+				
+			sprintf (ThomsonScattering_string, ":CHAN1:OFFS  %f\r",TS_Chan1_Offset);   																//Set the voltage offset of the channel to the target value
+			result = viWrite (ThomsonScatteringRigol_handle, (ViConstBuf)ThomsonScattering_string, (unsigned int)strlen(ThomsonScattering_string), &count);
+
+			sprintf (ThomsonScattering_string, ":CHAN2:OFFS  %f\r",TS_Chan2_Offset);   																//Set the voltage offset of the channel to the target value
+			result = viWrite (ThomsonScatteringRigol_handle, (ViConstBuf)ThomsonScattering_string, (unsigned int)strlen(ThomsonScattering_string), &count);
+				
+			sprintf (ThomsonScattering_string, ":TRIG:MODE EDGE\r");   
+			result = viWrite (ThomsonScatteringRigol_handle, (ViConstBuf)ThomsonScattering_string, (unsigned int)strlen(ThomsonScattering_string), &count);
+
+			sprintf (ThomsonScattering_string, ":TRIG:COUP AC\r");   
+			result = viWrite (ThomsonScatteringRigol_handle, (ViConstBuf)ThomsonScattering_string, (unsigned int)strlen(ThomsonScattering_string), &count);
+
+			sprintf (ThomsonScattering_string, ":TRIG:EDGE:SOUR %s\r",TS_TriggerSource);  															//Set the trigger source to the target value 
+			result = viWrite (ThomsonScatteringRigol_handle, (ViConstBuf)ThomsonScattering_string, (unsigned int)strlen(ThomsonScattering_string), &count);
+
+			sprintf (ThomsonScattering_string, ":TRIG:EDGE:SLOP POS\r");   
+			result = viWrite (ThomsonScatteringRigol_handle, (ViConstBuf)ThomsonScattering_string, (unsigned int)strlen(ThomsonScattering_string), &count);
+
+			sprintf (ThomsonScattering_string, ":TRIG:EDGE:LEV %f\r",TS_TriggerLevel);   
+			result = viWrite (ThomsonScatteringRigol_handle, (ViConstBuf)ThomsonScattering_string, (unsigned int)strlen(ThomsonScattering_string), &count);
+			
+			sprintf (ThomsonScattering_string, ":SYST:KEY:PRES MOFF\r");   												 							//Hide menu on scope screen
+		 	result = viWrite (ThomsonScatteringRigol_handle, (ViConstBuf)ThomsonScattering_string, (unsigned int)strlen(ThomsonScattering_string), &count);	
+		}
+	} 	//end of conditional check of pulse mode of camera
 	
 	
 	/******************************************************************************/
@@ -682,26 +703,45 @@ void ThomsonScatteringScopeandCamera(void)
 		SetCoolerMode(0);
 		ShutDown();
 	}
-	result = SetAcquisitionMode(1);		//Single acquisition mode
-	result = SetReadMode(4);			//Record an image
-	result = SetTriggerMode(1);			//External Trigger
-	result = SetGateMode(5);			//Use DDG mode for trigger
 	
+	//Change how camera is set up based on choice of multiplie or single acqusition modes
+	if (Andor_Multi_Pulse) {
+		Andor_Pulse_Num = 1; 				//Force reset of number of Andor acquistions to 0 in case cycling between modes
+		result = SetNumberAccumulations(1); //Force number of accumulations to reset to 1
+		
+		result = SetAcquisitionMode(1);		//Single acquisition mode
+		result = SetReadMode(4);			//Record an image
+		result = SetTriggerMode(1);			//External Trigger
+		result = SetGateMode(5);			//Use DDG mode for trigger
+				
+	} else {
+		//Get number of target accumulations
+		GetCtrlVal (ThomsonScattering_panel, ThomsonSct_AndorPulseNum,&Andor_Pulse_Num);
+		result = SetNumberAccumulations(Andor_Pulse_Num);	//set the number of accummulations		
+
+		result = SetAcquisitionMode(2);		//Set acquisition mode to multi pulse
+		result = SetReadMode(4);			//Record an image
+		result = SetTriggerMode(1);			//External Trigger
+		result = SetGateMode(5);			//Use DDG mode for trigger
+		
+	} //End of camera pulse mode choice setup
+		
+	//Set up all the other setetings the same regardless of accumulation mode
 	GetCtrlVal (ThomsonScattering_panel, ThomsonSct_Andor_Gain,&Andor_Gain);
 	result = SetGain(Andor_Gain);
-	
+		
 	result = SetVerticalSpeed(0);
 	result = SetHorizontalSpeed(0);
-	
+		
 	GetCtrlVal (ThomsonScattering_panel, ThomsonSct_Andor_Pre_Amp,&Andor_Pre_Amp);
 	result = SetPreAmpGain(Andor_Pre_Amp);
-	
+		
 	result = SetDDGInsertionDelay(0);	//Set DDG insertion delay to normal
 	result = SetDDGIntelligate(1);		//Set to "yes"
-	
+		
 	GetCtrlVal (ThomsonScattering_panel, ThomsonSct_Andor_Exp_Time,&Andor_Exp_Time);
 	result = SetExposureTime(Andor_Exp_Time/1000000.0);
-	
+		
 	if (TS_Para_Perp_flag) {   //Perp choice
 		GetCtrlVal (ThomsonScattering_panel, ThomsonSct_Q1500_DDG_Delay,&Andor_DDGDelay);
 	} else {
@@ -709,7 +749,7 @@ void ThomsonScatteringScopeandCamera(void)
 	}
 	GetCtrlVal (ThomsonScattering_panel, ThomsonSct_Andor_GateWidth,&Andor_GateWidth);
 	result = SetDDGGateTime((Andor_DDGDelay*1000.0),(Andor_GateWidth*1000.0) );					//Set time and width in picoseconds
-	
+		
 	GetCtrlVal (ThomsonScattering_panel, ThomsonSct_Andor_H_bin,&Andor_H_bin);
 	GetCtrlVal (ThomsonScattering_panel, ThomsonSct_Andor_V_bin,&Andor_V_bin);
 	result = GetDetector(&Andor_Horiz_pixels,&Andor_Vert_pixels);									//Read how many pixels there are in H and V
@@ -789,17 +829,17 @@ int ThomsonScatteringActivate(void)
 
 
 
-//Arm the timing systems for the lasers, the Andor camera, and the Rigol oscilloscope
+//Arm the Andor camera and the Rigol oscilloscope
 int ThomsonScatteringArm(void)
 {
 	int		result;
 	int		count;
 	char	ThomsonScattering_string[32]="Null";
 	
-	//Open connection to the scope for photodiode measurements
+	//Open connection to the scope for photodiode measurements l
 	result=viOpen (Global_Visa_Session_Handle, TS_IP_Address_string, VI_NULL, VI_NULL, &ThomsonScatteringRigol_handle);
 
-	if (result) { //Arm the Rigol Oscilloscope if it is there
+	if (result && Andor_Multi_Pulse) { 												//Arm the Rigol Oscilloscope if it is there and you are in single pulse mode
 		sprintf (ThomsonScattering_string, ":TRIG:SWE SINGl\r");   					//Single Trigger Sweep
  		result = viWrite (ThomsonScatteringRigol_handle, (ViConstBuf)ThomsonScattering_string, (unsigned int)strlen(ThomsonScattering_string), &count);
 	}
@@ -808,12 +848,21 @@ int ThomsonScatteringArm(void)
 	if (TS_Andor_cameraHandle > 0) {
 		result = SetCurrentCamera(TS_Andor_cameraHandle);						//Choose to make the TS camera the default camera if more than one camera
 	}
-	result = StartAcquisition();
+	result = StartAcquisition();  //Get the camera ready for its next trigger
 
 	//Close communications with TS devices
 	viClose(ThomsonScatteringRigol_handle);
 	
+	printf("[DEBUG] Thomson arming: Handle1 = %d, Andor status = %d\n",ThomsonScatteringRigol_handle, result);  
+
 	return result;
+}
+
+//Launch any background processes that might be needed for TS system, e.g., power meter readings
+int ThomsonScatteringMeterArm(void)
+{
+	
+	return 1;
 }
 
 
@@ -865,7 +914,7 @@ void Write_ThomsonScatteringData(void)
 	int		i,j;
 	int		result;
 	int 	CollectionOptics_Flag;
-	float	TS_timestep=0.0;
+	double	TS_timestep=0.0;
 	//double	*ThomsonScattering_Array1;
 	//double	*ThomsonScattering_Array2;
 	//double	*ThomsonScattering_Array3;
@@ -874,93 +923,104 @@ void Write_ThomsonScatteringData(void)
 	double	*VerticalIndex;
 	double	*TSWavelength;
 	double	*AndorImageDouble;
-	WORD	*AndorImage;	
+	double  Timing_Offset;			//Keeps track of true timing offset of laser pulse
+	//WORD	*AndorImage;	
+	at_32	*AndorImage;	
 
-	//Create temporary data arrays	
-	ThomsonScattering_Array1 = malloc (TS_RecordLength*8);  //8 times the memory to account for 8-bit numbers
-	ThomsonScattering_Array2 = malloc (TS_RecordLength*8);  //8 times the memory to account for 8-bit numbers
-	ThomsonScattering_Array3 = malloc (TS_RecordLength*8);  //8 times the memory to account for 8-bit numbers
-	ThomsonScattering_Array4 = malloc (TS_RecordLength*8);  //8 times the memory to account for 8-bit numbers
-	timebase = malloc (TS_RecordLength*8);				  	//8 times the memory to account for 8-bit numbers
-
-	//Open connection to the scope for photodiode measurements
-	result=viOpen (Global_Visa_Session_Handle, TS_IP_Address_string, VI_NULL, VI_NULL, &ThomsonScatteringRigol_handle);
-
-	if (!result) { 
-		//Grab data from all four channels of the oscilloscope
-		Rigol(ThomsonScatteringRigol_handle, TS_RecordLength, &TS_timestep, ThomsonScattering_Array1, ThomsonScattering_Array2, ThomsonScattering_Array3, ThomsonScattering_Array4);   
-	}
-
-	//Close communications with TS devices
-	viClose(ThomsonScatteringRigol_handle);
-
-	//Dump results to a file
-	sprintf(outfilename, RawDataPath);
-	strcat(outfilename, ShotNumberString);
-	strcat(outfilename, "_");
-	strcat(outfilename, "Thomson_Settings.txt");
-	outfile=fopen (outfilename, "w");
 	
-	//Open settings panel and load saved values
-	ThomsonScattering_panel = LoadPanel (0, "ThomsonScatteringSettings.uir", ThomsonSct);
-	RecallPanelState (ThomsonScattering_panel, "Master_Control_Storage_File", ThomsonScattering_setup_state);
+	if (Andor_Multi_Pulse) {
+		//Create temporary data arrays	
+		ThomsonScattering_Array1 = malloc (TS_RecordLength*8);  //8 times the memory to account for 8-bit numbers
+		ThomsonScattering_Array2 = malloc (TS_RecordLength*8);  //8 times the memory to account for 8-bit numbers
+		ThomsonScattering_Array3 = malloc (TS_RecordLength*8);  //8 times the memory to account for 8-bit numbers
+		ThomsonScattering_Array4 = malloc (TS_RecordLength*8);  //8 times the memory to account for 8-bit numbers
+		timebase = malloc (TS_RecordLength*8);				  	//8 times the memory to account for 8-bit numbers
 
-	//Get parallel or perp choice state
- 	GetCtrlVal (ThomsonScattering_panel, ThomsonSct_OrientationSwitch,&TS_Para_Perp_flag);
-	
-	//Store all the parameters of the lasers and the collection optics choices
-	GetCtrlVal (ThomsonScattering_panel, ThomsonSct_CollectionOptics,&CollectionOptics_Flag);
+		//Open connection to the scope for photodiode measurements
+		result=viOpen (Global_Visa_Session_Handle, TS_IP_Address_string, VI_NULL, VI_NULL, &ThomsonScatteringRigol_handle);
 
-	//Close panel in background
-	DiscardPanel(ThomsonScattering_panel); 
-	
-	fprintf(outfile,"Laser_Orientation,Type_of_Collection_Optics,Q1500_Frequency,Q1500_InstrinsicDelay,Q1500_Q_delay,Q1500_Circuit_Delay,Q1500_QSW_Source,Q1500_DDG_Delay,Q1500_Firing_Time,Q850_Frequency,Q850_InstrinsicDelay,Q850_Q_delay,Q850_Circuit_Delay,Q850_QSW_Source,Q850_DDG_Delay,Q850_Firing_Time,Andor_Gain,Andor_Pre_Amp,Andor_Exp_Time,Andor_DDGDelay,Andor_GateWidth,Andor_H_bin,Andor_V_bin,McP_Current_Wlength,McP_GrooveDen,McP_AngleDiff,McP_FocalLength\n" );
+		if (!result) { 
+			//Grab data from all four channels of the oscilloscope
+			Rigol(ThomsonScatteringRigol_handle, TS_RecordLength, &TS_timestep, ThomsonScattering_Array1, ThomsonScattering_Array2, ThomsonScattering_Array3, ThomsonScattering_Array4);   
+		}
 
-	fprintf(outfile, "%d,%d,%f,%f,%f,%f,%d,%f,%f,%f,%f,%f,%f,%d,%f,%f,%d,%d,%f,%f,%f,%d,%d,%f,%f,%f,%f", 
-			TS_Para_Perp_flag,
-			CollectionOptics_Flag,
-			Q1500_Frequency,
-			Q1500_InstrinsicDelay,
-			Q1500_Q_delay,
-			Q1500_Circuit_Delay,
-			Q1500_QSW_Source,
-			Q1500_DDG_Delay,
-			(Q1500_Trigger_Time- Q1500_InstrinsicDelay- Q1500_Q_delay -Q1500_Circuit_Delay)/1.0E6,
-			Q850_Frequency,
-			Q850_InstrinsicDelay,
-			Q850_Q_delay,
-			Q850_Circuit_Delay,
-			Q850_QSW_Source,
-			Q850_DDG_Delay,
-			(Q850_Trigger_Time- Q850_InstrinsicDelay- Q850_Q_delay -Q850_Circuit_Delay)/1.0E6,
-			Andor_Gain,
-			Andor_Pre_Amp,
-			Andor_Exp_Time,
-			Andor_DDGDelay,
-			Andor_GateWidth,
-			Andor_H_bin,
-			Andor_V_bin,
-			McP_Current_Wlength,
-			McP_GrooveDen,
-			McP_AngleDiff,
-			McP_FocalLength
-		   );
+		//Close communications with TS devices
+		viClose(ThomsonScatteringRigol_handle);
 
-	fclose (outfile);
-	
-	//Write Photodiode time series
-	sprintf(outfilename, RawDataPath);
-	strcat(outfilename, ShotNumberString);
-	strcat(outfilename, "_");
-	strcat(outfilename, "Thomson_Photodiode.txt");
-	outfile=fopen (outfilename, "w");
-	fprintf(outfile,"TIME_PHOTO,TS_PHOTO1,TS_PHOTO2\n");
-	
-	for (j=0;j<TS_RecordLength;j++) {
-		timebase[j]=(double)(j*TS_timestep);
-		fprintf(outfile,"%f,%f,%f\n",timebase[j],ThomsonScattering_Array1[j],ThomsonScattering_Array2[j]);
-	}
-	fclose (outfile);
+		//Dump results to a file
+		sprintf(outfilename, RawDataPath);
+		strcat(outfilename, ShotNumberString);
+		strcat(outfilename, "_");
+		strcat(outfilename, "Thomson_Settings.txt");
+		outfile=fopen (outfilename, "w");
+		
+		//Open settings panel and load saved values
+		ThomsonScattering_panel = LoadPanel (0, "ThomsonScatteringSettings.uir", ThomsonSct);
+		RecallPanelState (ThomsonScattering_panel, "Master_Control_Storage_File", ThomsonScattering_setup_state);
+
+		//Get parallel or perp choice state
+	 	GetCtrlVal (ThomsonScattering_panel, ThomsonSct_OrientationSwitch,&TS_Para_Perp_flag);
+		
+		//Store all the parameters of the lasers and the collection optics choices
+		GetCtrlVal (ThomsonScattering_panel, ThomsonSct_CollectionOptics,&CollectionOptics_Flag);
+
+		//Close panel in background
+		DiscardPanel(ThomsonScattering_panel); 
+		
+		fprintf(outfile,"Laser_Orientation,Type_of_Collection_Optics,Q1500_Frequency,Q1500_InstrinsicDelay,Q1500_Q_delay,Q1500_Circuit_Delay,Q1500_QSW_Source,Q1500_DDG_Delay,Q1500_Firing_Time,Q850_Frequency,Q850_InstrinsicDelay,Q850_Q_delay,Q850_Circuit_Delay,Q850_QSW_Source,Q850_DDG_Delay,Q850_Firing_Time,Andor_Gain,Andor_Pre_Amp,Andor_Exp_Time,Andor_DDGDelay,Andor_GateWidth,Andor_H_bin,Andor_V_bin,McP_Current_Wlength,McP_GrooveDen,McP_AngleDiff,McP_FocalLength\n" );
+
+		fprintf(outfile, "%d,%d,%f,%f,%f,%f,%d,%f,%f,%f,%f,%f,%f,%d,%f,%f,%d,%d,%f,%f,%f,%d,%d,%f,%f,%f,%f", 
+				TS_Para_Perp_flag,
+				CollectionOptics_Flag,
+				Q1500_Frequency,
+				Q1500_InstrinsicDelay,
+				Q1500_Q_delay,
+				Q1500_Circuit_Delay,
+				Q1500_QSW_Source,
+				Q1500_DDG_Delay,
+				(Q1500_Trigger_Time- Q1500_InstrinsicDelay- Q1500_Q_delay -Q1500_Circuit_Delay)/1.0E6,
+				Q850_Frequency,
+				Q850_InstrinsicDelay,
+				Q850_Q_delay,
+				Q850_Circuit_Delay,
+				Q850_QSW_Source,
+				Q850_DDG_Delay,
+				(Q850_Trigger_Time- Q850_InstrinsicDelay- Q850_Q_delay -Q850_Circuit_Delay)/1.0E6,
+				Andor_Gain,
+				Andor_Pre_Amp,
+				Andor_Exp_Time,
+				Andor_DDGDelay,
+				Andor_GateWidth,
+				Andor_H_bin,
+				Andor_V_bin,
+				McP_Current_Wlength,
+				McP_GrooveDen,
+				McP_AngleDiff,
+				McP_FocalLength
+			   );
+
+		fclose (outfile);
+		
+		//Write Photodiode time series
+		sprintf(outfilename, RawDataPath);
+		strcat(outfilename, ShotNumberString);
+		strcat(outfilename, "_");
+		strcat(outfilename, "Thomson_Photodiode.txt");
+		outfile=fopen (outfilename, "w");
+		fprintf(outfile,"TIME_PHOTO,TS_PHOTODIODE,TS_CAMERA_GATE\n");
+			
+		//Calculate timing offset for data record in microseconds
+		if (TS_Para_Perp_flag) {
+			Timing_Offset=Bias_Offset+ Q1500_Trigger_Time-(TS_TimeSpan/1000.0/2)-TS_CenterTime;
+		} else {
+			Timing_Offset=Bias_Offset+ Q850_Trigger_Time-(TS_TimeSpan/1000.0/2)-TS_CenterTime;
+		}	
+		for (j=0;j<TS_RecordLength;j++) {
+			timebase[j]=(double)Timing_Offset+(double)(j*TS_timestep*1.0E6);
+			fprintf(outfile,"%lf,%lf,%lf\n",timebase[j],ThomsonScattering_Array1[j],ThomsonScattering_Array2[j]);
+		}
+		fclose (outfile);
+	} //end of Andor multi pulse choice option
 	
 	//Write Image data from Andor
 	//Get data from the TS Andor Camera but first make sure the code is talking to the TS camera
@@ -977,13 +1037,13 @@ void Write_ThomsonScatteringData(void)
 	}
 	result = GetDetector(&Andor_Horiz_pixels,&Andor_Vert_pixels);										//Read how many pixels there are in H and V
 
-	AndorImage = malloc ((int)((2*Andor_Horiz_pixels/Andor_H_bin)*(Andor_Vert_pixels/Andor_V_bin)));	//Build an array equal to the size of the total number of image pixels after the image has been binned into a
+	AndorImage = malloc ((int)((4*Andor_Horiz_pixels/Andor_H_bin)*(Andor_Vert_pixels/Andor_V_bin)));	//Build an array equal to the size of the total number of image pixels after the image has been binned into a
 																										//smaller set of pixels per how the camera was set up earlier.
-																										//Increase the size to account for the data being 16 bits so it needs to be 2 words (8 bits). Malloc allocates memory in bytes
+																										//Increase the size to account for the data being 32 bits so it needs to be 4 words (32 bits). Malloc allocates memory in bytes
 	//Create a double array from the image array
 	AndorImageDouble = malloc ((int)((8*Andor_Horiz_pixels/Andor_H_bin)*(Andor_Vert_pixels/Andor_V_bin))); //Increase the size to account for splitting the image into 2 parts and the fact that a double is 64 bits (or 8 words).
 	
-	result = GetAcquiredData16(AndorImage, (int)((Andor_Horiz_pixels/Andor_H_bin)*(Andor_Vert_pixels/Andor_V_bin)));			//Retrieve the image data from the camera 
+	result = GetAcquiredData(AndorImage, (int)((Andor_Horiz_pixels/Andor_H_bin)*(Andor_Vert_pixels/Andor_V_bin)));			//Retrieve the image data from the camera 
 
 	//Put the image date into a double array for MDS
 	for (j=0;j<(int)(Andor_Vert_pixels/Andor_V_bin);j++)  {  
@@ -1009,6 +1069,10 @@ void Write_ThomsonScatteringData(void)
 		fprintf(outfile,"%f, %f, %f\n",TSWavelength[j],AndorImageDouble[j],AndorImageDouble[j+(int)((Andor_Horiz_pixels/Andor_H_bin)*(Andor_Vert_pixels/Andor_V_bin)/2.0)]);
 	}
 
+	//release malloc memory
+	free(AndorImageDouble);
+	free(AndorImage);
+	
  	//Close TS data data file
 	fclose (outfile);
 }
@@ -1023,6 +1087,7 @@ void OpenThomsonScattering_Settings (void)
 	int 	error;
 	int 	TS_Andor_Temp=1000; // set this to a ridiculous initial value to make it obvious if the config data isn't being pulled correctly
 	int 	TStotalCameras;
+	int     camera_serial_number;
 	
 	//Open settings panel and load saved values
 	ThomsonScattering_panel = LoadPanel (0, "ThomsonScatteringSettings.uir", ThomsonSct);
@@ -1032,12 +1097,13 @@ void OpenThomsonScattering_Settings (void)
 	//Get number of available cameras
 	GetAvailableCameras(&TStotalCameras);
 	
-	//If the TS camera is also on, there will be two cameras in the system and the McPherson canera shows up as the second camera (index = 1),
-	//so check for number of cameras and set index accordingly
+	//If the TS camera is also on, there will be two cameras in the system and the McPherson camera shows up as the second camera (index = 1),
+	//so check for number of cameras and set index accordingly. For the TS camera, whether or not there is a second camera the TS camera seems to 
+	//show up in the 0 position regardless.
 	if (TStotalCameras == 1) {
-		TS_Andor_cameraHandle = 1;
+		TS_Andor_cameraIndex = 0;
 	} else {
-		TS_Andor_cameraHandle =0;
+		TS_Andor_cameraIndex = 0;
 	}
 	
 	//Connect to TS camera and update panel with current camera temperature	
@@ -1059,12 +1125,19 @@ void OpenThomsonScattering_Settings (void)
 	}
 	Delay(0.25);																//Delay to let camera initialize
 	
+	//Get camera serial number
+	error = GetCameraSerialNumber (&camera_serial_number);
+	
 	error = IsCoolerOn(&iCoolerStatus);
    	if (iCoolerStatus) {
 		//Move control switch to on position if temperature system active
 		SetCtrlVal (ThomsonScattering_panel, ThomsonSct_Andor_Camera_Cooler,1);
 		error = GetTemperature(&TS_Andor_Temp);												//Update camera temperature in window. Function call will fail if camera temp system not active
- 		SetCtrlVal (ThomsonScattering_panel, ThomsonSct_Andor_Temp_Actual,TS_Andor_Temp);	//Report value of camera temperature to panel
+		if (error == 20034) {
+			SetCtrlVal (ThomsonScattering_panel, ThomsonSct_Andor_Temp_Actual,1000);
+ 		} else {
+			SetCtrlVal (ThomsonScattering_panel, ThomsonSct_Andor_Temp_Actual,TS_Andor_Temp);	//Report value of camera temperature to panel
+		}
 	} else {
 		//Move control switch to off position if temperature system not active
 		SetCtrlVal (ThomsonScattering_panel, ThomsonSct_Andor_Camera_Cooler,0);
@@ -1082,9 +1155,13 @@ int CVICALLBACK Close_ThomsonScattering_Settings (int panel, int control, int ev
 	switch (event)
 	{
 		case EVENT_COMMIT:
+			//Set up all the new values
+			ThomsonScatteringLaserControl(1);
+			
 			//Save current state of panel and close interface
 			SavePanelState (panel, "Master_Control_Storage_File", ThomsonScattering_setup_state);
 			DiscardPanel(panel);
+			Trigger_Settings_Activate();					//Update tigger values since some settings need to be transferred
 			break;
 	}
 	return 0;
@@ -1101,7 +1178,7 @@ int CVICALLBACK CloseSimmer_ThomsonScattering_Settings (int panel, int control, 
 			DiscardPanel(panel);
 			//Update the values to the instruments but with the lasers in simmer mode
 			ThomsonScatteringLaserControl(1);
-			
+			Trigger_Settings_Activate();					//Update tigger values since some settings need to be transferred
 			break;
 	}
 	return 0;
@@ -1277,4 +1354,29 @@ int	j;
 	}
 
 	return TS_RecordLength;
+}
+
+
+
+//Set up camera Q-switch choice device for perpendicular
+//Choices are 1 = Perpendicular laser Q_Switch
+//Choices are 0 = Parallel laser Q_Switch
+int Set_Camera_QSW (int Laser_Choice)  
+{
+int			result;
+TaskHandle 	IO_Line_Taskhandle=0;
+		
+	//Create a task just for this purpose
+	DAQmxCreateTask("", &IO_Line_Taskhandle);
+	
+	//Select only the DO port desired to set
+	DAQmxCreateDOChan(IO_Line_Taskhandle, "Dev1/port0/line0", "", DAQmx_Val_ChanPerLine);
+	
+	//Set the state of the DO port
+	result = DAQmxWriteDigitalScalarU32 (IO_Line_Taskhandle, 1, 0, (int)(Laser_Choice*5), NULL);   // drive  high or low
+
+	//Leave the task running
+
+
+	return !result;
 }

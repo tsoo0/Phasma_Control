@@ -4,14 +4,19 @@
  //   Writen By          :  Earl Scime				  
  //   Date Alpha version : Feb 11, 2026											  							  
  //																				  
- //   Codes to move the Titan motors on probes and the plasma gun			  
+ //   Codes to move the Titan motors on probes and the plasma gun		
+ //   Note that the Titan motors should all have different IP addresses
+ //   and they should all be set to network ID=1. This code assumes the 
+ //   network ID for each motor has been set to ID=1.
+ //   Flashing blue light on motor means that the motor has a fault and
+ //   the fault must be cleared - probably with the Titan 6.0 software
  //																			  
  //   MODIFICATION: 								  
  //
  *********************************************************************************/
 
-#include <ansi_c.h>
-#include <utility.h>
+#include 	<ansi_c.h>
+#include 	<utility.h>
 #include	<visa.h>
 #include 	<formatio.h>
 #include 	"GlobalVariables.h"
@@ -21,13 +26,15 @@
 
 int TitanMotorMove(char ip_address[64], float current_position, float target_position, int stepspermm)
 {
-#define 	Titan_delay 0.2
+#define 	Titan_delay 0.3
 	int		steps;
+	int 	target_steps;
 	int		result;
 	int		count;
 	int 	current_counts=0;
 	int		trap_count=0;
 	char	send_string[256]=" ";
+	char	read_string[256]=" ";
 	char 	dummy_string[16];
 		
 	ViSession Titan_handle;
@@ -45,35 +52,28 @@ int TitanMotorMove(char ip_address[64], float current_position, float target_pos
 		result = viWrite (Titan_handle, (ViConstBuf)send_string, (ViUInt32)strlen(send_string), &count);
 
 		//clear reply buffer from motor by reading it all out
-		result = viRead(Titan_handle, (ViConstBuf)send_string, 256, &count);
+		result = viRead(Titan_handle, (ViConstBuf)read_string, 256, &count);
 		//Delay(0.2);		//Give device time to respond
 		
 		//Find out the current motor encoder value as the first thing to do
 		sprintf (send_string,"@01:EX\r\n");
 		result = viWrite (Titan_handle, (ViConstBuf)send_string, (ViUInt32)strlen(send_string), &count);
-		Delay(Titan_delay);		//Give device time to respond
+		Delay(Titan_delay);	//Give device time to respond
 		
 		//read the response from the motor
-		result = viRead(Titan_handle, (ViConstBuf)send_string, 256, &count);
+		result = viRead(Titan_handle, (ViConstBuf)read_string, 256, &count);
 		//Delay(0.2);		//Give device time to respond
 		
 		//Strip out the counts value from the encoder
-		sscanf(send_string,"%7s %d",dummy_string,&current_counts);
+		sscanf(read_string,"%7s %d",dummy_string,&current_counts);
 		
-		//Set the current limit to 1000 mA
-		//sprintf (send_string,"@01:CEVAL=1000\r\n");
-		//result = viWrite (Titan_handle, (ViConstBuf)send_string, (ViUInt32)strlen(send_string), &count);
-
-		//Enable the motor
-		sprintf(send_string,"@01:SVON\r\n");
+		//Set the current limit to 2000 mA
+		sprintf (send_string,"@01:CEVAL=2000\r\n");
 		result = viWrite (Titan_handle, (ViConstBuf)send_string, (ViUInt32)strlen(send_string), &count);
-		Delay(Titan_delay);		//Give device time to respond
+		Delay(Titan_delay);	//Give device time to respond
 				
-		//read the response from the motor
-		result = viRead(Titan_handle, (ViConstBuf)send_string, 32, &count);
-		
-		//Set the target speed to 12
-		sprintf (send_string,"@01:HSPD=12\r\n");
+		//Set the target speed to 200
+		sprintf (send_string,"@01:HSPD=200\r\n");
 		result = viWrite (Titan_handle, (ViConstBuf)send_string, (ViUInt32)strlen(send_string), &count);
 		Delay(Titan_delay);		//Give device time to respond
 				
@@ -83,7 +83,7 @@ int TitanMotorMove(char ip_address[64], float current_position, float target_pos
 		//Set the target acceleration of 6000
 		sprintf (send_string,"@01:ACC=6000\r\n");
 		result = viWrite (Titan_handle, (ViConstBuf)send_string, (ViUInt32)strlen(send_string), &count);
-		Delay(0.2);		//Give device time to respond
+		Delay(Titan_delay);		//Give device time to respond
 				
 		//read the response from the motor
 		//result = viRead(Titan_handle, (ViConstBuf)send_string, 32, &count);
@@ -92,22 +92,32 @@ int TitanMotorMove(char ip_address[64], float current_position, float target_pos
 		steps=-1.0*(int)((target_position- current_position)*stepspermm);
 		
 		//Calculate target position in absolute steps
-		steps=current_counts+steps;
+		target_steps=current_counts+steps;
+		
+		//read the response from the motor to clear out the buffer
+		result = viRead(Titan_handle, (ViConstBuf)read_string, 32, &count);
 		
 		//Move to the target position in absolute counts if a move is called for
-		if (fabs(steps)>0) {
-			sprintf (send_string,"@01:X=%d\r\n", steps);
+		if (fabs(target_steps)>0) {
+	
+			//Enable the motor
+			sprintf(send_string,"@01:SVON\r\n");
 			result = viWrite (Titan_handle, (ViConstBuf)send_string, (ViUInt32)strlen(send_string), &count);
-			Delay(Titan_delay);
+			Delay(3.0);		//Give device extra time to enable, seems like an entire second is needed
+
+			//Send command to move motor
+			sprintf (send_string,"@01:X=%d\r\n", target_steps);
+			result = viWrite (Titan_handle, (ViConstBuf)send_string, (ViUInt32)strlen(send_string), &count);
+			Delay(Titan_delay);  //Give motor time to move
 			  
 			//read the response from the motor
 			//result = viRead(Titan_handle, (ViConstBuf)send_string, 32, &count);
 			
 			//clear reply buffer from motor by reading it all out
-			result = viRead(Titan_handle, (ViConstBuf)send_string, 256, &count);
+			result = viRead(Titan_handle, (ViConstBuf)read_string, 256, &count);
 		
-			//limit number of checks to 20 for motor position
-			while ( (fabs((current_counts - steps))>5) && (trap_count < 10) ) {
+			//limit number of checks to 10 for motor position
+			while ( (fabs((current_counts - target_steps))>50) && (trap_count < 10) ) {
 				
 				//increment trapped counts
 				trap_count=trap_count+1;
@@ -118,10 +128,10 @@ int TitanMotorMove(char ip_address[64], float current_position, float target_pos
 				//Delay(0.2);		//Give device time to respond
 				
 				//read the response from the motor
-				result = viRead(Titan_handle, (ViConstBuf)send_string, 256, &count);
+				result = viRead(Titan_handle, (ViConstBuf)read_string, 256, &count);
 				
 				//Strip out the counts value from the encoder
-				sscanf(send_string,"%7s %d",dummy_string,&current_counts);
+				sscanf(read_string,"%7s %d",dummy_string,&current_counts);
 			}
 		}	
 		
@@ -136,7 +146,12 @@ int TitanMotorMove(char ip_address[64], float current_position, float target_pos
 		result = viClose(Titan_handle);
 	
 	}
-	return result;
+	
+	if (trap_count > 5) {
+		return -1;
+	} else {
+		return result;
+	}
 }
 
 
@@ -205,8 +220,8 @@ int TitanMotorHome(char ip_address[64])
 		//Strip out motor state from string
 		sscanf(send_string,"%10s %d",dummy, &motor_state);
 		
-		//Check if motor still moving and limit checking to 10 seconds
-		while ((motor_state==0) && (increment < 10)) {
+		//Check if motor still moving and limit checking to 20 seconds
+		while ((motor_state==0) && (increment < 20)) {
 			increment=increment+1;
 			Delay(Titan_delay);		//give it another second to move
 					

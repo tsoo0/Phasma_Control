@@ -14,10 +14,11 @@
 
 
 //Global Variables for settings panel
-int			PlasmaGun_setup_state = 501;
+int			PlasmaGun_setup_state = 504;
 int			PlasmaGun_panel;
 int			Gun1_Bias_Port;
 int			Gun2_Bias_Port;
+float		Gun_GaugeCalibration;
 
 char		Gun1_Bias_COM[30];
 char		Gun2_Bias_COM[30];
@@ -395,6 +396,9 @@ float ReadGunPressure(void)
 	//Get the port address of the gas bottle regulator	
   	GetCtrlVal (PlasmaGun_panel, PlasmaGun_Regulator_IP,Port_string);
 	
+	//Get the pressure regulator calibration factor	
+  	GetCtrlVal (PlasmaGun_panel, PlasmaGun_GaugeCalibration,&Gun_GaugeCalibration);
+	
 	//Open communicatin to pressure gauge
 	result=viOpen (Global_Visa_Session_Handle, Port_string, VI_NULL, VI_NULL, &Regulator_handle);
 
@@ -406,7 +410,10 @@ float ReadGunPressure(void)
 	result = viRead (Regulator_handle, (ViConstBuf)Regulator_string, 8 ,&count);
 	sscanf(Regulator_string,"%f",&regulator_pressure);
 	
-	//Close communicatin to pressure gauge
+	//Correct reading for calibration factor
+	regulator_pressure=regulator_pressure*Gun_GaugeCalibration;
+	
+	//Close communication to pressure gauge
 	result=viClose (Regulator_handle);
 
 	return(regulator_pressure);	
@@ -426,7 +433,13 @@ void SetGunPressure(float target_pressure)
 	//Get the port address of the gas bottle regulator	
   	GetCtrlVal (PlasmaGun_panel, PlasmaGun_Regulator_IP,Port_string);
 
-	//Open communicatin to pressure gauge
+	//Get the pressure regulator calibration factor	
+  	GetCtrlVal (PlasmaGun_panel, PlasmaGun_GaugeCalibration,&Gun_GaugeCalibration);
+
+	//Correct target pressure based on calibration
+	target_pressure=target_pressure/Gun_GaugeCalibration;
+	
+	//Open communication to pressure gauge
 	result=viOpen (Global_Visa_Session_Handle, Port_string, VI_NULL, VI_NULL, &Regulator_handle);
 
 	//Set regulator pressure
@@ -441,10 +454,14 @@ void SetGunPressure(float target_pressure)
 int CVICALLBACK Guns_Move (int panel, int control, int event,
 						   void *callbackData, int eventData1, int eventData2)
 {
+	int 	Gun_1_Active;
+	int 	Gun_2_Active;
 	float 	Gun_1_R;
+	float 	Gun_1_Current_Pos;
 	float 	Gun_1_Offset;
 	float  	Gun_1_COUNTSPERMM;
 	float 	Gun_2_R;
+	float 	Gun_2_Current_Pos;
 	float 	Gun_2_Offset;
 	float  	Gun_2_COUNTSPERMM;
 	char 	Gun_1_IP_Address[64];
@@ -454,19 +471,28 @@ int CVICALLBACK Guns_Move (int panel, int control, int event,
 	{
 		case EVENT_COMMIT:
 			//Get current position of probe, starting position, end position, and what to do at end of scan range
+			GetCtrlVal (PlasmaGun_panel, PlasmaGun_Gun1_Act,&Gun_1_Active);
+			GetCtrlVal (PlasmaGun_panel, PlasmaGun_Gun2_Act,&Gun_2_Active);
 			GetCtrlVal (PlasmaGun_panel, PlasmaGun_Gun1_R,&Gun_1_R);
 			GetCtrlVal (PlasmaGun_panel, PlasmaGun_Gun2_R,&Gun_2_R);
 			GetCtrlVal (PlasmaGun_panel, PlasmaGun_Gun1_Offset,&Gun_1_Offset);
 			GetCtrlVal (PlasmaGun_panel, PlasmaGun_Gun2_Offset,&Gun_2_Offset);
 			GetCtrlVal (PlasmaGun_panel, PlasmaGun_Gun1_IP,Gun_1_IP_Address);
 			GetCtrlVal (PlasmaGun_panel, PlasmaGun_Gun2_IP,Gun_2_IP_Address);
+			GetCtrlVal (PlasmaGun_panel, PlasmaGun_Gun1_Current,&Gun_1_Current_Pos);
+			GetCtrlVal (PlasmaGun_panel, PlasmaGun_Gun2_Current,&Gun_2_Current_Pos);
 			GetCtrlVal (PlasmaGun_panel, PlasmaGun_Gun1_COUNTSPERMM,&Gun_1_COUNTSPERMM);
 			GetCtrlVal (PlasmaGun_panel, PlasmaGun_Gun2_COUNTSPERMM,&Gun_2_COUNTSPERMM);
 			
 			//Send move command to probe motor
-			TitanMotorMove(Gun_1_IP_Address, (Gun_1_Offset-Gun_1_R)*10.0, (Gun_1_Offset-Gun_1_R)*10.0, Gun_1_COUNTSPERMM);		//Convert distances to mm from cm
-			TitanMotorMove(Gun_2_IP_Address, (Gun_2_Offset-Gun_2_R)*10.0, (Gun_2_Offset-Gun_2_R)*10.0, Gun_2_COUNTSPERMM);		//Convert distances to mm from cm
-			
+			if (Gun_1_Active) {
+				TitanMotorMove(Gun_1_IP_Address, (Gun_1_Offset-Gun_1_Current_Pos)*10.0, (Gun_1_Offset-Gun_1_R)*10.0, Gun_1_COUNTSPERMM);		//Convert distances to mm from cm
+				SetCtrlVal(PlasmaGun_panel,PlasmaGun_Gun1_Current,Gun_1_R);
+			}
+			if (Gun_2_Active) {
+				TitanMotorMove(Gun_2_IP_Address, (Gun_2_Offset-Gun_2_Current_Pos)*10.0, (Gun_2_Offset-Gun_2_R)*10.0, Gun_2_COUNTSPERMM);		//Convert distances to mm from cm
+				SetCtrlVal(PlasmaGun_panel,PlasmaGun_Gun2_Current,Gun_2_R);
+			}
 			break;
 	}
 	return 0;
@@ -486,9 +512,9 @@ int CVICALLBACK Gun_Home (int panel, int control, int event,
 			GetCtrlVal (PlasmaGun_panel, PlasmaGun_Gun2_IP,Gun_2_IP_Address);
 			
 			//Send move command to probe motor
-			TitanMotorHome(Gun_1_IP_Address);		//Convert distances to mm from cm
+			//TitanMotorHome(Gun_1_IP_Address);		//Convert distances to mm from cm
 			//Send move command to probe motor
-			TitanMotorHome(Gun_2_IP_Address);		//Convert distances to mm from cm
+			//TitanMotorHome(Gun_2_IP_Address);		//Convert distances to mm from cm
 
 			break;
 	}

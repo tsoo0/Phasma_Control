@@ -10,6 +10,7 @@ name_mds = str(ROOT_DIR).split('/')
 tag = "HOUSE"
 
 VX4244_chmap = {
+     0: 'TIME_VX4244',
      1:'IA_4',
      2:'BDOT',
      3:'IB_4',
@@ -20,6 +21,7 @@ VX4244_chmap = {
     }
 
 MSO5104_01_chmap = {
+    0: "TIME_HIGHRES",
     1:"IA_HIGHRES",
     2:"IB_HIGHRES",
     3:"TS_PERP",
@@ -55,6 +57,7 @@ MSO5104_01_chmap = {
 #     }
 
 PD1_chmap = {
+    0: 'PD_TIME',
     1:'PD_1_1',
     2:'PD_1_2',
     3:'PD_1_3',

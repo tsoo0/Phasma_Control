@@ -1,3 +1,4 @@
+#include 	<userint.h>
 #include	"ATMCD32D.h"  
 #include 	<rs232.h>
 #include 	<utility.h>
@@ -22,6 +23,7 @@ int 		McP_Andor_cameraHandle= 0;   	//Handle for second camera
 int			McP_Andor_Horiz_pixels;
 int			McP_Andor_Vert_pixels;
 int 		McP_iCoolerStatus=0;
+int 		McP_Initialize_flag=0;
 float		McP209_Current_Wlength;
 float		McP209_GrooveDen;
 float		McP209_AngleDiff;
@@ -40,8 +42,12 @@ int McPherson209Arm(void)
 	//Arm the Andor Camera
 	result = StartAcquisition();
 	
+	printf("[DEBUG] McPherson Andor Arming: CameraStart = %d\n", result);  
+
+	
 	return 1;
 }
+
 
 
 //Set up the Andor Camera for the McPherson 209 spectrometer
@@ -58,7 +64,7 @@ void McPherson209Activate(void)
 	float		McP_Andor_DDGDelay;
 	float		McP_Andor_GateWidth;
 	
-	//Open up Double Probe settings panel and get target digitizer rate and other settings
+	//Open up settings panel and get settings
 	McPherson209_panel = LoadPanel (0, "McPhersonSettings.uir", McP209);
 	RecallPanelState (McPherson209_panel, "Master_Control_Storage_File", McPherson209_setup_state);
 	   
@@ -71,6 +77,15 @@ void McPherson209Activate(void)
 		result = SetCurrentCamera(McP_Andor_cameraHandle);						//Choose to make the McP camera the default camera if more than one camera
 	}
 			
+	//Check to see if camera already initialized
+	if (!McP_Initialize_flag) {
+		//Regardless of if one or two cameras, at this point a default camera has been selected and all commands will go to that camera.
+		result = Initialize("");													//Initialize the camera
+		McP_Initialize_flag = 1;
+		Delay(0.25);															//Delay to let camera initialize
+	}
+
+	
 	GetCtrlVal (McPherson209_panel, McP209_Andor_Camera_Cooler,&McP_Andor_Camera_Cooler);
 	if (McP_Andor_Camera_Cooler) {
 		GetCtrlVal (McPherson209_panel, McP209_Andor_Temp,&McP_Andor_Temp);
@@ -151,9 +166,10 @@ void Create_McP_Wavelength (double Wavelength[])
 	
 	//Close panel in background
 	DiscardPanel(McPherson209_panel); 
-
-
 }
+
+		
+			
 
 //Pulls the image from the Andor camera on the spectrometer and pushes it to the raw data folder
 void Write_McPherson209Data(void)
@@ -222,6 +238,11 @@ void Write_McPherson209Data(void)
 
  	//Close TS data data file
 	fclose (outfile);
+		
+	//Free up memory
+	free(McPWavelength);		
+	free(McPAndorImage);
+	free(McPAndorImageDouble);
 
 	//Close panel in background
 	DiscardPanel(McPherson209_panel); 
@@ -236,6 +257,7 @@ void OpenMcPherson209_Settings (void)
 {
 	int 	error;
 	int		McP_Andor_Temp;
+	int		McP_Andor_Temp_Target;
 	long 	totalCameras;	
 	
 	//Open settings panel and load saved values
@@ -244,14 +266,14 @@ void OpenMcPherson209_Settings (void)
 	DisplayPanel(McPherson209_panel);
 	
 	//Get number of available cameras
-	GetAvailableCameras(&totalCameras);
+	error=GetAvailableCameras(&totalCameras);
 	
 	//If the TS camera is also on, there will be two cameras in the system and the McPherson canera shows up as the second camera (index = 1),
 	//so check for number of cameras and set index accordingly
 	if (totalCameras == 1) {
 		McP_Andor_cameraIndex = 0;
 	} else {
-		McP_Andor_cameraIndex =1;
+		McP_Andor_cameraIndex = 1;
 	}
 	
 	//Connect to McPherson camera and update panel with current camera temperature
@@ -265,16 +287,25 @@ void OpenMcPherson209_Settings (void)
 		error = SetCurrentCamera(McP_Andor_cameraHandle);						//Choose to make the McP camera the default camera if more than one camera
 	}
 	
-	//Regardless of if one or two cameras, at this point a default camera has been selected and all commands will go to that camera.
-	error = Initialize("");														//Initialize the camera
-	Delay(0.25);																//Delay to let camera initialize
+	//Check to see if camera already initialized
+	if (!McP_Initialize_flag) {
+		//Regardless of if one or two cameras, at this point a default camera has been selected and all commands will go to that camera.
+		error = Initialize("");													//Initialize the camera
+		McP_Initialize_flag = 1;
+		//Delay(0.25);															//Delay to let camera initialize
+	}
 	
 	error = IsCoolerOn(&McP_iCoolerStatus);
-   	if (McP_iCoolerStatus) {
+	error = GetTemperature(&McP_Andor_Temp);									//Update camera temperature in window. Function call will fail if camera temp system not active
+   	
+	//If cooler on, make sure cooler is on (it might be on from before and not have warmed up all the way) and set it to the target temperature
+	if (McP_iCoolerStatus) {
 		//Move control switch to on position if temperature system active
 		SetCtrlVal (McPherson209_panel, McP209_Andor_Camera_Cooler,1);
-		error = GetTemperature(&McP_Andor_Temp);												//Update camera temperature in window. Function call will fail if camera temp system not active
  		SetCtrlVal (McPherson209_panel, McP209_Andor_Temp_Actual,McP_Andor_Temp);				//Report value of camera temperature to panel
+		GetCtrlVal (McPherson209_panel, McP209_Andor_Temp,&McP_Andor_Temp_Target);
+		CoolerON();
+		SetTemperature(McP_Andor_Temp_Target);
 	} else {
 		//Move control switch to off position if temperature system not active
 		SetCtrlVal (McPherson209_panel, McP209_Andor_Camera_Cooler,0);
@@ -412,6 +443,7 @@ int CVICALLBACK McP_Andor_Temp_Control (int panel, int control, int event,
 								  void *callbackData, int eventData1, int eventData2)
 {
 	int 	result;
+	int 	status;
 	int		McP_Andor_Temp;
 	int		Actual_Temp;
 	
@@ -423,20 +455,27 @@ int CVICALLBACK McP_Andor_Temp_Control (int panel, int control, int event,
 					result = SetCurrentCamera(McP_Andor_cameraHandle);						//Choose to make the TS camera the default camera if more than one camera
 				}
 						
-				GetCtrlVal (panel, McP209_Andor_Camera_Cooler,&result);
+				//Check to see if camera already initialized
+				if (!McP_Initialize_flag) {
+					//Regardless of if one or two cameras, at this point a default camera has been selected and all commands will go to that camera.
+					result = Initialize("");												//Initialize the camera
+					McP_Initialize_flag = 1;
+					//Delay(0.25);															//Delay to let camera initialize
+				}
+				GetCtrlVal (panel, McP209_Andor_Camera_Cooler,&status);
 
-				if (result) {
+				if (status) {
 					GetCtrlVal (panel, McP209_Andor_Temp,&McP_Andor_Temp);
-					CoolerON();
-					GetTemperature(&Actual_Temp);
+					result=CoolerON();
+					result=GetTemperature(&Actual_Temp);
 					SetCtrlVal (panel, McP209_Andor_Temp_Actual,Actual_Temp);
-					SetTemperature(McP_Andor_Temp);
+					result=SetTemperature(McP_Andor_Temp);
 				} else {
-					GetTemperature(&Actual_Temp);
+					result=GetTemperature(&Actual_Temp);
 					SetCtrlVal (panel, McP209_Andor_Temp_Actual,Actual_Temp);
-					CoolerOFF();
-					SetCoolerMode(0);
-					ShutDown();
+					result=SetCoolerMode(0);
+					result=ShutDown();
+					McP_Initialize_flag=0;
 				}
 						
 			break;
@@ -458,7 +497,7 @@ int CVICALLBACK McP_TIMER_UPDATE_ICCD_STATUS (int panel, int control, int event,
 	{
 		case EVENT_TIMER_TICK:
 				if (McP_Andor_cameraHandle > 0) {
-					result = SetCurrentCamera(McP_Andor_cameraHandle);						//Choose to make the TS camera the default camera if more than one camera
+					error = SetCurrentCamera(McP_Andor_cameraHandle);						//Choose to make the TS camera the default camera if more than one camera
 				}
 						
 				GetCtrlVal (panel, McP209_Andor_Camera_Cooler,&result);
@@ -467,6 +506,143 @@ int CVICALLBACK McP_TIMER_UPDATE_ICCD_STATUS (int panel, int control, int event,
 					error = GetTemperature(&Actual_Temp);
 					SetCtrlVal (panel, McP209_Andor_Temp_Actual,Actual_Temp);
 				}
+			break;
+	}
+	return 0;
+}
+
+
+int CVICALLBACK AcquireMcPSpectrum (int panel, int control, int event,
+								 void *callbackData, int eventData1, int eventData2)
+{
+	#define		pi 3.141592654	
+	#define		Order 1
+	#define		PixelDimensions 13			//in microns
+	int 		result; 					//	Error-checking variable
+	int 		j;
+	int			McP_Andor_Camera_Cooler;
+	int			McP_Andor_Gain;
+	int			McP_Andor_Pre_Amp;
+	int 		status;
+	float		McP_Andor_Exp_Time;
+	float		alpha;
+	float		beta;
+	float		linear_disp;
+	float		Wavelength_step;
+	double 		McPSpectrum[2048];
+	double		*McPWavelength;
+	//WORD		*McPAndorImage;	
+	at_32		*McPAndorImage;
+	
+	switch (event)
+	{
+		case EVENT_COMMIT:
+	
+			/******************************************************************************/
+			//Set up McP_Andor Camera for real time acquisition of spectra
+						
+			//Set up Andor Camera
+			if (McP_Andor_cameraHandle > 0) {
+				result = SetCurrentCamera(McP_Andor_cameraHandle);						//Choose to make the McP camera the default camera if more than one camera
+			}
+					
+			GetCtrlVal (McPherson209_panel, McP209_Andor_Camera_Cooler,&McP_Andor_Camera_Cooler);
+						
+			GetCtrlVal (McPherson209_panel, McP209_Andor_Gain,&McP_Andor_Gain);
+			result = SetGain(McP_Andor_Gain);
+			
+			result = SetVerticalSpeed(0);
+			result = SetHorizontalSpeed(0);
+			
+			GetCtrlVal (McPherson209_panel, McP209_Andor_Pre_Amp,&McP_Andor_Pre_Amp);
+			result = SetPreAmpGain(McP_Andor_Pre_Amp);
+			
+			GetCtrlVal (McPherson209_panel, McP209_Andor_Exp_Time,&McP_Andor_Exp_Time);
+			result = SetExposureTime(McP_Andor_Exp_Time);
+				
+			GetCtrlVal (McPherson209_panel, McP209_Andor_H_bin,&McP_Andor_H_bin);
+			GetCtrlVal (McPherson209_panel, McP209_Andor_V_bin,&McP_Andor_V_bin);
+			result = GetDetector(&McP_Andor_Horiz_pixels,&McP_Andor_Vert_pixels);										//Read how many pixels there are in H and V
+			result = SetImage(McP_Andor_H_bin,McP_Andor_V_bin, 1, McP_Andor_Horiz_pixels, 1, McP_Andor_Vert_pixels);				//Bin the pixels of the iCCD from 1 to the full extent into the requested number of bins
+			
+			//Get McPherson Spectrometer Parameters
+		 	GetCtrlVal (McPherson209_panel, McP209_McP209_Current_Wlengt,&McP209_Current_Wlength);	   //Wavelength in nm
+			GetCtrlVal (McPherson209_panel, McP209_McP209_GrooveDen,&McP209_GrooveDen);
+			GetCtrlVal (McPherson209_panel, McP209_McP209_AngleDiff,&McP209_AngleDiff);
+			GetCtrlVal (McPherson209_panel, McP209_McP209_FocalLength,&McP209_FocalLength);
+			GetCtrlVal (McPherson209_panel, McP209_Andor_H_bin,&McP_Andor_H_bin);
+
+			//Create wavelength array
+			McPWavelength = malloc ((int)(8*McP_Andor_Horiz_pixels/McP_Andor_H_bin));
+			alpha = (180.0/pi)*( asin( (Order*McP209_GrooveDen*1.0E-6/2.0)/(cos(McP209_AngleDiff*pi/2.0/180.0) ) ) - (McP209_AngleDiff*pi/2.0/180.0) );
+			beta = McP209_AngleDiff+alpha;
+			
+			linear_disp=1.0E6*cos(beta*pi/180.0)/(McP209_FocalLength*Order*McP209_GrooveDen);
+			Wavelength_step= McP_Andor_H_bin*PixelDimensions*0.001*linear_disp;
+			
+			for (j=0;j<(int)(McP_Andor_Horiz_pixels/McP_Andor_H_bin);j++) {
+				McPWavelength[j]= ((j-(McP_Andor_Horiz_pixels/McP_Andor_H_bin)/2.0)*Wavelength_step+McP209_Current_Wlength);		//This assumes no stretching of axis or offsets from calibration
+			}
+			
+			result = SetAcquisitionMode(5);		//Single acquisition mode
+			result = SetReadMode(4);			//Record an image
+			result = SetTriggerMode(0);			//Internal Trigger that begins when acqusition requested
+
+			//Check that the camera is ready to acquire
+			result = GetStatus(&status);
+
+			//Take the camera image
+			result = StartAcquisition();
+	
+			//Delay long enought for exposure
+			Delay(2.0*McP_Andor_Exp_Time);
+			result=AbortAcquisition();
+			
+			//Get image frm Andor Camera
+			//Get data from the McP Andor Camera but first make sure the code is talking to the McP camera
+			//result = GetDetector(&McP_Andor_Horiz_pixels,&McP_Andor_Vert_pixels);												//Read how many pixels there are in H and V
+			McPAndorImage = malloc ((int)((4*McP_Andor_Horiz_pixels/McP_Andor_H_bin)*(McP_Andor_Vert_pixels/McP_Andor_V_bin)));	//Build an array equal to the size of the total number of image pixels after the image has been binned into a
+																																//smaller set of pixels per how the camera was set up earlier.
+																																//Increase the size to account for the data being 32 bits so it needs to be 4 words (8 bits). Malloc allocates memory in bytes
+			result = GetAcquiredData(McPAndorImage, (int)((McP_Andor_Horiz_pixels/McP_Andor_H_bin)*(McP_Andor_Vert_pixels/McP_Andor_Vert_pixels)));	//Retrieve the image data from the camera with a single vertical bin
+
+			//Check that the camera is back to an idle state
+			result = GetStatus(&status);
+			
+			for (j=0;j<(int)(McP_Andor_Horiz_pixels/McP_Andor_H_bin);j++) {
+				McPSpectrum[j]= (int)McPAndorImage[j];																		//Convert the point to the WORD into a real number that can be plotted
+			}
+				
+			//Plot the spectrum to the McPherson graph
+			DeleteGraphPlot (McPherson209_panel, McP209_McPhersonGraph, -1,VAL_IMMEDIATE_DRAW);
+			SetAxisRange (McPherson209_panel, McP209_McPhersonGraph, VAL_AUTOSCALE, 0, 0, VAL_AUTOSCALE, 0.0, 0);
+			PlotXY (McPherson209_panel, McP209_McPhersonGraph, McPWavelength, McPSpectrum, (int)((McP_Andor_Horiz_pixels/McP_Andor_H_bin)), VAL_DOUBLE, VAL_DOUBLE, VAL_FAT_LINE, VAL_SIMPLE_DOT, VAL_SOLID, 1, VAL_DK_GREEN);
+			
+			//Free up memory
+			free(McPWavelength);		
+			free(McPAndorImage);
+			break;
+	}
+	return 0;
+}
+
+int CVICALLBACK AcquireMcPSpectrum_Shutdown (int panel, int control, int event,
+		void *callbackData, int eventData1, int eventData2)
+{
+	int 	error;
+	switch (event)
+	{
+		case EVENT_COMMIT:
+			//Save current state of panel and close interface
+			SavePanelState (McPherson209_panel, "Master_Control_Storage_File", McPherson209_setup_state);
+			DiscardPanel(panel);
+			
+			//Shutdown camera and set all the flags to zero
+			error=SetCoolerMode(0);
+			error=ShutDown();
+			McP_Initialize_flag = 0;
+			McP_iCoolerStatus = 0;
+			
 			break;
 	}
 	return 0;

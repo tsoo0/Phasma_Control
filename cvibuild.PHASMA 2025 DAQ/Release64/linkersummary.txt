@@ -45,6 +45,7 @@ mdsshr.lib
 NIDAQmx.lib
 PDCLIB.lib
 visa.lib
+winmm.lib
 wlmData.lib
 user32.lib
 EXE Symbol Module

@@ -245,36 +245,40 @@ void setup_Sorensen(double current, int supply_num, int powerstate)
 		//Set max volt so that current is not limited by voltage settings
 		if (supply_num < 5) {
 			sprintf (sorensen_string, "SOUR:VOLT 60.0\r");   
-			result = viWrite (Sorensen_handle, sorensen_string, (unsigned int)strlen(sorensen_string), VI_NULL);
+			result = viWrite (Sorensen_handle, (ViConstBuf)sorensen_string, (unsigned int)strlen(sorensen_string), VI_NULL);
 		} else {
 			sprintf (sorensen_string, "SOUR:VOLT 70.0\r");   
-			result = viWrite (Sorensen_handle, sorensen_string, (unsigned int)strlen(sorensen_string), &count);
+			result = viWrite (Sorensen_handle, (ViConstBuf)sorensen_string, (unsigned int)strlen(sorensen_string), &count);
 		}	
 		
 		//print requested current into string to send to power supply after setting upper bound for voltage
 		sprintf (sorensen_string, "SOUR:CURR %f\r", current); 
-		result = viWrite (Sorensen_handle, sorensen_string, (unsigned int)strlen(sorensen_string), &count);
+		result = viWrite (Sorensen_handle, (ViConstBuf)sorensen_string, (unsigned int)strlen(sorensen_string), &count);
 		
-		//Delay 1 sec to give supply time to get set up
-		Delay(1);
+		//Delay 2 sec to give supply time to get set up
+		Delay(2);
 		
 		//Read current value of power supply current to confirm that it has been set correctly. If it has not worked after 3 more tries, jump out of loop
 		j=0;
 		do {
 			sprintf (sorensen_string, "SOUR:CURR?\r"); 
-			result = viWrite (Sorensen_handle, sorensen_string, (unsigned int)strlen(sorensen_string), &count);
-			result = viRead (Sorensen_handle, sorensen_read_string, (unsigned int)strlen(sorensen_string), &count);
+			result = viWrite (Sorensen_handle, (ViConstBuf)sorensen_string, (unsigned int)strlen(sorensen_string), &count);
+			result = viRead (Sorensen_handle, (ViConstBuf)sorensen_read_string, (unsigned int)strlen(sorensen_string), &count);
 			sscanf (sorensen_read_string, "%lf", &current_value);
-			if (fabs((current/current_value)-1) < 0.10) {		//check if withing 10%
-			   	j = 5; 	//hop out of loop
-			   	break;
+			if (current_value > 5.0) {								//only do comparison if current value not zero
+				if (fabs((current/current_value)-1) < 0.10) {		//check if withing 10%
+				   	j = 5; 	//hop out of loop
+				   	break;
+				} else {
+					Delay(2);
+					printf("SORENSEN NOT RESPONDING\n");
+					sprintf (sorensen_string, "SOUR:CURR %f\r", current); 
+					result = viWrite (Sorensen_handle, (ViConstBuf)sorensen_string, (unsigned int)strlen(sorensen_string), &count);
+		   		}
+				j=j+1;
 			} else {
-				Delay(.2);
-				printf("SORENSEN NOT RESPONDING\n");
-				sprintf (sorensen_string, "SOUR:CURR %f\r", current); 
-				result = viWrite (Sorensen_handle, sorensen_string, (unsigned int)strlen(sorensen_string), &count);
-	   		}
-			j=j+1;
+				j = 5;												//Kick out of loop if current value is less than 5 amps
+			}
 		} while (j<5);
 	
 
@@ -282,10 +286,10 @@ void setup_Sorensen(double current, int supply_num, int powerstate)
 		if (powerstate) {
 			//Turn power supply on
 			sprintf (sorensen_string, "OUTP ON\r"); 
-			result = viWrite (Sorensen_handle, sorensen_string, (unsigned int)strlen(sorensen_string), &count);	
+			result = viWrite (Sorensen_handle, (ViConstBuf)sorensen_string, (unsigned int)strlen(sorensen_string), &count);	
 		} else {
 			 sprintf (sorensen_string, "OUTP OFF\r"); 
-			 result = viWrite (Sorensen_handle, sorensen_string, (unsigned int)strlen(sorensen_string), &count);
+			 result = viWrite (Sorensen_handle, (ViConstBuf)sorensen_string, (unsigned int)strlen(sorensen_string), &count);
 		}
 
 		//Close session to specific power supply since it was opened
@@ -589,7 +593,6 @@ void make_graph(void)
 	double	PHASMA_3;
 	double	PHASMA_4;
 	int		j;
-	int		result;
 	int		bfield_control_flag;
 
 
@@ -829,32 +832,32 @@ void MagField_Activate (int MagField_Status, int Master_Mag_Arm_State)
 		else {  //set Xantrex and Sorensen to target current instead
 	
 			//Loop through all 6 power supplies and set them to the target current 
-			GetCtrlVal (MagField, MagField_SOURCE_1,&Source_1);
+			GetCtrlVal (MagField_panel, MagField_SOURCE_1,&Source_1);
 			Current_1=Source_1/2;					//Divide by 2 since supplies in parallel
 			//Send target current to power supply
 			setup_Sorensen(Current_1,5,1);
 			setup_Sorensen(Current_1,6,1);
 
-			GetCtrlVal (MagField, MagField_SOURCE_2,&Source_2);
+			GetCtrlVal (MagField_panel, MagField_SOURCE_2,&Source_2);
 			Current_2=Source_2;
 			//Send target current to power supply
 			setup_xantrex(Current_2,1);
 
-			GetCtrlVal (MagField, MagField_PHASMA_1,&PHASMA_1);
+			GetCtrlVal (MagField_panel, MagField_PHASMA_1,&PHASMA_1);
 			Current_3=PHASMA_1;
 			//Send target current to power supply
 			setup_Sorensen(Current_3,1,1);
-			GetCtrlVal (MagField, MagField_PHASMA_2,&PHASMA_2);
+			GetCtrlVal (MagField_panel, MagField_PHASMA_2,&PHASMA_2);
 	
 			Current_4=PHASMA_2;
 			//Send target current to power supply
 			setup_Sorensen(Current_4,2,1);
-			GetCtrlVal (MagField, MagField_PHASMA_3,&PHASMA_3);
+			GetCtrlVal (MagField_panel, MagField_PHASMA_3,&PHASMA_3);
 			Current_5=PHASMA_3;
 			//Send target current to power supply
 			setup_Sorensen(Current_5,3,1);
 		
-			GetCtrlVal (MagField, MagField_PHASMA_4,&PHASMA_4);
+			GetCtrlVal (MagField_panel, MagField_PHASMA_4,&PHASMA_4);
 			Current_6=PHASMA_4;
 			//Send target current to power supply
 			setup_Sorensen(Current_6,4,1);

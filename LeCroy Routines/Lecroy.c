@@ -182,8 +182,8 @@ float* ReadWaveformChannel(ViSession LC_VisaHandle, const char *channel, int *nu
 /* -----------------------------------------------
    Main LeCroy acquisition function
 ------------------------------------------------ */
-int Lecroy(ViSession visa_handle, int Lecroy_RecordLength, float *timestep,
-           float Chan1[], float Chan2[], float Chan3[], float Chan4[])
+int Lecroy(ViSession visa_handle, int Lecroy_RecordLength, double *timestep,
+           double Chan1[], double Chan2[], double Chan3[], double Chan4[])
 {
     int 	numSamples = 0;
 	int 	result;

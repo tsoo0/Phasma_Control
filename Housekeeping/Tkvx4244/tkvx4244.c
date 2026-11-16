@@ -2750,7 +2750,6 @@ ViInt16 numberOfSamples,ViInt32 startingAddress,ViInt16 channel,
 ViChar dataArray[])
 {
     static char rdd[12288];
-    static int dtt[1000];
     time_t delaytime=0;
 	ViChar		cmd[tkvx4244_CMD_STRLEN];/* storage for instrument command strings */
 	ViStatus	retError;			/* Returned error status */

@@ -10,9 +10,10 @@
 
 
 //Global Variables for settings panel
-int			TriggerSettings_setup_state = 4001;	//WARNING, if this gets changed here, it must also be changed in the mastercontrol loop repeat cycle subroutine
+int			TriggerSettings_setup_state = 4003;	//WARNING, if this gets changed here, it must also be changed in the mastercontrol loop repeat cycle subroutine
 int			Trigger_panel;
-
+extern int 	Andor_Pulse_Num;
+float		WaitForNextArm;
 
 void OpenTrigger_Settings (void)  
 {
@@ -154,6 +155,9 @@ int MasterTriggerArm(void)
 	//Open Visa session to first Trigger unit
 	result=viOpen (Global_Visa_Session_Handle, Trigger1_Port_string, VI_NULL, VI_NULL, &Trigger1_handle);
 	
+	//Make sure master trigger unit has completed any previous cycles, this avoids trying to trigger before the unit is ready to accept a new trigger
+	Delay(WaitForNextArm);
+	
 	if (!result) {
 		//Send commands to set up each of the timing channels
 		sprintf (Trigger_string, "*TRG\r");   //Arm the trigger unit to get ready for external trigger
@@ -187,6 +191,9 @@ int MasterTriggerArm(void)
 	viClose(Trigger2_handle);
 	viClose(Trigger3_handle);
 	
+	printf("[DEBUG] Trigger system arming: Handle1 = %d, Handle2 = %d, Handle3 = %d\n",Trigger1_handle,Trigger2_handle,Trigger3_handle);  
+
+	
 	return !result;
 }
 
@@ -217,9 +224,10 @@ void Trigger_Settings_Activate (void)
 	
 	
 	int			polarity;
+	int 		AstrellaTiming_Flag;
 	extern int 	PulsedLIFFlag;		//Sort of sketchy way to do this, but look at flags from master control system using an external variable declaration
 	extern int 	TSFlag;				//Sort of sketchy way to do this, but look at flags from master control system using an external variable declaration
-	
+	extern int 	PlasmaGunFlag;		//Sort of sketchy way to do this, but look at flags from master control system using an external variable declaration
 	float		SRSDG1_A;
 	float		SRSDG1_B;
 	float		SRSDG1_C;
@@ -232,10 +240,10 @@ void Trigger_Settings_Activate (void)
 	float 		SRSDG1_AB_Low;
 	float 		SRSDG1_CD_High;
 	float 		SRSDG1_CD_Low;
-	float 		SRSDG1_EF_High;
-	float 		SRSDG1_EF_Low;
-	float 		SRSDG1_GH_High;
-	float 		SRSDG1_GH_Low;
+	//float 		SRSDG1_EF_High;
+	//float 		SRSDG1_EF_Low;
+	//float 		SRSDG1_GH_High;
+	//float 		SRSDG1_GH_Low;
 	float		SRSDG2_A;
 	float		SRSDG2_B;
 	float		SRSDG2_C;
@@ -357,6 +365,7 @@ void Trigger_Settings_Activate (void)
 
 	GetCtrlVal (Trigger_panel, Trigger_SRSDG1_ChannelC,&Gun_Charging);
 	GetCtrlVal (Trigger_panel, Trigger_SRSDG1_ChannelD,&Gun_Charging_Pulse_Length);
+	WaitForNextArm=Gun_Charging_Pulse_Length;
 	GetCtrlVal (Trigger_panel, Trigger_SRSDG1_V_High_CD,&Gun_Charging_High);
 	GetCtrlVal (Trigger_panel, Trigger_SRSDG1_V_Low_CD,&Gun_Charging_Low);
 	
@@ -372,15 +381,22 @@ void Trigger_Settings_Activate (void)
 		}
 	}
 	
+	GetCtrlVal (Trigger_panel, Trigger_AstrellaTiming,&AstrellaTiming_Flag);
 	GetCtrlVal (Trigger_panel, Trigger_SRSDG1_ChannelE,&Astrella_Synch);
 	GetCtrlVal (Trigger_panel, Trigger_SRSDG1_ChannelF,&Astrella_Synch_Pulse_Length);
-	Astrella_Synch=Astrella_Synch/1.0E6;													//Convert from microseconds
+	if (AstrellaTiming_Flag) {
+		//use timing delay to offset everything from Astrella Trigger pulse
+		Astrella_Synch=Astrella_Synch/1.0E6;													//Convert from microseconds
+	} else {
+		//Set Astrella timing delay to zero since there is no offset
+		Astrella_Synch=0.0;
+	}	
 	GetCtrlVal (Trigger_panel, Trigger_SRSDG1_V_High_EF,&Astrella_Synch_High);
 	GetCtrlVal (Trigger_panel, Trigger_SRSDG1_V_Low_EF,&Astrella_Synch_Low);
 
 	GetCtrlVal (Trigger_panel, Trigger_SRSDG1_ChannelG,&iCCD_Shutter);
 	GetCtrlVal (Trigger_panel, Trigger_SRSDG1_ChannelH,&iCCD_Shutter_Pulse_Length);
-	iCCD_Shutter_Pulse_Length=iCCD_Shutter_Pulse_Length/1.0E6;								//Convert from microseconds	
+	iCCD_Shutter_Pulse_Length=iCCD_Shutter_Pulse_Length/1.0E6 + (Andor_Pulse_Num/10);		//Include with the shutter window which is normally ~ 38 ms, the full pulse length needed for the Andor camera to stay open for the total TS pulses
 	GetCtrlVal (Trigger_panel, Trigger_SRSDG1_V_High_GH,&iCCD_Shutter_High);
 	GetCtrlVal (Trigger_panel, Trigger_SRSDG1_V_Low_GH,&iCCD_Shutter_Low);
 
@@ -404,6 +420,7 @@ void Trigger_Settings_Activate (void)
 	GetCtrlVal (Trigger_panel, Trigger_SRSDG2_V_Low_CD,&Arc_Low);
 
 	GetCtrlVal (Trigger_panel, Trigger_SRSDG2_ChannelE,&Bias1);
+	Bias_Offset = Bias1; 												//Store Bias time from Arc pulse initiation in Global Variable to use for other timing systems later.
 	Bias1=Bias1/1.0E6;
 	GetCtrlVal (Trigger_panel, Trigger_SRSDG2_ChannelF,&Bias1_Pulse_Length);
 	Bias1_Pulse_Length=Bias1_Pulse_Length/1.0E6;
@@ -426,7 +443,7 @@ void Trigger_Settings_Activate (void)
 	GetCtrlVal (Trigger_panel, Trigger_SRSDG3_ChannelA,&PerpTS);
 	PerpTS=PerpTS/1.0E6;
 	GetCtrlVal (Trigger_panel, Trigger_SRSDG3_ChannelB,&PerpTS_Pulse_Length);
-	PerpTS_Pulse_Length=PerpTS_Pulse_Length/1.0E6;
+	PerpTS_Pulse_Length=(PerpTS_Pulse_Length/1.0E6);
 	GetCtrlVal (Trigger_panel, Trigger_SRSDG3_V_High_AB,&PerpTS_High);
 	GetCtrlVal (Trigger_panel, Trigger_SRSDG3_V_Low_AB,&PerpTS_Low);
 
@@ -438,6 +455,7 @@ void Trigger_Settings_Activate (void)
 	GetCtrlVal (Trigger_panel, Trigger_SRSDG3_V_Low_CD,&ParaTS_Low);
 
 	GetCtrlVal (Trigger_panel, Trigger_SRSDG3_ChannelE,&PLIF);
+	PLIF_Trigger_Time=PLIF;												//Store time of PLIF laser pulse in global variable for future use
 	PLIF=PLIF/1.0E6;
 	GetCtrlVal (Trigger_panel, Trigger_SRSDG3_ChannelF,&PLIF_Pulse_Length);
 	PLIF_Pulse_Length=PLIF_Pulse_Length/1.0E6;
@@ -480,6 +498,7 @@ void Trigger_Settings_Activate (void)
 	SRSDG1_C = Total_Cycle_Time-Gun_Charging;												//Charging stops when Gun Charging time reached
 	SRSDG1_D = Total_Cycle_Time+Gun_Charging_Pulse_Length;									//Charging begins after pulse by amount of charging pulse length
 	SRSDG1_CD_High = Gun_Charging_High;
+	
 	SRSDG1_CD_Low = Gun_Charging_Low;
 	
 	SRSDG1_E = Total_Cycle_Time;															//Note, the Astrella_Synch time is added to everything AFTER the triggerings of the next two trigger units because
@@ -488,69 +507,53 @@ void Trigger_Settings_Activate (void)
 	SRSDG1_CD_Low = Astrella_Synch_Low;														//bias pulse.
 	
 	SRSDG1_G = Total_Cycle_Time+iCCD_Shutter;								
-	SRSDG1_H = Total_Cycle_Time+iCCD_Shutter+iCCD_Shutter_Pulse_Length;
+	SRSDG1_H = Total_Cycle_Time+iCCD_Shutter+iCCD_Shutter_Pulse_Length+Astrella_Synch+Astrella_Synch_Pulse_Length;	//Make sure extended pulse length for multipulse acquisiton lasts longer enough to get all the pulses the camera was told to acquire
 	SRSDG1_CD_High = iCCD_Shutter_High;
 	SRSDG1_CD_Low = iCCD_Shutter_Low;
 	
 
 	/***********************************************************************************************/
-	//Calculate all the timings to send to second trigger unit
-	//SRSDG2_A = Total_Cycle_Time-Laser_Warmup+Gas_Puff+Astrella_Synch;
-	//SRSDG2_B = Total_Cycle_Time-Laser_Warmup+Gas_Puff+Astrella_Synch+Gas_Puff_Pulse_Length;
-	SRSDG2_A = Gas_Puff;
-	SRSDG2_B = Gas_Puff+Gas_Puff_Pulse_Length;
+	//Calculate all the timings to send to second trigger unit. Note that all times are offset from T0 by Astrella offset time
+	SRSDG2_A = Astrella_Synch+Gas_Puff;
+	SRSDG2_B = Astrella_Synch+Gas_Puff+Gas_Puff_Pulse_Length;
 	SRSDG2_AB_High = Gas_Puff_High;
 	SRSDG2_AB_Low = Gas_Puff_Low;
 
-	//SRSDG2_C = Total_Cycle_Time-Laser_Warmup+Astrella_Synch+Arc;
-	//SRSDG2_D = Total_Cycle_Time-Laser_Warmup+Astrella_Synch+Arc+Arc_Pulse_Length;
-	SRSDG2_C = Arc;
-	SRSDG2_D = Arc+Arc_Pulse_Length;
+	SRSDG2_C = Astrella_Synch+Arc;
+	SRSDG2_D = Astrella_Synch+Arc+Arc_Pulse_Length;
 	SRSDG2_CD_High = Arc_High;
 	SRSDG2_CD_Low = Arc_Low;
 
-	//SRSDG2_E = Total_Cycle_Time-Laser_Warmup+Astrella_Synch+Arc+Bias1;
-	//SRSDG2_F = Total_Cycle_Time-Laser_Warmup+Astrella_Synch+Arc+Bias1+Bias1_Pulse_Length;
-	SRSDG2_E = Arc+Bias1;
-	SRSDG2_F = Arc+Bias1+Bias1_Pulse_Length;
+	SRSDG2_E = Astrella_Synch+Arc+Bias1;
+	SRSDG2_F = Astrella_Synch+Arc+Bias1+Bias1_Pulse_Length;
 	SRSDG2_EF_High = Bias1_High;
 	SRSDG2_EF_Low = Bias1_Low;
 
-	//SRSDG2_G = Total_Cycle_Time-Laser_Warmup+Astrella_Synch+Arc+Bias2;
-	//SRSDG2_H = Total_Cycle_Time-Laser_Warmup+Astrella_Synch+Arc+Bias2+Bias2_Pulse_Length;
-	SRSDG2_G = Arc+Bias2;
-	SRSDG2_H = Arc+Bias2+Bias2_Pulse_Length;
+	SRSDG2_G = Astrella_Synch+Arc+Bias2;
+	SRSDG2_H = Astrella_Synch+Arc+Bias2+Bias2_Pulse_Length;
 	SRSDG2_GH_High = Bias2_High;
 	SRSDG2_GH_Low = Bias2_Low;
 
 	
 	/***********************************************************************************************/
-	//Calculate all the timings to send to third trigger unit
-	//SRSDG3_A = Total_Cycle_Time-Laser_Warmup+Astrella_Synch+Arc+Bias1+PerpTS-PerpTS_Offset;
-	//SRSDG3_B = Total_Cycle_Time-Laser_Warmup+Astrella_Synch+Arc+Bias1+PerpTS-PerpTS_Offset+PerpTS_Pulse_Length;
-	SRSDG3_A = Arc+Bias1+PerpTS-PerpTS_Offset;
-	SRSDG3_B = Arc+Bias1+PerpTS-PerpTS_Offset+PerpTS_Pulse_Length;
+	//Calculate all the timings to send to third trigger unit. Note that all times are offset from T0 by Astrella offset time
+	SRSDG3_A = Astrella_Synch+Arc+Bias1+PerpTS-PerpTS_Offset;
+	SRSDG3_B = Astrella_Synch+Arc+Bias1+PerpTS-PerpTS_Offset+PerpTS_Pulse_Length;
 	SRSDG3_AB_High = PerpTS_High;
 	SRSDG3_AB_Low = PerpTS_Low;
 
-	//SRSDG3_C = Total_Cycle_Time-Laser_Warmup+Astrella_Synch+Arc+Bias1+ParaTS-ParaTS_Offset;
-	//SRSDG3_D = Total_Cycle_Time-Laser_Warmup+Astrella_Synch+Arc+Bias1+ParaTS-ParaTS_Offset+ParaTS_Pulse_Length;
-	SRSDG3_C = Arc+Bias1+ParaTS-ParaTS_Offset;
-	SRSDG3_D = Arc+Bias1+ParaTS-ParaTS_Offset+ParaTS_Pulse_Length;
+	SRSDG3_C = Astrella_Synch+Arc+Bias1+ParaTS-ParaTS_Offset;
+	SRSDG3_D = Astrella_Synch+Arc+Bias1+ParaTS-ParaTS_Offset+ParaTS_Pulse_Length;
 	SRSDG3_CD_High = ParaTS_High;
 	SRSDG3_CD_Low = ParaTS_Low;
 
-	//SRSDG3_E = Total_Cycle_Time-Laser_Warmup+Astrella_Synch+Arc+Bias1+PLIF-PLIF_Offset;
-	//SRSDG3_F = Total_Cycle_Time-Laser_Warmup+Astrella_Synch+Arc+Bias1+PLIF-PLIF_Offset+PLIF_Pulse_Length;
-	SRSDG3_E = Arc+Bias1+PLIF-PLIF_Offset;
-	SRSDG3_F = Arc+Bias1+PLIF-PLIF_Offset+PLIF_Pulse_Length;
+	SRSDG3_E = Astrella_Synch+Arc+Bias1+PLIF-PLIF_Offset;
+	SRSDG3_F = Astrella_Synch+Arc+Bias1+PLIF-PLIF_Offset+PLIF_Pulse_Length;
 	SRSDG3_EF_High = PLIF_High;
 	SRSDG3_EF_Low = PLIF_Low;
 
-	//SRSDG3_G = Total_Cycle_Time-Laser_Warmup+Astrella_Synch+Arc+Bias1+Other-Other_Offset;
-	//SRSDG3_H = Total_Cycle_Time-Laser_Warmup+Astrella_Synch+Arc+Bias1+Other-Other_Offset+Other_Pulse_Length;
-	SRSDG3_G = Arc+Bias1+Other-Other_Offset;
-	SRSDG3_H = Arc+Bias1+Other-Other_Offset+Other_Pulse_Length;
+	SRSDG3_G = Astrella_Synch+Arc+Bias1+Other-Other_Offset;
+	SRSDG3_H = Astrella_Synch+Arc+Bias1+Other-Other_Offset+Other_Pulse_Length;
 	SRSDG3_GH_High = Other_High;
 	SRSDG3_GH_Low = Other_Low;
 
@@ -682,9 +685,14 @@ void Trigger_Settings_Activate (void)
 		sprintf (Trigger_string, "LPOL 1,%d\r",polarity);   							//Set polarity of AB
 		result = viWrite (Trigger2_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 
-		sprintf (Trigger_string, "LAMP 1,%f\r",fabs(Gas_Puff_High-Gas_Puff_Low));   //Set amplitude voltage of AB
+		//Check if plasma guns turned on. If not, set ampliture to small value so that gas puff does not fire when DAQ triggers
+		if (PlasmaGunFlag) {
+			sprintf (Trigger_string, "LAMP 1,%f\r",fabs(Gas_Puff_High-Gas_Puff_Low));   
+		} else {	
+			sprintf (Trigger_string, "LAMP 1,%f\r",0.5);   								//Set output to below threshold for optical signal so gas puff does not fire
+		}
 		result = viWrite (Trigger2_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
-		
+			
 		sprintf (Trigger_string, "DLAY 4,0,%f\r",SRSDG2_C);   							//Delay C relative to TO
 		result = viWrite (Trigger2_handle, (ViConstBuf)Trigger_string, (unsigned int)strlen(Trigger_string), &count);
 
@@ -861,10 +869,10 @@ void Trigger_Settings_Activate (void)
 //Send the master trigger from the NI DAQ card
 void Send_Trigger (void)  
 {
-
+	int 	result;
 	
 	//get NI DAQ card to send out a trigger pulse by starting up the task  
-	DAQmxStartTask (OutputCardTrigHandle); 	  
+	result = DAQmxStartTask (OutputCardTrigHandle); 	  
 		
 	//Open settings panel and load saved values
 	//Trigger_panel = LoadPanel (0, "MasterTriggerSettings.uir", Trigger);

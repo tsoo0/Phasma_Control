@@ -454,7 +454,6 @@ void Sirah_Laser_Stop(char Sirah_COM_String[])
 	ViStatus result;
 	ViUInt32 count;
     
-    char	rtn_string[128];
     char	send_string[32];
 
 	//Open Visa session 

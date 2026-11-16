@@ -81,4 +81,5 @@
 -more:C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x64\uuid.lib
 -more:c:\Program Files (x86)\National Instruments\Shared\CVI\Bin\msvc64\visa.lib
 -more:C:\Program Files (x86)\Windows Kits\8.1\Lib\winv6.3\um\x64\winmm.lib
+-more:c:\Program Files (x86)\Windows Kits\10\Lib\10.0.26100.0\um\x64\WinMM.Lib
 -more:c:\PHASMA 2025 DAQ\PulsedLIF\AngstromWavemeter\wlmData.lib

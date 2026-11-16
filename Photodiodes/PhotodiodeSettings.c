@@ -15,7 +15,7 @@
 
 #define STRBUFFSIZE 512U
 
-int PD_recall_from_master_conf = 1; // whether to use config settings in the master_control file or stick with what's currently in the UI
+int PD_recall_from_master_conf = 0; // whether to use config settings in the master_control file or stick with what's currently in the UI
 
 int acq2106_config(char* , int , int , int, char *);
 
@@ -130,6 +130,8 @@ int PhotodiodeArm(){
 	PDRunPython("arm_transient", args1,1);
 	PDRunPython("arm_transient", args2,1);
 	
+	printf("[DEBUG] Housekeeping 16 channel photodiode arming processed\n");  
+
 	return 1;	// return > 0 to indicate ready
 }
 
@@ -138,7 +140,7 @@ int acq2106_config( char * IP, int numsamples, int samplerate, int inZbool, char
 {
 	char SRstr[16] ;
 	char numsampstr[16]; 
-	int InputImpedance;
+//	int InputImpedance;
 	char Zarg[12] ;
 	inZbool ? strcat(Zarg,"50") : strcat(Zarg,"1MEG");
 	
@@ -156,11 +158,11 @@ void Write_PhotodiodeData(void)
 {
 	int 		nchan;
 	int         nsamples;
-	int 	    Photodiode_RecordLength;
-	int 		Photodiode_Sample_Rate;
+//	int 	    Photodiode_RecordLength;
+//	int 		Photodiode_Sample_Rate;
 	char 		Photodiode_IP1[64];
 	char 		Photodiode_IP2[64];
-	char 		Photodiode_Data_Path[64];
+//	char 		Photodiode_Data_Path[64];
 	char 		nsampstr[64];
 	char 		nchannstr[64];
 	char 		acq1nameStr[64];

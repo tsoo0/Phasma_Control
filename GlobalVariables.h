@@ -4,6 +4,8 @@ int				species;
 float 			Master_cycle_time;
 float			Laser_Warmup;
 float 			Gun_Charging;
+float 			PLIF_Trigger_Time;
+float 			Bias_Offset;
 char 			RawDataPath[128];  // Location of raw data in local file system
 char 			PHASMA_LOG_String[128];
 char			MDSDATAPATH[128];

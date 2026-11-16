@@ -12,6 +12,7 @@
 
 //General Include Statements
 #include 	<windows.h>
+#include    <mmsystem.h>
 #include 	<advanlys.h>
 #include 	<visa.h>
 #include 	<ansi_c.h>
@@ -97,16 +98,17 @@
 
 #define	Housekeeping_max_record_length 262144
 #define	TS_max_record_length 262144
+#define	PLIF_max_record_length 262144
 	
 //Variables for operating the Master Control Panel
 int		Master_Control_Panel;
-int		Master_Control_Panel_setup_state = 100; 	
+int		Master_Control_Panel_setup_state = 101; 	
 
 //Flags that determine if a subsystem is active
 int		Interval=30; 
 int		Countdown=30;
 int		CycleRepeat;
-int		Cycle_Count;
+int		Cycle_Count=0;
 int 	Auto_Advance_Probes_Flag=0;
 int 	Countdown_Flag=0;
 int		MagFieldFlag=0;
@@ -130,8 +132,10 @@ int		RFEAFlag=0;
 int		TemporaryDiagFlag=0;
 int 	MasterTriggerFlag=0;
 int 	MasterSimmerFlag=0;
+extern int 	Andor_Pulse_Num;
 float 	master_trigger_start;
 
+int 	currently_pushing_MDS = 0; // true while data is actively being written from disk to mds server
 int 	push_to_mds_flag = 1; // used for debugging, will remove on release - TR
 
 static int trigger_hours;
@@ -157,8 +161,6 @@ void	Store_Data (void)
 	//Write_Timing();
 	
 	//Go through diagnostics and store data
-	
-	Delay(1);
 	
 	if (MasterTriggerDataFlag) 	Write_MasterTrigger();
 	if (HousekeepingDataFlag) 	Write_HousekeepingData();
@@ -186,10 +188,10 @@ void	Store_Data (void)
 			case PyScriptFinished:
 				break;
 			case PyScriptNotFinished:
-				while(ExecutableHasTerminated(PyHandle) != PyScriptFinished) Delay(0.5);
+				while(ExecutableHasTerminated(PyHandle) != PyScriptFinished) Delay(0.1);
 				break;
 			case PyHandleInvalid:
-				MessagePopup("Oops","Python did something weird");
+				MessagePopup("That ain't good","Invalid Python handle associated with 96 channel photodiodes; ask Tom");
 		}
 	} 
 	//
@@ -201,15 +203,16 @@ void	Store_Data (void)
 	*/
 
 	//if any data flags were turned on, push raw data from the text files to the MDS system
-	if (PhotodiodeDataFlag) {while (ExecutableHasTerminated(PyHandle) == PyScriptNotFinished) {Delay(0.5);} } // ensure python has finished writing data before attempting mds push
+	if (PhotodiodeDataFlag) {while (ExecutableHasTerminated(PyHandle) == PyScriptNotFinished) {Delay(0.1);} } // ensure python has finished writing data before attempting mds push
 	
 	if (push_to_mds_flag)
 	{ 
 		if ( (MagFieldDataFlag) || (HeliconDataFlag) || (BdotDataFlag) || (PlasmaGunDataFlag) || (HousekeepingDataFlag) || (TemporaryDiagDataFlag)	|| (RFEADataFlag) 	|| 
 				(DoubleProbeDataFlag) 	|| (PhotronCameraDataFlag) 	||(TSDataFlag) 	|| (PulsedLIFDataFlag) ||(PhotodiodeDataFlag) 	|| (TripleProbeDataFlag) || (McPherson209DataFlag) 	|| 
 				(QuantumBeatDataFlag) || (OceanOpticsDataFlag) 	||(LightwvIntferomDataFlag) ||(MasterTriggerDataFlag) ) {
-			Delay(2); // wait a moment between disc write and mds push; about 5 seconds is necessary if Housekeeping photodiodes are in use.
+			Delay(1); // wait a moment between disc write and mds push; reducing this < 2 seconds will likely cause the MDS server to miss data
 			push_mds();
+			currently_pushing_MDS = 1; // mds write happens asynchronously, this flag is set to 0 on finish
 		}
 	}
 	/*
@@ -220,7 +223,7 @@ void	Store_Data (void)
 
 	SetCtrlVal(Master_Control_Panel, MasterCont_Data_Transfer_Done, 1);
 	
-	return;
+//	return;
 }
 
 
@@ -248,14 +251,12 @@ void	Store_Data (void)
  
  
 /*********************************************************************************************************
-*	This function arms all active laser delay generators
+*	This function arms all active laser related ocilloscopes
 *
 *
 *********************************************************************************************************/
  void LaserMasterArm(void)
 {
-	
-	
 	//The laser control is updates in each of the laser arming functions	
 	
 	//Trip the individual arming lights
@@ -266,6 +267,18 @@ void	Store_Data (void)
 		SetCtrlVal (Master_Control_Panel, MasterCont_PulsedLIF_Arm, 1);
 	}
 	
+}
+
+ /*********************************************************************************************************
+*	This function starts up any background processes needed for laser wavelength or power readings
+*
+*
+*********************************************************************************************************/
+ void LaserMasterMeterArm(void)
+{
+	//Launch the background processes
+	if(TSFlag) {ThomsonScatteringMeterArm();}
+	if(PulsedLIFFlag) { PulsedLIFMeterArm();}		
 }
 
  
@@ -306,8 +319,8 @@ void	Store_Data (void)
 	SetCtrlVal (Master_Control_Panel, MasterCont_Photodiode_Data, 0);
 	SetCtrlVal (Master_Control_Panel, MasterCont_TripleProbe_Data, 0);
 	SetCtrlVal (Master_Control_Panel, MasterCont_McPherson209_Data, 0);
-	
-	SetCtrlVal(Master_Control_Panel, MasterCont_Data_Transfer_Done, 0);
+	SetCtrlVal (Master_Control_Panel, MasterCont_PlasmaGun_Data, 0);
+
 	
 }
 
@@ -492,10 +505,9 @@ int CVICALLBACK Gun_Settings (int panel, int control, int event,
 			SetCtrlVal (Master_Control_Panel, MasterCont_PlasmaGun_Arm, 0);	
 			SetCtrlVal (Master_Control_Panel, MasterCont_PlasmaGun_Status, 0);				
 			OpenPlasmaGun_Settings (); 
-			
-			//Delay(1); // re-enable them on close (TR 4/14/26)
-			//PlasmaGunFlag=1;
-			//PlasmaGun_ActivateSystem(1);
+		
+			PlasmaGunFlag=1; 
+			PlasmaGun_ActivateSystem(1);
 			break;
 	}
 	return 0;
@@ -507,6 +519,7 @@ int CVICALLBACK MagProbe_Settings (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
+			ResetVXI();				//Make sure the VXI crate is disarmed
 			OpenBdot_Settings (); 
 			break;
 	}
@@ -743,6 +756,8 @@ int CVICALLBACK MasterTrigger_Activate (int panel, int control, int event,
 			GetCtrlVal (panel, control,&switchstate);
 			if (switchstate) {
 				MasterTriggerFlag=1;
+				//SetCtrlVal (panel, control,&MasterTriggerDataFlag);
+				
 				Trigger_Settings_Activate();
 			} else {
  				MasterTriggerFlag=0;
@@ -817,6 +832,7 @@ int CVICALLBACK PlasmaGun_Activate (int panel, int control, int event,
 				PlasmaGun_ActivateSystem(0);
 				SetCtrlVal (Master_Control_Panel, MasterCont_PlasmaGun_Arm, 0);
 			}
+			Trigger_Settings_Activate();					//Update tigger values since some settings need to be transferred
 			break;
 	}
 	return 0;
@@ -832,6 +848,7 @@ int CVICALLBACK Bdot_Activate (int panel, int control, int event,
 		case EVENT_COMMIT:
 			GetCtrlVal (panel, control,&switchstate);
 			if (switchstate) {
+				ResetVXI();			//Make sure the VXI crate is disarmed
 				BdotFlag=1;
 				BdotActivate();
 			} else {	
@@ -918,7 +935,7 @@ int CVICALLBACK PulsedLIF_Activate (int panel, int control, int event,
 				Trigger_Settings_Activate();
 				PulsedLIFActivate();
 			} else {	
-				TSFlag=0;
+				PulsedLIFFlag=0;
 			}
 			break;
 	}
@@ -1232,10 +1249,6 @@ int		LaserSimmerMode (int mode)
 
 int		Advance_Single_Cycle (void)
 {
-	//Play audible tone pattern to let user know the master trigger is about to fire	
-	Delay(.2);
-	Beep();	
-
 	//Fire the master trigger which has a pretty long time so that the TS laser can warm up and the capacitor banks can charge
 	SetCtrlVal (Master_Control_Panel, MasterCont_Firing_LED, 1); //Fire the master trigger on first time through
 				
@@ -1258,11 +1271,13 @@ int		Advance_Single_Cycle (void)
 	FILE*	outfile; 
 	int		ShotNum;
 	int		result;
+	int 	hours, minutes, seconds;
+    char 	timeStr[32];
 	char 	*date = DateStr();
 	char 	*time = TimeStr();
 	
 	//Clear previous Bias Current plot
-	DeleteGraphPlot (Master_Control_Panel, MasterCont_HousekeepingPlot, -1,VAL_IMMEDIATE_DRAW);
+	//DeleteGraphPlot (Master_Control_Panel, MasterCont_HousekeepingPlot, -1,VAL_IMMEDIATE_DRAW);
 
 	//Open MDS to new shot number
 	result=	IncrementMDSCurrentShot();
@@ -1286,37 +1301,48 @@ int		Advance_Single_Cycle (void)
 
  	//Close PHASMA log file
 	fclose (outfile);
-
-	//If Pulsed LIF system active, spawn process to record the laser energy per pulse and the wavelength
-	if(PulsedLIFFlag) {
-		ReadPulsedLIF_WaveandEnergy();
-	}
 				 
-	//Arm all instruments but the lasers and the trigger system
-	MasterArm();
-		
-	//Since the auto cycle button was selected, enable the timer - this starts the countdown sequence so it is followed immediately by firing the master trigger!
-	
-	SetCtrlAttribute (Master_Control_Panel, MasterCont_COUNTDOWN_TIMER, ATTR_ENABLED, 1);
+	//Show the currrent time on the main interface
+	//Get current system time elements
+    GetSystemTime(&hours, &minutes, &seconds);
 
-	//Update the interface window
-	ProcessDrawEvents();
-	ProcessSystemEvents();
-	
+    // Format as HH:MM:SS
+    sprintf(timeStr, "%02d:%02d:%02d", hours, minutes, seconds);
+
+    // Update the string control on the panel
+    SetCtrlVal(Master_Control_Panel, MasterCont_TXT_TIME, timeStr);
+		
 	//First time through, take the lasers out of simmer mode, arm the laser controllers, and fire the master trigger
 	if (Cycle_Count < 1) {
 		//If laser systems active, get lasers ready for warm up process and arm Thomson and Pulsed LIF systems
 		if( (TSFlag) || (PulsedLIFFlag)) {
 			LaserSimmerMode(0);
 			LaserMasterArm(); 
+			LaserMasterMeterArm();	//Launch any background processes needed for laser parameter measurement
 		}
 		
 		//Arm the triggering system
 		if((MasterTriggerFlag) && (MasterTriggerArm()>0))   SetCtrlVal (Master_Control_Panel, MasterCont_MasterTrigger_Arm, 1);
 		
+		//Arm all instruments but the lasers and the trigger system
+		MasterArm();
+	
 		//Fire the master trigger
 		Advance_Single_Cycle();
+	} else {
+		//Determine how much time remains on trigger cycle and set the countdown interval to that
+		GetSystemTime (&post_storage_hours, &post_storage_minutes, &post_storage_seconds);
+
+		//Update value of Countdown clock
+		Countdown = (Interval - (int)((post_storage_hours-trigger_hours)*60*60+(post_storage_minutes-trigger_minutes)*60+(post_storage_seconds-trigger_seconds)));
 	}
+	
+	//Since the auto cycle button was selected, enable the timer - this starts the countdown sequence so it is followed immediately by firing the master trigger!
+	SetCtrlAttribute (Master_Control_Panel, MasterCont_COUNTDOWN_TIMER, ATTR_ENABLED, 1);
+
+	//Update the interface window
+	ProcessDrawEvents();
+	ProcessSystemEvents();
 	
 	//Now wait for timer to elapse
 	return 0;
@@ -1334,6 +1360,8 @@ int		Complete_Single_Cycle (void)
 	double	BiasI_b[Housekeeping_max_record_length];
 	double	perp_diode[TS_max_record_length];
 	double	para_diode[TS_max_record_length];
+	double	PLIF_diode1[PLIF_max_record_length];
+	double	PLIF_diode2[PLIF_max_record_length];
 	double Min_Array;
 	double Max_Array;	 
 	double Max_Array_perp;
@@ -1343,26 +1371,32 @@ int		Complete_Single_Cycle (void)
 	
 	//Clear all the arm states
 	ClearMasterArm();
+	SetCtrlVal(Master_Control_Panel, MasterCont_Data_Transfer_Done, 0);
+	SetCtrlVal(Master_Control_Panel, MasterCont_MDS_Storage_Done, 0);
+	
+	
+	//Short delay to finalize bank firing, charging, etc.
+	//Delay(0.1);
 	
 	//Immediately begin next cycle of timing if doing multiple pulses if there will be another shot
 	if ( (Cycle_Count > 0) && (Cycle_Count < CycleRepeat) ) {
-		//Arm the laser controllers again to get them ready for the warmup trigger
+		//Launch any background processes needed for laser parameter measurements
 		if( (TSFlag) || (PulsedLIFFlag)) {
-			LaserMasterArm(); 
+			LaserMasterMeterArm(); 
 		}		
 		
 		//Arm the triggering system
 		if((MasterTriggerFlag) && (MasterTriggerArm()>0))   SetCtrlVal (Master_Control_Panel, MasterCont_MasterTrigger_Arm, 1);
-		
-		//Record the absolute time so the countdown clock will be accurate
-		GetSystemTime (&trigger_hours, &trigger_minutes, &trigger_seconds);
 
 		//Fire the trigger which will start the lasers
 		Advance_Single_Cycle();
+		
+		//Record the absolute time so the countdown clock will be accurate
+		GetSystemTime (&trigger_hours, &trigger_minutes, &trigger_seconds);
 	}
 
-	//Store those data targeted for storage
-	Delay (0.2); //delay to let digitizers record everything
+	//Delay so data storage or long acqusitions have time to finish
+	Delay (0.2 + ((Andor_Pulse_Num+2)/10)); //delay to let digitizers record everything. An additional delay is added for multipulse Thomson to hold the storage request until the entire pulse sequence has completed and then another 0.2 s is added for good measure
 	
 	//Store data
 	Store_Data();
@@ -1370,6 +1404,15 @@ int		Complete_Single_Cycle (void)
 	//Close the open MDS tree
 	result= CloseMDSTree();
 	
+	//Now that the data have been stored and probes moved, go ahead and arm the rest of the data system if there will be another shot (the laser systems were armed for the warmup phase before the master trigger was sent out)
+	if  (Cycle_Count < CycleRepeat)  MasterArm();
+	
+	//Arm the laser scopes to get them ready for the trigger
+	if ((TSFlag || PulsedLIFFlag) && (Cycle_Count < CycleRepeat+1)) LaserMasterArm();	
+
+	//Clear previous Bias Current plot
+	DeleteGraphPlot (Master_Control_Panel, MasterCont_HousekeepingPlot, -1,VAL_IMMEDIATE_DRAW);
+
 	//Plot the Housekeeping data to the main window by sending the plot info to a Housekeeping function
 	if (HousekeepingFlag) {
 		record_length=TransferHousekeepingData (time,BiasI_a,BiasI_b);
@@ -1402,19 +1445,26 @@ int		Complete_Single_Cycle (void)
 			PlotXY (Master_Control_Panel, MasterCont_HousekeepingPlot, time, para_diode, record_length, VAL_DOUBLE, VAL_DOUBLE, VAL_FAT_LINE, VAL_SIMPLE_DOT, VAL_SOLID, 1, VAL_DK_GREEN);
 			PlotXY (Master_Control_Panel, MasterCont_HousekeepingPlot, time, perp_diode, record_length, VAL_DOUBLE, VAL_DOUBLE, VAL_FAT_LINE, VAL_SIMPLE_DOT, VAL_SOLID, 1, VAL_DK_GREEN);
 		}
-	}
 	
+		//also plot PLIF laser pulse in normalized units (and check for divide by zero) to the same window if PLIF active																				
+		if(PulsedLIFFlag) { 
+			MaxMin1D (BiasI_a, record_length, &Max_Array, &Max_Index, &Min_Array, &Min_Index);
+			record_length=TransferPLIFData (time,PLIF_diode1,PLIF_diode2);
+			MaxMin1D (PLIF_diode2, record_length, &Max_Array_perp, &Max_Index, &Min_Array, &Min_Index);
+			if (Max_Array_perp > 0) {
+				for (j=0;j<record_length;j++)  {  
+					PLIF_diode2[j]=PLIF_diode2[j]*Max_Array/Max_Array_perp;
+				}
+			} 
+			PlotXY (Master_Control_Panel, MasterCont_HousekeepingPlot, time, PLIF_diode2, record_length, VAL_DOUBLE, VAL_DOUBLE, VAL_FAT_LINE, VAL_SIMPLE_DOT, VAL_SOLID, 1, VAL_DK_BLUE);
+		}
+	}
+
 	//Plot raw data to screen if requested
 	if (MatlabStatusFlag) ManualMatLab_Plotting();
 
 	//Move probes and lasers to the next position if subsystem is active and there is a motion stage associate with probe and auto advance has been activated
-	if (Auto_Advance_Probes_Flag) SingleStepAdvance();
-	
-	//Determine how much time remains on trigger cycle and set the countdown interval to that
-	GetSystemTime (&post_storage_hours, &post_storage_minutes, &post_storage_seconds);
-
-	//Update value of Countdown clock
-	Countdown = (Interval - (int)((post_storage_hours-trigger_hours)*24*60+(post_storage_minutes-trigger_minutes)*60+(post_storage_seconds-trigger_seconds)));
+	if ( (Cycle_Count < CycleRepeat) && (Auto_Advance_Probes_Flag)) SingleStepAdvance();
 	
 	return 0;
 }
@@ -1424,14 +1474,15 @@ int		Complete_Single_Cycle (void)
 /*********************************************************************************************************
 *	This function is the master sequence that
 *
+* 		...that WHAT?
 *
 *********************************************************************************************************/
 void	Repeat_Cycle (void)
 {
 
-
-	int 	Trigger_panel;
-	int		TriggerSettings_setup_state = 4;		//WARNING, if this gets changed in the trigger code it must be changed here
+	int 			result;
+	int 			Trigger_panel;
+	extern int		TriggerSettings_setup_state;		//WARNING, this is to be consistent with the value in the trigger code 
 	
 	//For a requested number of cycles with a proscribed delay in between cycles, run the single cycle code repeatedly
 	//Set the cycle counter to zero to start and the Countdown flag to indicate countdown has not yet been reached
@@ -1446,10 +1497,12 @@ void	Repeat_Cycle (void)
 	GetCtrlVal (Master_Control_Panel, MasterCont_Interval,&Interval);
 	
 	//If needed, get laser warmup and charging times and save them to a global variable so they can be used everywhere
+	//Note, this also checks for the mode of the Andor camera and if the mode is set to acquire lots of pulses, the
+	//assumption is that the laser is on an internal q-switch and therefore does not need to be warmed up
 	//Open settings panel and load saved values
 	Trigger_panel = LoadPanel (0, "MasterTriggerSettings.uir", Trigger);
 	RecallPanelState (Trigger_panel, "Master_Control_Storage_File", TriggerSettings_setup_state);
-	if (TSFlag || PulsedLIFFlag) {
+	if ((TSFlag || PulsedLIFFlag) && (Andor_Pulse_Num < 1)) {
 		GetCtrlVal (Trigger_panel, Trigger_SRSDG1_ChannelA,&Laser_Warmup);
 	} else {
 		Laser_Warmup=0.0;
@@ -1484,9 +1537,12 @@ void	Repeat_Cycle (void)
 	//Set the master simmer flag to zero before launching the countdown
 	MasterSimmerFlag=0;
 	
+	//Play audible tone pattern to let user know the cycle has begun	
+	//Play synchronously and the sound file has to be in the correct Windows directory
+	result = PlaySound ("C:\\Windows\\Media\\Lightsaber.wav", NULL, SND_FILENAME | SND_SYNC | SND_NODEFAULT);
+	
 	//Call the start cycle process. The timer will keep track of how many cycles to do.
 	Start_Single_Cycle();
-	
 }
 
 
@@ -1533,7 +1589,7 @@ void  main(void)
 	result = viOpenDefaultRM (&Global_Visa_Session_Handle);
 	
 	//Get the requested cycle time from the interface
-	GetCtrlVal (Master_Control_Panel, MasterCont_Interval,&Interval);
+	GetCtrlVal (Master_Control_Panel, MasterCont_Interval,&Interval); 
 	Master_cycle_time = Interval;
 
 	//Store the raw data file storage path in the global file storage variable
@@ -1558,9 +1614,6 @@ void  main(void)
 	
 	// Start interacting with user
     RunUserInterface ();
-
-
-	
 }
 
 //This function is what is called, every second. Use it to update the value on the
@@ -1571,17 +1624,25 @@ int CVICALLBACK countdown_timer (int panel, int control, int event,
 		void *callbackData, int eventData1, int eventData2)
 {
 
+	int		result;
+	
 	switch (event)
 	{
 		case EVENT_TIMER_TICK:
+			if (Countdown > 0) {
+				Countdown = Countdown - 1;
+			}
+			
+			//decrease the time by one second every clock tick except for at the very end to prevent premature termination
 			//Update the value on the countdown clock 
 			SetCtrlAttribute (Master_Control_Panel, MasterCont_CountdownClock, ATTR_CTRL_VAL, Countdown);
-		
+			SetCtrlVal(Master_Control_Panel, MasterCont_Data_Transfer_Done, 0); // dim the data collected indicator
+
 			//When reaching zero on the timer, disable the timer
 			if (Countdown < 1) {	
-				//send out the warning tone that the main pulse is about to fire
-				Delay (0.2);
-				Beep();
+				//Play audible tone pattern to let user know the cycle has begun	
+				//Play synchronously and the sound file has to be in the correct Windows directory
+				//result = PlaySound ("C:\\Windows\\Media\\Blaster.wav", NULL, SND_FILENAME | SND_SYNC | SND_NODEFAULT);
 				
 				//Disable the timer since the countdown is complete
 				SetCtrlAttribute (Master_Control_Panel, MasterCont_COUNTDOWN_TIMER, ATTR_ENABLED, 0);
@@ -1603,12 +1664,8 @@ int CVICALLBACK countdown_timer (int panel, int control, int event,
 				}
 			}
 				
-			//decrease the time by one second every clock tick
-			Countdown=Countdown-1;
-			
-			break;
-	}
-	
+			break;	
+	}	
 	return 0;
 }
 
@@ -1664,9 +1721,12 @@ int CVICALLBACK PyUpdateHandleStatus (int panel, int control, int event,
 				case PyHandleInvalid:
 				case PyScriptFinished:
 					SetCtrlVal(Master_Control_Panel, MasterCont_PyRunningLED,0);
+					if (currently_pushing_MDS == 1) {SetCtrlVal(Master_Control_Panel, MasterCont_MDS_Storage_Done,1);}
+					
 					break;
 				case PyScriptNotFinished:
 					SetCtrlVal(Master_Control_Panel, MasterCont_PyRunningLED,1);
+					if (currently_pushing_MDS == 0) {SetCtrlVal(Master_Control_Panel, MasterCont_MDS_Storage_Done,0);}
 					break;
 	
 			}		

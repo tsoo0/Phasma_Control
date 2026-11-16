@@ -182,6 +182,7 @@ int DoubleProbeArm(void)
 	result = viWrite (DoubleProbeLeCroy_handle1, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
 	result = viWrite (DoubleProbeLeCroy_handle2, (ViConstBuf)DoubleProbe_string, (ViUInt32)strlen(DoubleProbe_string), &count);
 
+	printf("[DEBUG] Double probe arming: Handle1 = %d, Handle2 = %d\n",DoubleProbeLeCroy_handle1, DoubleProbeLeCroy_handle1);  
 	return !result;
 }
 
@@ -194,16 +195,16 @@ void Write_DoubleProbeData(void)
 	char	outfilename[64];
 	FILE*	outfile;
 	int		j;
-	float 	DoubleProbe_timestep=0.0;
-	float	*DoubleProbe_Array1;
-	float	*DoubleProbe_Array2;
-	float	*DoubleProbe_Array3;
-	float	*DoubleProbe_Array4;
-	float	*DoubleProbe_Array5;
-	float	*DoubleProbe_Array6;
-	float	*DoubleProbe_Array7;
-	float	*DoubleProbe_Array8;
-	float	*DoubleProbe_timebase;
+	double 	DoubleProbe_timestep=0.0;
+	double	*DoubleProbe_Array1;
+	double	*DoubleProbe_Array2;
+	double	*DoubleProbe_Array3;
+	double	*DoubleProbe_Array4;
+	double	*DoubleProbe_Array5;
+	double	*DoubleProbe_Array6;
+	double	*DoubleProbe_Array7;
+	double	*DoubleProbe_Array8;
+	double	*DoubleProbe_timebase;
 		
 	//Create temporary data arrays	
 	DoubleProbe_Array1 = malloc (Double_Probe_RecordLength*sizeof(double));
@@ -227,10 +228,10 @@ void Write_DoubleProbeData(void)
 	strcat(outfilename, "DoubleProbe.txt");
 	
 	outfile=fopen (outfilename, "w");
-	fprintf(outfile,"t, Chanel1, Channel2, Channel3,Channel4,Channel5,Channel6\r\n");
+	fprintf(outfile,"time, Chanel1, Channel2, Channel3,Channel4,Channel5,Channel6\r\n");
 	for (j=0;j<Double_Probe_RecordLength;j++) {
-		DoubleProbe_timebase[j]=(double)(j*DoubleProbe_timestep);
-		fprintf(outfile,"%f,%f,%f,%f,%f,%f,%f,%f,%f\r\n",DoubleProbe_timebase[j],DoubleProbe_Array1[j],DoubleProbe_Array2[j],DoubleProbe_Array3[j],DoubleProbe_Array4[j],DoubleProbe_Array5[j],DoubleProbe_Array6[j], DoubleProbe_Array7[j], DoubleProbe_Array8[j]);
+		DoubleProbe_timebase[j]=(double)(j*DoubleProbe_timestep*1.0E6);
+		fprintf(outfile,"%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf,%lf\r\n",DoubleProbe_timebase[j],DoubleProbe_Array1[j],DoubleProbe_Array2[j],DoubleProbe_Array3[j],DoubleProbe_Array4[j],DoubleProbe_Array5[j],DoubleProbe_Array6[j], DoubleProbe_Array7[j], DoubleProbe_Array8[j]);
 	}
 
 	//Close Double Probe data file

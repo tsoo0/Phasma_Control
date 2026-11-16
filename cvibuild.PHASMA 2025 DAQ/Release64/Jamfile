@@ -34,7 +34,6 @@ HDRS = 	"c:\\Program Files\\MDSplus\\include"
 	"c:\\PHASMA 2025 DAQ\\ContLIF\\HP33120"
 	"c:\\PHASMA 2025 DAQ\\Bdot"
 	"c:\\PHASMA 2025 DAQ\\Housekeeping"
-	"c:\\PHASMA 2025 DAQ\\ContLIF\\srds345"
 	"c:\\Program Files (x86)\\National Instruments\\CVI2020\\bin"
 	"c:\\Program Files (x86)\\National Instruments\\Shared\\CVI\\Bin"
 	;

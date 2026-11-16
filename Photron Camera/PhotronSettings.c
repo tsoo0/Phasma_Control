@@ -348,6 +348,8 @@ int PhotronCameraArm(void)
 	//Manually trigger the camera (this is here temporarily for testing)
 	//nRet = PDC_TriggerIn(nDeviceNo,&nErrorCode);
 	
+	printf("[DEBUG] Photron camera arming: nRet = %d\n", nRet);  
+
 	return 0;
 }
 

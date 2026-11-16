@@ -30,11 +30,15 @@
 #include "PHASMA-MDS-Routines.h"
 
 //Global Variables for settings panel
-int			Helicon_setup_state = 2;
+int			Helicon_setup_state = 2014;
 int			Helicon_panel;
-int			rfsource_gpibdev_handle=-1;		//initialize to not finding instrument  
-char		SRS365_GPIB[18];  
-short		found=0;						//initialize to not finding instrument
+int			rfsource_gpibdev_handle=-1;			//initialize to not finding instrument  
+int			rfsource_AFG31022_handle=-1;		//initialize to not finding instrument  
+int 		BurstMode_Flag=0;					//Default to no burst mode
+int 		N_Cycles;							//Number of cycles in burst mode
+int 		IntrinsicPhase;						//Observed intrinsic phase delay between RF start and laser firing. Ideally this is zero.
+int 		BurstPhase;							//Phase delay between trigger and start of burst
+float 		BurstDuration;						//Length of burst in ms
 float		SCCM1, SCCM2;
 float		species_mass;
 double		rf_freq;
@@ -52,27 +56,31 @@ double		corrected_downstream_pressure;
 //Read the target RF source frequency and amplitude from the interface and
 //send the values to function generator with corrections to account for
 //peak-to-peak voltage and proper voltage units.
+// 6/17/2026 - Code for SRS Function Generator removed and replaced with code for TEK AFG31022 function generator
+//				All the GPIB calls replaced with ethernet calls.
+//				E.E.S
 void 	rfsource_configure(int power_state)
 {
-	int		result;
-	int 	count;
- 	double 	rf_amp_ptp;
- 	char 	gpibdev_string[32];
+	int			result;
+	int 		count;
+ 	double 		rf_amp_ptp;
+	double 		TimeDelay;				//Delay between trigger and start of burst
+	//char 		gpibdev_string[32];
+	char 		AFG31022_string[64];
+	char 		AFG31022_Address[64];
 
  	//Open settings panel in the background
 	Helicon_panel = LoadPanel (0, "Helicon_Settings.uir", Helicon);
 	RecallPanelState (Helicon_panel, "Master_Control_Storage_File", Helicon_setup_state);
 
-	//Get RF source frequency and amplitude from settings panel
- 	GetCtrlVal (Helicon_panel,Helicon_RF_freq,&rf_freq);
- 	GetCtrlVal (Helicon_panel,Helicon_RF_Amp,&rf_amp);
-
-	//Close Panel
-	//DiscardPanel(Helicon_panel);
 	
-	//Communicate with SRS Function Generator at GPIB 15 if properly opened
- 	result=viOpen (Global_Visa_Session_Handle, SRS365_GPIB, VI_NULL, VI_NULL, &rfsource_gpibdev_handle);
-	//DS345_Active = srds345_init (SRS365_GPIB, VI_TRUE, VI_FALSE, &rfsource_gpibdev_handle);
+	//Get RF source IP address string from settings panel
+ 	GetCtrlVal (Helicon_panel, Helicon_TEKAFG31022,AFG31022_Address);
+	
+	//Communicate with TEK AFG31022 Function Generator at IP address if not already opened
+	if (rfsource_AFG31022_handle < 1) {
+		result=viOpen (Global_Visa_Session_Handle, AFG31022_Address, VI_NULL, VI_NULL, &rfsource_AFG31022_handle);
+	}
 	
 	//Convert to Peak-to_peak voltage and convert to millivolts
 	rf_amp_ptp=2.0*rf_amp*power_state/1000;
@@ -80,93 +88,101 @@ void 	rfsource_configure(int power_state)
 	//Convert frequency to MHz
 	rf_freq=rf_freq*1.0E6;
 	
-	//Communicate with RF source if opening command successful
-	if (rfsource_gpibdev_handle > 0) {
-		sprintf (gpibdev_string, "FUNC 0\n");   																							
-		result = viWrite (rfsource_gpibdev_handle, (ViConstBuf)gpibdev_string, (unsigned int)strlen(gpibdev_string), &count);
-		sprintf (gpibdev_string, "FREQ %f\n",rf_freq);   																							
-		result = viWrite (rfsource_gpibdev_handle, (ViConstBuf)gpibdev_string, (unsigned int)strlen(gpibdev_string), &count);
-		sprintf (gpibdev_string, "AMPL %f VP\n",rf_amp_ptp);   														//Set voltage amplitude in peak to peak									
-		result = viWrite (rfsource_gpibdev_handle, (ViConstBuf)gpibdev_string, (unsigned int)strlen(gpibdev_string), &count);
+	if (rfsource_AFG31022_handle > 0) {
+		//Set state of function generator based on global activation state
+		if (power_state) {
+			sprintf (AFG31022_string, "OUTPut1:STATe ON\n");   	
+		} else {
+			sprintf (AFG31022_string, "OUTPut1:STATe OFF\n");   
+			rf_amp_ptp=2.0*5.0/1000;							//Set amplitude to 5 mV if turning instrument off
+		}			
+		result = viWrite (rfsource_AFG31022_handle, (ViConstBuf)AFG31022_string, (unsigned int)strlen(AFG31022_string), &count);
+		sprintf (AFG31022_string, "SOURce1:FREQuency:FIXed %fHz\n",rf_freq);   																							
+		result = viWrite (rfsource_AFG31022_handle, (ViConstBuf)AFG31022_string, (unsigned int)strlen(AFG31022_string), &count);
+		sprintf (AFG31022_string, "SOURce1:VOLTage:LEVel:IMMediate:AMPLitude %f VPP\n",rf_amp_ptp);   																		//Set voltage amplitude in peak to peak									
+		result = viWrite (rfsource_AFG31022_handle, (ViConstBuf)AFG31022_string, (unsigned int)strlen(AFG31022_string), &count);
+	
+		//If burst mode requested, configure burst mode operation
+		if (BurstMode_Flag) {
+			
+			//Enable burst mode
+			sprintf (AFG31022_string, "SOURce1:BURSt:STATe ON\n");   																									
+			result = viWrite (rfsource_AFG31022_handle, (ViConstBuf)AFG31022_string, (unsigned int)strlen(AFG31022_string), &count);
+			
+			//Enable burst mode with external trigger
+			sprintf (AFG31022_string, "SOURce1:BURSt:MODE TRIGgered\n");   																									
+			result = viWrite (rfsource_AFG31022_handle, (ViConstBuf)AFG31022_string, (unsigned int)strlen(AFG31022_string), &count);
+		
+			//Set length of burst to a nominal value 95 ms (assuming a 10 Hz laser)
+			N_Cycles = (int)(rf_freq*BurstDuration/1000);
+			sprintf (AFG31022_string, "SOURce1:BURSt:NCYCles %d\n",N_Cycles);   																										
+			result = viWrite (rfsource_AFG31022_handle, (ViConstBuf)AFG31022_string, (unsigned int)strlen(AFG31022_string), &count);
+			
+			//Set phase of burst relative to external trigger	
+			TimeDelay=(double)( (BurstPhase + (360.0 - IntrinsicPhase) )/360.0)*(1.0/rf_freq)*1.0E9;					//Time delay in nanoseconds including any intrinsic offsets
+			sprintf (AFG31022_string, "BURSt:TDELay %lfns\n",TimeDelay);   																									
+			result = viWrite (rfsource_AFG31022_handle, (ViConstBuf)AFG31022_string, (unsigned int)strlen(AFG31022_string), &count);
+	
+		} else {			//Turn off burst mode
+			sprintf (AFG31022_string, "SOURce1:BURSt:STATe OFF\n");   																										
+			result = viWrite (rfsource_AFG31022_handle, (ViConstBuf)AFG31022_string, (unsigned int)strlen(AFG31022_string), &count);
+		}
+		
 	}
 	
-	//delay to let rfsource get ready for next command
-	Delay(.1);
-
-	//Close Panel
-	//DiscardPanel(Helicon_panel);
-
-	//Close communications with rf source
-	viClose (rfsource_gpibdev_handle);
  
 }
 
 
 //Read the current frequency and RF amplitude from the function
 //generator and update the front panel with that information.
+// 6/17/2026 - Code for SRS Function Generator removed and replaced with code for TEK AFG31022 function generator
+//				All the GPIB calls replaced with ethernet calls.
+//				E.E.S
 																	   
 void rfsource_parameters(double *rfsource_freq, double *rfsource_amp)
 {
  	double	dummy1,dummy2;
-	int		GPIB_Address;
-	int		result;
-	int 	count;
-	char	dummy[8];
-	char 	gpibdev_string[32];
-	char 	rtn_string[18];
+	//int		GPIB_Address;
+	int			result;
+	//char		dummy[8];
+	//char 		gpibdev_string[32];
+	char 		AFG31022_Address[64];
 					  
    	//Open settings panel in the background
 	//Helicon_panel = LoadPanel (0, "Helicon_Settings.uir", Helicon);
 	//RecallPanelState (Helicon_panel, "Master_Control_Storage_File", Helicon_setup_state);
 
-	//Get RF source GPIB address string from settings panel
- 	GetCtrlVal (Helicon_panel, Helicon_SRS365_GPIB,SRS365_GPIB);
-	
-	//Strip out GPID address from string
-	sscanf(SRS365_GPIB,"%7s %d",dummy, &GPIB_Address);
- 
-	//Clear the GPIB bus
-	SendIFC (1);
-
-	// Check to see if SRS Function Generator on bus at address #15
-	result = ibln (1, GPIB_Address, 0, &found);
+	//Get RF source IP address string from settings panel
+ 	GetCtrlVal (Helicon_panel, Helicon_TEKAFG31022,AFG31022_Address);
 		
-	//Only proceed if valid device found 
-	if (found > 0) {
-		
-		result=viOpen (Global_Visa_Session_Handle, SRS365_GPIB, VI_NULL, VI_NULL, &rfsource_gpibdev_handle);
-		//DS345_Active = srds345_init (SRS365_GPIB, VI_TRUE, VI_FALSE, &rfsource_gpibdev_handle);
-	 
-		if (rfsource_gpibdev_handle > 0) {
-		 	//Read current frequency and amplitude of the RF source
-			sprintf (gpibdev_string, "AMPL?\n");   																							
-			result = viWrite (rfsource_gpibdev_handle, (ViConstBuf)gpibdev_string, (unsigned int)strlen(gpibdev_string), &count);
-			result = viRead (rfsource_gpibdev_handle, (ViPBuf)rtn_string, 9, &count);
-			Scan(rtn_string,"%f",&dummy2);	   
-			
-			sprintf (gpibdev_string, "FREQ?\n");   																							
-			result = viWrite (rfsource_gpibdev_handle, (ViConstBuf)gpibdev_string, (unsigned int)strlen(gpibdev_string), &count);
-			result = viRead (rfsource_gpibdev_handle, (ViPBuf)rtn_string, 18, &count);
-			Scan(rtn_string,"%f",&dummy1);	   
-			
-			*rfsource_freq=dummy1/1.0E6;
-			*rfsource_amp=dummy2*1000.0/2.0;
-		} else {
-			dummy1=0.0;
-			dummy2=0.0;
-		}
-		
-		//Send values to the front panel
-		SetCtrlVal (Helicon_panel, Helicon_RF_freq,dummy1/1.0E6);
-	 	SetCtrlVal (Helicon_panel, Helicon_RF_Amp,dummy2*1000.0/2.0);
-		
-		//Close Panel
-		//SavePanelState (Helicon_panel, "Master_Control_Storage_File", Helicon_setup_state);
-		//DiscardPanel(Helicon_panel);
-		
-		//Close communications with rf source
-		viClose (rfsource_gpibdev_handle);
+	//Communicate with TEK AFG31022 Function Generator at IP address if not already opened
+	if (rfsource_AFG31022_handle < 1) {
+		result=viOpen (Global_Visa_Session_Handle, AFG31022_Address, VI_NULL, VI_NULL, &rfsource_AFG31022_handle);
 	}
+	
+	if (rfsource_AFG31022_handle > 0) {
+		//Read current frequency and amplitude of the RF source
+		result=viQueryf(rfsource_AFG31022_handle,"SOURce1:VOLTage:LEVel:IMMediate:AMPLitude?\n","%lf",&dummy2);
+		result=viQueryf(rfsource_AFG31022_handle,"SOURce1:FREQ?\n","%lf",&dummy1);
+			
+		*rfsource_freq=dummy1/1.0E6;
+		*rfsource_amp=dummy2*1000.0/2.0;
+	} else {
+		dummy1=0.0;
+		dummy2=0.0;
+	}
+		
+	//Send values to the front panel
+	SetCtrlVal (Helicon_panel, Helicon_RF_freq,dummy1/1.0E6);
+	SetCtrlVal (Helicon_panel, Helicon_RF_Amp,dummy2*1000.0/2.0);
+			
+	//Close communications with function generator
+	viClose (rfsource_AFG31022_handle);
+			
+	//Reset the instrument handle to indicate no longer having an open port to instrument
+	rfsource_AFG31022_handle=-1;
+	//}
 }
 
 
@@ -256,7 +272,7 @@ double read_pfeiffer_pressure(void)
 	int		count=0;
 	long	response;
 	char 	receive_Value[64];
- 	char	COM_string[30];
+ 	char	COM_string[64];
 	char	dummy[6];
 	double 	mbar[2];
 	float	delay_time=.01;
@@ -598,9 +614,6 @@ void GetSCCM(float *SCCM1, float *SCCM2)
 //Using current target values for RF system, update function generator
 void Helicon_Activate (int Helicon_Status)
 {
-	//Open settings panel in the background
-	Helicon_panel = LoadPanel (0, "Helicon_Settings.uir", Helicon);
-	RecallPanelState (Helicon_panel, "Master_Control_Storage_File", Helicon_setup_state);
 
 	//Send updated values to the function generator running the RF amp or
 	//shut system down if toggles off
@@ -609,10 +622,15 @@ void Helicon_Activate (int Helicon_Status)
 		rfsource_configure(1);
 	} else {
 
+		//Open settings panel in the background
+		Helicon_panel = LoadPanel (0, "Helicon_Settings.uir", Helicon);
+		//RecallPanelState (Helicon_panel, "Master_Control_Storage_File", Helicon_setup_state);
+
 		//Set RF source frequency and amplitude in settings panel to turn down power
  		SetCtrlVal (Helicon_panel,Helicon_RF_Amp,10.0);
 
-		//Close Panel
+		//Close Panel after saving RF amplitude at "off" level
+		SavePanelState (Helicon_panel, "Master_Control_Storage_File", Helicon_setup_state);
 		DiscardPanel(Helicon_panel);
 
 		//Run update with zero power requested for system
@@ -730,7 +748,7 @@ int CVICALLBACK Close_Helicon_Settings (int panel, int control, int event,
 	{
 		case EVENT_COMMIT:
 			//Save current state of panel and close interface
-			Helicon_panel = LoadPanel (0, "Helicon_Settings.uir", Helicon);
+			//Helicon_panel = LoadPanel (0, "Helicon_Settings.uir", Helicon);
 			SavePanelState (Helicon_panel, "Master_Control_Storage_File", Helicon_setup_state);
 			DiscardPanel(panel);
 			break;
@@ -741,53 +759,34 @@ int CVICALLBACK Close_Helicon_Settings (int panel, int control, int event,
 int CVICALLBACK Close_Helicon_Settings_Activate (int panel, int control, int event,
 		void *callbackData, int eventData1, int eventData2)
 {
-	int		result;
-	int 	count;
- 	double 	rf_amp_ptp;
-	char 	gpibdev_string[32];
+	extern int 	HeliconFlag;
 	
 	switch (event)
 	{
 		case EVENT_COMMIT:
 			
+			//Save current state of parameters
+			SavePanelState (Helicon_panel, "Master_Control_Storage_File", Helicon_setup_state);
+
 			//Get RF source frequency and amplitude from settings panel
 		 	GetCtrlVal (Helicon_panel,Helicon_RF_freq,&rf_freq);
 		 	GetCtrlVal (Helicon_panel,Helicon_RF_Amp,&rf_amp);
+			GetCtrlVal (Helicon_panel,Helicon_BurstMode,&BurstMode_Flag);
+			GetCtrlVal (Helicon_panel,Helicon_BurstDuration,&BurstDuration);
+			GetCtrlVal (Helicon_panel,Helicon_BurstPhase,&BurstPhase);
+			GetCtrlVal (Helicon_panel,Helicon_IntrinsicPhase,&IntrinsicPhase);
 
-			//Communicate with SRS Function Generator at GPIB 15 if properly opened
-			result=viOpen (Global_Visa_Session_Handle, SRS365_GPIB, VI_NULL, VI_NULL, &rfsource_gpibdev_handle);
-			//DS345_Active = srds345_init (SRS365_GPIB, VI_TRUE, VI_FALSE, &rfsource_gpibdev_handle);
-
-			//Convert to Peak-to_peak voltage and convert to millivolts
-			rf_amp_ptp=2.0*rf_amp/1000;
-				
-			//Convert frequency to MHz
-			rf_freq=rf_freq*1.0E6;
-				
-			//Communicate with RF source if opening command successful
-			if (rfsource_gpibdev_handle > 0) {
-				sprintf (gpibdev_string, "FUNC 0\n");   																							
-				result = viWrite (rfsource_gpibdev_handle, (ViConstBuf)gpibdev_string, (unsigned int)strlen(gpibdev_string), &count);
-				sprintf (gpibdev_string, "FREQ %f\n",rf_freq);   																							
-				result = viWrite (rfsource_gpibdev_handle, (ViConstBuf)gpibdev_string, (unsigned int)strlen(gpibdev_string), &count);
-				sprintf (gpibdev_string, "AMPL %f VP\n",rf_amp_ptp);   															//Set voltage amplitude in peak to peak								
-				result = viWrite (rfsource_gpibdev_handle, (ViConstBuf)gpibdev_string, (unsigned int)strlen(gpibdev_string), &count);
-					
-				//result=srds345_ConfigureOutputMode (rfsource_gpibdev_handle, SRDS345_VAL_OUTPUT_FUNC);
-				//result=srds345_ConfigureStandardWaveform (rfsource_gpibdev_handle, "1", SRDS345_VAL_WFM_SINE, rf_amp_ptp, 0, rf_freq, 0.00);
-				//result=srds345_ConfigureOperationMode (rfsource_gpibdev_handle, "1", SRDS345_VAL_OPERATE_CONTINUOUS);
-				//result=srds345_ConfigureOutputImpedance (rfsource_gpibdev_handle, "1", 50.00);
-				//result=srds345_ConfigureOutputEnabled (rfsource_gpibdev_handle, "1", VI_TRUE); 
-			}
-				
-			//Save current state of parameters
-			SavePanelState (Helicon_panel, "Master_Control_Storage_File", Helicon_setup_state);
-			
-			//Update RF function generator with new values
-			Helicon_Activate(1);
-			
 			//Close Panel
 			DiscardPanel(panel);
+			
+			//Update RF function generator with new values
+			Helicon_Activate(HeliconFlag);
+			
+			//Close communications with function generator
+			viClose (rfsource_AFG31022_handle);
+			
+			//Reset the instrument handle to indicate no longer having an open port to instrument
+			rfsource_AFG31022_handle=-1;
 			break;
 	}
 	return 0;
@@ -831,33 +830,55 @@ int CVICALLBACK ReadRFPower (int panel, int control, int event,
 int CVICALLBACK PulsedSource (int panel, int control, int event,
 		void *callbackData, int eventData1, int eventData2)
 {
-	int 	result;
-	int 	count;
-	double 	Pulse_Freq;
-	char 	gpibdev_string[32];
-	
+	int 		result;
+	int 		count;
+	double 		Pulse_Freq;
+	//char 		gpibdev_string[32];
+	char 		AFG31022_string[64];
+	char 		AFG31022_Address[64];
+
 	switch (event)
 		{
 		case EVENT_COMMIT:
-		
+	
+		 	//Open settings panel in the background
+			//Helicon_panel = LoadPanel (0, "Helicon_Settings.uir", Helicon);
+			//RecallPanelState (Helicon_panel, "Master_Control_Storage_File", Helicon_setup_state);
+			
+			//Get RF source IP address string from settings panel
+		 	GetCtrlVal (Helicon_panel, Helicon_TEKAFG31022,AFG31022_Address);
+
+			//Communicate with TEK AFG31022 Function Generator at IP address if not already opened
+			if (rfsource_AFG31022_handle < 1) {
+				result=viOpen (Global_Visa_Session_Handle, AFG31022_Address, VI_NULL, VI_NULL, &rfsource_AFG31022_handle);
+			}
+	
 			//Get settings from helicon interface panel
 			GetCtrlVal (Helicon_panel, Helicon_Pulse_Freq,&Pulse_Freq);
 	 			
-			result=viOpen (Global_Visa_Session_Handle, SRS365_GPIB, VI_NULL, VI_NULL, &rfsource_gpibdev_handle);
+			//result=viOpen (Global_Visa_Session_Handle, SRS365_GPIB, VI_NULL, VI_NULL, &rfsource_gpibdev_handle);
 			//DS345_Active = srds345_init (SRS365_GPIB, VI_TRUE, VI_FALSE, &rfsource_gpibdev_handle);
-							
-			sprintf (gpibdev_string, "DPTH 100\n");   											//Set modulation depth to 100%																				
-			result = viWrite (rfsource_gpibdev_handle, (ViConstBuf)gpibdev_string, (unsigned int)strlen(gpibdev_string), &count);
-			sprintf (gpibdev_string, "MDWF 4\n");   											//Set modulation type to square wave																				
-			result = viWrite (rfsource_gpibdev_handle, (ViConstBuf)gpibdev_string, (unsigned int)strlen(gpibdev_string), &count);
-			sprintf (gpibdev_string, "MENA 1\n");   											//Enable modulation																				
-			result = viWrite (rfsource_gpibdev_handle, (ViConstBuf)gpibdev_string, (unsigned int)strlen(gpibdev_string), &count);
+			//Communicate with TEK AFG31022 Function Generator at IP address if properly opened
+			result=viOpen (Global_Visa_Session_Handle, AFG31022_Address, VI_NULL, VI_NULL, &rfsource_AFG31022_handle);
+					
+			//Set modulation source to external
+			sprintf (AFG31022_string, "SOURce1:AM:SOURce EXT\n");   																													
+			result = viWrite (rfsource_AFG31022_handle, (ViConstBuf)AFG31022_string, (unsigned int)strlen(AFG31022_string), &count);
+			
+			//Set AM modulation depth to 100% for channel 1
+			sprintf (AFG31022_string, "SOURce1:AM:DEPth 100\n");   											//Set modulation depth to 100%																				
+			result = viWrite (rfsource_AFG31022_handle, (ViConstBuf)AFG31022_string, (unsigned int)strlen(AFG31022_string), &count);
 				
+			//Enable modulation of channel 1
+			sprintf (AFG31022_string, "SOURce1:AM:STATe ON\n");   																																
+			result = viWrite (rfsource_AFG31022_handle, (ViConstBuf)AFG31022_string, (unsigned int)strlen(AFG31022_string), &count);
+
 			//Turn on RF function generator output
 			rfsource_configure(1);		
 			
 			//Close communications with rf source
-			viClose (rfsource_gpibdev_handle);
+			//viClose (rfsource_gpibdev_handle);
+			//viClose (rfsource_AFG31022_handle);
 
 		}
 	return 0;
@@ -866,29 +887,37 @@ int CVICALLBACK PulsedSource (int panel, int control, int event,
 int CVICALLBACK Stop_PulsedSource (int panel, int control, int event,
 		void *callbackData, int eventData1, int eventData2)
 {
-	int 	result;
-	int 	count;
-	char 	gpibdev_string[32];
+	int 		result;
+	int 		count;
+	//char 		gpibdev_string[32];
+	char 		AFG31022_string[64];
+	char 		AFG31022_Address[64];
 	
 	switch (event)
 		{
 		case EVENT_COMMIT:
-			if (found > 0) {
 				
-	 			result=viOpen (Global_Visa_Session_Handle, SRS365_GPIB, VI_NULL, VI_NULL, &rfsource_gpibdev_handle);
-				//DS345_Active = srds345_init (SRS365_GPIB, VI_TRUE, VI_FALSE, &rfsource_gpibdev_handle);
-		 
-				//Turn off AM modulation and RF function generator output
-				sprintf (gpibdev_string, "MENA 0n");   											//Disable modulation																				
-				result = viWrite (rfsource_gpibdev_handle, (ViConstBuf)gpibdev_string, (unsigned int)strlen(gpibdev_string), &count);
+				//Open settings panel in the background
+				//Helicon_panel = LoadPanel (0, "Helicon_Settings.uir", Helicon);
+				//RecallPanelState (Helicon_panel, "Master_Control_Storage_File", Helicon_setup_state);
+				
+				//Get RF source IP address string from settings panel
+			 	GetCtrlVal (Helicon_panel, Helicon_TEKAFG31022,AFG31022_Address);
 
-				//srds345_ConfigureAMEnabled (rfsource_gpibdev_handle, "0", VI_TRUE);
-				//Turn on rf source
+				//Communicate with TEK AFG31022 Function Generator at IP address if not already opened
+				if (rfsource_AFG31022_handle < 1) {
+					result=viOpen (Global_Visa_Session_Handle, AFG31022_Address, VI_NULL, VI_NULL, &rfsource_AFG31022_handle);
+				}
+
+				//Enable modulation of channel 1
+				sprintf (AFG31022_string, "SOURce1:AM:STATe OFF\n");   																																
+				result = viWrite (rfsource_AFG31022_handle, (ViConstBuf)AFG31022_string, (unsigned int)strlen(AFG31022_string), &count);
+
+				//Turn on RF function generator output
 				rfsource_configure(1);		
 				
 				//Close communications with rf source
-				viClose (rfsource_gpibdev_handle);
-			}
+				//viClose (rfsource_AFG31022_handle);
 		}
 	return 0;
 }

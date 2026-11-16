@@ -50,6 +50,8 @@ Creates an MDS model tree with the format:
             Pressure going to plasma guns reported by gas regulator; gas species
     
 """
+# %%
+
 
 import mdsthin as mds
 from functions import tcl_write_print

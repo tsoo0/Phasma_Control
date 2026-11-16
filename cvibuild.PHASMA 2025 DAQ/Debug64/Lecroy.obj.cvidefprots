@@ -15,6 +15,6 @@ SourceLocation="c:\PHASMA 2025 DAQ\LeCroy Routines\Lecroy.c:55:8"
 
 [Lecroy]
 Class="Function"
-Prototype="int Lecroy(unsigned long visa_handle, int Lecroy_RecordLength, float *timestep, float Chan1[], float Chan2[], float Chan3[], float Chan4[]);"
+Prototype="int Lecroy(unsigned long visa_handle, int Lecroy_RecordLength, double *timestep, double Chan1[], double Chan2[], double Chan3[], double Chan4[]);"
 SourceLocation="c:\PHASMA 2025 DAQ\LeCroy Routines\Lecroy.c:185:5"
 

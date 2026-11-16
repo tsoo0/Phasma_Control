@@ -1,6 +1,7 @@
 int Get_TS_Laser_Offsets (float *, float *, float *);
 int ThomsonScatteringActivate(void);
 int ThomsonScatteringArm(void);
+int ThomsonScatteringMeterArm(void);
 void Write_ThomsonScatteringData(void);
 void OpenThomsonScattering_Settings (void);
 void ThomsonScatteringScopeandCamera(void);

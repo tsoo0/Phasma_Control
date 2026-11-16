@@ -100,10 +100,10 @@
 #define		rigol_pulsewidth 120.0			
 #define		rigol_amplitude 4.0			
 #define		rigol_offset 2.0			
-
+#define 	max_number_wavelengths 100
 
 int			PulsedLIF_panel;
-int			PulsedLIF_setup_state = 61;
+int			PulsedLIF_setup_state = 6006;
 int			PLIF_Para_Perp_flag; 
 int			PLIF_RecordLength; 
 int			GenTec_handle;
@@ -117,11 +117,17 @@ float 		PLIF_InstrinsicDelay;
 float		PLIF_Simmer_Delay;
 float		PLIF_Q_delay;
 float		PLIF_Circuit_Delay;
-float		PLIF_Trigger_Time;
 float		PLIF_TimeSpan;
-
-double		PLIF_Wavelength[100];
-double		Laser_Power[100];
+float		PLIF_CenterTime;
+	
+double		PLIF_Wavelength[max_number_wavelengths];
+double		PLIF_Laser_Power[max_number_wavelengths];
+double 		PLIF_Laser_PowerMeter[max_number_wavelengths];
+double		*PulsedLIF_Array1;		//Global variable to store data from PLIF Rigol Scope
+double		*PulsedLIF_Array2;		//Global variable to store data from PLIF Rigol Scope
+double		*PulsedLIF_Array3;		//Global variable to store data from PLIF Rigol Scope
+double		*PulsedLIF_Array4;		//Global variable to store data from PLIF Rigol Scope
+double		*PLIF_timebase;			//Global variable to store data from PLIF Rigol Scope
 
 char		agilent_string[64];
 char		rigol_string[64];
@@ -135,12 +141,12 @@ ViSession	PLIF_Rigol_handle;
 //Set up the PLIF system infrastructure
 void PLIFLaserControl(int simmermode)
 {
-	int 		result; 					//	Error-checking variable
-	int			num_pulses;
-	int			PLIF_QSW_Source;
-
-	char		PLIF_Agilent_Add[64]; 
-	char		PLIF_Rigol_Add[64]; 
+	int 			result; 					//	Error-checking variable
+	int				num_pulses;
+	int				PLIF_QSW_Source;
+		
+	char			PLIF_Agilent_Add[64]; 
+	char			PLIF_Rigol_Add[64]; 
 
 
 	//Open up PLIF settings panel and get settings
@@ -345,7 +351,6 @@ void PLIFLaserControl(int simmermode)
 void PLIFScope(void)	
 {
 	int 		result; 					//	Error-checking variable
-	float		PLIF_CenterTime;
 	float		PLIF_VoltageRange1;
 	float		PLIF_Chan1_Offset;
 	float		PLIF_VoltageRange2;
@@ -386,22 +391,22 @@ void PLIFScope(void)
 		sprintf (PulsedLIF_string, ":CHAN2:DISP ON\r");   
 		result = viWrite (PLIF_Scope_Rigol_handle, (ViConstBuf)PulsedLIF_string, (unsigned int)strlen(PulsedLIF_string), &count);
 
-		sprintf (PulsedLIF_string, ":CHAN1:COUP AC\r");   
+		sprintf (PulsedLIF_string, ":CHAN1:COUP DC\r");   
 		result = viWrite (PLIF_Scope_Rigol_handle, (ViConstBuf)PulsedLIF_string, (unsigned int)strlen(PulsedLIF_string), &count);
 
-		sprintf (PulsedLIF_string, ":CHAN2:COUP AC\r");   
+		sprintf (PulsedLIF_string, ":CHAN2:COUP DC\r");   
 		result = viWrite (PLIF_Scope_Rigol_handle, (ViConstBuf)PulsedLIF_string, (unsigned int)strlen(PulsedLIF_string), &count);
 
-		sprintf (PulsedLIF_string, ":SINGLE\r");   
-		result = viWrite (PLIF_Scope_Rigol_handle, (ViConstBuf)PulsedLIF_string, (unsigned int)strlen(PulsedLIF_string), &count);
+		//sprintf (PulsedLIF_string, ":SINGLE\r");   
+		//result = viWrite (PLIF_Scope_Rigol_handle, (ViConstBuf)PulsedLIF_string, (unsigned int)strlen(PulsedLIF_string), &count);
 
 		sprintf (PulsedLIF_string, ":ACQ:MDEP %d\r",PLIF_RecordLength);   															//Set the record length by setting the Memory Depth and upload the record length in k
 		result = viWrite (PLIF_Scope_Rigol_handle, (ViConstBuf)PulsedLIF_string, (unsigned int)strlen(PulsedLIF_string), &count);
 
-	  	sprintf (PulsedLIF_string, ":TIM:MAIN:SCAL %f\r",(PLIF_TimeSpan/10.0/1.0E9));   											//Set up timebase scaling based on target sample window and 10 divisions
+	  	sprintf (PulsedLIF_string, ":TIM:MAIN:SCAL %e\r",(double)(PLIF_TimeSpan)/10.0/1.0E9);   									//Set up timebase scaling based on target sample window and 10 divisions
 		result = viWrite (PLIF_Scope_Rigol_handle, (ViConstBuf)PulsedLIF_string, (unsigned int)strlen(PulsedLIF_string), &count);
 		
-		sprintf (PulsedLIF_string, ":TIM:OFFS %f\r",PLIF_CenterTime/1.0E9);   															//Set center of trigger window
+		sprintf (PulsedLIF_string, ":TIM:OFFS %e\r",PLIF_CenterTime/1.0E9);   														//Set center of trigger window
 		result = viWrite (PLIF_Scope_Rigol_handle, (ViConstBuf)PulsedLIF_string, (unsigned int)strlen(PulsedLIF_string), &count);
 			
 		sprintf (PulsedLIF_string, ":CHAN1:SCAL  %f\r",PLIF_VoltageRange1);   														//Set the voltage scale of the channel to the target value
@@ -422,7 +427,7 @@ void PLIFScope(void)
 		sprintf (PulsedLIF_string, ":TRIG:COUP AC\r");   
 		result = viWrite (PLIF_Scope_Rigol_handle, (ViConstBuf)PulsedLIF_string, (unsigned int)strlen(PulsedLIF_string), &count);
 
-		sprintf (PulsedLIF_string, ":TRIG:EDGE:SOUR %s\r",PLIF_TriggerSource);  															//Set the trigger source to the target value 
+		sprintf (PulsedLIF_string, ":TRIG:EDGE:SOUR %s\r",PLIF_TriggerSource);  													//Set the trigger source to the target value 
 		result = viWrite (PLIF_Scope_Rigol_handle, (ViConstBuf)PulsedLIF_string, (unsigned int)strlen(PulsedLIF_string), &count);
 
 		sprintf (PulsedLIF_string, ":TRIG:EDGE:SLOP POS\r");   
@@ -431,7 +436,7 @@ void PLIFScope(void)
 		sprintf (PulsedLIF_string, ":TRIG:EDGE:LEV %f\r",PLIF_TriggerLevel);   
 		result = viWrite (PLIF_Scope_Rigol_handle, (ViConstBuf)PulsedLIF_string, (unsigned int)strlen(PulsedLIF_string), &count);
 		
-		sprintf (PulsedLIF_string, ":SYST:KEY:PRES MOFF\r");   												 							//Hide menu on scope screen
+		sprintf (PulsedLIF_string, ":SYST:KEY:PRES MOFF\r");   												 						//Hide menu on scope screen
 	 	result = viWrite (PLIF_Scope_Rigol_handle, (ViConstBuf)PulsedLIF_string, (unsigned int)strlen(PulsedLIF_string), &count);	
 	}	
 	
@@ -442,6 +447,9 @@ void PLIFScope(void)
 	viClose(PLIF_Scope_Rigol_handle);
 
 }
+
+
+
 
 
 //Function to calculate the actual target laser firing times so they can be accessed by the master trigger system
@@ -485,10 +493,9 @@ int PulsedLIFActivate(void)
 	return 0;
 }
 
+	
 
-
-
-//Arm the timing systems for the lasers, the Andor camera, and the Rigol oscilloscope
+//Arm the Rigol oscilloscope
 int PulsedLIFArm(void)
 {
 	int		result;
@@ -499,17 +506,30 @@ int PulsedLIFArm(void)
 	result=viOpen (Global_Visa_Session_Handle, PLIF_IP_Address_string, VI_NULL, VI_NULL, &PLIF_Scope_Rigol_handle);
 
 	//Arm the Rigol Oscilloscope if the scope is there
-	if (result > 0) {
-		sprintf (PulsedLIF_string, ":TRIG:SWE SINGl\r");   					//Single Trigger Sweep
+	if (!result) {
+		sprintf (PulsedLIF_string, ":TRIG:SWE SING\r");   					//Single Trigger Sweep
  		result = viWrite (PLIF_Scope_Rigol_handle, (ViConstBuf)PulsedLIF_string, (unsigned int)strlen(PulsedLIF_string), &count);
 	}
 	
 	//Close communications with PLIF devices
 	viClose(PLIF_Scope_Rigol_handle);
 	
-	return result;
+	printf("[DEBUG] PLIF arming: Handle1 = %d\n",PLIF_Scope_Rigol_handle);  
+	
+	return !result;
 }
 
+
+//Arm the Rigol oscilloscope
+int PulsedLIFMeterArm(void)
+{
+		
+	//Start up the wavelength measurement (the parallel thread gets launched here and assumes you have at least a 22.5 second laser warm up cycle and it
+	//waits 15 seconds to start measuring and then records max_number_wavelengths pulses of wavelength and power
+	ReadPulsedLIF_WaveandEnergy();
+	
+	return 1;
+}
 
 
 
@@ -517,42 +537,49 @@ int PulsedLIFArm(void)
 //also push it to the MDS database
 void Write_PulsedLIFData(void)
 {
-	char	outfilename[36];
+	char	outfilename[128];
 	FILE*	outfile;
 	int		j;
-	float 	PulsedLIF_timestep=0.0;
-	double	*PulsedLIF_Array1;
-	double	*PulsedLIF_Array2;
-	double	*PulsedLIF_Array3;
-	double	*PulsedLIF_Array4;
-	double	*timebase;
+	int  	result;
+	double 	PulsedLIF_timestep=0.0;
+	double 	Timing_Offset;
 
 	//Create temporary data arrays	
 	PulsedLIF_Array1 = malloc (PLIF_RecordLength*sizeof(double));
 	PulsedLIF_Array2 = malloc (PLIF_RecordLength*sizeof(double));
 	PulsedLIF_Array3 = malloc (PLIF_RecordLength*sizeof(double));
 	PulsedLIF_Array4 = malloc (PLIF_RecordLength*sizeof(double));
-	timebase = malloc (PLIF_RecordLength*sizeof(double));
+	PLIF_timebase = malloc (PLIF_RecordLength*sizeof(double));
+	
+	//Open communications to Rigol again
+	result=viOpen (Global_Visa_Session_Handle, PLIF_IP_Address_string, VI_NULL, VI_NULL, &PLIF_Scope_Rigol_handle);
 	
 	//Grab data from all four channels of the oscilloscope
-	Rigol(PLIF_Scope_Rigol_handle, PLIF_RecordLength, &PulsedLIF_timestep, PulsedLIF_Array1, PulsedLIF_Array2, PulsedLIF_Array3, PulsedLIF_Array4);   
+	if (!result) {
+		Rigol(PLIF_Scope_Rigol_handle, PLIF_RecordLength, &PulsedLIF_timestep, PulsedLIF_Array1, PulsedLIF_Array2, PulsedLIF_Array3, PulsedLIF_Array4);   
+		viClose(PLIF_Scope_Rigol_handle);
+	}
 	
-	//Dump resulPLIF to a file
+	//Dump results from PLIF to a file
 	sprintf(outfilename, RawDataPath);
 	strcat(outfilename, ShotNumberString);
 	strcat(outfilename, "_");
 	strcat(outfilename, "PulsedLIF.txt");
 	
 	outfile=fopen (outfilename, "w");
-	fprintf(outfile,"t, PLIF Signal, PLIF Photodiode \n");
+	fprintf(outfile,"t, PLIF Signal, PLIF Photodiode, Q_switch_out \n");
+	
+	//Calculate timing offset for data record in microseconds
+	Timing_Offset=(double)(Bias_Offset)+(double)PLIF_Trigger_Time-(PLIF_TimeSpan/1000.0/2)-PLIF_CenterTime;
+		
 	for (j=0;j<PLIF_RecordLength;j++) {
-		timebase[j]=(double)(j*PulsedLIF_timestep);
-		fprintf(outfile,"%f,%f,%f\n",timebase[j],PulsedLIF_Array1[j],PulsedLIF_Array2[j]);
+		PLIF_timebase[j]=Timing_Offset+(double)(j*PulsedLIF_timestep*1.0E6);
+		fprintf(outfile,"%lf,%lf,%lf,%lf\n",PLIF_timebase[j],PulsedLIF_Array1[j],PulsedLIF_Array2[j], PulsedLIF_Array4[j]);
 	}
 
 	//Append the laser power and wavelength values to the end of the file
-	for (j=0;j<75;j++) {
-		fprintf(outfile,"%f,%f\n",Laser_Power[j],PLIF_Wavelength[j]);
+	for (j=0;j<max_number_wavelengths;j++) {
+		fprintf(outfile,"%e,%lf,%e\n",PLIF_Laser_Power[j],PLIF_Wavelength[j],PLIF_Laser_PowerMeter[j]);
 	}
 	
  	//Close Housekeeping data file
@@ -606,36 +633,55 @@ int CVICALLBACK AngstromReadFunction (void *functionData)
 		
 		Created 	5/22/2025	E. Scime	*/
 
-    int		result;
-	int		count;
-	int		pulse_count;
+ 	int		pulse_count=0;
+	int 	result;
+	int 	count;
+	float 	MeterDelay;
+	char	GenTecPort_String[64];
 	char	GenTec_string[16];
 	
+	//Open communication with the Gentex power meter and the Angstrom Wavelength meter
+	//Open settings panel in the background
+	//Open up PLIF settings panel and get settings
+	PulsedLIF_panel = LoadPanel (0, "PulsedLIFSettings.uir", PLIF);
+	RecallPanelState (PulsedLIF_panel, "Master_Control_Storage_File", PulsedLIF_setup_state);
+
+	//Get GenTec Address
+	GetCtrlVal (PulsedLIF_panel, PLIF_GenTecPort,GenTecPort_String);
 	
-	pulse_count=0;
-	
+	//Get time to delay reading of meter values to synch up with warm up of laser
+	GetCtrlVal (PulsedLIF_panel, PLIF_Meter_Delay,&MeterDelay);
+
+	//Open Visa session to GenTec Power meter
+	result=viOpen (Global_Visa_Session_Handle,GenTecPort_String, VI_NULL, VI_NULL, &GenTec_handle);
+	viSetAttribute(GenTec_handle, VI_ATTR_ASRL_BAUD, 115200);
+
 	while (!Angstrom_gExiting)
     {
-		//Delay 100 ms
-		Delay(0.1);
 		
-		//Read 75 pulses at the 10 Hz laser frequency, store them in a global variable, then end the thread.
+		//First time through, hold this parallel thread for 15 seconds so you get the laser after it turns on
+		if(pulse_count<1) Delay(MeterDelay);
+		
+		//Read max_number_wavelengths pulses at the 10 Hz laser frequency, store them in a global variable, then end the thread.
 		sprintf (GenTec_string, "*CVU?\r");
 		result = viWrite (GenTec_handle, (ViConstBuf)GenTec_string, (unsigned int)strlen(GenTec_string), &count);
 		result = viRead (GenTec_handle, (ViConstBuf)GenTec_string, 16, &count);
-		Laser_Power[pulse_count] = strtod (GenTec_string, NULL);
+		PLIF_Laser_PowerMeter[pulse_count] = strtod (GenTec_string, NULL);
 		
-		result = GetWavelength(PLIF_Wavelength[pulse_count]);
-		
+		PLIF_Wavelength[pulse_count] = GetWavelengthNum(1,0.0);
+		PLIF_Laser_Power[pulse_count] =GetPowerNum(1,0.0);
 		
 		pulse_count=pulse_count+1;
-		if(pulse_count>74) {
+		if(pulse_count>max_number_wavelengths-1) {
 			Angstrom_gExiting=1;
 		}
-
-	}
 		
+		//Delay 100 ms
+		Delay(0.1);
+	}
 
+	//close connection to power meter
+	viClose(GenTec_handle);
 	//return to primary code
     return 0;
 }
@@ -651,52 +697,41 @@ void ReadPulsedLIF_WaveandEnergy (void)
 	//Read laser wavelength from Angstrom pulsed wavemeter. Store this information as well.
 
 	int			result;
-	char		GenTecPort_String[64];
+	int 		j;
 	
-	//Open communication with the Gentex power meter and the Angstrom Wavelength meter
-	//Open settings panel in the background
-	//Open up PLIF settings panel and get settings
-	PulsedLIF_panel = LoadPanel (0, "PulsedLIFSettings.uir", PLIF);
-	RecallPanelState (PulsedLIF_panel, "Master_Control_Storage_File", PulsedLIF_setup_state);
-
-	//Get GenTec Address
-	GetCtrlVal (PulsedLIF_panel, PLIF_GenTecPort,GenTecPort_String);
-
-	//Open Visa session to GenTec Power meter
-	result=viOpen (Global_Visa_Session_Handle,GenTecPort_String, VI_NULL, VI_NULL, &GenTec_handle);
+	//Zero out the wavemeter wavelength and power arrays
+	for (j=0;j<max_number_wavelengths;j++) {
+		PLIF_Laser_Power[j]=0.0;
+		PLIF_Wavelength[j]=0.0;
+		PLIF_Laser_PowerMeter[j]=0.0;
+	}
 	
-	//Get Angstrom Wavemeter Address
-	//GetCtrlVal (PulsedLIF_panel, PLIF_AngstromWavemeterAdd,AngstromWavemeterAdd_String);
-
-	//Open Visa session to Angstrom Wavemeter (not needed given how the wavemeter works?)
-	//result=viOpen (Global_Visa_Session_Handle,AngstromWavemeterAdd_String, VI_NULL, VI_NULL, &AngstromWavemeter_handle);
-
-	//if (!result) {
-		//Open communication with Angstrom wavemeter
-		result = (int) Instantiate(0,0,0,0);
-		
-		//Set to operate in pulsed mode
-		result = SetPulseMode(1);
-		
-		//Set to read a wide bandwidth laser
-		result = SetWideMode(1);
-		
-		//Set exposure to default level
-		result = SetExposure(0);
-		
-		//Turn on thread completion variable
-		Angstrom_gExiting=0;
 	
-		//Spawn the thread to read 75 pulses of the pulsed laser power and the wavelength. Also define the function to call when the thread ends
-		CmtScheduleThreadPoolFunction (DEFAULT_THREAD_POOL_HANDLE, AngstromReadFunction, NULL, NULL);
-	//}
+	//Open communication with Angstrom wavemeter
+	result = (int)Instantiate(cInstCheckForWLM,0,0,0);
+		
+	//Set to operate in pulsed mode
+	result = SetPulseMode(1);
+		
+	//Set to read a wide bandwidth laser
+	result = SetWideMode(1);
+		
+	//Set exposure to default level
+	result = SetExposure(100);
+		
+	//Turn on thread completion variable
+	Angstrom_gExiting=0;
+	
+	//Spawn the thread to read max_number_wavelengths pulses of the pulsed laser power and the wavelength. Also define the function to call when the thread ends
+	CmtScheduleThreadPoolFunction (DEFAULT_THREAD_POOL_HANDLE, AngstromReadFunction, NULL, NULL);
+	
 	//Close panel
-	DiscardPanel(PulsedLIF_panel);
+	//DiscardPanel(PulsedLIF_panel);
 	
 	
 }
 
-int CVICALLBACK Wavelength_Current (int panel, int control, int event,
+int CVICALLBACK PLIF_Wavemeter_Call (int panel, int control, int event,
 							   void *callbackData, int eventData1, int eventData2)
 {
 	int 		result=0;
@@ -705,32 +740,24 @@ int CVICALLBACK Wavelength_Current (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
-			//Get Angstrom Wavemeter Address
-			//GetCtrlVal (PulsedLIF_panel, PLIF_AngstromWavemeterAdd,AngstromWavemeterAdd_String);
-
-			//Open Visa session to Angstrom Wavemeter (not needed given how the wavemeter works?)
-			//result=viOpen (Global_Visa_Session_Handle,AngstromWavemeterAdd_String, VI_NULL, VI_NULL, &AngstromWavemeter_handle);
-
-			//if (!result) {
-				//Open communication with Angstrom wavemeter
-				result = (int)Instantiate(0,0,0,0);
+	
+			//Open communication with Angstrom wavemeter
+			result = (int)Instantiate(cInstCheckForWLM,0,0,0);
+								
+			//Set to operate in pulsed mode
+			result = SetPulseMode(1);
 				
-				
-				//Set to operate in pulsed mode
-				result = SetPulseMode(1);
-				
-				//Set to read a wide bandwidth laser
-				result = SetWideMode(1);
-				
-				//Set exposure to default level
-				result = SetExposure(0);
-				
-				//Get current laser wavelength from Angstrom
-				GetWavelength(wavelength);			
-			//}
+			//Set to read a wide bandwidth laser
+			result = SetWideMode(1);
 			
+			//Set exposure to default level
+			result = SetExposure(100);
+								
+			//Get current laser wavelength from Angstrom
+			wavelength=GetWavelengthNum(1,0.0);			
+						
 			//Set current wavelength in panel
-			SetCtrlVal (PulsedLIF_panel, PLIF_Current_Wavelength,wavelength);
+			SetCtrlVal (PulsedLIF_panel, PLIF_WAVEMETER_VALUE,wavelength);
 			break;
 	}
 	return 0;
@@ -753,15 +780,17 @@ int CVICALLBACK Wavelength_Move_to_Start (int panel, int control, int event,
 			
 			//Open Visa session to Cobra stretch laster
 			GetCtrlVal (PulsedLIF_panel, PLIF_Cobra_Port,CobraPort_String);
-			result=viOpen (Global_Visa_Session_Handle,Cobra_String, VI_NULL, VI_NULL, &Cobra_handle);
+			result=viOpen (Global_Visa_Session_Handle,CobraPort_String, VI_NULL, VI_NULL, &Cobra_handle);
 				
 			//Send command to move laser
 			sprintf (Cobra_String, "LASER:WAVELENGTH %f\r",Wavelength_Start);   																										
 			result = viWrite (Cobra_handle, (ViConstBuf)Cobra_String, (unsigned int)strlen(Cobra_String), VI_NULL);
 				
 			//update current laser wavelength value
-			Wavelength_Current (panel, control, event,&callbackData, eventData1,eventData2);
+			PLIF_Wavemeter_Call (panel, control, event,&callbackData, eventData1,eventData2);
 
+			//Close ViSession to Laser
+			viClose(Cobra_handle);
 			break;
 	}
 	return 0;
@@ -785,15 +814,17 @@ int CVICALLBACK Wavelength_Move_to_Stop (int panel, int control, int event,
 			
 			//Open Visa session to Cobra stretch laster
 			GetCtrlVal (PulsedLIF_panel, PLIF_Cobra_Port,CobraPort_String);
-			result=viOpen (Global_Visa_Session_Handle,Cobra_String, VI_NULL, VI_NULL, &Cobra_handle);
+			result=viOpen (Global_Visa_Session_Handle,CobraPort_String, VI_NULL, VI_NULL, &Cobra_handle);
 				
 			//Send command to move laseresult = viWrite (Cobra_handle, Cobra_String, (unsigned int)strlen(Cobra_String), &count);
 			sprintf (Cobra_String, "LASER:WAVELENGTH %f\r",Wavelength_Stop);   																										
 			result = viWrite (Cobra_handle, (ViConstBuf)Cobra_String, (unsigned int)strlen(Cobra_String), VI_NULL);
 				
 			//update current laser wavelength value
-			Wavelength_Current (panel, control, event,&callbackData, eventData1,eventData2);
+			PLIF_Wavemeter_Call (panel, control, event,&callbackData, eventData1,eventData2);
 
+			//Close ViSession to Laser
+			viClose(Cobra_handle);
 			break;
 	}
 	return 0;
@@ -805,36 +836,18 @@ float Get_PLIF_Wavelength (void)
 	int 		result=0;
 	float 		wavelength=0.0;
 
-	//Open up PLIF settings panel and get settings
-	PulsedLIF_panel = LoadPanel (0, "PulsedLIFSettings.uir", PLIF);
-	RecallPanelState (PulsedLIF_panel, "Master_Control_Storage_File", PulsedLIF_setup_state);
-
-	//Get Angstrom Wavemeter Address
-	//GetCtrlVal (PulsedLIF_panel, PLIF_AngstromWavemeterAdd,AngstromWavemeterAdd_String);
-
-	//Open Visa session to Angstrom Wavemeter (not needed given how the wavemeter works?)
-	//result=viOpen (Global_Visa_Session_Handle,AngstromWavemeterAdd_String, VI_NULL, VI_NULL, &AngstromWavemeter_handle);
-
-	//if (!result) {
-		//Open communication with Angstrom wavemeter
-		Instantiate(0,0,0,0);
+	//Set to operate in pulsed mode
+	result = SetPulseMode(1);
 				
-		//Set to operate in pulsed mode
-		result = SetPulseMode(1);
-				
-		//Set to read a wide bandwidth laser
-		result = SetWideMode(1);
-				
-		//Set exposure to default level
-		result = SetExposure(0);
-				
-		//Get current laser wavelength from Angstrom
-		GetWavelength(wavelength);			
-	//}
-
-	//Close panel
-	DiscardPanel(PulsedLIF_panel);
-
+	//Set to read a wide bandwidth laser
+	result = SetWideMode(1);
+			
+	//Set exposure to default level
+	result = SetExposure(100);
+								
+	//Get current laser wavelength from Angstrom
+	wavelength=GetWavelengthNum(1,0.0);			
+						
 	return wavelength;	
 }
 
@@ -870,15 +883,32 @@ float Advance_PLIF_Laser(void)
 	if (New_Wavelength < Wavelength_Stop) {
 		//Open Visa session to Cobra stretch laster
 		GetCtrlVal (PulsedLIF_panel, PLIF_Cobra_Port,CobraPort_String);
-		result=viOpen (Global_Visa_Session_Handle,Cobra_String, VI_NULL, VI_NULL, &Cobra_handle);
+		result=viOpen (Global_Visa_Session_Handle,CobraPort_String, VI_NULL, VI_NULL, &Cobra_handle);
 					
 		if (!result) {
 			//Send command to move laser
 			sprintf (Cobra_String, "LASER:WAVELENGTH %f\r",New_Wavelength);   																										
 			result = viWrite (Cobra_handle, (ViConstBuf)Cobra_String, (unsigned int)strlen(Cobra_String), VI_NULL);
 		}
+		
+		//Close ViSession to Laser
+		viClose(Cobra_handle);
 	}
 	return New_Wavelength;
 
 }
 
+
+int TransferPLIFData (double transfer_array1[], double transfer_array2[], double transfer_array3[])  
+{
+int	j;
+		
+	//Update panel with 
+	for (j=0;j<PLIF_RecordLength;j++) {
+		transfer_array1[j]=PLIF_timebase[j];			//time in microseconds
+		transfer_array2[j]=PulsedLIF_Array1[j];
+		transfer_array3[j]=PulsedLIF_Array2[j];
+	}
+
+	return PLIF_RecordLength;
+}

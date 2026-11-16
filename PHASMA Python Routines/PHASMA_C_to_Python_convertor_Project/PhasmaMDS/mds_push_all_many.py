@@ -6,7 +6,7 @@ import mdsthin as mds
 from phasma_model.phasma_devices import devdict
 
 # from contextlib import redirect_stdout
-
+stream_output = False
 #read in a locally-stored comma seperated table containing raw data for one shot on one digitizer
 def read_format_mds(device_fid):
     
@@ -27,14 +27,14 @@ def trycast(intorstr):
 
 
 def streamout(arg):
-    
-    if type(arg) == str:
-        print(arg)
-        
-        with open(r"C:\PHASMA 2025 DAQ\PyStdOutBuffer.txt", 'a') as f:
-            f.write(arg)
-            f.write('\n')
-        f.close()
+    if stream_output == True:
+        if type(arg) == str:
+            print(arg)
+            
+            with open(r"C:\PHASMA 2025 DAQ\PyStdOutBuffer.txt", 'a') as f:
+                f.write(arg)
+                f.write('\n')
+            f.close()
 
 def push_all_mds(treename, exp_ip, raw_data_dir, shotnum):
     
@@ -92,7 +92,7 @@ def push_all_mds(treename, exp_ip, raw_data_dir, shotnum):
             if devtype == "DATA":
         
                 channels = devdata.columns
-                channels = [a.upper()[:12] for a in channels]
+                
                 x_axis_name = channels[0]
                 
                 x_axis = devdata.get(x_axis_name)
@@ -148,14 +148,19 @@ def push_all_mds_latest(treename, exp_ip, raw_data_dir):
 
 if __name__ == '__main__':
 
+    import numpy as np    
+
     treename = 'phasma2025'
     exp_ip = '127.0.0.1:57800'
     raw_data_dir = "D:\\PHASMA_RawData"    
-    import numpy as np
 
-    shotmin = 1900
-    shotmax = 1979
-    shots = np.arange(shotmin,shotmax)
+    # push_all_mds(treename, exp_ip, raw_data_dir, shotnum = 6552)
+    
+    
+    first_shot = 7180   
+    last_shot = 7219
+    
+    shots = np.arange(first_shot,last_shot)
     
     for shot in shots:
         push_all_mds(treename, exp_ip, raw_data_dir, shotnum = shot)

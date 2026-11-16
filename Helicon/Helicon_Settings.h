@@ -39,14 +39,21 @@
 #define  Helicon_TEXTMSG2_3               24      /* control type: textMsg, callback function: (none) */
 #define  Helicon_TEXTMSG2_2               25      /* control type: textMsg, callback function: (none) */
 #define  Helicon_TEXTMSG2                 26      /* control type: textMsg, callback function: (none) */
-#define  Helicon_TEXTMSG1                 27      /* control type: textMsg, callback function: (none) */
-#define  Helicon_TEXTMSG_3                28      /* control type: textMsg, callback function: (none) */
-#define  Helicon_TEXTMSG_6                29      /* control type: textMsg, callback function: (none) */
-#define  Helicon_ENI_COM                  30      /* control type: ring, callback function: (none) */
-#define  Helicon_PR4000_COM               31      /* control type: ring, callback function: (none) */
-#define  Helicon_LeskerGauge              32      /* control type: ring, callback function: (none) */
-#define  Helicon_PfeifferGauge            33      /* control type: ring, callback function: (none) */
-#define  Helicon_SRS365_GPIB              34      /* control type: ring, callback function: (none) */
+#define  Helicon_TEXTMSG1_2               27      /* control type: textMsg, callback function: (none) */
+#define  Helicon_TEXTMSG1                 28      /* control type: textMsg, callback function: (none) */
+#define  Helicon_TEXTMSG_3                29      /* control type: textMsg, callback function: (none) */
+#define  Helicon_TEXTMSG_6                30      /* control type: textMsg, callback function: (none) */
+#define  Helicon_ENI_COM                  31      /* control type: ring, callback function: (none) */
+#define  Helicon_PR4000_COM               32      /* control type: ring, callback function: (none) */
+#define  Helicon_LeskerGauge              33      /* control type: ring, callback function: (none) */
+#define  Helicon_PfeifferGauge            34      /* control type: ring, callback function: (none) */
+#define  Helicon_TEKAFG31022              35      /* control type: ring, callback function: (none) */
+#define  Helicon_BurstMode                36      /* control type: binary, callback function: (none) */
+#define  Helicon_IntrinsicPhase           37      /* control type: scale, callback function: (none) */
+#define  Helicon_BurstPhase               38      /* control type: scale, callback function: (none) */
+#define  Helicon_BurstDuration            39      /* control type: numeric, callback function: (none) */
+#define  Helicon_SPLITTER                 40      /* control type: splitter, callback function: (none) */
+#define  Helicon_SPLITTER_2               41      /* control type: splitter, callback function: (none) */
 
 
      /* Control Arrays: */

@@ -28,7 +28,6 @@ void setup_4244(int digitizer_hndl,int group1_rlength, double group1_drate,
 	ViInt16		group_two_status=0;
 	ViInt16		group_three_status=0;
 	ViInt16		group_four_status=0;
-	extern int	Mwave_setup_panel;		//needed to set up group4 trigger level
 	
 //	Up the Reference Oscillator Frequency to its maximum so that the digitizer
 //	can run as fast as 200 kHz

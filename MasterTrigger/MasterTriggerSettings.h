@@ -97,25 +97,25 @@
 #define  Trigger_TEXTMSG_36               82      /* control type: textMsg, callback function: (none) */
 #define  Trigger_TEXTMSG_41               83      /* control type: textMsg, callback function: (none) */
 #define  Trigger_TEXTMSG_53               84      /* control type: textMsg, callback function: (none) */
-#define  Trigger_TEXTMSG_55               85      /* control type: textMsg, callback function: (none) */
-#define  Trigger_TEXTMSG_54               86      /* control type: textMsg, callback function: (none) */
-#define  Trigger_TEXTMSG_57               87      /* control type: textMsg, callback function: (none) */
-#define  Trigger_TEXTMSG_56               88      /* control type: textMsg, callback function: (none) */
-#define  Trigger_TEXTMSG_52               89      /* control type: textMsg, callback function: (none) */
-#define  Trigger_TEXTMSG_51               90      /* control type: textMsg, callback function: (none) */
-#define  Trigger_TEXTMSG_35               91      /* control type: textMsg, callback function: (none) */
-#define  Trigger_TEXTMSG_10               92      /* control type: textMsg, callback function: (none) */
-#define  Trigger_SRSDG1_V_Low_GH          93      /* control type: numeric, callback function: (none) */
-#define  Trigger_SRSDG1_V_High_GH         94      /* control type: numeric, callback function: (none) */
-#define  Trigger_SRSDG1_V_High_CD         95      /* control type: numeric, callback function: (none) */
-#define  Trigger_SRSDG1_V_Low_EF          96      /* control type: numeric, callback function: (none) */
-#define  Trigger_SRSDG1_V_Low_AB          97      /* control type: numeric, callback function: (none) */
-#define  Trigger_SRSDG1_V_High_EF         98      /* control type: numeric, callback function: (none) */
-#define  Trigger_SRSDG1_V_High_AB         99      /* control type: numeric, callback function: (none) */
-#define  Trigger_SPLITTER_32              100     /* control type: splitter, callback function: (none) */
-#define  Trigger_SRSDG1_V_Low_CD          101     /* control type: numeric, callback function: (none) */
-#define  Trigger_SPLITTER_3               102     /* control type: splitter, callback function: (none) */
-#define  Trigger_Settings                 103     /* control type: string, callback function: (none) */
+#define  Trigger_TEXTMSG_54               85      /* control type: textMsg, callback function: (none) */
+#define  Trigger_TEXTMSG_57               86      /* control type: textMsg, callback function: (none) */
+#define  Trigger_TEXTMSG_56               87      /* control type: textMsg, callback function: (none) */
+#define  Trigger_TEXTMSG_52               88      /* control type: textMsg, callback function: (none) */
+#define  Trigger_TEXTMSG_51               89      /* control type: textMsg, callback function: (none) */
+#define  Trigger_TEXTMSG_35               90      /* control type: textMsg, callback function: (none) */
+#define  Trigger_TEXTMSG_10               91      /* control type: textMsg, callback function: (none) */
+#define  Trigger_SRSDG1_V_Low_GH          92      /* control type: numeric, callback function: (none) */
+#define  Trigger_SRSDG1_V_High_GH         93      /* control type: numeric, callback function: (none) */
+#define  Trigger_SRSDG1_V_High_CD         94      /* control type: numeric, callback function: (none) */
+#define  Trigger_SRSDG1_V_Low_EF          95      /* control type: numeric, callback function: (none) */
+#define  Trigger_SRSDG1_V_Low_AB          96      /* control type: numeric, callback function: (none) */
+#define  Trigger_SRSDG1_V_High_EF         97      /* control type: numeric, callback function: (none) */
+#define  Trigger_SRSDG1_V_High_AB         98      /* control type: numeric, callback function: (none) */
+#define  Trigger_SPLITTER_32              99      /* control type: splitter, callback function: (none) */
+#define  Trigger_SRSDG1_V_Low_CD          100     /* control type: numeric, callback function: (none) */
+#define  Trigger_SPLITTER_3               101     /* control type: splitter, callback function: (none) */
+#define  Trigger_Settings                 102     /* control type: string, callback function: (none) */
+#define  Trigger_AstrellaTiming           103     /* control type: binary, callback function: (none) */
 
 
      /* Control Arrays: */

@@ -17,11 +17,11 @@ ViSession  	sig_cond_hndl;
 ViSession 	digitizer_hndl;
 
 
-int photodiodes_active = 1; 
+int 		photodiodes_active = 1; 
 
 int			bit_mask; 
 int			Housekeeping_panel;
-int			Housekeeping_setup_state = 3;
+int			Housekeeping_setup_state = 10000;
 int			Housekeeping_RecordLength=8192;
 int 		RIGOL_RecordLength;
 ViInt16		Housekeeping_VoltageRange=10;
@@ -34,21 +34,20 @@ double  	Houskeeping_Signal4[max_record_length];
 double  	Houskeeping_Signal5[max_record_length];
 double  	Houskeeping_Signal6[max_record_length];
 double  	Houskeeping_Signal7[max_record_length];
+double  	Houskeeping_Signal8[max_record_length];
 double  	Houskeeping_Signal9[max_record_length];
 double  	Houskeeping_Signal10[max_record_length];
 double  	Houskeeping_Signal11[max_record_length];
 double  	Houskeeping_Signal12[max_record_length];
+double  	Houskeeping_Signal13[max_record_length];
 double  	time_array[max_record_length];
-//double		timebase[max_record_length];
-double *timebase;
-
-
+double 		*timebase;
 double		RIGOL_Housekeeping_clockspeed;
 double		SampleRate=2000000;
 ViSession 	Housekeeping_RIGOL1_handle;  
 ViInt16		LogicalAddress=56;			//	It should be at 56
 
-char	RIGOL1_Housekeep_IP_Address_string[64];
+char		RIGOL1_Housekeep_IP_Address_string[64];
 
 
 //Initialize the VXI 4244 digitizer and Rigol MSO5104 Oscilloscope used for housekeeping data
@@ -61,7 +60,7 @@ void HousekeepingActivate(void)
 	float 	RIGOL_VoltageRange;
 	char	LogicalAddressString[36];
 	char	dummy[18];
-	char 	idn[256];
+//	char 	idn[256];
 	char	RIGOL_Housekeeping_string[32];	
 	void 	displayErr(ViSession InstrHndl,ViStatus err); /* For Displaying Error Messages */
 
@@ -94,12 +93,11 @@ void HousekeepingActivate(void)
 			Housekeeping_RecordLength, SampleRate, Housekeeping_RecordLength, SampleRate, Housekeeping_VoltageRange,
 			Housekeeping_VoltageRange, Housekeeping_VoltageRange, Housekeeping_VoltageRange, 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1);		 
 	 		
-		//First two groups of digitizer are in use. A Bit Mask of 15 Means the First 4 bits (measurements 1, 2, 3 & 4) are Complete
-		bit_mask=3;  
-
+		//First three groups of digitizer are in use. A Bit Mask of 15 Means the First 4 bits (measurements 1, 2, 3 & 4) are Complete
+		bit_mask=7;  
 		
-	// Initialize Rigol MSO5104
-			//Get sample rate, record length, and channel scales
+		// Initialize Rigol MSO5104
+		//Get sample rate, record length, and channel scales
 		GetCtrlVal (Housekeeping_panel, Housekeep_RIGOL_clockspeed, &RIGOL_Housekeeping_clockspeed);
 		GetCtrlVal (Housekeeping_panel, Housekeep_RIGOL_RecordLength, &RIGOL_Housekeeping_recordlength);
 		GetCtrlVal (Housekeeping_panel, Housekeep_RIGOL_VoltageRange, &RIGOL_VoltageRange);
@@ -115,48 +113,43 @@ void HousekeepingActivate(void)
 		if (!result) {
 			//Make sure scope is running so commands will work
 			sprintf (RIGOL_Housekeeping_string, ":RUN\r");   																							//Send the run command
-			result = viWrite (Housekeeping_RIGOL1_handle, RIGOL_Housekeeping_string, (unsigned int)strlen(RIGOL_Housekeeping_string), &count);
+			result = viWrite (Housekeeping_RIGOL1_handle, (ViConstBuf)RIGOL_Housekeeping_string, (unsigned int)strlen(RIGOL_Housekeeping_string), &count);
 
 			//Setup the rate, record length, trigger system, and voltage range for the 1st Rigol scope
-			sprintf (RIGOL_Housekeeping_string, ":TIM:MAIN:SCAL %f\r",(RIGOL_Housekeeping_TimeWindow/10.0));  
-			result = viWrite (Housekeeping_RIGOL1_handle, RIGOL_Housekeeping_string, (unsigned int)strlen(RIGOL_Housekeeping_string), &count);	
+			sprintf (RIGOL_Housekeeping_string, ":TIM:MAIN:SCAL %e\r",(RIGOL_Housekeeping_TimeWindow/10.0));  
+			result = viWrite (Housekeeping_RIGOL1_handle, (ViConstBuf)RIGOL_Housekeeping_string, (unsigned int)strlen(RIGOL_Housekeeping_string), &count);	
 			sprintf (RIGOL_Housekeeping_string, ":ACQ:MDEP %d\r",RIGOL_Housekeeping_recordlength);   													//Set the record length by setting the Memory Depth and upload the record length in k
-			result = viWrite (Housekeeping_RIGOL1_handle, RIGOL_Housekeeping_string, (unsigned int)strlen(RIGOL_Housekeeping_string), &count);	
+			result = viWrite (Housekeeping_RIGOL1_handle, (ViConstBuf)RIGOL_Housekeeping_string, (unsigned int)strlen(RIGOL_Housekeeping_string), &count);	
 			sprintf (RIGOL_Housekeeping_string, ":CHAN1:SCAL  %f\r", RIGOL_VoltageRange);   															//Set the voltage scale of the channel to 10 V to match Joerger
-			result = viWrite (Housekeeping_RIGOL1_handle, RIGOL_Housekeeping_string, (unsigned int)strlen(RIGOL_Housekeeping_string), &count);
+			result = viWrite (Housekeeping_RIGOL1_handle, (ViConstBuf)RIGOL_Housekeeping_string, (unsigned int)strlen(RIGOL_Housekeeping_string), &count);
 			sprintf (RIGOL_Housekeeping_string, ":CHAN2:SCAL  %f\r", RIGOL_VoltageRange);   															//Set the voltage scale of the channel to 10 V to match Joerger
-			result = viWrite (Housekeeping_RIGOL1_handle, RIGOL_Housekeeping_string, (unsigned int)strlen(RIGOL_Housekeeping_string), &count);
+			result = viWrite (Housekeeping_RIGOL1_handle, (ViConstBuf)RIGOL_Housekeeping_string, (unsigned int)strlen(RIGOL_Housekeeping_string), &count);
 			sprintf (RIGOL_Housekeeping_string, ":CHAN3:SCAL  %f\r", RIGOL_VoltageRange);  																//Set the voltage scale of the channel to 10 V to match Joerger
-			result = viWrite (Housekeeping_RIGOL1_handle, RIGOL_Housekeeping_string, (unsigned int)strlen(RIGOL_Housekeeping_string), &count);
+			result = viWrite (Housekeeping_RIGOL1_handle, (ViConstBuf)RIGOL_Housekeeping_string, (unsigned int)strlen(RIGOL_Housekeeping_string), &count);
 			sprintf (RIGOL_Housekeeping_string, ":CHAN4:SCAL  %f\r", RIGOL_VoltageRange);   															//Set the voltage scale of the channel to 10 V to match Joerger
-			result = viWrite (Housekeeping_RIGOL1_handle, RIGOL_Housekeeping_string, (unsigned int)strlen(RIGOL_Housekeeping_string), &count);
+			result = viWrite (Housekeeping_RIGOL1_handle, (ViConstBuf)RIGOL_Housekeeping_string, (unsigned int)strlen(RIGOL_Housekeeping_string), &count);
 		 	sprintf (RIGOL_Housekeeping_string, ":TRIG:MODE EDGE\r");   
-			result = viWrite (Housekeeping_RIGOL1_handle, RIGOL_Housekeeping_string, (unsigned int)strlen(RIGOL_Housekeeping_string), &count);
+			result = viWrite (Housekeeping_RIGOL1_handle, (ViConstBuf)RIGOL_Housekeeping_string, (unsigned int)strlen(RIGOL_Housekeeping_string), &count);
 			sprintf (RIGOL_Housekeeping_string, ":TRIG:COUP AC\r");   
-			result = viWrite (Housekeeping_RIGOL1_handle, RIGOL_Housekeeping_string, (unsigned int)strlen(RIGOL_Housekeeping_string), &count);
+			result = viWrite (Housekeeping_RIGOL1_handle, (ViConstBuf)RIGOL_Housekeeping_string, (unsigned int)strlen(RIGOL_Housekeeping_string), &count);
 			
 			sprintf (RIGOL_Housekeeping_string, ":TRIG:EDGE:SOUR D0\r");   																				//Set the trigger source to the Digital 0 trigger since this is hardwired for this scope
-			result = viWrite (Housekeeping_RIGOL1_handle, RIGOL_Housekeeping_string, (unsigned int)strlen(RIGOL_Housekeeping_string), &count);
+			result = viWrite (Housekeeping_RIGOL1_handle, (ViConstBuf)RIGOL_Housekeeping_string, (unsigned int)strlen(RIGOL_Housekeeping_string), &count);
 		
 		 	sprintf (RIGOL_Housekeeping_string, ":TRIG:EDGE:SLOP POS\r");   
-			result = viWrite (Housekeeping_RIGOL1_handle, RIGOL_Housekeeping_string, (unsigned int)strlen(RIGOL_Housekeeping_string), &count);
+			result = viWrite (Housekeeping_RIGOL1_handle, (ViConstBuf)RIGOL_Housekeeping_string, (unsigned int)strlen(RIGOL_Housekeeping_string), &count);
 
-			sprintf (RIGOL_Housekeeping_string, ":TIM:OFFS 0%f\r", (RIGOL_Housekeeping_TimeWindow));   													//No offset of the trigger position
-			result = viWrite (Housekeeping_RIGOL1_handle, RIGOL_Housekeeping_string, (unsigned int)strlen(RIGOL_Housekeeping_string), &count);
+			sprintf (RIGOL_Housekeeping_string, ":TIM:OFFS %f\r", (RIGOL_Housekeeping_TimeWindow/2));   											//Set t=0 at beginning of time record
+			result = viWrite (Housekeeping_RIGOL1_handle, (ViConstBuf)RIGOL_Housekeeping_string, (unsigned int)strlen(RIGOL_Housekeeping_string), &count);
 
-			Delay(0.1);																																	//Delay long enough for menu screen clearing to work
+			//Delay(0.1);																																	//Delay long enough for menu screen clearing to work
 			
 			sprintf (RIGOL_Housekeeping_string, ":SYST:KEY:PRES MOFF\r");   												 							//Hide menu on scope screen
-		 	result = viWrite (Housekeeping_RIGOL1_handle, RIGOL_Housekeeping_string, (unsigned int)strlen(RIGOL_Housekeeping_string), &count);
+		 	result = viWrite (Housekeeping_RIGOL1_handle, (ViConstBuf)RIGOL_Housekeeping_string, (unsigned int)strlen(RIGOL_Housekeeping_string), &count);
 			
 			viClose(Housekeeping_RIGOL1_handle);
 		}
-		
-		
-		
-		
-		
-		
+				
 		//Discard housekeeping panel
 		DiscardPanel(Housekeeping_panel);
 		
@@ -166,31 +159,33 @@ void HousekeepingActivate(void)
 //Arm the VX4244 digitizer and Rigol MSO5104 scope
 int HousekeepingArm(void)
 {
+	int		VXIresult;
 	int		result;
 	int		count;
 	char	RIGOL_Housekeeping_string[32];
 	
 
 	//	Arm Digitizer with provision for error and only arms those groups in use
-	if ((result = tkvx4244_initMeasurementCycle (digitizer_hndl, 0, tkvx4244_GROUP_ONE_ENABLE, tkvx4244_GROUP_TWO_ENABLE, tkvx4244_GROUP_THREE_ENABLE, tkvx4244_GROUP_FOUR_ENABLE, tkvx4244_ALL_GROUPS_ENABLE, tkvx4244_INIT_IMM)))
-			  				displayErr(digitizer_hndl,result);
-
+	if ((VXIresult = tkvx4244_initMeasurementCycle (digitizer_hndl, 0, tkvx4244_GROUP_ONE_ENABLE, tkvx4244_GROUP_TWO_ENABLE, tkvx4244_GROUP_THREE_ENABLE, tkvx4244_GROUP_FOUR_ENABLE, tkvx4244_ALL_GROUPS_ENABLE, tkvx4244_INIT_IMM)))
+		displayErr(digitizer_hndl,VXIresult);
 
 	//Arm the Rigol scope
 	result=viOpen (Global_Visa_Session_Handle, RIGOL1_Housekeep_IP_Address_string, VI_NULL, VI_NULL, &Housekeeping_RIGOL1_handle);
 	if (!result) {
 		sprintf (RIGOL_Housekeeping_string,":TRIG:SWE SING\r");   												 		//Single Trigger Sweep
- 		result = viWrite (Housekeeping_RIGOL1_handle, RIGOL_Housekeeping_string, (unsigned int)strlen(RIGOL_Housekeeping_string), &count);
+ 		result = viWrite (Housekeeping_RIGOL1_handle, (ViConstBuf)RIGOL_Housekeeping_string, (unsigned int)strlen(RIGOL_Housekeeping_string), &count);
 		viClose(Housekeeping_RIGOL1_handle);
 	}
 	
 	// Arm Rigol Scopes for Photodiodes]
-
 	if (photodiodes_active){
 		char command[] = "cmd.exe /c conda activate \"C:/PHASMA 2025 DAQ/PHASMA Python Routines/PHASMA_C_to_Python_convertor_Project/PhasmaMDS/Python\" & python \"C:\\Users\\Scime Lab\\Desktop\\MSO5000 Ethernet Drivers\\labwindows.py\" arm";
 		
 		LaunchExecutable(command);
 	}
+	
+	//Debugging statement to confirm arming of housekeeping system
+	printf("[DEBUG] Housekeeping arming: Handle1 = %d, VXI_Arm = %d\n",Housekeeping_RIGOL1_handle, !VXIresult);  
 	
 	return !result;
 }
@@ -325,8 +320,6 @@ void acquire_data(ViSession handle, int channel,double voltage_scale, int record
 void Plasma_Gun_housekeeping_acquire(void)	
 
 {
-	int i;
-	int result;
 	double	vltrange= 10;
 
 	
@@ -352,34 +345,16 @@ void Plasma_Gun_housekeeping_acquire(void)
 	acquire_data(digitizer_hndl,2,(double)(vltrange), Housekeeping_RecordLength,Houskeeping_Signal1);	
 	acquire_data(digitizer_hndl,3,(double)(vltrange), Housekeeping_RecordLength,Houskeeping_Signal2);
 	acquire_data(digitizer_hndl,4,(double)(vltrange), Housekeeping_RecordLength,Houskeeping_Signal3);	
-	
-	//Create group1 time_array 
-	for (i=0;i<Housekeeping_RecordLength;i++) { 
-		time_array[i]=(double)i/group1_drate;
-	}
-	
-	switch (Housekeeping_VoltageRange) {
-	    case 0: vltrange = 0.5;
-	    	  		  break;
-	    case 1: vltrange = 1;
-	    	  		  break;
-	    case 2: vltrange = 2;
-	    	  		  break;
-	    case 5: vltrange = 5;
-	    	  		  break;
-	    case 10:vltrange = 10;
-	    	  		  break;
-	    case 20:vltrange = 20;
-	    	  		  break;
-	    default: printf("Invalid voltage range selected for Group 2! \n");
-	}	  
-	
+		
 	//Transfer four core housekeeping measurements from the digitzer to the arrays
 	acquire_data(digitizer_hndl,5,(double)(vltrange),Housekeeping_RecordLength,Houskeeping_Signal4);	
 	acquire_data(digitizer_hndl,6,(double)(vltrange),Housekeeping_RecordLength,Houskeeping_Signal5);	
 	acquire_data(digitizer_hndl,7,(double)(vltrange),Housekeeping_RecordLength,Houskeeping_Signal6);	
 	acquire_data(digitizer_hndl,8,(double)(vltrange),Housekeeping_RecordLength,Houskeeping_Signal7);	
-	
+		
+	//Transfer last two core housekeeping measurements from the digitzer to the arrays
+	acquire_data(digitizer_hndl,9,(double)(vltrange),Housekeeping_RecordLength,Houskeeping_Signal8);	
+	acquire_data(digitizer_hndl,10,(double)(vltrange),Housekeeping_RecordLength,Houskeeping_Signal9);	
 }	
 
 
@@ -395,15 +370,15 @@ void displayErr(ViSession gInstrHndl,ViStatus err)
 
 //Take the acquired data from the instrument and print it to the common data folder
 void Write_HousekeepingData(void)
-{	timebase = malloc (Housekeeping_RecordLength*8);
+{	//timebase = malloc (Housekeeping_RecordLength*8);
 	int ch;
 	char	ChannelNameString[64];
 	char	outfilename[64];
-	FILE*	outfile;
+	//FILE*	outfile;
 	int		j;
 	int  	result;
-	float 	RIGOL_timestep=0.0;
-	
+	double 	RIGOL_timestep=0.0;
+	double 	dt;
 	char fileheader[256];
 	
 	int housekeeping_channels[] = {
@@ -415,11 +390,12 @@ void Write_HousekeepingData(void)
 	Housekeep_Chan5Name,
 	Housekeep_Chan6Name,
 	Housekeep_Chan7Name,
-	//Housekeep_Chan8Name,  # 8 is skipped
-	Housekeep_Chan9Name,
-	Housekeep_Chan10Name,
-	Housekeep_Chan11Name,
-	Housekeep_Chan12Name
+	Housekeep_Chan8Name,  
+	Housekeep_Chan9Name,  
+	Housekeep_Chan10Name,  
+	Housekeep_Chan11Name,  
+	Housekeep_Chan12Name,  
+	Housekeep_Chan13Name
 	};
 	
 	//Acquire the housekeeping data from the digitizer using temporary arrays that are discarded every shot. 
@@ -429,11 +405,23 @@ void Write_HousekeepingData(void)
 	Housekeeping_panel = LoadPanel (0, "HousekeepingSystems.uir", Housekeep);
 	RecallPanelState (Housekeeping_panel, "Master_Control_Storage_File", Housekeeping_setup_state);
 
+	//Call function that acquires data from the VX4244 digitizer
 	Plasma_Gun_housekeeping_acquire();
 
+    // read optical data from housekeeping photodiodes (calls external python script)
+	if (photodiodes_active){
+		char command[1024] = "cmd.exe /c conda activate \"C:/PHASMA 2025 DAQ/PHASMA Python Routines/PHASMA_C_to_Python_convertor_Project/PhasmaMDS/Python\" & python \"C:\\Users\\Scime Lab\\Desktop\\MSO5000 Ethernet Drivers\\labwindows.py\" read ";
+		
+		strcat(command, ShotNumberString);
+		strcat(command, "\"");
+		
+		LaunchExecutableEx(command, LE_HIDE, &PyHandle);
+	}
+	
+	
 	//build file header for Housekeeping (VX4244)
-	strcpy(fileheader, "Time");
-	for (ch = 0; ch<7; ch++) {
+	strcpy(fileheader, "Time_VX4244");
+	for (ch = 0; ch<10; ch++) {
 		strcat(fileheader,",");
 		GetCtrlVal (Housekeeping_panel, housekeeping_channels[ch],ChannelNameString);
 		strcat(fileheader,ChannelNameString);
@@ -446,18 +434,30 @@ void Write_HousekeepingData(void)
 	strcat(outfilename, "_");
 	strcat(outfilename, "HousekeepingVXI.txt");
 	
-	outfile=fopen (outfilename, "w");
+	//outfile=fopen (outfilename, "w");
+	FILE *outfile=fopen (outfilename, "wb");
 
 	fprintf(outfile,fileheader);
 	
+	setvbuf(outfile, NULL, _IOFBF, 1 << 20);           // 1 MB buffer
+	dt = 1.0/SampleRate;
+	for (j = 0; j < Housekeeping_RecordLength; j++)
+    	fprintf(outfile, "%.6g,%.6g,%.6g,%.6g,%.6g,%.6g,%.6g,%.6g,%.6g,%.6g,%.6g\n",
+            j*dt, Houskeeping_Signal0[j],Houskeeping_Signal1[j],Houskeeping_Signal2[j],
+			Houskeeping_Signal3[j],Houskeeping_Signal4[j],Houskeeping_Signal5[j],Houskeeping_Signal6[j],Houskeeping_Signal7[j],Houskeeping_Signal8[j],Houskeeping_Signal9[j]);
+	fclose(outfile);
+	
+	/*
 	for (j=0;j<Housekeeping_RecordLength;j++) {
 		timebase[j]=(double)(j/SampleRate);
-		fprintf(outfile,"%f,%f, %f,%f,%f,%f,%f,%f\n",timebase[j],Houskeeping_Signal0[j],Houskeeping_Signal1[j],Houskeeping_Signal2[j],
-			Houskeeping_Signal3[j],Houskeeping_Signal4[j],Houskeeping_Signal5[j],Houskeeping_Signal6[j]);
+		fprintf(outfile,"%f,%f, %f,%f,%f,%f,%f,%f,%f,%f\n",timebase[j],Houskeeping_Signal0[j],Houskeeping_Signal1[j],Houskeeping_Signal2[j],
+			Houskeeping_Signal3[j],Houskeeping_Signal4[j],Houskeeping_Signal5[j],Houskeeping_Signal6[j],Houskeeping_Signal7[j],Houskeeping_Signal8[j]);
 	}
 
  	//Close Housekeeping data file
 	fclose (outfile);
+	*/
+	
 	
 	//Open up Housekeepings settings panel and get filenames for each measurement
 	//Retrieve data from the RIGOL oscilloscope and store the data
@@ -467,13 +467,13 @@ void Write_HousekeepingData(void)
 	//Grab data from all four channels of the oscilloscope (housekeeping highRes)
 	result=viOpen (Global_Visa_Session_Handle, RIGOL1_Housekeep_IP_Address_string, VI_NULL, VI_NULL, &Housekeeping_RIGOL1_handle);
 	if (!result) {
-		Rigol(Housekeeping_RIGOL1_handle, RIGOL_RecordLength, &RIGOL_timestep, Houskeeping_Signal9, Houskeeping_Signal10, Houskeeping_Signal11, Houskeeping_Signal12);   
+		Rigol(Housekeeping_RIGOL1_handle, RIGOL_RecordLength, &RIGOL_timestep, Houskeeping_Signal10, Houskeeping_Signal11, Houskeeping_Signal12, Houskeeping_Signal13);   
 		viClose(Housekeeping_RIGOL1_handle);
 	}
 
 	//build file header for HousekeepingHighRes with names from HousekeepingSystems.uir
-	strcpy(fileheader, "Time");
-	for (ch = 8; ch<12; ch++) {
+	strcpy(fileheader, "Time_HIGHRES");
+	for (ch = 10; ch<14; ch++) {
 		strcat(fileheader,",");
 		GetCtrlVal (Housekeeping_panel, housekeeping_channels[ch],ChannelNameString);
 		strcat(fileheader,ChannelNameString);
@@ -486,32 +486,30 @@ void Write_HousekeepingData(void)
 	strcat(outfilename, "_");
 	strcat(outfilename, "HousekeepingHighRes.txt");
 	
-	outfile=fopen (outfilename, "w");
+	//outfile=fopen (outfilename, "w");
+	outfile=fopen (outfilename, "wb");
 
 	timebase = malloc(RIGOL_RecordLength * 8);
 	
 	fprintf(outfile,fileheader);
-	for (j=0;j<RIGOL_RecordLength;j++) {
-		timebase[j]=(double)(j*RIGOL_timestep);
-		fprintf(outfile,"%f,%f,%f,%f,%f\n",timebase[j],Houskeeping_Signal9[j],Houskeeping_Signal10[j],Houskeeping_Signal11[j],Houskeeping_Signal12[j]);
-	}
+
+	dt = RIGOL_timestep*1.0E6;
+	for (j = 0; j < RIGOL_RecordLength; j++) {
+    	timebase[j]=(double)(j*RIGOL_timestep*1.0E6);
+		fprintf(outfile, "%.6g,%.6g,%.6g,%.6g,%.6g\n",j*dt, Houskeeping_Signal10[j],Houskeeping_Signal11[j],Houskeeping_Signal12[j],Houskeeping_Signal13[j]);
+	}	
+	fclose(outfile);
 
 	
+	/*
+	for (j=0;j<RIGOL_RecordLength;j++) {
+		timebase[j]=(double)(j*RIGOL_timestep*1.0E6);
+		fprintf(outfile,"%.8f,%.8f,%.8f,%.8f,%.8f\n",timebase[j],Houskeeping_Signal10[j],Houskeeping_Signal11[j],Houskeeping_Signal12[j],Houskeeping_Signal13[j]); // 5/4/26: fixed formatting error that was truncating time values resulting in stepwise continuous time axis
+	}
 
 	fclose (outfile);	
-//Close high res housekeeping data file
-	
-	if (photodiodes_active){
-		char command[1024] = "cmd.exe /c conda activate \"C:/PHASMA 2025 DAQ/PHASMA Python Routines/PHASMA_C_to_Python_convertor_Project/PhasmaMDS/Python\" & python \"C:\\Users\\Scime Lab\\Desktop\\MSO5000 Ethernet Drivers\\labwindows.py\" read ";
-		
-		strcat(command, ShotNumberString);
-		strcat(command, "\"");
-		
-		LaunchExecutableEx(command, LE_HIDE, &PyHandle);
-	}
-	
- 	
-	
+	//Close high res housekeeping data file
+	*/
 }
 
 
@@ -537,10 +535,12 @@ int CVICALLBACK Close_Housekeeping_Settings (int panel, int control, int event,
 	switch (event)
 	{
 		case EVENT_COMMIT:
+			//Update settings as interface closes
+			HousekeepingActivate();
+			
 			//Save current state of panel and close interface
 			SavePanelState (Housekeeping_panel, "Master_Control_Storage_File", Housekeeping_setup_state);
-			DiscardPanel(Housekeeping_panel);
-			QuitUserInterface (0);
+			DiscardPanel(panel);
 			break;
 	}
 	return 0;
@@ -553,9 +553,9 @@ int	j;
 
 	//Update panel with 
 	for (j=0;j<RIGOL_RecordLength;j++) {
-		transfer_array1[j]=timebase[j]*1.0E6;			//put time in microseconds
-		transfer_array2[j]=Houskeeping_Signal9[j];
-		transfer_array3[j]=Houskeeping_Signal10[j];
+		transfer_array1[j]=timebase[j];			//put time in microseconds
+		transfer_array2[j]=Houskeeping_Signal10[j];
+		transfer_array3[j]=Houskeeping_Signal11[j];
 	}
 
 	return RIGOL_RecordLength;

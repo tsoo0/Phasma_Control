@@ -31,7 +31,7 @@
 
 		
 int			Bdot_panel;
-int			Bdot_setup_state = 603;
+int			Bdot_setup_state = 604;
 int 		JoergerVTR10012_clockspeed;
 int 		JoergerVTR10014_clockspeed;
 long 		JoergerVTR10012_recordlength; 		// --changed from int to long 5/15/07 by AKH
@@ -297,7 +297,6 @@ int BdotArm(void)
 		VTR10012_READ_STATUS(VTR10014_2_handle,VTR10014_2_Base_address,&status);
 	}while(status != 1);   //	when the status = armed, exit
 
-
 	//Disarm the 3rd VTR10014 digitizer and clear the IRQ source
 	VTR10012_DISARM(VTR10014_3_handle,VTR10014_3_Base_address);
 	VTR10012_RESET_MEM_COUNTER(VTR10014_3_handle,VTR10014_3_Base_address);
@@ -324,31 +323,75 @@ int BdotArm(void)
 	//VTR10012_SOFTWARE_TRIGGER(VTR10014_3_handle, 0);
 	//VTR10012_SOFTWARE_TRIGGER(VTR10014_4_handle, 0);
 	
-
+	printf("[DEBUG] Joerger arming complete\n");  
 	return status;
 }
 
-
-//Take the acquired data from the Bdot digitizers and print it to the common data folder
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+//Take the acquired data from the Bdot digitizers and store it in binary in the common data folder
+//To read the data into Matlab as real numbers, use the MatLab code below
+/*function [t, data, names, dt_us, rate] = read_bdot(filename)
+		% READ_BDOT  Read a BDOTBIN1 binary file written by the LabWindows/CVI code.
+		%
+		%   [t, data, names, dt_us, rate] = read_bdot('myfile.bin')
+		%
+		%   t      - time vector in microseconds (n x 1)
+		%   data   - signals in volts (n x numChannels), one column per channel
+		%   names  - cell array of channel names
+		%   dt_us  - time step in microseconds
+		%   rate   - digitization rate as stored by the acquisition program
+		 
+		f = fopen(filename, 'rb', 'ieee-le');           % file is little-endian
+		if f < 0
+		    error('Cannot open %s', filename);
+		end
+		cleaner = onCleanup(@() fclose(f));
+		 
+		magic = fread(f, 8, '*char')';
+		if ~strcmp(magic, 'BDOTBIN1')
+		    error('%s is not a BDOTBIN1 file', filename);
+		end
+		 
+		nch   = fread(f, 1, 'uint32');                  % number of channels
+		n     = fread(f, 1, 'uint32');                  % points per channel
+		dt_us = fread(f, 1, 'double');                  % time step, microseconds
+		rate  = fread(f, 1, 'double');                  % digitization rate
+		 
+		names = cell(nch, 1);
+		for k = 1:nch
+		    s = fread(f, 32, '*char')';                 % fixed 32 bytes, null padded
+		    names{k} = s(1:find([s 0] == 0, 1) - 1);
+		end
+		 
+		data = fread(f, [n nch], 'double');             % channel-major in file -> one column per channel
+		t    = (0:n-1)' * dt_us;                        % microseconds
+		end
+*/
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
 void Write_BdotData(void)
 {
-
+	#define BDOT_NAME_LEN   32
+	#define BDOT_NUM_CH     8
 	char	ChannelNameString[64]; 
 	char	outfilename[128];	   
-	FILE*	outfile;
-	int		j;
-	int 	ch;
-	double  Bdot_signal1[max_record_length];
-	double  Bdot_signal2[max_record_length];
-	double  Bdot_signal3[max_record_length];
-	double  Bdot_signal4[max_record_length];
-	double  Bdot_signal5[max_record_length];
-	double  Bdot_signal6[max_record_length];
-	double  Bdot_signal7[max_record_length];
-	double  Bdot_signal8[max_record_length];
-	double  time_array[max_record_length];	
-	
-	char fileheader[256];
+	//FILE*	outfile;
+	int				j;
+	int 			ch;
+	unsigned int   	numCh, recLen;
+	double  		Bdot_signal1[max_record_length];
+	double  		Bdot_signal2[max_record_length];
+	double 		 	Bdot_signal3[max_record_length];
+	double  		Bdot_signal4[max_record_length];
+	double  		Bdot_signal5[max_record_length];
+	double  		Bdot_signal6[max_record_length];
+	double  		Bdot_signal7[max_record_length];
+	double  		Bdot_signal8[max_record_length];
+	//double  time_array[max_record_length];	
+	double 			dt;
+	const double  	*signals[BDOT_NUM_CH];
+	char           	names[BDOT_NUM_CH][BDOT_NAME_LEN];
+	double         	rate;
+	char 			fileheader[256];
 	
 	
 	int bdot_channels[] = {
@@ -401,7 +444,7 @@ void Write_BdotData(void)
 	Bdot_panel = LoadPanel (0, "BdotSettings.uir", Bdot);
 	//RecallPanelState (Bdot_panel, "Master_Control_Storage_File", Bdot_setup_state); 
 	
-// JOERGER01
+	// JOERGER01
 	//Retrieve 8 timeseries from the first VTR10012 instrument and write them to raw files 
 	JoergerVTR10012_acquire(VTR10012_memory_handle, VTR10012_A32_address, 1,JoergerVTR10012_recordlength,Bdot_signal1,Bdot_signal5);
 	JoergerVTR10012_acquire(VTR10012_memory_handle, VTR10012_A32_address, 2,JoergerVTR10012_recordlength,Bdot_signal2,Bdot_signal6);
@@ -413,29 +456,63 @@ void Write_BdotData(void)
 	strcat(outfilename, ShotNumberString);
 	strcat(outfilename, "_");
 	strcat(outfilename, "JOERGER01.txt");
-	outfile=fopen (outfilename, "w");
-	
-	//Write the header for the file
-	strcpy(fileheader, "Time");
-	for (ch = 0; ch<8; ch++) {
-		GetCtrlVal (Bdot_panel, bdot_channels[ch],ChannelNameString);
-		strcat(fileheader,",");
-		strcat(fileheader,ChannelNameString);
-		
-	}
-	strcat(fileheader,"\n");
 
-	fprintf(outfile,fileheader);
-	for (j=0;j<JoergerVTR10012_recordlength;j++) {
-		time_array[j]=(double)(1.0E6*j/JoergerVTR10012_digitation_rate);
-		fprintf(outfile,"%f,%f,%f,%f,%f,%f,%f,%f,%f\n",time_array[j],Bdot_signal1[j],Bdot_signal2[j],Bdot_signal3[j],Bdot_signal4[j],
-			Bdot_signal5[j],Bdot_signal6[j],Bdot_signal7[j],Bdot_signal8[j]);
+	//Create pointer to output file
+	FILE *outfile = fopen(outfilename, "wb");
+
+	//Check to see if output file created properly
+ 	if (outfile == NULL) {
+		// handle error (message box, return, etc.)
 	}
+	else {
+		setvbuf(outfile, NULL, _IOFBF, 1 << 20);        // must be set before any I/O on the stream
+ 		
+		//Create array of signals
+		signals[0] = Bdot_signal1;  signals[1] = Bdot_signal2;
+		signals[2] = Bdot_signal3;  signals[3] = Bdot_signal4;
+		signals[4] = Bdot_signal5;  signals[5] = Bdot_signal6;
+		signals[6] = Bdot_signal7;  signals[7] = Bdot_signal8;
+ 
+		// Channel names from the panel, fixed width and null padded
+		for (ch = 0; ch < BDOT_NUM_CH; ch++) {
+			memset(names[ch], 0, BDOT_NAME_LEN);
+			GetCtrlVal(Bdot_panel, bdot_channels[ch], ChannelNameString);
+			strncpy(names[ch], ChannelNameString, BDOT_NAME_LEN - 1);
+		}
+ 
+		//Create header values to be written
+		numCh  = BDOT_NUM_CH;
+		recLen = (unsigned int)JoergerVTR10012_recordlength;
+		rate   = (double)JoergerVTR10012_digitation_rate;
+		dt     = 1.0E6 / rate;
+ 
+		// Header (fields written individually so struct padding can't creep in)
+		fwrite("BDOTBIN1", 1, 8, outfile);
+		fwrite(&numCh,  sizeof(numCh),  1, outfile);
+		fwrite(&recLen, sizeof(recLen), 1, outfile);
+		fwrite(&dt,     sizeof(dt),     1, outfile);
+		fwrite(&rate,   sizeof(rate),   1, outfile);
+		fwrite(names, BDOT_NAME_LEN, BDOT_NUM_CH, outfile);
+ 
+		// Data: one big block per channel
+		for (ch = 0; ch < BDOT_NUM_CH; ch++)
+			fwrite(signals[ch], sizeof(double), recLen, outfile);
+ 		fclose(outfile);
+	}
+	
+	//The original way data was written out as floating point values in ASCII
+	//outfile=fopen (outfilename, "w");
+	//for (j=0;j<JoergerVTR10012_recordlength;j++) {
+	//	time_array[j]=(double)(1.0E6*j/JoergerVTR10012_digitation_rate);
+	//	fprintf(outfile,"%f,%f,%f,%f,%f,%f,%f,%f,%f\n",time_array[j],Bdot_signal1[j],Bdot_signal2[j],Bdot_signal3[j],Bdot_signal4[j],
+	//		Bdot_signal5[j],Bdot_signal6[j],Bdot_signal7[j],Bdot_signal8[j]);
+	//}
 	
  	//Close Bdot data file
-	fclose (outfile);
+	//fclose (outfile);
 
-// JOERGER02
+	
+	// JOERGER02
 	//Get channel name string, store raw data on drive folder, and push data to MDSPlus for 8 channels
 	
 	//Retrieve data from the first VTR10014 instrument in pairs and write them to raw files  
@@ -450,19 +527,52 @@ void Write_BdotData(void)
 	strcat(outfilename, ShotNumberString);
 	strcat(outfilename, "_");
 	strcat(outfilename, "JOERGER02.txt");
-	outfile=fopen (outfilename, "w");
-	
-	strcpy(fileheader, "Time");
-	for (ch = 8; ch<16; ch++) {
-		GetCtrlVal (Bdot_panel, bdot_channels[ch],ChannelNameString);
-		strcat(fileheader,",");
-		strcat(fileheader,ChannelNameString);
-		
+
+	//Create pointer to output file
+	outfile = fopen(outfilename, "wb");
+
+	//Check to see if output file created properly
+ 	if (outfile == NULL) {
+		// handle error (message box, return, etc.)
 	}
-	strcat(fileheader,"\n");
-	
-	fprintf(outfile,fileheader);
-	for (j=0;j<JoergerVTR10014_recordlength;j++) {
+	else {
+		//setvbuf(outfile, NULL, _IOFBF, 1 << 20);        // must be set before any I/O on the stream
+ 		
+		//Create array of signals
+		signals[0] = Bdot_signal1;  signals[1] = Bdot_signal2;
+		signals[2] = Bdot_signal3;  signals[3] = Bdot_signal4;
+		signals[4] = Bdot_signal5;  signals[5] = Bdot_signal6;
+		signals[6] = Bdot_signal7;  signals[7] = Bdot_signal8;
+ 
+		// Channel names from the panel, fixed width and null padded
+		for (ch = 0; ch < BDOT_NUM_CH; ch++) {
+			memset(names[ch], 0, BDOT_NAME_LEN);
+			GetCtrlVal(Bdot_panel, bdot_channels[ch], ChannelNameString);
+			strncpy(names[ch], ChannelNameString, BDOT_NAME_LEN - 1);
+		}
+ 
+		//Create header values to be written
+		recLen = (unsigned int)JoergerVTR10014_recordlength;
+		rate   = (double)JoergerVTR10014_digitation_rate;
+		dt     = 1.0E6 / rate;
+ 
+		// Header (fields written individually so struct padding can't creep in)
+		fwrite("BDOTBIN1", 1, 8, outfile);
+		fwrite(&numCh,  sizeof(numCh),  1, outfile);
+		fwrite(&recLen, sizeof(recLen), 1, outfile);
+		fwrite(&dt,     sizeof(dt),     1, outfile);
+		fwrite(&rate,   sizeof(rate),   1, outfile);
+		fwrite(names, BDOT_NAME_LEN, BDOT_NUM_CH, outfile);
+ 
+		// Data: one big block per channel
+		for (ch = 0; ch < BDOT_NUM_CH; ch++)
+			fwrite(signals[ch], sizeof(double), recLen, outfile);
+ 		fclose(outfile);
+	}
+
+	//The original way data was written out as floating point values in ASCII
+	//outfile=fopen (outfilename, "w");
+	/*for (j=0;j<JoergerVTR10014_recordlength;j++) {
 		time_array[j]=(double)(1.0E6*j/JoergerVTR10014_digitation_rate);
 		fprintf(outfile,"%f,%f,%f,%f,%f,%f,%f,%f,%f\n",time_array[j],Bdot_signal1[j],Bdot_signal2[j],Bdot_signal3[j],Bdot_signal4[j],
 			Bdot_signal5[j],Bdot_signal6[j],Bdot_signal7[j],Bdot_signal8[j]);
@@ -470,8 +580,9 @@ void Write_BdotData(void)
 	
  	//Close Bdot data file
 	fclose (outfile);
-
-// JOERGER03
+	*/
+	
+	// JOERGER03
 	//Retrieve data from the second VTR10014 instrument in pairs and write them to raw files 
  	JoergerVTR10014_acquire(VTR10014_2_memory_handle, VTR10014_2_A32_addressFull, 1,JoergerVTR10014_recordlength,Bdot_signal1,Bdot_signal5);
  	JoergerVTR10014_acquire(VTR10014_2_memory_handle, VTR10014_2_A32_addressFull, 2,JoergerVTR10014_recordlength,Bdot_signal2,Bdot_signal6);
@@ -483,28 +594,62 @@ void Write_BdotData(void)
 	strcat(outfilename, ShotNumberString);
 	strcat(outfilename, "_");
 	strcat(outfilename, "JOERGER03.txt");
-	outfile=fopen (outfilename, "w");
 	
-	//Write the header for the file
-	strcpy(fileheader, "Time");
-	for (ch = 16; ch<24; ch++) {
-		GetCtrlVal (Bdot_panel, bdot_channels[ch],ChannelNameString);
-		strcat(fileheader,",");
-		strcat(fileheader,ChannelNameString);
-		
+	//Create pointer to output file
+	outfile = fopen(outfilename, "wb");
+
+	//Check to see if output file created properly
+ 	if (outfile == NULL) {
+		// handle error (message box, return, etc.)
 	}
-	strcat(fileheader,"\n");
-	
-	fprintf(outfile,fileheader);
-	for (j=0;j<JoergerVTR10014_recordlength;j++) {
+	else {
+		//setvbuf(outfile, NULL, _IOFBF, 1 << 20);        // must be set before any I/O on the stream
+ 		
+		//Create array of signals
+		signals[0] = Bdot_signal1;  signals[1] = Bdot_signal2;
+		signals[2] = Bdot_signal3;  signals[3] = Bdot_signal4;
+		signals[4] = Bdot_signal5;  signals[5] = Bdot_signal6;
+		signals[6] = Bdot_signal7;  signals[7] = Bdot_signal8;
+ 
+		// Channel names from the panel, fixed width and null padded
+		for (ch = 0; ch < BDOT_NUM_CH; ch++) {
+			memset(names[ch], 0, BDOT_NAME_LEN);
+			GetCtrlVal(Bdot_panel, bdot_channels[ch], ChannelNameString);
+			strncpy(names[ch], ChannelNameString, BDOT_NAME_LEN - 1);
+		}
+ 
+		//Create header values to be written
+		recLen = (unsigned int)JoergerVTR10014_recordlength;
+		rate   = (double)JoergerVTR10014_digitation_rate;
+		dt     = 1.0E6 / rate;
+ 
+		// Header (fields written individually so struct padding can't creep in)
+		fwrite("BDOTBIN1", 1, 8, outfile);
+		fwrite(&numCh,  sizeof(numCh),  1, outfile);
+		fwrite(&recLen, sizeof(recLen), 1, outfile);
+		fwrite(&dt,     sizeof(dt),     1, outfile);
+		fwrite(&rate,   sizeof(rate),   1, outfile);
+		fwrite(names, BDOT_NAME_LEN, BDOT_NUM_CH, outfile);
+ 
+		// Data: one big block per channel
+		for (ch = 0; ch < BDOT_NUM_CH; ch++)
+			fwrite(signals[ch], sizeof(double), recLen, outfile);
+ 		fclose(outfile);
+	}
+
+	//The original way data was written out as floating point values in ASCII
+	//outfile=fopen (outfilename, "w");
+	/*for (j=0;j<JoergerVTR10014_recordlength;j++) {
 		time_array[j]=(double)(1.0E6*j/JoergerVTR10014_digitation_rate);
 		fprintf(outfile,"%f,%f,%f,%f,%f,%f,%f,%f,%f\n",time_array[j],Bdot_signal1[j],Bdot_signal2[j],Bdot_signal3[j],Bdot_signal4[j],
 			Bdot_signal5[j],Bdot_signal6[j],Bdot_signal7[j],Bdot_signal8[j]);
 	}
+	
  	//Close Bdot data file
 	fclose (outfile);
+	*/
 	
-// JOERGER04
+	// JOERGER04
 	//Retrieve data from the third VTR10014 instrument in pairs and write them to raw files 
  	JoergerVTR10014_acquire(VTR10014_3_memory_handle, VTR10014_3_A32_addressFull, 1,JoergerVTR10014_recordlength,Bdot_signal1,Bdot_signal5);
  	JoergerVTR10014_acquire(VTR10014_3_memory_handle, VTR10014_3_A32_addressFull, 2,JoergerVTR10014_recordlength,Bdot_signal2,Bdot_signal6);
@@ -516,20 +661,52 @@ void Write_BdotData(void)
 	strcat(outfilename, ShotNumberString);
 	strcat(outfilename, "_");
 	strcat(outfilename, "JOERGER04.txt");
-	outfile=fopen (outfilename, "w");
-	
-	//Write the header for the file
-	strcpy(fileheader, "Time");
-	for (ch = 24; ch<32; ch++) {
-		GetCtrlVal (Bdot_panel, bdot_channels[ch],ChannelNameString);
-		strcat(fileheader,",");
-		strcat(fileheader,ChannelNameString);
-		
+
+	//Create pointer to output file
+	outfile = fopen(outfilename, "wb");
+
+	//Check to see if output file created properly
+ 	if (outfile == NULL) {
+		// handle error (message box, return, etc.)
 	}
-	strcat(fileheader,"\n");
-	
-	fprintf(outfile,fileheader);
-	for (j=0;j<JoergerVTR10014_recordlength;j++) {
+	else {
+		//setvbuf(outfile, NULL, _IOFBF, 1 << 20);        // must be set before any I/O on the stream
+ 		
+		//Create array of signals
+		signals[0] = Bdot_signal1;  signals[1] = Bdot_signal2;
+		signals[2] = Bdot_signal3;  signals[3] = Bdot_signal4;
+		signals[4] = Bdot_signal5;  signals[5] = Bdot_signal6;
+		signals[6] = Bdot_signal7;  signals[7] = Bdot_signal8;
+ 
+		// Channel names from the panel, fixed width and null padded
+		for (ch = 0; ch < BDOT_NUM_CH; ch++) {
+			memset(names[ch], 0, BDOT_NAME_LEN);
+			GetCtrlVal(Bdot_panel, bdot_channels[ch], ChannelNameString);
+			strncpy(names[ch], ChannelNameString, BDOT_NAME_LEN - 1);
+		}
+ 
+		//Create header values to be written
+		recLen = (unsigned int)JoergerVTR10014_recordlength;
+		rate   = (double)JoergerVTR10014_digitation_rate;
+		dt     = 1.0E6 / rate;
+ 
+		// Header (fields written individually so struct padding can't creep in)
+		fwrite("BDOTBIN1", 1, 8, outfile);
+		fwrite(&numCh,  sizeof(numCh),  1, outfile);
+		fwrite(&recLen, sizeof(recLen), 1, outfile);
+		fwrite(&dt,     sizeof(dt),     1, outfile);
+		fwrite(&rate,   sizeof(rate),   1, outfile);
+		fwrite(names, BDOT_NAME_LEN, BDOT_NUM_CH, outfile);
+ 
+		// Data: one big block per channel
+		for (ch = 0; ch < BDOT_NUM_CH; ch++)
+			fwrite(signals[ch], sizeof(double), recLen, outfile);
+ 		fclose(outfile);
+	}
+
+	//The original way data was written out as floating point values in ASCII
+	//outfile=fopen (outfilename, "w");
+	/*for (j=0;j<JoergerVTR10014_recordlength;j++) {
 		time_array[j]=(double)(1.0E6*j/JoergerVTR10014_digitation_rate);
 		fprintf(outfile,"%f,%f,%f,%f,%f,%f,%f,%f,%f\n",time_array[j],Bdot_signal1[j],Bdot_signal2[j],Bdot_signal3[j],Bdot_signal4[j],
 			Bdot_signal5[j],Bdot_signal6[j],Bdot_signal7[j],Bdot_signal8[j]);
@@ -537,8 +714,9 @@ void Write_BdotData(void)
 	
  	//Close Bdot data file
 	fclose (outfile);
+	*/
 	
-// JOERGER05
+	// JOERGER05
 	//Retrieve data from the fourth VTR10014 instrument in pairs and write them to raw files. Don't need the last few channels as there are no bdot coils past 36 total
  	JoergerVTR10014_acquire(VTR10014_4_memory_handle, VTR10014_4_A32_addressFull, 1,JoergerVTR10014_recordlength,Bdot_signal1,Bdot_signal5);
  	JoergerVTR10014_acquire(VTR10014_4_memory_handle, VTR10014_4_A32_addressFull, 2,JoergerVTR10014_recordlength,Bdot_signal2,Bdot_signal6);
@@ -550,29 +728,60 @@ void Write_BdotData(void)
 	strcat(outfilename, ShotNumberString);
 	strcat(outfilename, "_");
 	strcat(outfilename, "JOERGER05.txt");
-	outfile=fopen (outfilename, "w");
 	
-	//Write the header for the file
-	strcpy(fileheader, "Time");
-	for (ch = 32; ch<40; ch++) {
-		GetCtrlVal (Bdot_panel, bdot_channels[ch],ChannelNameString);
-		strcat(fileheader,",");
-		strcat(fileheader,ChannelNameString);
-		
+	//Create pointer to output file
+	outfile = fopen(outfilename, "wb");
+
+	//Check to see if output file created properly
+ 	if (outfile == NULL) {
+		// handle error (message box, return, etc.)
 	}
-	//strcat(fileheader,"Chan 37, Chan 38, Chan 39, Chan 40, Chan 41");		//Manually label the last four Joerger channel names
-	strcat(fileheader,"\n");
-	fprintf(outfile,fileheader);
-	
-	//Joerger 5th
-	for (j=0;j<JoergerVTR10014_recordlength;j++) {
-		time_array[j]=(double)(1.0E6*j/(JoergerVTR10014_digitation_rate));		//Now Joerger VTR10014 should run the same as the other 4 VTR10014s
-				fprintf(outfile,"%f,%f,%f,%f,%f,%f,%f,%f,%f\n",time_array[j],Bdot_signal1[j],Bdot_signal2[j],Bdot_signal3[j],Bdot_signal4[j],
+	else {
+		//setvbuf(outfile, NULL, _IOFBF, 1 << 20);        // must be set before any I/O on the stream
+ 		
+		//Create array of signals
+		signals[0] = Bdot_signal1;  signals[1] = Bdot_signal2;
+		signals[2] = Bdot_signal3;  signals[3] = Bdot_signal4;
+		signals[4] = Bdot_signal5;  signals[5] = Bdot_signal6;
+		signals[6] = Bdot_signal7;  signals[7] = Bdot_signal8;
+ 
+		// Channel names from the panel, fixed width and null padded
+		for (ch = 0; ch < BDOT_NUM_CH; ch++) {
+			memset(names[ch], 0, BDOT_NAME_LEN);
+			GetCtrlVal(Bdot_panel, bdot_channels[ch], ChannelNameString);
+			strncpy(names[ch], ChannelNameString, BDOT_NAME_LEN - 1);
+		}
+ 
+		//Create header values to be written
+		recLen = (unsigned int)JoergerVTR10014_recordlength;
+		rate   = (double)JoergerVTR10014_digitation_rate;
+		dt     = 1.0E6 / rate;
+ 
+		// Header (fields written individually so struct padding can't creep in)
+		fwrite("BDOTBIN1", 1, 8, outfile);
+		fwrite(&numCh,  sizeof(numCh),  1, outfile);
+		fwrite(&recLen, sizeof(recLen), 1, outfile);
+		fwrite(&dt,     sizeof(dt),     1, outfile);
+		fwrite(&rate,   sizeof(rate),   1, outfile);
+		fwrite(names, BDOT_NAME_LEN, BDOT_NUM_CH, outfile);
+ 
+		// Data: one big block per channel
+		for (ch = 0; ch < BDOT_NUM_CH; ch++)
+			fwrite(signals[ch], sizeof(double), recLen, outfile);
+ 		fclose(outfile);
+	}
+
+	//The original way data was written out as floating point values in ASCII
+	//outfile=fopen (outfilename, "w");
+	/*for (j=0;j<JoergerVTR10014_recordlength;j++) {
+		time_array[j]=(double)(1.0E6*j/JoergerVTR10014_digitation_rate);
+		fprintf(outfile,"%f,%f,%f,%f,%f,%f,%f,%f,%f\n",time_array[j],Bdot_signal1[j],Bdot_signal2[j],Bdot_signal3[j],Bdot_signal4[j],
 			Bdot_signal5[j],Bdot_signal6[j],Bdot_signal7[j],Bdot_signal8[j]);
 	}
 	
  	//Close Bdot data file
 	fclose (outfile);
+	*/
 	
 	//Close interface panel
    	DiscardPanel(Bdot_panel);  
@@ -681,7 +890,7 @@ int CVICALLBACK Close_Bdot_Settings (int panel, int control, int event,
 int CVICALLBACK Bdot_Move_to_Start (int panel, int control, int event,
 							   void *callbackData, int eventData1, int eventData2)
 {
-
+	int 	Success;
 	float 	Bdot_RStart;
 	float  	Bdot_Max_Insertion;
 	float 	Bdot_COUNTSPERMM;
@@ -701,10 +910,16 @@ int CVICALLBACK Bdot_Move_to_Start (int panel, int control, int event,
 			GetCtrlVal (Bdot_panel, Bdot_R_Position,&Bdot_RPosition);
 			
 			//Send move command to probe motor
-			TitanMotorMove(Bdot_Probe_IP_Address, (Bdot_Offset-Bdot_RPosition)*10.0, (Bdot_Offset-Bdot_RStart)*10.0, Bdot_COUNTSPERMM);		//Convert distances to mm from cm
+			Success=TitanMotorMove(Bdot_Probe_IP_Address, (Bdot_Offset-Bdot_RPosition)*10.0, (Bdot_Offset-Bdot_RStart)*10.0, Bdot_COUNTSPERMM);		//Convert distances to mm from cm
 			
-			//Set current position to Start
-			SetCtrlVal (Bdot_panel, Bdot_R_Position,Bdot_RStart);
+			//Set current position tbased on result
+			if (Success > -1) {
+				SetCtrlVal (Bdot_panel, Bdot_R_Position,Bdot_RStart);
+				SetCtrlAttribute (Bdot_panel, Bdot_R_Position, ATTR_TEXT_COLOR, VAL_BLACK);
+			} else {
+				SetCtrlVal (Bdot_panel, Bdot_R_Position,Bdot_RPosition);	
+				SetCtrlAttribute (Bdot_panel, Bdot_R_Position, ATTR_TEXT_COLOR, VAL_RED);
+			}
 
 
 			break;
@@ -716,6 +931,7 @@ int CVICALLBACK Bdot_Move_to_Start (int panel, int control, int event,
 int CVICALLBACK Bdot_Move_to_Stop (int panel, int control, int event,
 							   void *callbackData, int eventData1, int eventData2)
 {
+	int 	Success;
 	float 	Bdot_RStop;
 	float  	Bdot_Max_Insertion;
 	float 	Bdot_COUNTSPERMM;
@@ -735,10 +951,17 @@ int CVICALLBACK Bdot_Move_to_Stop (int panel, int control, int event,
 			GetCtrlVal (Bdot_panel, Bdot_R_Position,&Bdot_RPosition);
 			
 			//Send move command to probe motor
-			TitanMotorMove(Bdot_Probe_IP_Address, (Bdot_Offset-Bdot_RPosition)*10.0, (Bdot_Offset-Bdot_RStop)*10.0, Bdot_COUNTSPERMM);		//Convert distances to mm from cm
+			Success=TitanMotorMove(Bdot_Probe_IP_Address, (Bdot_Offset-Bdot_RPosition)*10.0, (Bdot_Offset-Bdot_RStop)*10.0, Bdot_COUNTSPERMM);		//Convert distances to mm from cm
 			
-			//Set current position to Start
-			SetCtrlVal (Bdot_panel, Bdot_R_Position,Bdot_RStop);
+			//Set current position tbased on result
+			if (Success > -1) {
+				SetCtrlVal (Bdot_panel, Bdot_R_Position,Bdot_RStop);
+				SetCtrlAttribute (Bdot_panel, Bdot_R_Position, ATTR_TEXT_COLOR, VAL_BLACK);
+			} else {
+				SetCtrlVal (Bdot_panel, Bdot_R_Position,Bdot_RPosition);	
+				SetCtrlAttribute (Bdot_panel, Bdot_R_Position, ATTR_TEXT_COLOR, VAL_RED);
+			}
+
 
 
 			break;

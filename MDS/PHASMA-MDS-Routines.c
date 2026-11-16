@@ -14,6 +14,8 @@
 
 #include	"PHASMA-MDS-Routines.h"
 #include 	"GlobalVariables.h"
+#include "MasterControlPanel.h"
+#include "HelperFunctions.h"
 
 extern int TreeSetCurrentShotId(char *tree, int shot);
 char PHASMA_server_address[128] = "157.182.26.6:57800";		//This is the server running on the main lab computer. You must be on the same switch to access it
@@ -200,7 +202,7 @@ int getMDSCurrentShot(void) {
     int shotDesc;
     char tdi_expr[256];
     
-    printf("[DEBUG] Getting current shot for tree '%s'...\n", tree_name);
+    //printf("[DEBUG] Getting current shot for tree '%s'...\n", tree_name);
     
     // Create descriptor for result
     shotDesc = descr(&dtype_long, &current_shot, &null);
@@ -291,7 +293,7 @@ int IncrementMDSCurrentShot(void) {
         return 0;
     }
 
-    printf("[DEBUG] Incrementing shot for tree '%s'...\n", tree_name);
+   //printf("[DEBUG] Incrementing shot for tree '%s'...\n", tree_name);
   
 	//Create the command to increment to the next shot
     //snprintf(tdi_cmd, sizeof(tdi_cmd),"TreeSetCurrentShot(\"%s\", TreeGetCurrentShot(\"%s\") + 1)", tree_name, tree_name);
@@ -369,7 +371,10 @@ void push_mds(void)
 
 	const char command[] = "cmd.exe /c conda activate \"C:/PHASMA 2025 DAQ/PHASMA Python Routines/PHASMA_C_to_Python_convertor_Project/PhasmaMDS/Python\" & python \"C:/PHASMA 2025 DAQ/PHASMA Python Routines/PHASMA_C_to_Python_convertor_Project/PhasmaMDS/mds_push_all.py\"";
 	
-	LaunchExecutable(command);
+	//LaunchExecutable(command);
+	LaunchExecutableEx(command,LE_HIDE, &PyHandle);
+	
+	
 	
 }
 

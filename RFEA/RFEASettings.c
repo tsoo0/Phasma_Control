@@ -53,34 +53,34 @@ void RFEAActivate(void)
 
 	if (!result) {
 		//Make sure scope is running so commands will work
-		sprintf (RFEA_string, ":RUN\r");   																							//Send the run command
-		result = viWrite (Rigol_handle, RFEA_string, (unsigned int)strlen(RFEA_string), &count);
+		sprintf ((ViConstBuf)RFEA_string, ":RUN\r");   																							//Send the run command
+		result = viWrite (Rigol_handle, (ViConstBuf)RFEA_string, (unsigned int)strlen(RFEA_string), &count);
 
 		//Setup the rate, record length, trigger system, and voltage range for the Rigol scope
-	  	sprintf (RFEA_string, ":TIM:MAIN:SCAL %f\r",(RFEA_TimeWindow/10.0));   										//Set up timebase scaling based on target sample window and 10 divisions
-		result = viWrite (Rigol_handle, RFEA_string, (unsigned int)strlen(RFEA_string), &count);
-		sprintf (RFEA_string, ":ACQ:MDEP %d\r",RFEA_RecordLength);   												//Set the record length by setting the Memory Depth and upload the record length in k
-		result = viWrite (Rigol_handle, RFEA_string, (unsigned int)strlen(RFEA_string), &count);
-		sprintf (RFEA_string, ":CHAN1:SCAL  %f\r",RFEA_VoltageRange);   											//Set the voltage scale of the channel to the target value
-		result = viWrite (Rigol_handle, RFEA_string, (unsigned int)strlen(RFEA_string), &count);
-		sprintf (RFEA_string, ":CHAN2:SCAL  %f\r",RFEA_VoltageRange);   											//Set the voltage scale of the channel to the target value
-		result = viWrite (Rigol_handle, RFEA_string, (unsigned int)strlen(RFEA_string), &count);
-		sprintf (RFEA_string, ":CHAN3:SCAL  %f\r",RFEA_VoltageRange);   											//Set the voltage scale of the channel to the target value
-		result = viWrite (Rigol_handle, RFEA_string, (unsigned int)strlen(RFEA_string), &count);
-		sprintf (RFEA_string, ":CHAN4:SCAL  %f\r",RFEA_VoltageRange);   											//Set the voltage scale of the channel to the target value
-		result = viWrite (Rigol_handle, RFEA_string, (unsigned int)strlen(RFEA_string), &count);
-	 	sprintf (RFEA_string, ":TRIG:MODE EDGE\r");   
-		result = viWrite (Rigol_handle, RFEA_string, (unsigned int)strlen(RFEA_string), &count);
-		sprintf (RFEA_string, ":TRIG:COUP AC\r");   
-		result = viWrite (Rigol_handle, RFEA_string, (unsigned int)strlen(RFEA_string), &count);
-		sprintf (RFEA_string, ":TRIG:EDGE:SOUR %s\r",RFEA_TriggerSource);  														//Set the trigger source to the target value 
-		result = viWrite (Rigol_handle, RFEA_string, (unsigned int)strlen(RFEA_string), &count);
-	 	sprintf (RFEA_string, ":TRIG:EDGE:SLOP POS\r");   
-		result = viWrite (Rigol_handle, RFEA_string, (unsigned int)strlen(RFEA_string), &count);
-		sprintf (RFEA_string, ":TRIG:EDGE:LEV %f\r",RFEA_TriggerLevel);   
-		result = viWrite (Rigol_handle, RFEA_string, (unsigned int)strlen(RFEA_string), &count);
-		sprintf (RFEA_string, ":SYST:KEY:PRES MOFF\r");   												 	//Hide menu on scope screen
-	 	result = viWrite (Rigol_handle, RFEA_string, (unsigned int)strlen(RFEA_string), &count);
+	  	sprintf ((ViConstBuf)RFEA_string, ":TIM:MAIN:SCAL %e\r",(RFEA_TimeWindow/10.0));   										//Set up timebase scaling based on target sample window and 10 divisions
+		result = viWrite (Rigol_handle, (ViConstBuf)RFEA_string, (unsigned int)strlen(RFEA_string), &count);
+		sprintf ((ViConstBuf)RFEA_string, ":ACQ:MDEP %d\r",RFEA_RecordLength);   												//Set the record length by setting the Memory Depth and upload the record length in k
+		result = viWrite (Rigol_handle, (ViConstBuf)RFEA_string, (unsigned int)strlen(RFEA_string), &count);
+		sprintf ((ViConstBuf)RFEA_string, ":CHAN1:SCAL  %f\r",RFEA_VoltageRange);   											//Set the voltage scale of the channel to the target value
+		result = viWrite (Rigol_handle, (ViConstBuf)RFEA_string, (unsigned int)strlen(RFEA_string), &count);
+		sprintf ((ViConstBuf)RFEA_string, ":CHAN2:SCAL  %f\r",RFEA_VoltageRange);   											//Set the voltage scale of the channel to the target value
+		result = viWrite (Rigol_handle, (ViConstBuf)RFEA_string, (unsigned int)strlen(RFEA_string), &count);
+		sprintf ((ViConstBuf)RFEA_string, ":CHAN3:SCAL  %f\r",RFEA_VoltageRange);   											//Set the voltage scale of the channel to the target value
+		result = viWrite (Rigol_handle, (ViConstBuf)RFEA_string, (unsigned int)strlen(RFEA_string), &count);
+		sprintf ((ViConstBuf)RFEA_string, ":CHAN4:SCAL  %f\r",RFEA_VoltageRange);   											//Set the voltage scale of the channel to the target value
+		result = viWrite (Rigol_handle, (ViConstBuf)RFEA_string, (unsigned int)strlen(RFEA_string), &count);
+	 	sprintf ((ViConstBuf)RFEA_string, ":TRIG:MODE EDGE\r");   
+		result = viWrite (Rigol_handle, (ViConstBuf)RFEA_string, (unsigned int)strlen(RFEA_string), &count);
+		sprintf ((ViConstBuf)RFEA_string, ":TRIG:COUP AC\r");   
+		result = viWrite (Rigol_handle, (ViConstBuf)RFEA_string, (unsigned int)strlen(RFEA_string), &count);
+		sprintf ((ViConstBuf)RFEA_string, ":TRIG:EDGE:SOUR %s\r",RFEA_TriggerSource);  														//Set the trigger source to the target value 
+		result = viWrite (Rigol_handle, (ViConstBuf)RFEA_string, (unsigned int)strlen(RFEA_string), &count);
+	 	sprintf ((ViConstBuf)RFEA_string, ":TRIG:EDGE:SLOP POS\r");   
+		result = viWrite (Rigol_handle, (ViConstBuf)RFEA_string, (unsigned int)strlen(RFEA_string), &count);
+		sprintf ((ViConstBuf)RFEA_string, ":TRIG:EDGE:LEV %f\r",RFEA_TriggerLevel);   
+		result = viWrite (Rigol_handle, (ViConstBuf)RFEA_string, (unsigned int)strlen(RFEA_string), &count);
+		sprintf ((ViConstBuf)RFEA_string, ":SYST:KEY:PRES MOFF\r");   												 	//Hide menu on scope screen
+	 	result = viWrite (Rigol_handle, (ViConstBuf)RFEA_string, (unsigned int)strlen(RFEA_string), &count);
 	}
 }
 
@@ -93,9 +93,10 @@ int RFEAArm(void)
 	char	RFEA_string[32]="Null";
 	
 	//	Arm Digitizer with provision for error and only arms those groups in use
-	sprintf (RFEA_string, ":TRIG:SWE SINGl\r");   												 		//Single Trigger Sweep
- 	result = viWrite (Rigol_handle, RFEA_string, (unsigned int)strlen(RFEA_string), &count);
+	sprintf ((ViConstBuf)RFEA_string, ":TRIG:SWE SINGl\r");   												 		//Single Trigger Sweep
+ 	result = viWrite (Rigol_handle, (ViConstBuf)RFEA_string, (unsigned int)strlen(RFEA_string), &count);
 
+	printf("[DEBUG] RFEA arming: Handle1 = %d\n",Rigol_handle); 
 	return result;
 }
 
@@ -110,7 +111,7 @@ void Write_RFEAData(void)
 	char	outfilename[36];
 	FILE*	outfile;
 	int		j;
-	float 	RFEA_timestep=0.0;
+	double 	RFEA_timestep=0.0;
 	double	*RFEA_Array1;
 	double	*RFEA_Array2;
 	double	*RFEA_Array3;
@@ -134,10 +135,10 @@ void Write_RFEAData(void)
 	strcat(outfilename, "RFEA.txt");
 	
 	outfile=fopen (outfilename, "w");
-	fprintf(outfile,"t, RFEA1\n");
+	fprintf(outfile,"time, RFEA1\n");
 	for (j=0;j<RFEA_RecordLength;j++) {
-		timebase[j]=(double)(j*RFEA_timestep);
-		fprintf(outfile,"%f,%f,%f,%f,%f,%f,%f,%f,%f\n",timebase[j],RFEA_Array1[j]);
+		timebase[j]=(double)(j*RFEA_timestep*1.0E6);
+		fprintf(outfile,"%lf,%lf\n",timebase[j],RFEA_Array1[j]);
 	}
 
  	//Close Pulsed LIF data file
@@ -193,7 +194,6 @@ int CVICALLBACK RFEA_Move_to_Start (int panel, int control, int event,
 {
 
 	float 	RFEA_RStart;
-	float 	Current_Position;
 	float 	RFEA_Max_Insertion;
 	float 	RFEA_COUNTSPERMM;
 	float 	RFEA_Offset;
@@ -227,7 +227,6 @@ int CVICALLBACK RFEA_Move_to_Stop (int panel, int control, int event,
 							  void *callbackData, int eventData1, int eventData2)
 {
 	float 	RFEA_RStop;
-	float 	Current_Position;
 	float 	RFEA_Max_Insertion;
 	float 	RFEA_COUNTSPERMM;
 	float 	RFEA_Offset;
@@ -262,8 +261,6 @@ int CVICALLBACK RFEA_Home (int panel, int control, int event,
 
 	char 	RFEA_Probe_IP_Address[64];
 	float 	RFEA_Offset;
-	float 	RFEA_RPosition;
-	float 	RFEA_COUNTSPERMM;
 	
 	switch (event)
 	{

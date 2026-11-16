@@ -1,6 +1,7 @@
 void Get_PLIF_Laser_Offsets (float *, float *);
 int PulsedLIFActivate(void);
 int PulsedLIFArm(void);
+int PulsedLIFMeterArm(void);
 void Write_PulsedLIFData(void);
 void OpenPulsedLIF_Settings (void);
 void ReadPulsedLIF_WaveandEnergy (void);
@@ -8,3 +9,4 @@ float Get_PLIF_Wavelength(void);
 float Advance_PLIF_Laser(void);
 void PLIFLaserControl(int simmermode);
 void PLIFScope(void);
+int TransferPLIFData (double transfer_array1[], double transfer_array2[], double transfer_array3[]);

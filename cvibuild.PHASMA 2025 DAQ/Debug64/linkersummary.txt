@@ -45,6 +45,7 @@ MC2000CommandLibWin64.lib
 mdslib.lib
 mdsshr.lib
 PDCLIB.lib
+winmm.lib
 wlmData.lib
 user32.lib
 EXE Symbol Module

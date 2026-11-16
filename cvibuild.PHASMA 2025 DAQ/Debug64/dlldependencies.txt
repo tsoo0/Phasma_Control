@@ -12,6 +12,8 @@ mdsshr.lib
 mdsshr.dll
 PDCLIB.lib
 PDCLIB.dll
+winmm.lib
+WINMM.dll
 wlmData.lib
 wlmData.dll
 user32.lib

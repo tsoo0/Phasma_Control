@@ -26,21 +26,25 @@
 #define  Housekeep_TEXTMSG_18             11      /* control type: textMsg, callback function: (none) */
 #define  Housekeep_SAVE                   12      /* control type: command, callback function: Close_Housekeeping_Settings */
 #define  Housekeep_SampleRate             13      /* control type: numeric, callback function: (none) */
-#define  Housekeep_Chan12Name             14      /* control type: string, callback function: (none) */
-#define  Housekeep_Chan11Name             15      /* control type: string, callback function: (none) */
-#define  Housekeep_Chan10Name             16      /* control type: string, callback function: (none) */
-#define  Housekeep_Chan9Name              17      /* control type: string, callback function: (none) */
-#define  Housekeep_Chan7Name              18      /* control type: string, callback function: (none) */
-#define  Housekeep_Chan6Name              19      /* control type: string, callback function: (none) */
-#define  Housekeep_Chan5Name              20      /* control type: string, callback function: (none) */
-#define  Housekeep_Chan4Name              21      /* control type: string, callback function: (none) */
-#define  Housekeep_Chan3Name              22      /* control type: string, callback function: (none) */
-#define  Housekeep_Chan2Name              23      /* control type: string, callback function: (none) */
-#define  Housekeep_Chan1Name              24      /* control type: string, callback function: (none) */
-#define  Housekeep_Chan0Name              25      /* control type: string, callback function: (none) */
-#define  Housekeep_RIGOL_RecordLength     26      /* control type: slide, callback function: (none) */
-#define  Housekeep_PHOTODIODE_PATH        27      /* control type: string, callback function: (none) */
-#define  Housekeep_PHOTODIODE_USE_IO      28      /* control type: binary, callback function: PHOTODIODE_TOGGLE_ONOFF */
+#define  Housekeep_Chan13Name             14      /* control type: string, callback function: (none) */
+#define  Housekeep_Chan12Name             15      /* control type: string, callback function: (none) */
+#define  Housekeep_Chan11Name             16      /* control type: string, callback function: (none) */
+#define  Housekeep_Chan10Name             17      /* control type: string, callback function: (none) */
+#define  Housekeep_Chan9Name              18      /* control type: string, callback function: (none) */
+#define  Housekeep_Chan8Name              19      /* control type: string, callback function: (none) */
+#define  Housekeep_Chan7Name              20      /* control type: string, callback function: (none) */
+#define  Housekeep_Chan6Name              21      /* control type: string, callback function: (none) */
+#define  Housekeep_Chan5Name              22      /* control type: string, callback function: (none) */
+#define  Housekeep_Chan4Name              23      /* control type: string, callback function: (none) */
+#define  Housekeep_Chan3Name              24      /* control type: string, callback function: (none) */
+#define  Housekeep_Chan2Name              25      /* control type: string, callback function: (none) */
+#define  Housekeep_Chan1Name              26      /* control type: string, callback function: (none) */
+#define  Housekeep_Chan0Name              27      /* control type: string, callback function: (none) */
+#define  Housekeep_RIGOL_RecordLength     28      /* control type: slide, callback function: (none) */
+#define  Housekeep_PHOTODIODE_PATH        29      /* control type: string, callback function: (none) */
+#define  Housekeep_PHOTODIODE_USE_IO      30      /* control type: binary, callback function: PHOTODIODE_TOGGLE_ONOFF */
+#define  Housekeep_TEXTMSG                31      /* control type: textMsg, callback function: (none) */
+#define  Housekeep_TEXTMSG_21             32      /* control type: textMsg, callback function: (none) */
 
 
      /* Control Arrays: */

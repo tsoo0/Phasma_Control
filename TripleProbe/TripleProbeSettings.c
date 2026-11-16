@@ -33,8 +33,6 @@ void TLP_RunPython(char * PyFunc, char ** PyArgs, int numargs)
 	if(TryPython() != PyScriptFinished) WaitForPython(); // Blocking behavior; if PyHandle in use just wait until available. 
 	
 	char command[STRBUFFSIZE];
-	char func_call[STRBUFFSIZE];
-	char format_str[STRBUFFSIZE];
 	int k;
 
 	Triple_panel = LoadPanel (0, "TripleProbeSettings.uir", Triple);
@@ -114,6 +112,9 @@ int TripleProbeArm(){
 	TLP_RunPython("arm_transient", args1,1);
 	TLP_RunPython("arm_transient", args2,1);
 	
+	printf("[DEBUG] Triple probe arming processed\n");  
+
+	
 	return 1;	// return > 0 to indicate ready
 }
 
@@ -122,8 +123,6 @@ int TLP_acq2106_config( char * IP, int numsamples, int samplerate, int inZbool, 
 {
 	char SRstr[16] ;
 	char numsampstr[16]; 
-	int InputImpedance;
-	int NChan;
 	char Zarg[12] ;
 	inZbool ? strcat(Zarg,"50") : strcat(Zarg,"1MEG");
 	
@@ -141,11 +140,8 @@ void Write_TripleProbeData(void)
 {
 	int 		nchan;
 	int         nsamples;
-	int 	    Triple_RecordLength;
-	int 		Triple_Sample_Rate;
 	char 		Triple_IP1[64];
 	char 		Triple_IP2[64];
-	char 		Triple_Data_Path[64];
 	char 		nsampstr[64];
 	char 		nchannstr[64];
 	char 		acq1nameStr[64];
